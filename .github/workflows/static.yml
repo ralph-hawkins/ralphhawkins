@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: 16
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       - name: Build 11ty site
         run: npm run build
       - name: Setup Pages
@@ -33,7 +33,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '_site'  # Adjust this to match your 11ty output directory
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
