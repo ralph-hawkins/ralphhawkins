@@ -1,3 +1,0 @@
-# Ralph Hawkins
-
-Hello world

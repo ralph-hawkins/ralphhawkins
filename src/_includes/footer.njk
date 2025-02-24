@@ -1,0 +1,16 @@
+<footer class="site-footer">
+  {% if collections.weeknotes.length > 1 %}
+    <h2>Previous weeknotes</h2>
+    <ul>
+      {% for post in collections.weeknotes | reverse %}
+        <li>
+          {% if post.url == page.url %}
+            {{ post.data.title }} <span>({{ post.date | dateFormat }})</span> <em>(current)</em>
+          {% else %}
+            <a href="{{ post.url }}">{{ post.data.title }}</a> <span>({{ post.date | dateFormat }})</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</footer>
