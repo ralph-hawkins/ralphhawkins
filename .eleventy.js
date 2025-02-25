@@ -6,7 +6,12 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter(filterName, dateFilters[filterName]);
   });
 
-  // config
+  // Add assets
+  eleventyConfig.addPassthroughCopy("src/css");
+  eleventyConfig.addPassthroughCopy("src/js");
+  eleventyConfig.addPassthroughCopy("src/fonts");
+
+  // Config
   return {
     dir: {
       input: "src",
