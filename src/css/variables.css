@@ -1,0 +1,26 @@
+:root {
+  /* Colors */
+  --color-text: #0b0c0c;
+  --color-link: #0b0c0c;
+  --color-link-hover: #003078;
+  --color-link-visited: #505a5f;
+  --color-focus: #ffdd00;
+  --color-border: #0b0c0c;
+
+  /* Spacing */
+  --spacing-xs: 0.3rem;
+  --spacing-s: 0.9rem;
+  --spacing-m: 1.3rem;
+  --spacing-l: 1.9rem;
+  --spacing-xl: 3.1rem;
+
+  /* Typography */
+  --font-family: "volksans", arial, sans-serif;
+  --font-size-base: 1.3rem;
+  --line-height-base: 1.5;
+
+  /* Layout */
+  --content-width: 65ch;
+  --side-padding: 1rem;
+  --header-height: 50vh;
+}

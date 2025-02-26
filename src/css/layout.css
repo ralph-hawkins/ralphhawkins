@@ -1,0 +1,67 @@
+/* layout.css - Layout components like containers */
+
+/* Update your layout.css file with these adjustments */
+
+/* Add left padding to containers */
+.container {
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: calc(var(--side-padding) + 1.5em); /* Add space for arrow */
+  padding-right: var(--side-padding);
+  width: 100%;
+}
+
+/* Adjustments for mobile */
+@media (max-width: 40em) {
+  .container {
+    padding-left: calc(var(--side-padding) + 1.5em); /* Keep space for arrow on mobile */
+  }
+}
+
+/* Ensure the arrow is still visible in the negative space */
+footer .post-list li.current::before {
+  content: "→";
+  position: absolute;
+  left: -1.5em;
+  top: 0;
+  color: var(--color-link);
+  font-weight: bold;
+  z-index: 1; /* Ensure arrow is above other elements */
+}
+
+header {
+  min-height: 80vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background-color: white;
+  z-index: 1;
+}
+
+/* Main content that scrolls over header */
+main {
+  min-height: 100vh; /* Full viewport height to ensure enough content */
+  background-color: white;
+  position: relative;
+  z-index: 2; /* Higher than header */
+  margin-top: -3rem; /* Creates overlap with header */
+  padding-top: var(--spacing-xl);
+  border-top: 0.1rem solid var(--color-border);
+}
+
+footer {
+  border-top: 0.1rem solid var(--color-border);
+  position: relative;
+  width: 100%;
+  padding-top: var(--spacing-xl);
+  background-color: white;
+  margin-top: -3rem; /* Creates overlap with main content */
+  z-index: 3; /* Higher than main content */
+}
+
+footer ul {
+  list-style-type: none;
+  padding: 0;
+}

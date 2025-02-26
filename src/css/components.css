@@ -1,0 +1,19 @@
+/* Style for post lists in footer */
+footer .post-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: var(--spacing-xl);
+}
+
+footer .post-list li {
+  position: relative;
+}
+
+footer .post-list li.current::before {
+  content: "→";
+  position: absolute;
+  left: -1.5em;
+  top: 0;
+  color: var(--color-link);
+  font-weight: bold;
+}

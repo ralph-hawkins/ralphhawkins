@@ -1,0 +1,50 @@
+body {
+  color: var(--color-text);
+  font-family: var(--font-family);
+  scroll-padding-bottom: 5rem;
+  transition: background-color 0.3s ease;
+}
+
+.container, main, header, footer {
+  background-color: transparent;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 0.05em;
+  text-underline-offset: 0.1em;
+  background-color: transparent; /* Explicit starting state for transition */
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0.4, 1); /* Fast in, slower out */
+}
+
+a:hover {
+  color: var(--color-link);
+  background-color: var(--color-focus);
+  text-decoration: underline;
+  text-decoration-thickness: 0.05em;
+}
+
+a:visited {
+  color: var(--color-link-visited);
+}
+
+a:visited:hover {
+  color: var(--color-link);
+}
+
+a:focus {
+  outline: 0.2rem solid transparent;
+  color: var(--color-text);
+  background-color: var(--color-focus);
+  box-shadow: 0 -0.1rem var(--color-focus), 0 0.3rem var(--color-text);
+  text-decoration: none;
+  /* Remove transition for focus state to ensure immediate feedback */
+  transition: none;
+}
+
+hr {
+  margin: 0 0 var(--spacing-l) 0;
+  height: 0.1rem;
+  background: var(--color-border);
+}

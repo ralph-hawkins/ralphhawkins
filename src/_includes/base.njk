@@ -3,31 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/main.css">
     <title>{% if title %}{{ title }} - {% endif %}Ralph Hawkins</title>
 </head>
 <body>
   <header>
     <div class="container">
       <h1>
-          Ralph Hawkins
+        Ralph Hawkins
       </h1>
       <p>
-        I’m a service designer who works in the public sector.
-      </p>
-      <p>
-        I’m currently working with NHS England to help people stay healthy.
+        I’m a service designer who works in the public sector,
+        currently with NHS England helping people stay healthy.
       </p>
     </div>
   </header>
-
   <main>
     <div class="container">
       {{ content | safe }}
     </div>
   </main>
-
     {% include "footer.njk" %}
-    <script src="/js/footer.js"></script>
+    <script src="/js/scroll-effects.js"></script>
 </body>
 </html>
