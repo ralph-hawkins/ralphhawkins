@@ -2,11 +2,6 @@ body {
   color: var(--color-text);
   font-family: var(--font-family);
   scroll-padding-bottom: 5rem;
-  transition: background-color 0.3s ease;
-}
-
-.container, main, header, footer {
-  background-color: transparent;
 }
 
 a {
