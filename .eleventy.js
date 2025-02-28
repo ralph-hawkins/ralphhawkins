@@ -5,15 +5,11 @@ module.exports = function(eleventyConfig) {
   Object.keys(dateFilters).forEach(filterName => {
     eleventyConfig.addFilter(filterName, dateFilters[filterName]);
   });
+
   // Add assets
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/fonts");
-
-  // Add a posts collection
-  eleventyConfig.addCollection("posts", function(collection) {
-    return collection.getFilteredByGlob("src/posts/**/*.md");
-  });
 
   // Config
   return {
