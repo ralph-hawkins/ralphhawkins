@@ -1,11 +1,13 @@
 ---
 layout: base
 ---
-{% set latestPost = collections.all | reverse | first %}
-
-<script>
-  window.location.href = "{{ latestPost.url }}";
-</script>
-
-<p>Redirecting to latest weeknotes...</p>
-<p><a href="{{ latestPost.url }}">Click here if not redirected</a></p>
+{% if collections.all.length > 0 %}
+  {% set latestPost = collections.all | reverse | first %}
+  <script>
+    window.location.href = "{{ latestPost.url }}";
+  </script>
+  <p>Redirecting to latest weeknotes...</p>
+  <p><a href="{{ latestPost.url }}">Click here if not redirected</a></p>
+{% else %}
+  <p>No posts available yet.</p>
+{% endif %}
