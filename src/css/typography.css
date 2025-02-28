@@ -18,6 +18,7 @@ h1 {
 }
 
 h2 {
+  margin-top: var(--spacing-xl);
   font-size: 1.9rem;
   line-height: 1.25;
 }

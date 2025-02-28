@@ -19,6 +19,10 @@
   }
 }
 
+.post-content {
+  padding-bottom: 10rem;
+}
+
 /* Ensure the arrow is still visible in the negative space */
 footer .post-list li.current::before {
   content: "→";
