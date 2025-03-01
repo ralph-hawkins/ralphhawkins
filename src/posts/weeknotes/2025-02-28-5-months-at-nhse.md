@@ -63,7 +63,7 @@ It gave us the confidence to better guide the Personalised Prevention Platform d
 
 It also meant we could think about other capabilities we needed.
 
-We planned a discovery into the possibilities of component based health checks. Exploring if its possible to standardise and reuses the individual parts of a health assessment (for example, a check of blood pressure or some lifestyle questions). It started two-weeks ago.
+We planned a discovery into the possibilities of component based health checks. Exploring if its possible to standardise and reuse the individual parts of a health assessment (for example, a check of blood pressure or some lifestyle questions). It started two-weeks ago.
 
 ## Now
 
@@ -73,9 +73,7 @@ The Personalised Prevention Platform has just started its alpha phase. I’m goi
 
 The Health Assessment discovery is growing from our original vision. I’m proud of the work done to get that off the ground.
 
-The highlight of this week was speaking to a team of researchers looking at health assessments for people with learning difficulties. Aside from being incredibly important, it brings home the complexity of use-case we can support.
-
-I need to be closer to Digital NHS Health Check, there’s some interesting work to be done as the service moves towards its private beta launch.
+The highlight of this week was speaking to a team of researchers looking at health assessments for people with learning difficulties. Aside from being incredibly important, it brings home the complexity of use-cases we can support.
 
 ## People
 
@@ -87,7 +85,7 @@ Since joining I’ve met and get to work with more incredible people and this is
 
 I can’t think about my time at NHSE and not mention Vicky Teinaki.
 
-Like every other designer in the public sector, I knew her by reputation. She joined NHSE a shortly after me and worked on the Personalised Prevention Platform. I was lucky to get to know her better and see her work up close. She was incredible.
+Like every other designer in the public sector, I knew her by reputation. She joined NHSE shortly after me and worked on the Personalised Prevention Platform. I was lucky to get to know her better and see her work up close. She was incredible.
 
 Working with her reminded me that being a designer in the public sector is a privilege. You get to spend your days trying to make the world better. She embodied that completely.
 
