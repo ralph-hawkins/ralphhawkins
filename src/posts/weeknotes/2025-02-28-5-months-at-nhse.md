@@ -27,9 +27,9 @@ DHC is a digital version of the NHS health check. It’s for people aged 40 to 7
 
 The Personalised Prevention Platform was a loosely scoped discovery. It was hard to say what it was really about. Some people are OK with a broad scope. Having just left a project that scope changed on a weekly basis, I felt the team needed clear goals or have the feedback loops so it could get to clarity quickly.
 
-I wasn’t clear how DHC and Personalised Prevention Platform were linked, and therefore what our program was. I was looking for someone to tell me. I felt lost. I didn't know how to offer either of those teams any support or direction.
+I wasn’t clear how DHC and Personalised Prevention Platform were linked, and therefore what our program was. I was looking for someone to tell me. I felt lost. I didn’t know how to offer either of those teams any support or direction.
 
-Emily Houghton – Deputy director and lead for Personalised Prevention Services was supportive and encouraged me to speak to teams across Digital Prevention Services. But without clarity on what I was doing I found it hard to ask for people's time. Theoretically it should be OK to ask to learn about what people are working on, but I didn't know where to start or what I could usefully offer anyone in return.
+Emily Houghton – Deputy director and lead for Personalised Prevention Services was supportive and encouraged me to speak to teams across Digital Prevention Services. But without clarity on what I was doing I found it hard to ask for people’s time. Theoretically it should be OK to ask to learn about what people are working on, but I didn’t know where to start or what I could usefully offer anyone in return.
 
 I read a lot.
 
@@ -51,13 +51,11 @@ It felt good to have something to share, iterate and work on together.
 
 ## Personalised prevention vision
 
-Our vision was simple — make it easy for people to check their health, understand their risks, and find the right services to stay well. Put like that, it's hard to argue with. The detail involves using digital health assessments to help people understand their health risks and connect them to the most appropriate services. For example, someone with asthma is eligible for a yearly flu vaccine, but if they also smoke heavily and haven’t had their lungs checked recently, addressing that should take priority.
+Our vision was simple — make it easy for people to check their health, understand their risks, and find the right services to stay well. Put like that, it’s hard to argue with. The detail involves using digital health assessments to help people understand their health risks and connect them to the most appropriate services. For example, someone with asthma is eligible for a yearly flu vaccine, but if they also smoke heavily and haven’t had their lungs checked recently, addressing that should take priority.
 
 ## Provocatyping
 
-Irina called the example journey the ‘provocatype’.
-
-Making it clear that the journey was not a prototype, had not been tested, wasn’t possible given how we operate currently, but showed our vision.
+Irina called the example journey the ‘provocatype’. Making it clear that the journey was not a prototype, had not been tested, wasn’t possible given how we operate currently, but showed our vision.
 
 We shared the provocatype and the slides with more and more people. I was expecting push back, but the response was generally positive. That told us we were on the right path.
 
