@@ -27,7 +27,7 @@ DHC is a digital version of the NHS health check. It’s for people aged 40 to 7
 
 The Personalised Prevention Platform was a loosely scoped discovery. It was hard to say what it was really about.
 
-I wasn’t clear how DHC and Personalised Prevention Platform were linked, or what our program was aiming to achieve. I was looking for someone to tell me. I felt lost. I feel I could offer either of those teams much support or direction.
+I wasn’t clear how DHC and Personalised Prevention Platform were linked, or what our program was aiming to achieve. I was looking for someone to tell me. I felt lost. I didn’t feel I could offer either of those teams much support or direction.
 
 Emily Houghton – Deputy director and lead for Personalised Prevention Services was supportive and encouraged me to speak to teams across Digital Prevention Services. But without clarity on what I was doing I found it hard to ask for people’s time. Theoretically it’s OK to ask to learn about what people are working on, but I didn’t know where to start or what I could usefully offer anyone in return.
 
