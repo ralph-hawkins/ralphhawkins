@@ -1,7 +1,3 @@
-/* layout.css - Layout components like containers */
-
-/* Update your layout.css file with these adjustments */
-
 /* Add left padding to containers */
 .container {
   max-width: var(--content-width);
