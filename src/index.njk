@@ -1,11 +1,13 @@
 ---
 layout: base
 ---
-{% set latestPost = collections.all | reverse | first %}
-
+{% set latestPost = collections.weeknotes | reverse | first %}
+{% if latestPost %}
 <script>
-  window.location.href = "{{ site.url }}{{ latestPost.url }}";
+  window.location.href = "{{ latestPost.url }}";
 </script>
-
 <p>Redirecting to latest weeknotes...</p>
-<p><a href="{{ site.url }}{{ latestPost.url }}">Click here if not redirected</a></p>
+<p><a href="{{ latestPost.url }}">Click here if not redirected</a></p>
+{% else %}
+<p>No posts found</p>
+{% endif %}

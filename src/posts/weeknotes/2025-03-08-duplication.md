@@ -1,5 +1,5 @@
 ---
-title: The strategy is delivery
+title: Everyone wants a map
 date: 2025-03-09
 tags: weeknotes
 layout: post

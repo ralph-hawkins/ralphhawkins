@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Parallax effect for header
     if (scrollTop <= header.offsetHeight) {
-      const translateY = scrollTop * .75;
+      const translateY = scrollTop * 1;
       header.style.transform = `translateY(${translateY}px)`;
     }
   });
