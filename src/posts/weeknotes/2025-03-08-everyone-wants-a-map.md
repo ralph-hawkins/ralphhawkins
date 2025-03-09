@@ -10,9 +10,9 @@ This week I’ve been worrying about how much time I spend thinking about alignm
 
 If you were designing a system that was prone to duplication, it would look like public health in England. As far as I understand it, we have at least five policy organisations and more than 1,000 organisations responsible for delivery.
 
-Everyone within NHS England is railing against waste. There are maps, slide decks, catalogues and many meetings aimed to get alignment.
+Everyone within NHS England is railing against waste. There are maps, slide decks, catalogues and many meetings aimed at getting alignment.
 
-The downsides of duplication or misalignment are inevitable. But its probably unavoidable, and has cost too.
+The downsides of duplication and misalignment are clear. But in this ecosystem it’s probably unavoidable, and has cost too.
 
 Taken to the extreme, it’s risk‑averse and biases against action. I can’t help wondering – would we be doing a better job if we spent less time aligning and more time building?
 
