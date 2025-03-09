@@ -11,11 +11,22 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/fonts");
 
+  // Add site data
+  eleventyConfig.addGlobalData("site", {
+    url: process.env.ELEVENTY_ENV === "production"
+      ? "https://ralph-hawkins.github.io/ralphhawkins"
+      : ""
+  });
+
   // Config
   return {
     dir: {
       input: "src",
       output: "_site"
-    }
+    },
+    pathPrefix: "/ralphhawkins/",
+    templateFormats: ["md", "njk", "html"],
+    htmlTemplateEngine: "njk",
+    markdownTemplateEngine: "njk"
   };
 };
