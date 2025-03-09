@@ -10,7 +10,7 @@ This week I’ve been worrying about how much time I spend thinking about alignm
 
 If you were designing a system that was prone to duplication, it would look like public health in England. As far as I understand it, we have at least five policy organisations and more than 1,000 organisations responsible for delivery.
 
-Everyone within NHS England is railing against waste. There are maps, slide decks, catalogues and many meetings aimed to get alignment. For example, we recently spent three hours in a workshop mapping all the prevention initiatives across different teams.
+Everyone within NHS England is railing against waste. There are maps, slide decks, catalogues and many meetings aimed to get alignment.
 
 The benefits of alignment are clear.
 
