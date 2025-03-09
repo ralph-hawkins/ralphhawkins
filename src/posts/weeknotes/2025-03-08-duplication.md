@@ -45,8 +45,6 @@ I wasn’t sure if three aims was not two too many aims for a discovery. But the
 
 In the kick-off for the discovery, I tried to emphasise my concerns about the breadth of aims. Nobody seemed in the least worried.
 
-#### I like my sugar with coffee and cream
-
 Two weeks in, the discovery team is getting into the weeds of the problem space.
 
 I’m having interesting conversations with [Anisha Kanabar](https://www.linkedin.com/in/anishakanabar/) – service designer on the team, about what health assessments are (do they include screening?) and whether risk calculation is a component of a health assessment or stands alone. Can you have an assessment without a risk calculation? Can you have a risk calculation without an assessment?
