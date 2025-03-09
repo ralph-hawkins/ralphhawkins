@@ -16,24 +16,7 @@
 }
 
 .date {
-  margin-top: 1rem;
-  padding: 1.3rem 0.75rem 0rem;
-  display: inline-block;
-  translate: -0.75rem;
-  border-radius: 0.3rem;
-  animation: background-fade 0.1s ease-out forwards;
-  animation-timeline: scroll();
-  border: 0.1rem solid var(--color-border);
-}
-
-/* Define the animation */
-@keyframes background-fade {
-  from {
-      background-color: whitesmoke;
-  }
-  to {
-      background-color: var(--color-text);
-  }
+  margin-top: var(--spacing-xl);
 }
 
 .date p {

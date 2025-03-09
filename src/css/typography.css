@@ -2,35 +2,39 @@
 body {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
+  background-color: whitesmoke;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
-  font-weight: normal;
+  font-weight: bold;
   margin-bottom: var(--spacing-m);
 }
 
 h1 {
   font-size: 4.5rem;
   line-height: 0.8;
-  font-weight: bold;
+  padding-top: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
+  font-weight: bold;
 }
 
 h2 {
-  margin-top: var(--spacing-xl);
   font-size: 1.9rem;
+  padding-top: var(--spacing-m);
   line-height: 1.25;
 }
 
 h3 {
   font-size: 1.4rem;
   line-height: 1.25;
+  padding-top: var(--spacing-m);
 }
 
 h4 {
   font-size: 1.3rem;
   line-height: 1.25;
+  padding-top: var(--spacing-m);
 }
 
 p {
@@ -54,4 +58,8 @@ ul, ol {
 
 li {
   margin-bottom: var(--spacing-xs);
+}
+
+p:has(+ ul), p:has(+ ol) {
+  margin-bottom: 0.2rem;
 }
