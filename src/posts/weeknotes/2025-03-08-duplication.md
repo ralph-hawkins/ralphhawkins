@@ -1,10 +1,10 @@
 ---
-title: Duplication
+title: The strategy is delivery
 date: 2025-03-09
 tags: weeknotes
 layout: post
 ---
-This week I’ve been worrying about how much time I spend thinking about alignment, helping shape a discovery into health assessments and getting closer to the Personalised Prevention Platform team.
+This week I’ve been worrying about how much time I spend thinking about alignment, continuing to shape a discovery into health assessments and getting closer to the Personalised Prevention Platform team.
 
 ### Alignment
 
@@ -14,7 +14,7 @@ Everyone within NHS England is railing against waste. There are maps, slide deck
 
 The downsides of duplication or misalignment are inevitable. But its probably unavoidable, and has cost too.
 
-Taken to the extreme, it’s risk-averse and biases against action. I can’t help wondering – would we be doing a better job if we spent less time aligning and more time building?
+Taken to the extreme, it’s risk‑averse and biases against action. I can’t help wondering – would we be doing a better job if we spent less time aligning and more time building?
 
 I’m aiming for us to be pragmatic with a sprinkling of denial. Speak to people while we push on with delivery. Accept the risk. Hope that if we’re ahead of other people they’ll have to align to us. Map only what’s relevant. Align as we go.
 
@@ -27,7 +27,7 @@ When [Irina Pencheva](https://www.linkedin.com/in/irina-pencheva-2b431825/) and 
 
 #### Risk calculation
 
-Before the discovery kicked-off, Irina and I spent time thinking about gaps in what was happening against what needed to happen to meet our vision for personalised prevention.
+Before the discovery kicked‑off, Irina and I spent time thinking about gaps in what was happening against what needed to happen to meet our vision for personalised prevention.
 
 The biggest gap was independent risk calculation.
 
@@ -37,7 +37,7 @@ It’s a risky assumption that we can create a way to calculate risk for anyone.
 
 Irina (ruthless pragmatist and always one step ahead of me) was confident that calculating risk could be included in the health assessment discovery scope.
 
-In the kick-off for the discovery, I tried to emphasise my concerns about the breadth of aims. Nobody seemed in the least worried.
+In the kick‑off for the discovery, I tried to emphasise my concerns about the breadth of aims. Nobody seemed in the least worried.
 
 Two weeks in, the discovery team is getting into the weeds of the problem space. I’ve been having fun conversations with [Anisha Kanabar](https://www.linkedin.com/in/anishakanabar/) – service designer on the team, about some of the details:
 - what are health assessments – do they include screening?
