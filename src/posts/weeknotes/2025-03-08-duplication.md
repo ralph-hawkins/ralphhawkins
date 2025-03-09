@@ -78,5 +78,5 @@ The time I have spent with the team has been valuable. Getting into the detail o
 I’m going to:
 
 - prioritise time with PPP
-- attend ‘big room planning’ which aims to help teams across ‘Products and Platforms’, the parent of the bit I work in (Digital Prevention Services), align
-- plan the session Sarah Fisher and I are running for Services Week (an annual event where government service teams share their work and learning)
+- attend ‘big room planning’ which aims to help teams across ‘Products and Platforms’ (the parent of the bit I work in – Digital Prevention Services), align
+- plan the session Sarah Fisher and I are running for [Services Week](https://services.blog.gov.uk/2025/01/30/get-involved-with-services-week-2025/)
