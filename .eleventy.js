@@ -13,9 +13,7 @@ module.exports = function(eleventyConfig) {
 
   // Add site data
   eleventyConfig.addGlobalData("site", {
-    url: process.env.ELEVENTY_ENV === "production"
-      ? "https://ralph-hawkins.github.io/ralphhawkins"
-      : ""
+    url: "https://ralphhawkins.co.uk"
   });
 
   // Config
@@ -24,7 +22,7 @@ module.exports = function(eleventyConfig) {
       input: "src",
       output: "_site"
     },
-    pathPrefix: "/ralphhawkins/",
+    pathPrefix: "/", // Custom domain uses root path
     templateFormats: ["md", "njk", "html"],
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk"
