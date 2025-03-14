@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'volksans';
+  font-family: 'Volksans';
   src: url('/fonts/volksans/volksans-Normal.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
@@ -7,9 +7,17 @@
 }
 
 @font-face {
-  font-family: 'volksans';
-  src: url('/fonts/volksans/volksans-Black.woff2') format('woff2');
+  font-family: 'Volksans';
+  src: url('/fonts/volksans/volksans-Bold.woff2') format('woff2');
   font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Volksans';
+  src: url('/fonts/volksans/volksans-Black.woff2') format('woff2');
+  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }

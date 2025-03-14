@@ -16,7 +16,7 @@ h1 {
   line-height: 0.8;
   padding-top: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
-  font-weight: bold;
+  font-weight: 900;
 }
 
 h2 {
