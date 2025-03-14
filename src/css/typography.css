@@ -61,5 +61,5 @@ li {
 }
 
 p:has(+ ul), p:has(+ ol) {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
 }

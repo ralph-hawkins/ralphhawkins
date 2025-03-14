@@ -39,7 +39,7 @@ a:focus {
 }
 
 hr {
-  margin: 0 0 var(--spacing-l) 0;
+  margin: var(--spacing-xl) 0 var(--spacing-xl) 0;
   height: 0.1rem;
   background: var(--color-border);
 }
