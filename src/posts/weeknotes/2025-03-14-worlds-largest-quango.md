@@ -25,17 +25,17 @@ Once those basics are right, is there a benefit to using AI? Definitely.
 
 Platforms and Products (which Digital Prevention Services belongs to) held ‘big room planning’. It’s a day where teams show what their working on.
 
-There’s not much planning, but it’s useful way to get an oversight of what’s happening around us and get to know the people doing it a little better.
+There’s not much planning, but it’s useful way to get an oversight of what’s happening around us and get to know the people doing it.
 
 It was bittersweet to see so much brilliant work on the same day that the end of NHSE was announced. Hopefully it all continues.
 
-There were some clear themes that emerged from the day. Lots of people doing similar work for different parts of the patient journey. New people to align with.
+There were clear themes that emerged from the day. Lots of people doing similar work for different parts of the patient journey. New people to align with.
 
 ### Digital prevention service design history
 
 Design histories are a great way to make your work open.
 
-Digital prevention services put its [design history site live](https://design-history.prevention-services.nhs.uk/). Thanks to [Frankie Roberto](https://design-history.prevention-services.nhs.uk/) for his hard work.
+Digital prevention services put its [design history site live](https://design-history.prevention-services.nhs.uk/). Thanks to [Frankie Roberto](https://design-history.prevention-services.nhs.uk/) for making this happen.
 
 None of the teams in my bit have published a design history yet, but there are some in the works.
 
@@ -43,7 +43,9 @@ In Teacher Services at DfE, design histories were part of the how we worked. The
 
 ### Services week
 
-Next week is services week, [Sarah Fisher](https://www.linkedin.com/in/sarah-fisher-6149b1242/) and I running a session at services week next week. It’s called ‘[Stop mapping, start doing](https://www.eventbrite.co.uk/e/stop-mapping-start-doing-tickets-1286333180169?aff=oddtdtcreator)’. Looking forward to it.
+Next week is services week, [Sarah Fisher](https://www.linkedin.com/in/sarah-fisher-6149b1242/) and I running a session at services week next week. It’s called ‘[Stop mapping, start doing](https://www.eventbrite.co.uk/e/stop-mapping-start-doing-tickets-1286333180169?aff=oddtdtcreator)’.
+
+Looking forward to it.
 
 ---
 

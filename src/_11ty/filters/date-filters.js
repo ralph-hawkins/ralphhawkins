@@ -10,7 +10,7 @@ module.exports = {
    * @return {string} The formatted date string
    */
   shortDateFormat: function(date) {
-    return DateTime.fromJSDate(date).toFormat("dd‑MM‑yyyy");
+    return DateTime.fromJSDate(date).toFormat("dd/MM/yyyy");
   },
 
   /**

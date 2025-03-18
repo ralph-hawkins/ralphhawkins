@@ -38,17 +38,13 @@ h4 {
 }
 
 p {
-  margin-bottom: var(--spacing-m);
+  margin-bottom: var(--spacing-s);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
 }
 
 li, a {
   font-size: var(--font-size-base);
-}
-
-p.small {
-  font-size: 1.2rem;
 }
 
 ul, ol {
@@ -62,4 +58,9 @@ li {
 
 p:has(+ ul), p:has(+ ol) {
   margin-bottom: 0.3rem;
+}
+
+.post-list .date {
+  font-feature-settings: "tnum"; /* Enable tabular numbers */
+  font-variant-numeric: tabular-nums; /* Modern browsers support */
 }
