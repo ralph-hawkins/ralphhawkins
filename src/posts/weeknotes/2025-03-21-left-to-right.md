@@ -19,9 +19,9 @@ I used to say I’m a ‘designer’. Not a ‘service’ or ‘interaction’ d
 
 Being vague isn’t helpful. People need to understand my role so they can work with me.
 
-More specific is more helpful. I'm a service designer.
+More specific is more helpful – I'm a service designer.
 
-Adding seniority complicates things further. Previously, I avoided mentioning my ’level’ – not ’senior’ or ’lead’ – based on ideals about hierarchy. But as a straight, middle‑class white man, implicit structures favour me.
+Previously, I avoided mentioning my ’level’ – not ’senior’ or ’lead’ – based on ideals about hierarchy. But as a straight, middle‑class white man, implicit structures favour me.
 
 Well‑designed organisational structures provide accountability and support diversity.
 
