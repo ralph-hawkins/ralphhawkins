@@ -41,7 +41,7 @@ Thanks to everyone involved, especially [Emily Houghton](https://www.linkedin.co
 
 This week was Service Week – bringing the public sector together to share best practices and improve public services.
 
-I contributed to two sessions but didn’t got to any others. Thankfully, [recordings of the session are on YouTube](https://www.youtube.com/playlist?list=PLoe8p5EhqZ2Irg0VDGiho6NA1AoA-gUuB)
+I contributed to two sessions but didn’t go to any others. Thankfully, [recordings of the session are on YouTube](https://www.youtube.com/playlist?list=PLoe8p5EhqZ2Irg0VDGiho6NA1AoA-gUuB)
 
 ### Stop mapping, start doing
 
@@ -83,7 +83,7 @@ Vicky Houghton‑Price's blog post '[Do you need another map? Probably not](http
 
 I contributed to [Frankie Roberto‘s](https://bsky.app/profile/frankieroberto.com) open show and tell on Digital Prevention Services. A quick run through of 5 related services.
 
-Session that bring together multiple things are great. There’s only a loose connection, but the proximity helps give a context that single team demos can’t.
+Sessions that bring together multiple things are great. There’s only a loose connection, but the proximity helps give a context that single team demos can’t.
 
 I’ve seen Frankie run this kind of session internally before and was very happy to take part. I also enjoy Frankie’s disdain for slides.
 
