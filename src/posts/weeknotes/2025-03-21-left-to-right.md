@@ -15,9 +15,11 @@ For me the week had two main highlights, a Personalised Prevention Service senio
 
 My job title is lead service designer, I’m trying to be less weird about it.
 
-I used to say I’m a ‘designer’. Not a ‘service’ or ‘interaction’ designer. On reflection, I think calling myself a ‘designer’ was a of humble-brag. Suggesting I do all the design roles. Being vague isn’t helpful. People need to understand my role so they can work with me.
+I used to say I’m a ‘designer’. Not a ‘service’ or ‘interaction’ designer. On reflection, I think calling myself a ‘designer’ was a of humble-brag. Suggesting I do all the design roles.
 
-I try to own being ‘service designer’. More specific is more helpful.
+Being vague isn’t helpful. People need to understand my role so they can work with me.
+
+More specific is more helpful. I'm a service designer.
 
 Adding seniority complicates things further. Previously, I avoided mentioning my ’level’ – not ’senior’ or ’lead’ – based on ideals about hierarchy. But as a straight, middle‑class white man, implicit structures favour me.
 
@@ -53,7 +55,7 @@ Here’s my takeaways.
 
 Maps are most valuable for the people creating them rather than for those consuming them. The process of mapping helps teams organise and create shared understanding.
 
-[Maya D'Amour](https://www.linkedin.com/in/mayadamour/) described the ‘self‑generation’ effect – creators get the insights, but consumers struggle to extract information
+[Maya D’Amour](https://www.linkedin.com/in/mayadamour/) described the ‘self‑generation’ effect – creators get the insights, but consumers struggle to extract information
 
 Maps can be designed to be consumed by others, but those are rarely as valuable to the people who create them. As [Annie Crabtree](https://www.linkedin.com/in/annie-crabtree/) said “Are you mapping to learn or to communicate?”.
 
