@@ -61,7 +61,7 @@ If you need to communicate what you have in a map, written summaries and slide d
 
 #### Maps are disposable
 
-No one revisits their maps. There are no 'living documents' – good to remember when starting mapping.
+No one revisits their maps. There are no ‘living documents’ – good to remember when starting mapping.
 
 #### You don’t always need to go from left to right
 
@@ -75,7 +75,7 @@ This addresses my core anxiety. With less tangible output as a service designer,
 
 I need to be more comfortable with my non‑tangible contributions.
 
-Vicky Houghton‑Price's blog post '[Do you need another map? Probably not](https://medium.com/design-bootcamp/do-you-need-another-map-probably-not-2f8a8a7a9773)' describes this perfectly.
+Vicky Houghton‑Price’s blog post ‘[Do you need another map? Probably not](https://medium.com/design-bootcamp/do-you-need-another-map-probably-not-2f8a8a7a9773)’ describes this perfectly.
 
 ### Digital Prevention Services – open show and tell
 
