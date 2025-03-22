@@ -17,11 +17,9 @@ My job title is lead service designer, I’m trying to be less weird about it.
 
 I used to say I’m a ‘designer’. Not a ‘service’ or ‘interaction’ designer. On reflection, I think calling myself a ‘designer’ was a of humble-brag. Suggesting I do all the design roles.
 
-Being vague isn’t helpful. People need to understand my role so they can work with me.
+Being vague isn’t helpful. Helping people understand my role makes it easier for people to work with me.
 
-More specific is more helpful – I'm a service designer.
-
-Previously, I avoided mentioning my ’level’ – not ’senior’ or ’lead’ – based on ideals about hierarchy. But as a straight, middle‑class white man, implicit structures favour me.
+In the past I’ve also avoided mentioning my ’level’ – not ’senior’ or ’lead’ – based on ideals about hierarchy. But as a straight, middle‑class white man, implicit structures favour me.
 
 Well‑designed organisational structures provide accountability and support diversity.
 
@@ -67,7 +65,7 @@ No one revisits their maps. There are no 'living documents' – good to remember
 
 #### You don’t always need to go from left to right
 
-Traditional service maps can be rigid. Showing the back‑and‑forth of real user journeys makes maps unreadable.
+Traditional service maps can be rigid. Showing the back‑and‑forth of real user journeys can makes maps unreadable.
 
 [Vero Jermolina](https://www.linkedin.com/in/veronikajermolina/) described using London tube map visual language –  an elegant way to show decisions and stages using familiar visual language.
 
