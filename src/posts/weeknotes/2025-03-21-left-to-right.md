@@ -53,7 +53,7 @@ Here’s my takeaways.
 
 Maps are most valuable for the people creating them rather than for those consuming them. The process of mapping helps teams organise and create shared understanding.
 
-[Maya D’Amour](https://www.linkedin.com/in/mayadamour/) described the ‘self‑generation’ effect – creators get the insights, but consumers struggle to extract information
+[Maya D’Amour](https://www.linkedin.com/in/mayadamour/) described the ‘[generation effect](https://en.m.wikipedia.org/wiki/Generation_effect)’ – creators get the insights, but consumers struggle to extract information
 
 Maps can be designed to be consumed by others, but those are rarely as valuable to the people who create them. As [Annie Crabtree](https://www.linkedin.com/in/annie-crabtree/) said “Are you mapping to learn or to communicate?”.
 
