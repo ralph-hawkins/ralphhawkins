@@ -15,7 +15,7 @@ For me the week had two main highlights, a Personalised Prevention Service senio
 
 My job title is lead service designer, I’m trying to be less weird about it.
 
-I used to say I’m a ‘designer’. Not a ‘service’ or ‘interaction’ designer. On reflection, I think calling myself a ‘designer’ was a of humble-brag. Suggesting I do all the design roles.
+I used to say I’m a ‘designer’. Not a ‘service’ or ‘interaction’ designer. On reflection, I think calling myself a ‘designer’ was a humble-brag. Suggesting I do all the design roles.
 
 Being vague isn’t helpful. Helping people understand my role makes it easier for people to work with me.
 
