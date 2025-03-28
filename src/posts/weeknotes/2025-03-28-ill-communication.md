@@ -22,7 +22,7 @@ I’d like to be able to speed up work like this, but I need time to think and h
 {% from "image.njk" import image %}
 {{ image("/images/note-book-sketch.png", "hand-drawn sketch on paper showing a process flow") }}
 
-Since the pandemic I've fallen out of the habit of drawing diagrams while talking to people. Since I started at NHSE I’ve spent more time in the office. Being able to sit next to someone and diagram while I’m talking is so helpful.
+After the pandemic I fell out of the habit of drawing diagrams while talking to people. Since starting at NHSE I’ve spent more time in the office. Being able to sit next to someone and diagram while I’m talking is so helpful.
 
 Years ago I started drawing as I was explaining something to someone and they said ‘I don’t need a drawing to understand.’ I had to reply ‘But I need to draw it to explain’.
 
