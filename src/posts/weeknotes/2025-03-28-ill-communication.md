@@ -38,9 +38,9 @@ There was continuing discussion of the changes happening as we become part of th
 
 As a ‘portfolio’, the way we communicate is being crafted. It’s rare to see public sector organisations invest in communicating with simplicity and precision. Government Digital Services (GDS) were great at this. I’m grateful to be working somewhere that takes this stuff seriously.
 
-We also discussed the NHS principles and whether we need our own for Digital Prevention Services. I’m not against principles in general. The GDS/NHS design principles are useful. But adding more frameworks and principles for each layer feels like a distraction, both for the people creating them and the people they’re supposed to benefit. A lot of this stuff gets figured out as you deliver, if there’s stuff we can learn from what’s gone before all the better.
+We also discussed the NHS principles and whether we need our own for Digital Prevention Services. I’m not against principles in general. The [GDS](https://www.gov.uk/guidance/government-design-principles) and [NHS design principles](https://service-manual.nhs.uk/design-system/design-principles) are useful. But adding more frameworks and principles for each layer feels like a distraction, both for the people creating them and the people they’re supposed to benefit. A lot of this stuff gets figured out as you deliver, if there’s stuff we can learn from what’s gone before all the better.
 
-I had forgotten that the NHS has the principle ‘design to protect the environment’. It’s obviously the right thing to do. But I don’t think I’ve ever seen anyone take a tangible action to do this my entire time in the public sector. With all the new AI work everyone is excited for I wonder how we might address that principle.
+I had forgotten that the NHS has the principle ‘design to protect the environment’. It’s obviously the right thing to do. But I don’t think I’ve ever seen anyone take a tangible action to do this my entire time in the public sector. With all the new AI work everyone is excited for, I wonder how we might address that principle.
 
 ### Supporting the next generation of user experience design
 
