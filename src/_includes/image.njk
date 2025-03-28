@@ -1,0 +1,8 @@
+{% macro image(src, alt, caption="", className="") %}
+  <figure class="figure {{ className }}">
+    <img src="{{ src }}" alt="{{ alt }}" class="figure-img">
+    {% if caption %}
+      <figcaption class="figure-caption">{{ caption }}</figcaption>
+    {% endif %}
+  </figure>
+{% endmacro %}

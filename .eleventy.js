@@ -5,17 +5,16 @@ module.exports = function(eleventyConfig) {
   Object.keys(dateFilters).forEach(filterName => {
     eleventyConfig.addFilter(filterName, dateFilters[filterName]);
   });
-
   // Add assets
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/fonts");
+  eleventyConfig.addPassthroughCopy("src/images"); // Add this line for images
 
   // Add site data
   eleventyConfig.addGlobalData("site", {
     url: "https://ralphhawkins.co.uk"
   });
-
   // Config
   return {
     dir: {
