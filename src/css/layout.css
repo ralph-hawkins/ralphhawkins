@@ -82,6 +82,7 @@ footer ul {
 .figure-img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 .figure-caption {
