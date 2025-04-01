@@ -7,7 +7,7 @@ layout: post
 
 This week was chaotic, but also productive.
 
-Some of the planning and long-term thinking I’ve been part of is starting to come together.
+Some of the planning and long‑term thinking I’ve been part of is starting to come together.
 
 This is great, it should make me happy.
 
