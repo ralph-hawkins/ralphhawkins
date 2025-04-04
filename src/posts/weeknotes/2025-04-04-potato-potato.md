@@ -31,7 +31,7 @@ As I wrote about last week, the Digital Prevention Services Portfolio (DPSP) is 
 
 It made me think about how GDS used to be referred to as a ‘cult’ by the rest of the civil service. At the time I didn’t really get why. I understood that GDS wasn’t like the rest of the civil service and there were some very enthusiastic people around.
 
-Since then I’ve worked in 3 departments plus NHSE. Each part of the civil service has its own culture, but there is a clear thread that runs through all of it. That thread is a culture that I have struggled with at times. Its a different way of operating to one that makes sense to me.
+Since then I’ve worked in 3 central government departments plus NHSE. Each part of the civil service has its own culture, but there is a clear thread that runs through all of it. That thread is a culture that I have struggled with at times. Its a different way of operating to one that makes sense to me.
 
 Looking back I now understand the reaction against GDS. We had a different culture to the rest of the civil service, but equally they had their own culture. If we were a cult, then they were a religion.
 
