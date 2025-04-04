@@ -15,7 +15,7 @@ For example, after demoing some of our work to people across NHSE a few weeks ag
 
 But it’s easy to forget how hard it is to look more widely when you have an actual job to do. Recently I’ve seen that teams who in my mind are tightly coupled are not as aware of their relationship to each other as I had assumed.
 
-This week I brought these 2 teams together for 4 hours in a room. The plan was simple enough, draw a journey map that helps team members understand the wider context and how they both fit into it. Talk about what they’re doing and if the relationship between the teams.
+This week I brought 2 teams, one looking at health assessments and the other looking helping people find services to reduce their risk, together for 4 hours in a room. The plan was simple enough, draw a journey map that helps team members understand the wider context and how they both fit into it. Talk about what they’re doing and if the relationship between the teams.
 
 Putting an in-person 4-hour workshop for 8 people to come from across the country to attend is stressful. But I think necessary if the goal is shared understanding.
 
@@ -35,4 +35,4 @@ Since then I’ve worked in 3 departments plus NHSE. Each part of the civil serv
 
 Looking back I now understand the reaction against GDS. We had a different culture to the rest of the civil service, but equally they had their own culture. If we were a cult, then they were a religion.
 
-I think DPSP is treading more carefully than GDS did, but its always a tricky balance to protect the culture that works for your team and integrate with a wider eco‑system.
+DPSP is treading more carefully than GDS did, but its a balance to protect the culture that works for your team and integrating with a wider eco‑system.
