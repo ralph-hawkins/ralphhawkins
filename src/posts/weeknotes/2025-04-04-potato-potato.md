@@ -35,4 +35,4 @@ Since then I’ve worked in 3 central government departments plus NHSE. Each par
 
 Looking back I now understand the reaction against GDS. We had a different culture to the rest of the civil service, but equally they had their own culture. If we were a cult, then they were a religion.
 
-DPSP is treading more carefully than GDS did, but its a balance to protect the culture that works for your team and integrating with a wider eco‑system.
+DPSP is treading more carefully than GDS did, but its a balance to protect the culture that works for your team while integrating with a wider eco‑system.
