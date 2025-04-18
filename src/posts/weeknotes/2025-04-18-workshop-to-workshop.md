@@ -27,15 +27,15 @@ We rarely consider the opposite risk – not delivering a service at all. We spe
 
 3 of the 4 people I spoke to in the last couple of weeks were service designers.
 
-I found myself describing the 2 different types of services designers we needed.
+I found myself describing the 2 different types of services designers we need:
 
 1. a systems thinking service designer – someone who understands systems and designs to reduce, remove or avoid complexity so users are better able to get the outcomes they need
 
 2. people‑focused designer – someone who thinks holistically about users, their communities and lived experiences, they consider emotional responses and personal contexts
 
-This is a bit of a false split. Most  designers consider both aspects in their work.
+This is a bit of a false split. Most designers consider both aspects in their work.
 
-Coming from central government, I've mostly been the first type. The services I’ve worked on were often designed for professionals. User needs mattered, but the emotional aspects weren’t my primary focus.
+Coming from central government, I’ve mostly been the first type. The services I’ve worked on were often designed for professionals. User needs mattered, but the emotional aspects weren’t my primary focus.
 
 In health, designing with the core aim of reducing health inequalities, the care with which we design around people and the experience they bring will have a huge impact.
 
