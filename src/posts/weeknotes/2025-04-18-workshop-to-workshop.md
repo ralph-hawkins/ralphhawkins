@@ -29,9 +29,9 @@ We rarely consider the opposite risk – not delivering a service at all. We spe
 
 I found myself describing the 2 different types of services designers we needed.
 
-1. a systems thinking service designer – someone who understands systems and designs to reduce, remove or avoid that complexity so users are better able to get the outcomes they need
+1. a systems thinking service designer – someone who understands systems and designs to reduce, remove or avoid complexity so users are better able to get the outcomes they need
 
-2. people‑focused designer – someone who think holistically about users, their communities and lived experiences. They consider emotional responses and personal contexts.
+2. people‑focused designer – someone who thinks holistically about users, their communities and lived experiences, they consider emotional responses and personal contexts
 
 This is a bit of a false split. Most  designers consider both aspects in their work.
 
