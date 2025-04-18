@@ -21,6 +21,8 @@ It seems as though the frameworks that measure risk in healthcare work well enou
 
 So without any confidence in our risk calculations we take the worst case scenario and try to mitigate that. This makes the job of delivering services many, many times more complex.
 
+We rarely consider the opposite risk – not delivering a service at all. We spend time and energy documenting potential risks of something new, but almost none measuring the harm of the current situation in comparison. The risks of action are weighted more heavily than the risks of inaction.
+
 ### Types of service designer
 
 3 of the 4 people I spoke to in the last couple of weeks were service designers.
