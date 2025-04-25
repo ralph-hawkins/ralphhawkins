@@ -20,7 +20,7 @@ Once I understood this, other things about the civil service started making a li
 - people without any digital experience becoming product managers overnight
 - outsourcing
 - RAG rating
-- leadership only speaking leadership, even if the people who understood the detail were sitting right next to them
+- leadership only speaking to leadership, even if the people who understood the detail are sitting right next to them
 - email chains
 - asking a question, being told ‘that’s a great question, let me take that away.’ Waiting 2 weeks for a response, asking a follow-up question and then being told ‘that’s a great question, let me take that away.’
 - digital being in the same silo as HR and facilities
@@ -38,7 +38,7 @@ I started by saying they should ask me about a time I’d been involved in deliv
 
 I then went on to describe my problem with the idea of end‑to‑end service design. To deliver an end‑to‑end service you need to wield organisational power and to work with each person protecting their individual fiefdom. I’ve seen many service designers feel like they’re not doing a good job because they don’t have anywhere near the influence necessary to make changes to the end‑to‑end.
 
-As a service designer, you get to work on parts of the end‑to‑end. For me, it’s better to think of service design as making the things adjacent to, or outside of, but necessary for the core journey to happen, happen. To design for hand-offs. And above all to design for failure.
+As a service designer, you get to work on parts of the end‑to‑end. For me, it’s better to think of service design as making the things adjacent to, or outside of, but necessary for the core journey to happen, happen. To design for hand‑offs. And above all to design for failure.
 
 I didn’t get the job.
 
