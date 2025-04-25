@@ -32,13 +32,13 @@ I’m so much happier to be working in a place that makes sense to me. Multidisc
 
 I’ve been speaking to more service designers this week. 
 
-It reminded me about a job interview where I was asked to describe an end‑to-end service  I’d designed.
+It reminded me about a job interview where I was asked to describe an end‑to‑end service I’d designed.
 
 I started by saying they should ask me about a time I’d been involved in delivering an end‑to‑end service. Anyone can design an end‑to‑end service, in the same way anyone can draw a dragon.
 
-I then went on to describe my problem with the idea of end-to-end service design. To deliver an end‑to‑end service you need to wield organisational power and to work with each person protecting their individual fiefdom. I’ve seen many service designers feel like they’re not doing a good job because they don’t have anywhere near the influence necessary to make changes to the end-to-end.
+I then went on to describe my problem with the idea of end‑to‑end service design. To deliver an end‑to‑end service you need to wield organisational power and to work with each person protecting their individual fiefdom. I’ve seen many service designers feel like they’re not doing a good job because they don’t have anywhere near the influence necessary to make changes to the end‑to‑end.
 
-As a service designer, you get to work on parts of the end-to-end. For me, it’s better to think of service design as making the things adjacent to, or outside of, but necessary for the core journey to happen, happen. To design for hand-offs. And above all to design for failure.
+As a service designer, you get to work on parts of the end‑to‑end. For me, it’s better to think of service design as making the things adjacent to, or outside of, but necessary for the core journey to happen, happen. To design for hand-offs. And above all to design for failure.
 
 I didn’t get the job.
 
