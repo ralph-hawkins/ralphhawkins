@@ -1,51 +1,53 @@
 ---
-title: The Apocryphal Zumba Class
-date: 2025-05-05
+title: What happens in Mural, stays in Mural
+date: 2025-04-25
 tags: weeknotes
 layout: post
 ---
 
-### Grades, Roles, Culture
+Or Lucid, Miro, or whatever.
 
-After last week’s post on finding it weird when people are simply introduced by their grade and not their role, [Sarah Fisher](https://www.linkedin.com/in/sarah-fisher-6149b1242/) (Deputy Director for Screening services) had some feedback.
+### Like a G6
 
-Her point (which I hope I’m summarising correctly) was that we all use shorthand for this kind of thing. Introducing myself as ‘service designer’ is probably no more helpful to someone with little digital experience than introducing someone as a G6 is to me.
+I had a meeting this week with some people from a central government organisation. One of the people on the call was introduced as the ‘G6’.
 
-I take the point.
+Working in central government I got used to people being introduced by their grade. But after 6 months at NHS England, where it’s not a thing, I find it weird again. I guess it’s just a shorthand for their role – but what do they do?
 
-In the past I’ve tried to give an explanation of my role. Something like ‘I’m responsible for thinking about how the service and associated bits join up for the user’, which is probably too vague to actually help. But service design innit.
+When I started working at the Department for Business, Energy & Industrial Strategy in 2017, I was startled to realise that people with a discipline were the exception. Everyone else is a ‘generalist’.
 
-I still think there’s something about the hierarchy implicit in using grades as proxy for role that I find uncomfortable. It’s often a shorthand for who is allowed to make decisions and who isn’t.
+Once I understood this, other things about the civil service started making a little more sense, or at least I could see the consistency:
 
-### Nudging and Boosting
+- people without any digital experience becoming product managers overnight
+- outsourcing
+- RAG rating
+- leadership only speaking to leadership, even if the people who understood the detail are sitting right next to them
+- email chains
+- asking a question, being told ‘that’s a great question, let me take that away.’ Waiting 2 weeks for a response, asking a follow-up question and then being told ‘that’s a great question, let me take that away.’
+- digital being in the same silo as HR and facilities
+- assurance
 
-Sarah also shared this [paper on the limitations of nudging and how boosting is a more effective method for helping people achieve their goals](https://www.cambridge.org/core/journals/behavioural-public-policy/article/moving-from-nudging-to-boosting-empowering-behaviour-change-to-address-global-challenges/CB945AC75691B12619D7C0F08A78B0CD).
+I’m so much happier to be working in a place that makes sense to me. Multidisciplinary teams figuring out problems and making stuff.
 
-‘Nudging’ makes my skin crawl. Many examples feel manipulative and rooted in [game theory](https://en.wikipedia.org/wiki/Game_theory). Starting with the worst assumptions about people and their motivations then playing on them.
+### End‑to‑end service design
 
-Even benign nudges are transparent and irritating – ‘75% of guests reuse their towels’ etc.
+I’ve been speaking to more service designers this week. 
 
-The paper argues that boosting is more beneficial. And feels more ethical to me.
+It reminded me about a job interview where I was asked to describe an end‑to‑end service I’d designed.
 
-Boosting recognises that people will act in the best interest of the community if the means are available to them. The article focuses on the public's response to Covid and gives the example, people can only self‑isolate where they have the ‘necessary economic, practical and social support to do so’.
+I started by saying they should ask me about a time I’d been involved in delivering an end‑to‑end service. Anyone can design an end‑to‑end service, in the same way anyone can draw a dragon.
 
-For prevention my hope is we make the means more accessible. Nobody needs nagging about their health.
-I'm sure nudging is here to stay, given that it's cheap and puts responsibility on the individual. But I really enjoyed how this paper sets out a useful distinction between supporting people and trying to manipulate them.
+I then went on to describe my problem with the idea of end‑to‑end service design. To deliver an end‑to‑end service you need to wield organisational power and to work with each person protecting their individual fiefdom. I’ve seen many service designers feel like they’re not doing a good job because they don’t have anywhere near the influence necessary to make changes to the end‑to‑end.
 
-### Service Visualisation
+As a service designer, you get to work on parts of the end‑to‑end. For me, it’s better to think of service design as making the things adjacent to, or outside of, but necessary for the core journey to happen, happen. To design for hand‑offs. And above all to design for failure.
 
-More yapping on about mapping and visualisation.
-
-Coming from an earlier career in graphic design I have pretty decent visualisation skills, basically all I do is make sure things align and are as simple as possible.
-
-Making stuff visual is valuable if it helps people understand stuff better or find a shared perspective.
-
-I’ve spent some time this week trying to map the journey for vaccination, screening, and health assessments. Our long‑term goal is to join all these things together. These are big complex things that I don’t know enough about, but getting stuff down is a start and has proved somewhat useful.
-
-I’ve started to add how our future journeys (some potential MVPs and our long‑term vision) compare against the existing ones. It’s a useful exercise in that it brings out possible connections and likely problems. Getting the granularity right is both the most important and most tedious part. For example, are unassisted behaviour change services (for example, using a service like Couch to 5K) and assisted behaviour change services (having a diabetes coach help you with exercise and diet) meaningfully different at this resolution?
+I didn’t get the job.
 
 ---
 
-I got this week’s title from [Mat Johnson](https://bsky.app/profile/demotive.bsky.social). Mat is a designer in one of the teams in Personalised Prevention Services. Working on how we help people access the most appropriate services easily.
+### Links
 
-I like working with Mat for lots of reasons, but especially because it’s like working with an English folk artist. If he'd been born 50 years earlier he would’ve been hanging out with Ted and Sylvia but, instead he’s thinking deeply and speaking lyrically about the difference between Zumba classes and gardening clubs.
+Some excellent blog posts this week:
+
+- Irina Pencheva – [a year at NHSE](https://irinapencheva.com/2025/04/24/a-year-at-nhse/)
+- Sarah Fisher – [how to avoid designing for the middle of the middle](https://medium.com/@sarah-fisher/not-all-users-wear-smart-watches-on-digital-design-and-health-inequalities-f4357765dd2a)
+- Alex Deschamps‑Sonsino – [Services or interactions?](https://www.designswarm.com/blog/2025/04/services-or-interactions/)
