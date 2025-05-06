@@ -27,10 +27,10 @@ Even benign nudges are transparent and irritating – ‘75% of guests reuse the
 
 The paper argues that boosting is more beneficial. And feels more ethical to me.
 
-Boosting recognises that people will act in the best interest of the community if the means are available to them. The article focuses on the public's response to Covid and gives the example, people can only self‑isolate where they have the ‘necessary economic, practical and social support to do so’.
+Boosting recognises that people will act in the best interest of the community if the means are available to them. The article focuses on the public’s response to Covid and gives the example, people can only self‑isolate where they have the ‘necessary economic, practical and social support to do so’.
 
 For prevention my hope is we make the means more accessible. Nobody needs nagging about their health.
-I'm sure nudging is here to stay, given that it's cheap and puts responsibility on the individual. But I really enjoyed how this paper sets out a useful distinction between supporting people and trying to manipulate them.
+I’m sure nudging is here to stay, given that it’s cheap and puts responsibility on the individual. But I really enjoyed how this paper sets out a useful distinction between supporting people and trying to manipulate them.
 
 ### Service Visualisation
 
@@ -48,4 +48,4 @@ I’ve started to add how our future journeys (some potential MVPs and our long�
 
 I got this week’s title from [Mat Johnson](https://bsky.app/profile/demotive.bsky.social). Mat is a designer in one of the teams in Personalised Prevention Services. Working on how we help people access the most appropriate services easily.
 
-I like working with Mat for lots of reasons, but especially because it’s like working with an English folk artist. If he'd been born 50 years earlier he would’ve been hanging out with Ted and Sylvia but, instead he’s thinking deeply and speaking lyrically about the difference between Zumba classes and gardening clubs.
+I like working with Mat for lots of reasons, but especially because it’s like working with an English folk artist. If he’d been born 50 years earlier he would’ve been hanging out with Ted and Sylvia but, instead he’s thinking deeply and speaking lyrically about the difference between Zumba classes and gardening clubs.
