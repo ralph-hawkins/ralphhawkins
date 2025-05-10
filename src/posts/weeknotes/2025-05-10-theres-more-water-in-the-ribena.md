@@ -57,7 +57,7 @@ I’d like to keep leading our program strategy from a service design perspectiv
 
 If needed, I’m happy to focus on helping one team, getting closer to research and direct problem‑solving.
 
-What I want to avoid is splitting my time too thinly. Some people might handle this well, but I do my best work with a bit of time to think.
+What I want to avoid is splitting my time. Some people handle this well, but I do my best work with a bit of time to think.
 
 ---
 
