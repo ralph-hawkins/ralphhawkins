@@ -1,5 +1,5 @@
 ---
-title: There’s more water in the Ribena
+title: Soft boiled eggs in shirts and ties
 date: 2025-05-10
 tags: weeknotes
 layout: post
@@ -11,7 +11,7 @@ The discovery into health assessments finished this week.
 
 We asked the team to explore if we could offer more ways for people to assess their health online.
 
-The team created a framework to examine the many different health assessments currently available, like pre‑screening for lung cancer or assessing diabetes risk.
+The team created a framework to examine the many different health assessments currently available, like pre‑screening for lung cancer or calculating diabetes risk.
 
 The framework measured health assessments on how easily they could be implemented digitally, their impact on users’ health and health inequalities, and benefit to the NHS.
 
