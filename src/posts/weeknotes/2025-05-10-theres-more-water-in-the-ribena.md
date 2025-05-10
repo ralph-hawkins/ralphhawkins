@@ -63,6 +63,6 @@ What I want to avoid is splitting my time too thinly. Some people might handle t
 
 ### Links
 
-- Mike Gallagher – design lead for NHS app and lovely person, writes literary weeknotes I can’t hope to match. Last week’s post on [the tension between middle management and being a designer who designs](https://mikegallagher.org/weeknote-wc-28-april-2025/) perfectly captures my thoughts on this subject.
+- Mike Gallagher – design lead for NHS app and lovely person, writes literary week notes. Last week’s post on [the tension between middle management and being a designer who designs](https://mikegallagher.org/weeknote-wc-28-april-2025/) perfectly captures my thoughts on this subject.
 
 - Unrelated to public sector service design – I watched this [video on the ethics of fake guitar videos](https://youtu.be/R1QEV9euGAg?si=HjqDPdZryCp9cb9E) by Adam Neely. It’s more interesting than it sounds, especially when he gets into how each music genre has its own set of culturally acceptable behaviours.
