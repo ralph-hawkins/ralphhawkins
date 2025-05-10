@@ -57,7 +57,9 @@ I’d like to keep leading our program strategy from a service design perspectiv
 
 If needed, I’m happy to focus on helping one team, getting closer to research and direct problem‑solving.
 
-What I want to avoid is splitting my time. Some people handle this well, but I do my best work with a bit of time to think.
+I’d like to avoid splitting my time. It comes down to the predictability, type and amount of work. In the last few months where I've been supporting two distinct types of work, I’ve done neither as well as I would like. I do my best work when I have the time to think and and be proactive.
+
+The more we try to do at once, the longer everything takes. Focus is necessary part of being effective. Similar in a way to to service design as a discipline – it’s about understanding the whole but knowing where to concentrate your efforts.
 
 ---
 
