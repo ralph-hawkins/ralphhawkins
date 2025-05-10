@@ -19,13 +19,13 @@ The team recommended several health assessments to take forward into an alpha ph
 
 It’s an exemplary piece of work. Clear thinking, well explained, with actionable recommendations.
 
-Thanks to [Jules Fiddler](https://www.linkedin.com/in/juliefidlerrawcoachingltd/), [Anisha Kanabar](https://www.linkedin.com/in/anishakanabar/), [Mike Watson](https://www.linkedin.com/in/michael-watson-ph-d-797a07a1/), and [Jade Conroy](https://www.linkedin.com/in/jade-conroy-855839111/).
+Thanks to [Jules Fiddler](https://www.linkedin.com/in/juliefidlerrawcoachingltd/), [Anisha Kanabar](https://www.linkedin.com/in/anishakanabar/), [Mike Watson](https://www.linkedin.com/in/michael-watson-ph-d-797a07a1/), [Jade Conroy](https://www.linkedin.com/in/jade-conroy-855839111/), [Murilo Lessa](https://www.linkedin.com/in/murilogimeneslessa/?originalSubdomain=uk), and [Graham Dodsworth](https://www.linkedin.com/in/graham-dodsworth-9440a378/).
 
 I’ll link to the design history summary when it’s published.
 
 ### Life and death business cases
 
-As part of the NHS’s ten‑year plan, Digital Prevention Services is creating several business cases.
+As part of the Spending Review, Digital Prevention Services is creating several business cases.
 
 Creating a business case for our strategy adds useful rigour and invites wider collaboration.
 
