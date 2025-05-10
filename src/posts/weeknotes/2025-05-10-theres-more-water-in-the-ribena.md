@@ -29,7 +29,7 @@ As part of the NHS’s ten‑year plan, Digital Prevention Services is creating 
 
 Creating a business case for our strategy adds useful rigour and invites wider collaboration.
 
-It also adds a layer of farce. Projecting years ahead for something so unproven requires big leaps of imagination. We’re in very early stages, so maybe it will become more evidence‑based as we go.
+Projecting years ahead for something so unproven requires big leaps of imagination. We’re in very early stages, so maybe it will become more evidence‑based as we go.
 
 Looking at our work through an economic lens is necessary but gets dark fast. There are measures of economic value for years of life added, working life extended, and quality of life. I find it hard not to think about what these numbers mean for real people and their families. It’s unsettling.
 
@@ -57,7 +57,7 @@ I’d like to keep leading our program strategy from a service design perspectiv
 
 If needed, I’m happy to focus on helping one team, getting closer to research and direct problem‑solving.
 
-Either way, I’d like to avoid splitting my time. In the last few months where I've been supporting two distinct types of work, I’ve done neither as well as I would like. It comes down to the predictability, type of and amount of work. I do my best work when I have the time to think and and be proactive.
+Either way, I’d like to avoid splitting my time. In the last few months I've been supporting two distinct types of work, I’ve done neither as well as I would like. It often comes down to the predictability, type of and amount of work. The work for both team and program are chunky. The work for program is rarely predictable. Trying to look broadly is time consuming as it involves spending time getting to know many things.
 
 The more we try to do at once, the longer everything takes. Focus is necessary to being effective. Similar in a way to to service design as a discipline – understand the whole but know where to concentrate your efforts.
 
