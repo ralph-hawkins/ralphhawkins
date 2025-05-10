@@ -45,11 +45,11 @@ Each is different, but there’s a pattern to these conversations:
 
 I have a strong bias against enterprise software, but if that’s the most practical solution, I’ll support it.
 
-### Time dilution
+### Diluting focus
 
 Our management structure is changing.
 
-We had a large senior leadership team relative to our delivery teams. It’s shrinking to lead product, lead delivery and deputy director. I already feel the benefits of having fewer people to consult about decisions.
+We had a large senior leadership team relative to our delivery teams. It’s shrinking to lead product, lead delivery and deputy director. I already feel the benefits of having fewer people  to consult about decisions.
 
 It’s not clear how discipline leads like me will fit into the new structure. It comes down to how we split time between teams, cross‑program needs and supporting people in our discipline.
 
@@ -57,9 +57,9 @@ I’d like to keep leading our program strategy from a service design perspectiv
 
 If needed, I’m happy to focus on helping one team, getting closer to research and direct problem‑solving.
 
-I’d like to avoid splitting my time. It comes down to the predictability, type and amount of work. In the last few months where I've been supporting two distinct types of work, I’ve done neither as well as I would like. I do my best work when I have the time to think and and be proactive.
+Either way, I’d like to avoid splitting my time. In the last few months where I've been supporting two distinct types of work, I’ve done neither as well as I would like. It comes down to the predictability, type of and amount of work. I do my best work when I have the time to think and and be proactive.
 
-The more we try to do at once, the longer everything takes. Focus is necessary part of being effective. Similar in a way to to service design as a discipline – it’s about understanding the whole but knowing where to concentrate your efforts.
+The more we try to do at once, the longer everything takes. Focus is necessary to being effective. Similar in a way to to service design as a discipline – understand the whole but know where to concentrate your efforts.
 
 ---
 
