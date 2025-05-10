@@ -5,7 +5,7 @@ tags: weeknotes
 layout: post
 ---
 
-## Health assessments discovery
+### Health assessments discovery
 
 The discovery into health assessments finished this week.
 
@@ -23,7 +23,7 @@ Thanks to [Jules Fiddler](https://www.linkedin.com/in/juliefidlerrawcoachingltd/
 
 I’ll link to the design history summary when it’s published.
 
-## Life and death business cases
+### Life and death business cases
 
 As part of the NHS’s ten‑year plan, Digital Prevention Services is creating several business cases.
 
@@ -33,7 +33,7 @@ It also adds a layer of farce. Projecting years ahead for something so unproven 
 
 Looking at our work through an economic lens is necessary but gets dark fast. There are measures of economic value for years of life added, working life extended, and quality of life. I find it hard not to think about what these numbers mean for real people and their families. It’s unsettling.
 
-## Vendors
+### Vendors
 
 We often speak to external companies who have built something in our space and want to work with us.
 
@@ -45,7 +45,7 @@ Each is different, but there’s a pattern to these conversations:
 
 I have a strong bias against enterprise software, but if that’s the most practical solution, I’ll support it.
 
-## Time dilution
+### Time dilution
 
 Our management structure is changing.
 
@@ -61,7 +61,7 @@ What I want to avoid is splitting my time too thinly. Some people might handle t
 
 ---
 
-## Links
+### Links
 
 - Mike Gallagher – design lead for NHS app and lovely person, writes literary weeknotes I can’t hope to match. Last week’s post on [the tension between middle management and being a designer who designs](https://mikegallagher.org/weeknote-wc-28-april-2025/) perfectly captures my thoughts on this subject.
 
