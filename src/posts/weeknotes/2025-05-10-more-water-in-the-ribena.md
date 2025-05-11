@@ -49,7 +49,7 @@ I have a strong bias against enterprise software, but if that’s the most pract
 
 Our management structure is changing.
 
-We had a large senior leadership team relative to our delivery teams. It’s shrinking to lead product, lead delivery and deputy director. I already feel the benefits of having fewer people  to consult about decisions.
+We had a large senior leadership team relative to our delivery teams. It’s shrinking to head of product, head of delivery and deputy director. I already feel the benefits of having fewer people  to consult about decisions.
 
 It’s not clear how discipline leads like me will fit into the new structure. It will come down to how we split time between teams, cross‑program needs and supporting people in our discipline.
 
@@ -65,6 +65,6 @@ The more we try to do at once, the longer everything takes. Focus is necessary t
 
 ### Links
 
-- Mike Gallagher – design lead for NHS app and lovely person, writes literary week notes. Last week’s post on [the tension between middle management and being a designer who designs](https://mikegallagher.org/weeknote-wc-28-april-2025/) perfectly captures my thoughts on this subject.
+- Mike Gallagher – design lead for NHS app and lovely person, writes literary week notes. Last week’s post on [the tension between middle management and being a designer who designs](https://mikegallagher.org/weeknote-wc-28-april-2025/) perfectly articulates my experience.
 
 - Unrelated to public sector service design – I watched this [video on the ethics of fake guitar videos](https://youtu.be/R1QEV9euGAg?si=HjqDPdZryCp9cb9E) by Adam Neely. It’s more interesting than it sounds, especially when he gets into how each music genre has its own set of culturally acceptable behaviours.
