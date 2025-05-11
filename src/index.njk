@@ -3,7 +3,7 @@ layout: base
 ---
 {% set latestPost = collections.weeknotes | reverse | first %}
 {% if latestPost %}
-<script>
+<script defer>
   window.location.href = "{{ latestPost.url }}";
 </script>
 <p>Redirecting to latest weeknotes...</p>
