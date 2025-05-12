@@ -23,6 +23,13 @@ Thanks to [Jules Fiddler](https://www.linkedin.com/in/juliefidlerrawcoachingltd/
 
 I’ll link to the design history summary when it’s published.
 
+The team are likely to create a first use case around pre-screening for lung cancer. There are a few reasons for this:
+
+- lung cancer screening attendance is lower that many other types of screening
+- the current pre-screening is a simple set of questions that currently require a phone call, so there’s potential for improved access through an additional channel and cost‑saving through an improved process
+- it proves the potential advantage of our strategy, making each contact more valuable, in this case helping more eligible people access screening and support to stop smoking
+
+
 ### Life and death business cases
 
 As part of the Spending Review, Digital Prevention Services is creating several business cases.
@@ -45,13 +52,13 @@ Each is different, but there’s a pattern to these conversations:
 
 I have a strong bias against enterprise software, but if that’s the most practical solution, I’ll support it.
 
-### Diluting focus
+### Mgmt
 
 Our management structure is changing.
 
 We had a large senior leadership team relative to our delivery teams. It’s shrinking to head of product, head of delivery and deputy director. I already feel the benefits of having fewer people  to consult about decisions.
 
-It’s not clear how discipline leads like me will fit into the new structure. It will come down to how we split time between teams, cross‑program needs and supporting people in our discipline.
+It’s yet not clear how discipline leads like me will fit into the new structure. It will come down to how we split time between teams, cross‑program needs and supporting people in our discipline.
 
 I’d like to keep leading our program strategy from a service design perspective.
 
