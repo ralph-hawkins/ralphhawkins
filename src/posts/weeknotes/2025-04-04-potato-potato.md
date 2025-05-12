@@ -1,6 +1,6 @@
 ---
 title: Potato, potato
-date: 2025-03-28
+date: 2025-04-04
 tags: weeknotes
 layout: post
 ---
