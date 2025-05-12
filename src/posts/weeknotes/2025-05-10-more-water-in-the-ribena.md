@@ -50,7 +50,7 @@ Each is different, but there’s a pattern to these conversations:
 
 2. If their services are good and affordable, we should work with them. But one of our biggest problems in improving services is vendor lock‑in.
 
-I have a strong bias against enterprise software, but if that’s the most practical solution, I’ll support it.
+I have a strong bias against enterprise software, but I'll support a pragmatic solution every time.
 
 ---
 
