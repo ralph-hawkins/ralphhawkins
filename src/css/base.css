@@ -43,3 +43,38 @@ hr {
   height: 0.1rem;
   background: var(--color-border);
 }
+
+.post-list-hierarchical {
+  margin-top: var(--spacing-l);
+}
+
+ul.post-list {
+  margin-top: var(--spacing-s);
+  margin-bottom: var(--spacing-m) !important;
+}
+
+.year-group {
+  margin-bottom: var(--spacing-xl);
+}
+
+.year-group h3 {
+  font-weight: bold;
+  margin-bottom: 0;
+  padding-bottom: var(--spacing-s);
+  border-bottom: 0.1rem solid var(--color-border);
+  width: 100%;
+}
+
+.month-group {
+  border-bottom: 0.1rem solid var(--color-border);
+}
+
+.month-group h4 {
+  margin-bottom: var(--spacing-s);
+  padding-bottom: var(--spacing-xs);
+  width: 100%;
+}
+
+.month-group .post-list {
+  padding-left: 0;
+}
