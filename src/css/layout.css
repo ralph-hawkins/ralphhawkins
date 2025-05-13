@@ -15,7 +15,7 @@
   }
 }
 
-.date {
+div.date {
   margin-top: var(--spacing-xl);
 }
 
@@ -24,18 +24,7 @@
 }
 
 .post-content {
-  padding-bottom: 10rem;
-}
-
-/* Ensure the arrow is still visible in the negative space */
-footer .post-list li.current::before {
-  content: "→";
-  position: absolute;
-  left: -1.5em;
-  top: 0;
-  color: var(--color-link);
-  font-weight: bold;
-  z-index: 1; /* Ensure arrow is above other elements */
+  padding-bottom: var(--spacing-xl);
 }
 
 header {
@@ -44,7 +33,6 @@ header {
   display: flex;
   align-items: center;
   padding: 0;
-  z-index: 1;
   background-color: whitesmoke;
 }
 
@@ -56,22 +44,6 @@ main {
   margin-top: -3rem; /* Creates overlap with header */
   border-top: 0.1rem solid var(--color-border);
   background-color: whitesmoke;
-}
-
-footer {
-  border-top: 0.1rem solid var(--color-border);
-  position: relative;
-  width: 100%;
-  padding-top: var(--spacing-xl);
-  margin-top: -3rem; /* Creates overlap with main content */
-  padding-bottom: var(--spacing-xl);
-  z-index: 3; /* Higher than main content */
-  background-color: whitesmoke;
-}
-
-footer ul {
-  list-style-type: none;
-  padding: 0;
 }
 
 

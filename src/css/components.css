@@ -1,12 +1,46 @@
-/* Style for post lists in footer */
-footer .post-list {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: var(--spacing-xl);
+
+footer {
+  border-top: 0.1rem solid var(--color-border);
+  width: 100%;
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+footer ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 footer .post-list li {
   position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+footer .post-list li .date {
+  flex-shrink: 0; /* Prevent date from shrinking */
+  min-width: 2rem; /* Ensure consistent date width */
+}
+
+footer .post-list li .title-wrapper {
+  flex: 1;
+  min-width: 0; /* Allow text to wrap within the column */
+}
+
+footer .year-group h4 {
+  font-size: 1.4rem;
+}
+
+footer div.month-group h4 {
+  font-size: var(--font-size-base);
+  marign-bottom: none;
+  border-top: 0.1rem solid var(--color-text);
+}
+
+footer div.month-group:last-of-type {
+  border-bottom: 0.1rem solid var(--color-text);
+  margin-bottom: var(--spacing-xl);
 }
 
 footer .post-list li.current::before {
