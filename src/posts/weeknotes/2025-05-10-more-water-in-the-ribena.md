@@ -19,14 +19,14 @@ The team recommended several health assessments to take forward into an alpha ph
 
 It’s an exemplary piece of work. Clear thinking, well explained, with actionable recommendations.
 
-Thanks to [Jules Fiddler](https://www.linkedin.com/in/juliefidlerrawcoachingltd/), [Anisha Kanabar](https://www.linkedin.com/in/anishakanabar/), [Mike Watson](https://www.linkedin.com/in/michael-watson-ph-d-797a07a1/), [Jade Conroy](https://www.linkedin.com/in/jade-conroy-855839111/), [Murilo Lessa](https://www.linkedin.com/in/murilogimeneslessa/?originalSubdomain=uk), and [Graham Dodsworth](https://www.linkedin.com/in/graham-dodsworth-9440a378/).
+Thanks to [Jules Fiddler](https://www.linkedin.com/in/juliefidlerrawcoachingltd/), [Anisha Kanabar](https://www.linkedin.com/in/anishakanabar/), [Mike Watson](https://www.linkedin.com/in/michael-watson-ph-d-797a07a1/), [Jade Conroy](https://www.linkedin.com/in/jade-conroy-855839111/), [Murilo Lessa](https://www.linkedin.com/in/murilogimeneslessa/?originalSubdomain=uk), and [Graham Dodsworth](https://www.linkedin.com/in/graham-dodsworth-9440a378/).
 
 I’ll link to the design history summary when it’s published.
 
-The team are likely to create a first use case around pre-screening for lung cancer. There are a few reasons for this:
+The team are likely to create a first use case around pre‑screening for lung cancer. There are a few reasons for this:
 
 - lung cancer screening attendance is lower that many other types of screening
-- the current pre-screening is a simple set of questions that currently require a phone call, so there’s potential for improved access through an additional channel and cost‑saving through an improved process
+- the current pre‑screening is a simple set of questions that currently require a phone call, so there’s potential for improved access through an additional channel and cost‑saving through an improved process
 - it proves the potential advantage of our strategy, making each contact more valuable, in this case helping more eligible people access screening and support to stop smoking
 
 
