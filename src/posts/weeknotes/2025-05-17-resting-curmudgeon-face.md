@@ -31,7 +31,7 @@ In the meantime, everyone wants to join the app. It’s seen as the default deli
 
 Our teams’ work needs to integrate with the app. We’re coordinating with the app team, but it’s challenging. We have much to prove and understand as the app continues to adapt.
 
-I also keep having to remind myself the app is just 1 channel. The NHS is a system and good strategy leverages multiple channels.
+I also keep having to remind myself the app is just 1 channel. The NHS is a system with many ways to reach users and a good strategy will use that.
 
 ### Local support
 
