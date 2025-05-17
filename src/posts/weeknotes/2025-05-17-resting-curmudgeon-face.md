@@ -48,7 +48,7 @@ Our hypothesis is that connection to services has enough value to start with. Fi
 
 Research shows showing relevant support is useful. We don’t yet know if people will use these services or if it will improve health.
 
-I question if connecting to services is the right model. Is the interface‑to‑service hand‑off is missing steps? We might need something richer – a human who understands health needs and wider context, helps set goals and supports the journey. That sounds more expensive, but if it’s happening locally, we should help people find that support.
+I question if connecting to services is the right model. Is the interface‑to‑service hand‑off missing steps? We might need something richer – a human who understands health needs and wider context, helps set goals and supports the journey. That sounds more expensive, but if it’s happening locally, we should help people find that support.
 
 ### Welcoming our AI overlords
 
