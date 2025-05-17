@@ -7,7 +7,7 @@ layout: post
 
 ### Services now, platforms later
 
-Until this week we had 2 teams working on the core of our longer-term strategy. The Health Assessment team, which finished a discovery and the Personalised Prevention Platform partway through its alpha.
+Until this week we had 2 teams working on the core of our longer-term strategy. The Health Assessment team, which just finished a discovery and the Personalised Prevention Platform partway through its alpha.
 
 The 2 teams were working on 2 parts of the same journey. Find out your health risks, get support to reduce or manage them.
 
@@ -59,3 +59,10 @@ It’s called the ’AI health coach’. It takes existing Better Health apps as
 An interesting project. An important test for offering joined-up care at scale.
 
 The team will run a short discovery. I’m super interested to see what they find.
+
+---
+
+### Links
+
+- [Breaking siloes with a service catalogue](https://medium.com/@carolinefinucane/breaking-siloes-with-a-service-catalogue-515b41332c9a) by Caroline Finucane
+- [Designing new social objects (preventative healthcare as an example)](https://waysofdoing.rpp.works/notes/designing-new-social-objects-preventative-healthcare-as-an-example) by Richard Pope
