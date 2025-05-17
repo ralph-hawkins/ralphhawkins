@@ -7,7 +7,7 @@ layout: post
 
 ### Services now, platforms later
 
-Until this week we had 2 teams working on the core of our longer-term strategy. The Health Assessment team, which finished a discovery and the Personalised Prevention Platform halfway through its alpha.
+Until this week we had 2 teams working on the core of our longer-term strategy. The Health Assessment team, which finished a discovery and the Personalised Prevention Platform partway through its alpha.
 
 The 2 teams were working on 2 parts of the same journey. Find out your health risks, get support to reduce or manage them.
 
