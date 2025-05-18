@@ -11,7 +11,7 @@ Until this week we had 2 teams working on the core of our longer-term strategy. 
 
 The 2 teams were working on 2 parts of the same journey. Find out your health risks, get support to reduce or manage them.
 
-We’ve discussed whether this should be 1 team and the value of 2 teams working independently. Long‑term, assessing health should happen independently of connecting to services. But short‑term, 2 teams like this places too large a bet on needing platforms. Building platforms before proving ideas adds complexity and slows us down.
+We’ve given a lot of thought to whether this should be 1 team and the value of 2 teams working independently, what we gain by being agnostic to use-cases and what we loose. Long‑term, assessing health should happen independently of connecting to services. But short‑term, 2 teams like this places too large a bet on needing platforms. Building platforms before proving ideas adds complexity and slows us down.
 
 Now we have 2 teams building specific use case journeys. 1 team will create a journey for pre‑screening lung health checks, getting screening if needed, and support for identified risks (like smoking cessation). The other helps people identify obesity risk and manage their health.
 
