@@ -17,7 +17,7 @@ It’s inspiring to speak to smart, thoughtful people who care deeply about the 
 
 It’s also a little tough when I’m used to being in the detail to spend my time at a level removed. I think I’d have felt less shit if I’d had a better week. If I’d been able to do more of the work I wanted to do.
 
-We have a new model of service delivery. 2 teams taking on similar journeys, when they’d previously been looking at different parts of the same journey. Both teams are bringing the thinking of the previous approach to their new service. As someone a little removed, it’s fascinating to see which problems they’re grappling with first. And the ones they see as being more surmountable.
+We have a new model of service delivery. 2 of the teams are taking on similar journeys, when they’d previously been looking at different parts of the same journey. Both teams are bringing the thinking of the previous approach to their new service. As someone a little removed, it’s fascinating to see which problems they’re grappling with first. And the ones they see as being more surmountable.
 
 ### Graphic design
 
@@ -27,7 +27,7 @@ I had a meeting in Leeds this week. On the way, I could see another passenger cr
 
 We had our first personalised prevention UCD catch‑up for a little while. [Joe Julier](https://www.linkedin.com/in/joe-julier-2828205a/), a user researcher on the vaccination part of Digital Prevention Services, gave us a summary of some work NHSE did. It was about helping people get support with muscle, joint and bone pain.
 
-The findings he talked about resonated with the research we've done on accessing therapy. They also matched things we've seen from projects on other conditions. There are some universal consistencies about what people need when looking for support with their health:
+The findings he talked about resonated with the research we’ve done on accessing therapy. They also matched things we've seen from projects on other conditions. There are some universal consistencies about what people need when looking for support with their health:
 
 - health conditions are complex (mental health is always a factor) and you need to treat the whole person
 - people need to trust before they’ll engage – past experiences with health services heavily influence how willing someone is to try something new
