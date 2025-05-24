@@ -21,7 +21,7 @@ It’s inspiring to speak to smart, thoughtful people who care deeply about the 
 
 It’s also a little tough when I’m used to being in the detail to spend my time at a level removed. I think I’d have felt less shit if I’d had a better week. If I’d been able to do more of the work I wanted to do.
 
-We have a new model of service delivery. We have 2 teams taking on similar journeys. They’d previously been looking at different parts of the same journey. Both teams are bringing the thinking of the previous approach to their new service. As someone a little removed, it’s fascinating to see which problems they're grappling with first. And the ones they see as being more surmountable.
+We have a new model of service delivery. 2 teams taking on similar journeys, when they’d previously been looking at different parts of the same journey. Both teams are bringing the thinking of the previous approach to their new service. As someone a little removed, it’s fascinating to see which problems they're grappling with first. And the ones they see as being more surmountable.
 
 ### People not conditions
 
