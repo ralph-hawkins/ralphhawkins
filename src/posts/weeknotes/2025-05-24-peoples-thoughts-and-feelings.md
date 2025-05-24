@@ -25,7 +25,7 @@ I had a meeting in Leeds this week. On the way, I could see another passenger cr
 
 ### People not conditions
 
-We had our first personalised prevention UCD catch‑up for a little while. [Joe Julier](https://www.linkedin.com/in/joe-julier-2828205a/), a user researcher on the vaccination part of Digital Prevention Services, gave us a summary of some work NHSE did. It was about helping people get support with muscle, joint and bone pain.
+We had our first personalised prevention UCD catch‑up for a little while. [Joe Julier](https://www.linkedin.com/in/joe-julier-2828205a/), a user researcher on the vaccination part of Digital Prevention Services, gave us a summary of some earlier work NHSE did. It was about helping people get support with muscle, joint and bone pain.
 
 The findings he talked about resonated with the research we’ve done on accessing therapy. They also matched things we've seen from projects on other conditions. There are some universal consistencies about what people need when looking for support with their health:
 
