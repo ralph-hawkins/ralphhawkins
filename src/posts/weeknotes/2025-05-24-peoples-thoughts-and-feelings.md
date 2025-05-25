@@ -9,7 +9,7 @@ I burnt a lot of time this week on stuff that I neither contributed much to or g
 
 ### UCD folk
 
-We have a growing team of user experience folk in our part of the portfolio.
+We have a growing team of design and research folk in our part of the portfolio.
 
 Holidays and calendars lined up awkwardly. I ended up having 4 half‑hour catch‑ups back‑to‑back. For someone who finds managing relationships one of the harder parts of their job, I wondered if I was being a little masochistic. But it was a pleasure to spend time with each of these people.
 
