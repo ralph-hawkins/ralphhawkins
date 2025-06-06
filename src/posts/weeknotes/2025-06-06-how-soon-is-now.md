@@ -7,7 +7,7 @@ layout: post
 
 4‑day week after spending last week at Het Meerdal Centre Parks.
 
-Even on holiday it’s hard to switch my brain off from service design. There were lots of ways friction could be removed from the experience. Like, the park makes it hard to rent or buy things once you’re there that you could have preordered. If we were organised enough to know we needed to preorder towels, we’d have brought our own. A simple way of requesting a few things you need on arrival would be a massive benefit to families and easy money for the park. I assume there are some organisational seams behind it. I wonder if Centre Parks have any service designers, it would be a fun job.
+Even on holiday it’s hard to switch my brain off from service design. There were lots of ways friction could be removed from the experience. Like, the park makes it hard to rent or buy things once you’re there that you could have preordered. If we were organised enough to know we needed to preorder towels, we’d have brought our own. A simple way of requesting a few things you need on arrival would be a massive benefit to families and easy money for the park. I assume there are some organisational seams behind it, or maybe it’s about managing capacity. I wonder if Centre Parks have any service designers, it would be a fun job.
 
 ### 5 services, 5 models
 
@@ -25,6 +25,6 @@ The Digital Prevention Services team has regular sessions where external speaker
 
 This week we had [Paul Willmott](https://www.linkedin.com/in/paul-willmott-199a3/) from Lego, talking about how they have adopted AI into their working practices. It was a fascinating talk and incredible to see how they have changed their entire organisation to benefit from AI. For example, they have AI agents in board meetings, all their developers co‑write with agents and they’ve transformed their HR department.
 
-It was a clear articulation of how we will all be working sooner or later. I was left feeling that I need to do more to take advantage of these tools or be replaced. Which is honestly terrifying.
+It was a clear articulation of how we will all be working sooner or later. I was left feeling that I need to do more to take advantage of these tools or be replaced. Which is honestly terrifying.
 
-I use AI a little, generally to challenge anything I’ve done to see what is missing or could be improved. But I’ve noticed even that is having a detrimental effect on my mental health. It feels like I’m trying to pass off someone else’s work as my own. I wonder if there is a change in my mindset that would allow me to be more comfortable with using AI. I regret not asking Paul if people saw AI as a threat to their identity and if part of the training was about adjusting to a new way of working.
+I use AI a little, generally to challenge anything I’ve done to see what is missing or could be improved. But I’ve noticed even that is having a detrimental effect on my mental health. It feels like I’m trying to pass off someone else’s work as my own. I wonder if there is a change in my mindset that would allow me to be more comfortable with using AI. I regret not asking Paul if people saw AI as a threat to their identity and if part of the training was about adjusting to a new way of working.
