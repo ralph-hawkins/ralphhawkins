@@ -5,9 +5,9 @@ tags: weeknotes
 layout: post
 ---
 
-4‑day week after spending last week at Het Meerdal Centre Parks.
+4‑day week after spending last week at Het Meerdal Center Parks.
 
-Even on holiday it’s hard to switch my brain off from service design. There were lots of ways friction could be removed from the experience. Like, the park makes it hard to rent or buy things once you’re there that you could have preordered. If we were organised enough to know we needed to preorder towels, we’d have brought our own. A simple way of requesting a few things you need on arrival would be a massive benefit to families and easy money for the park. I assume there are some organisational seams behind it, or maybe it’s about managing capacity. I wonder if Centre Parks have any service designers, it would be a fun job.
+Even on holiday it’s hard to switch my brain off from service design. There were lots of ways friction could be removed from the experience. Like, the park makes it hard to rent or buy things once you’re there that you could have preordered. If we were organised enough to know we needed to preorder towels, we’d have brought our own. A simple way of requesting a few things you need on arrival would be a massive benefit to families and easy money for the park. I assume there are some organisational seams behind it, or maybe it’s about managing capacity. I wonder if Center Parks have any service designers, it would be a fun job.
 
 ### 5 services, 5 models
 
