@@ -20,7 +20,7 @@ The policy people have a different model. They want to get to the same outcome b
 
 We assumed the simplest way to help understand someone’s risk was to ask them about their health. We thought using data already in the system would come later.
 
-We have some evidence that people prefer face‑to‑face support for when offered a choice. Outcomes are better too. We also know that connecting people to local services will be our biggest challenge. Lots of people have tried and failed to get accurate, up‑to‑date information on what services are available. The team has done good work on how we can start to make this work.
+We have some evidence that people prefer face‑to‑face support when offered a choice. Outcomes are better too. We also know that connecting people to local services will be our biggest challenge. Lots of people have tried and failed to get accurate, up‑to‑date information on what services are available. The team has done good work on how we can start to make this work.
 
 If we follow the policy approach, it’s a big change for our work. We go from something that feels like a normal online service to something much lighter. It’s more like a marketing campaign. It’s an interesting and maybe challenging idea – someone getting a message saying the NHS thinks they’re at risk and should take action.
 
