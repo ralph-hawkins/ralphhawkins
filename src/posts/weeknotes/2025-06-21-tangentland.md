@@ -24,7 +24,7 @@ We have some evidence that people prefer face‑to‑face support when offered a
 
 If we follow the policy approach, it’s a big change for our work. We go from something that feels like a normal online service to something much lighter. It’s more like a marketing campaign. It’s an interesting and maybe challenging idea – someone getting a message saying the NHS thinks they’re at risk and should take action.
 
-The targeted approach could work well. It cuts out the need for users to give us information before we can help them. But I’m also worried about what we lose. The biggest loss is not asking people what they want and not connecting them to something local. Without those we risk not connecting them to the services that have the best outcomes. Those steps can come later. Obviously whatever works best for people and is cost‑effective is the right approach.
+The targeted approach could work well. It cuts out the need for users to give us information before we can help them. But I’m also worried about what we lose. The biggest loss is not asking people what they want to focus on and not connecting them to in‑person support. Without those we risk not taking advantage of the services that have the best outcomes.
 
 Digital behaviour change support has benefits and some advantages over in‑person. There’s less of a commitment necessary to get started, small steps are good. But maybe also less engagement. Digital services fit more easily around people’s lives.
 
