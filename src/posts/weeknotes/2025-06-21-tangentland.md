@@ -18,7 +18,7 @@ The policy people have a different model. They want to get to the same outcome b
 1. using data we already have to find people who are at risk – there’s already a system that finds people at risk of heart disease
 2. connecting them to an online service – online services are cheaper than face‑to‑face ones (although actually only cheaper if they are effective)
 
-We assumed the simplest way to help understand someone’s risk was to ask them about their health. We thought using existing data would come later.
+We assumed the simplest way to help understand someone’s risk was to ask them about their health. We thought using data already in the system would come later.
 
 We have some evidence that people prefer face‑to‑face support for when offered a choice. Outcomes are better too. We also know that connecting people to local services will be our biggest challenge. Lots of people have tried and failed to get accurate, up‑to‑date information on what services are available. The team has done good work on how we can start to make this work.
 
