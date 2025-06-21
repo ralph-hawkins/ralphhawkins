@@ -30,7 +30,7 @@ Digital behaviour change support has benefits and some advantages over in‑pers
 
 I sit between the team and the policy people. I’m not as close to what users need and not as close to policy. There’s something that happens with each layer you move away from users. The messy reality of someone’s experience looks simpler and more solvable the further you get from it.
 
-Our focus for this phase is to get things live and start learning as quickly as possible. My view, starting with policy’s model will speed‑up learning if (big if) we commit to rapid iteration toward face‑to‑face support. We need to pragmatic about who this will and won’t work for. Building a proven pipeline of users that we can offer local service, will give us a better proposition when engage with local service providers.
+Our focus for this phase is to get things live and start learning as quickly as possible. My view, starting with policy’s model will speed‑up learning if (big if) we commit to building towards face‑to‑face support. We will need to pragmatic about who this will and won’t work for. But building a proven pipeline of users that we can offer local service, will give us a better proposition when engage with local service providers.
 
 We need to understand a lot more:
 - how well does the digital support work for our intended users?
