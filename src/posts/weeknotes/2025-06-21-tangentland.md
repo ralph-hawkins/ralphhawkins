@@ -28,7 +28,7 @@ The targeted approach could work well. It cuts out the need for users to give us
 
 Digital behaviour change support has benefits and some advantages over in‑person. There’s less of a commitment necessary to get started, small steps are good. But maybe also less engagement. Digital services fit more easily around people’s lives.
 
-I sit between the team and the policy people. I’m not as close to what users need and not as close to policy. There’s something that happens with each layer you move away from users. The messy reality of someone’s experience looks simpler and more solvable the further you get from it.
+I sit between the team and the policy people. There’s something that happens with each layer you move away from users. The messy reality of someone’s experience looks simpler and more solvable the further you get from it.
 
 Our focus for this phase is to get things live and start learning as quickly as possible. My view, starting with policy’s model will speed‑up learning if (big if) we commit to building towards face‑to‑face support. We will need to pragmatic about who this will and won’t work for. But building a proven pipeline of users that we can offer local service, will give us a better proposition when engage with local service providers.
 
