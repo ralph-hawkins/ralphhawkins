@@ -33,6 +33,6 @@ I sit between the team and the policy people. I’m not as close to what users n
 Our focus for this phase is to get things live and start learning as quickly as possible. My view, for now, is that if the model can find people well and faster than building a health check, it’s reasonable for version one. We should ship it, learn fast, then move quickly to connecting people to face‑to‑face services. I think we need to pragmatic about who this will and won’t work for. If we can create pipeline gives us a better proposition for when we start to work with local services.
 
 We need to understand a lot more:
-- how well do the specific digital support work for our users?
+- how well does the digital support work for our intended users?
 - how well can we target people using the data we have (is it accurate, can we differentiate levels of risk)?
 - how soon can a model be built and tested?
