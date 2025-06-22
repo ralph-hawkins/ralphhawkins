@@ -28,11 +28,11 @@ If we follow the policy approach, it’s a big change for our work. We go from s
 
 The targeted approach could work well. It cuts out the need for users to give us information before we can help them. But I’m also worried about what we lose. The biggest loss is not asking people what they want to focus on and not connecting them to in‑person support. Without those we risk not taking advantage of the services that have the best outcomes.
 
-Digital behaviour change support has benefits and some advantages over in‑person. There’s less of a commitment necessary to get started, small steps are good. But maybe also less engagement. Digital services fit more easily around people’s lives.
+Digital behaviour change support has benefits and some advantages over in‑person. Digital services fit more easily around people’s lives. There’s less of a commitment necessary to get started, small steps are good. But maybe also lower engagement.
 
 I sit between the team and the policy people. There’s something that happens with each layer you move away from users. The messy reality of someone’s experience looks simpler and more solvable the further you get from it.
 
-Our focus for this phase is to get things live and start learning as quickly as possible. My view is that starting with policy’s model will speed‑up learning if (big if) we commit to building towards face‑to‑face support. We will need to be pragmatic about who this will and won’t work for. But building a proven pipeline of users that we can offer local services to, will give us a better proposition when we engage with local service providers.
+Our focus for this phase is to get things live and start learning as quickly as possible. My view is that starting with policy’s model will speed‑up learning if we commit to building towards face‑to‑face support. We will need to be pragmatic about who this will and won’t work for. But building a proven pipeline of users that we can offer local services to, will give us a better proposition when we engage with local service providers.
 
 We need to understand a lot more:
 - how well does the digital support work for our intended users?
