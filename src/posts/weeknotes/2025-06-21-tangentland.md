@@ -5,7 +5,9 @@ tags: weeknotes
 layout: post
 ---
 
-This week we had one of those workshops where everything’s going fine until it turns out different people are working with different assumptions. Good to catch these things early.
+This week we had one of those workshops where everything’s going fine until it turns out different people are working with different assumptions.
+
+Other parts of NHS England (NHSE) and Department for Health and Social Care (DHSC) have come to similar conclusions to us about how users will access prevention services in the future. We want to align our work and theirs and start working together to help more people get support to reduce their health risks.
 
 The delivery team (and I) think we can help people improve their health by:
 
@@ -13,12 +15,12 @@ The delivery team (and I) think we can help people improve their health by:
 2. working out their risks based on what they tell us
 3. connecting them to local services based on their risk level and what they want
 
-The policy people have a different model. They want to get to the same outcome by:
+Policy from NHSE and DHSC has a different model. They want to get to the same outcome by:
 
 1. using data we already have to find people who are at risk – there’s already a system that finds people at risk of heart disease
 2. connecting them to an online service – online services are cheaper than face‑to‑face ones (although actually only cheaper if they are effective)
 
-We assumed the simplest way to help understand someone’s risk was to ask them about their health. We thought using data already in the system would come later.
+I assumed the simplest way to help understand someone’s risk was to ask them about their health. We thought using data already in the system would come later.
 
 We have some evidence that people prefer face‑to‑face support when offered a choice. Outcomes are better too. We also know that connecting people to local services will be our biggest challenge. Lots of people have tried and failed to get accurate, up‑to‑date information on what services are available. The team has done good work on how we can start to make this work.
 
@@ -30,7 +32,7 @@ Digital behaviour change support has benefits and some advantages over in‑pers
 
 I sit between the team and the policy people. There’s something that happens with each layer you move away from users. The messy reality of someone’s experience looks simpler and more solvable the further you get from it.
 
-Our focus for this phase is to get things live and start learning as quickly as possible. My view, starting with policy’s model will speed‑up learning if (big if) we commit to building towards face‑to‑face support. We will need to pragmatic about who this will and won’t work for. But building a proven pipeline of users that we can offer local service, will give us a better proposition when engage with local service providers.
+Our focus for this phase is to get things live and start learning as quickly as possible. My view is that starting with policy’s model will speed‑up learning if (big if) we commit to building towards face‑to‑face support. We will need to be pragmatic about who this will and won’t work for. But building a proven pipeline of users that we can offer local services to, will give us a better proposition when we engage with local service providers.
 
 We need to understand a lot more:
 - how well does the digital support work for our intended users?
