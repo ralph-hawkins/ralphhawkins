@@ -64,3 +64,9 @@ p:has(+ ul), p:has(+ ol) {
   font-feature-settings: "tnum"; /* Enable tabular numbers */
   font-variant-numeric: tabular-nums; /* Modern browsers support */
 }
+
+blockquote {
+  border-left: 0.1rem solid var(--color-border);
+  margin-left: 0px;
+  padding-left: 1rem;
+}
