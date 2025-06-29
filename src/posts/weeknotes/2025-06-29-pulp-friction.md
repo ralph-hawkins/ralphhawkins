@@ -1,6 +1,6 @@
 ---
 title: Pulp friction
-date: 2025-06-21
+date: 2025-06-29
 tags: weeknotes
 layout: post
 ---
