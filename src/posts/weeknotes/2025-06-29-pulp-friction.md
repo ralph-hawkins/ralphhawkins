@@ -5,7 +5,7 @@ tags: weeknotes
 layout: post
 ---
 
-There was an announcement about [using AI in the NHS app to ‘give patients direct access to trusted health information](https://www.gov.uk/government/news/nhs-app-overhaul-will-break-down-barriers-to-healthcare-and-reduce-inequalities)’. The article had quote from Wes Streeting ‘If you get annoyed at Deliveroo not getting your dinner to you in less than an hour, how will you feel being told to wait a year for a knee operation?’
+There was an announcement this week about [using AI in the NHS app to ‘give patients direct access to trusted health information](https://www.gov.uk/government/news/nhs-app-overhaul-will-break-down-barriers-to-healthcare-and-reduce-inequalities)’. The article had quote from Wes Streeting ‘If you get annoyed at Deliveroo not getting your dinner to you in less than an hour, how will you feel being told to wait a year for a knee operation?’
 
 The quote stuck with me.
 
