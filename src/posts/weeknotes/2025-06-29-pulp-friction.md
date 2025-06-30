@@ -29,7 +29,7 @@ Finding support to stay healthy means navigating unclear eligibility criteria, i
 
 Only highly motivated people or those with good support navigate this system. People who need help most often miss out.
 
-A lot of our work will be to remove the friction that wears away at motivation. But making healthy choices is difficult for most people. Finding time to exercise or cook healthy meals require effort, planning, often money, and other trade‑offs in people’s lives.
+A lot of our work will be to remove the friction that wears away at motivation. But making healthy choices is difficult for most people. Finding time to exercise or cook healthy meals requires effort, planning, often money, and other trade‑offs in people’s lives.
 
 This article in The Guardian – [Britain in 2025: sick man of Europe battling untreated illness crisis](https://www.theguardian.com/society/2025/jun/29/britain-in-2025-sick-man-of-europe-battling-untreated-illness-crisis), has a powerful example of the impact removing real‑world friction has:
 
