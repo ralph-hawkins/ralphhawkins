@@ -17,7 +17,7 @@ But the important thing about the design of the service is integration. The user
 
 This has clear benefits. It saves patients the time, cost and inconvenience of travelling for an appointment. A benefit for everyone, but for people with BMI of 60 or higher, it makes a huge difference. It also means clinicians can see more people.
 
-The service feels transformational because it lines‑up incentives for patients, the Integrated Care Board (ICB), and the Trust. As part of the service, the ICB gets help with providing GLP-1 weight-loss medications (something they’re now required to fund under national policy) with reduced burden on GPs. The Trust can offer joined‑up support and reduces burden on hospital staff. Patients get choice and easier access.
+The service feels transformational because it lines‑up incentives for the Integrated Care Board (ICB), the Trust, and patients. As part of the service, the ICB gets help with providing GLP-1 weight-loss medications (something they’re now required to fund under national policy) with reduced burden on GPs. The Trust can offer joined‑up support and reduces burden on hospital staff. Patients get choice and faster access.
 
 For me, working from the centre, with a focus on scale, this level of integration between physical and digital feels distant. Even a one‑time hand‑off from our services to local services is difficult. Truly integrated digital and in‑person care is years away. But I am convinced this is what we need to strive for.
 
