@@ -37,7 +37,7 @@ Long term we hope to use data about the user to avoid asking as many questions a
 
 ## Incentives and integration
 
-Both examples show the challenge. Individual Trusts can control their local system, but national services have to work across complex systems.
+Both examples show the challenge. Individual Trusts can control their local system, employ clinicians and change how pathways operate, but national services have to work across a complex set of unrelated systems.
 
 The obesity service works because it aligns incentives for all parties – ICBs get their statutory solution, hospitals get capacity relief, patients get choice. At national level, without the data we need to personalise interactions, we’re asking people intrusive questions.
 
