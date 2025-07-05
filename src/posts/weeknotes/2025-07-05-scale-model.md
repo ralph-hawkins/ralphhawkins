@@ -17,7 +17,7 @@ But the important thing about the design of the service is integration. The user
 
 This has clear benefits. It saves patients the time, cost and inconvenience of travelling for an appointment. A benefit for everyone, but for people with BMI of 60 or higher, it makes a huge difference. It also means clinicians can see more people.
 
-The service feels transformational because it lines‑up incentives for patients, the Integrated Care Board (ICB), and the Trust. As part of the service, the ICB gets part of their statutory GLP‑1 solution with reduced burden on GPs, hospitals can offer joined‑up support and some reduction of capacity, and patients get choice and faster access.
+The service feels transformational because it lines‑up incentives for patients, the Integrated Care Board (ICB), and the Trust. As part of the service, the ICB gets help with providing GLP-1 weight-loss medications (something they’re now required to fund under national policy) with reduced burden on GPs. The Trust can offer joined‑up support and reduced burden on hospital staff. Patients get choice and easier access.
 
 For me, working from the centre, with a focus on scale, this level of integration between physical and digital feels distant. Even a one‑time hand‑off from our services to local services is difficult. Truly integrated digital and in‑person care is years away. But I am convinced this is what we need to strive for.
 
@@ -29,7 +29,7 @@ The triage consists of a few questions that calculate the user’s likelihood of
 
 The risk calculation is based on population level statistics. Things like ethnicity and level of social deprivation are factors used to calculate the risk in the model we’re likely to use (there are other models that simply ask if the user has ever smoked and their age).
 
-The evidence and logic of asking population level questions is clear. But the implementation is another thing. For example, in the offline service, a user’s level of deprivation is often estimated using proxy questions, such as asking them what level of education they have. It’s pretty startling to be asked this question, especially when it’s not obvious how it relates to your health. In an over the phone service, this can be handled. With a digital service the motivation for asking this question is harder to explain. These population risk questions appear hostile to users. It’s possible they will impact completion, there’s a compromise to consider.
+The evidence and logic of asking population level questions is clear. But the implementation is another thing. For example, in the offline service, a user’s level of deprivation is often estimated using proxy questions, such as asking them what level of education they have. It’s pretty startling to be asked this question, especially when it’s not obvious how it relates to your health. In an over the phone service, this can be handled. With a digital service the motivation for asking this question is harder to explain. These population risk questions appear hostile to users. It’s possible they will impact completion, there’s a compromise to consider around accuracy of prediction vs the number of people who complete the triage.
 
 I think the exact model we use to calculate risk is still up for grabs. Ideally we can use one that accurately calculates risk without feeling discriminatory. The team are also exploring if we can use different questions to get to the same calculation and ways to explain why the question is being asked, which offers some mitigation.
 
