@@ -17,9 +17,9 @@ But the important thing about the design of the service is integration. The user
 
 This has clear benefits. It saves patients the time, cost and inconvenience of travelling for an appointment. A benefit for everyone, but for people with BMI of 60 or higher, it makes a huge difference. It also means clinicians can see more people.
 
-The service feels transformational because it lines-up incentives for patients, the Integrated Care Board (ICB), and the Trust. As part of the service, the ICB gets part of their statutory GLP-1 solution with reduced burden on GPs, hospitals can offer joined-up support and some reduction of capacity, and patients get choice and faster access.
+The service feels transformational because it lines‑up incentives for patients, the Integrated Care Board (ICB), and the Trust. As part of the service, the ICB gets part of their statutory GLP-1 solution with reduced burden on GPs, hospitals can offer joined‑up support and some reduction of capacity, and patients get choice and faster access.
 
-For me, working from the centre, with a focus on scale, this level of integration between physical and digital feels distant. Even a one‑time handoff from our services to local services is difficult. Truly integrated digital and in‑person care is years away. But I am convinced this is what we need to strive for.
+For me, working from the centre, with a focus on scale, this level of integration between physical and digital feels distant. Even a one‑time hand‑off from our services to local services is difficult. Truly integrated digital and in‑person care is years away. But I am convinced this is what we need to strive for.
 
 ## Asking people population level questions
 
@@ -39,6 +39,6 @@ Long term we hope to use data about the user to avoid asking as many questions a
 
 Both examples show the challenge. Individual Trusts can control their local system, but national services have to work across complex systems.
 
-The obesity service works because it aligns incentives for all parties - ICBs get their statutory solution, hospitals get capacity relief, patients get choice. At national level, without the data we need to personalise interactions, we’re asking people intrusive questions.
+The obesity service works because it aligns incentives for all parties – ICBs get their statutory solution, hospitals get capacity relief, patients get choice. At national level, without the data we need to personalise interactions, we’re asking people intrusive questions.
 
-I’m going to map our current portfolio against this. Which services can deliver value as digital alone? Which ones need integration with in‑person? For the services that need integration – what value can we offer local organisations to make partnership worthwhile?
+I’m going to map our current portfolio against this. Which services can deliver value as digital alone? Which ones need integration with in‑person? For the services that need integration – what do local organisations need to make partnership worthwhile?
