@@ -13,7 +13,7 @@ The highlight of my week was a talk by East Suffolk and North Essex NHS Founda
 
 Working with a tech partner, the Trust has created an online channel for people with obesity to access care. Most importantly this includes speaking to qualified healthcare professionals (doctors, psychologists, and specialist nurses) the same level of care as in-person services. The Trust has a lead clinician responsible for the online patients and the digital channel offers direct referral into pathways that are affected by obesity (for example, sleep apnea and muscoskeletal). The service has some other features like diet and exercise guidance.
 
-But the important thing about the design of the service is integration. The users of the service are essentially remote patients, the level of care is identical to patients who attend appointments in‑person.
+But the important thing about the design of the service is integration. The users of the service are essentially remote patients, the level of care is identical to patients who attend appointments in‑person. They can move between online and in-person care seamlessly.
 
 This has clear benefits. It saves patients the time, cost and inconvenience of travelling for an appointment. A benefit for everyone, but for people with BMI of 60 or higher, it makes a huge difference.
 
