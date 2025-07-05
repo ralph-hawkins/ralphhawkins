@@ -17,13 +17,13 @@ But the important thing about the design of the service is integration. The user
 
 This has clear benefits. It saves patients the time, cost and inconvenience of travelling for an appointment. A benefit for everyone, but for people with BMI of 60 or higher, it makes a huge difference. It also means clinicians can see more people.
 
-The service feels transformational because it lines‑up incentives for patients, the Integrated Care Board (ICB), and the Trust. As part of the service, the ICB gets part of their statutory GLP-1 solution with reduced burden on GPs, hospitals can offer joined‑up support and some reduction of capacity, and patients get choice and faster access.
+The service feels transformational because it lines‑up incentives for patients, the Integrated Care Board (ICB), and the Trust. As part of the service, the ICB gets part of their statutory GLP‑1 solution with reduced burden on GPs, hospitals can offer joined‑up support and some reduction of capacity, and patients get choice and faster access.
 
 For me, working from the centre, with a focus on scale, this level of integration between physical and digital feels distant. Even a one‑time hand‑off from our services to local services is difficult. Truly integrated digital and in‑person care is years away. But I am convinced this is what we need to strive for.
 
 ## Asking people population level questions
 
-One of our services is looking at digitising the lung cancer screening eligibility assessment ‑ something that currently happens over the phone for most people.
+One of our services is looking at digitising the lung cancer screening eligibility assessment – something that currently happens over the phone for most people.
 
 The triage consists of a few questions that calculate the user’s likelihood of having lung cancer. If they meet the threshold then they’re offered a CT scan.
 
