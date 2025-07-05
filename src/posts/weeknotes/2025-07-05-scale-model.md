@@ -35,4 +35,4 @@ I think the exact model we use to calculate risk is still up for grabs. Ideally 
 
 Long term we hope to use data about the user to avoid asking as many questions as possible.
 
-An individual Trust can integrate with its internal systems, employ and manage clinicians, understand their specific population. At national level, we’re stuck asking everyone the intrusive questions until we have the data to personalise services.
+Both service demonstrate the difficulty of supporting health at scale. An individual Trust can integrate with its internal systems, employ and manage clinicians, understand their specific population. At national level, we will be stuck asking intrusive questions until we have the data to personalise services.
