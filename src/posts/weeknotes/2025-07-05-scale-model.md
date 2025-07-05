@@ -23,16 +23,16 @@ For me, working from the centre, with a focus on scale, this level of integratio
 
 ## Asking people population level questions
 
-One of our services is looking at making the process of triage to determine someone's eligibility for a lung cancer check easier by offering a digital channel (currently most people do this over the phone).
+One of our services is looking at making the process of triage to determine someone’s eligibility for a lung cancer check easier by offering a digital channel (currently most people do this over the phone).
 
-The triage consists of a few questions that calculate the user's likelihood of having lung cancer. If they meet the threshold then they're offered a CT scan.
+The triage consists of a few questions that calculate the user’s likelihood of having lung cancer. If they meet the threshold then they’re offered a CT scan.
 
-The risk calculation is based on population level statistics. Things like ethnicity and level of social deprivation are factors used to calculate the risk in the model we're likely to use (there are other models that simply ask if the user has ever smoked and their age).
+The risk calculation is based on population level statistics. Things like ethnicity and level of social deprivation are factors used to calculate the risk in the model we’re likely to use (there are other models that simply ask if the user has ever smoked and their age).
 
-The evidence and logic of asking population level questions is clear. But the implementation is another thing. For example, one part of calculating a user's level of deprivation is asking them what level of education they have. It's pretty startling to be asked this question in something asking about your health. Understandably the motivation for asking this question is unclear to users. These questions appear hostile.
+The evidence and logic of asking population level questions is clear. But the implementation is another thing. For example, one part of calculating a user’s level of deprivation is asking them what level of education they have. It’s pretty startling to be asked this question in something asking about your health. Understandably the motivation for asking this question is unclear to users. These questions appear hostile.
 
 I think the exact model we use to calculate risk is still up for grabs. Ideally we can use one that safely calculates risk without feeling discriminatory. The team are also exploring ways to explain why the question is being asked, which offers some mitigation.
 
 Long term we hope to use data about the user to avoid asking as many questions as possible.
 
-A single trust can integrate with their local systems, build relationships with their clinicians, understand their specific population. At national level, we're stuck asking everyone the intrusive questions until we have the data to personalise services.
+A single trust can integrate with their local systems, build relationships with their clinicians, understand their specific population. At national level, we’re stuck asking everyone the intrusive questions until we have the data to personalise services.
