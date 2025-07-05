@@ -11,13 +11,13 @@ A challenge working on digital prevention services is the tension of providing h
 
 The highlight of my week was a talk by East Suffolk and North Essex NHS Foundation Trust (ESNEFT).
 
-Working with a tech partner, the Trust has created an online channel for people with obesity to access care. Importantly this includes speaking to qualified healthcare professionals (doctors, psychologists, and specialist nurses) the same level of care as in‑person services. The Trust has a dedicated clinician responsible for the service and online patients. The digital channel offers direct referral into pathways that are affected by obesity (for example, sleep apnoea and musculoskeletal). The service has some other features like diet and exercise guidance.
+Working with a tech partner, the Trust has created an online channel for people with obesity to access care. Importantly this includes speaking to qualified healthcare professionals (doctors, psychologists, and specialist nurses) at the same level of care as in‑person services. The Trust has a dedicated clinician responsible for the service and online patients. The digital channel offers direct referral into pathways that are affected by obesity (for example, sleep apnoea and musculoskeletal). The service has some other features like diet and exercise guidance.
 
 But the important thing about the design of the service is integration. The users of the service are essentially remote patients, the level of care is identical to patients who attend appointments in‑person. They can move between online and in‑person care seamlessly.
 
 This has clear benefits. It saves patients the time, cost and inconvenience of travelling for an appointment. A benefit for everyone, but for people with BMI of 60 or higher, it makes a huge difference. It also means clinicians can see more people.
 
-The Trust has also joined pathways that are usually stand alone. It combines bariatric surgery and GLP‑1 weight‑loss medication within the same service. This allows the best solution for the patient to be provided. For example, bariatric surgery might be best for someone who is young with relatively low comorbidity, while GLP‑1 might be better for someone more elderly with longer established conditions.
+The Trust has also joined pathways that are usually standalone. It combines bariatric surgery and GLP‑1 weight‑loss medication within the same service. This allows the best solution for the patient to be provided. For example, bariatric surgery might be best for someone who is young with relatively low comorbidity, while GLP‑1 might be better for someone more elderly with longer established conditions.
 
 The service feels transformational because it lines‑up incentives for the Integrated Care Board (ICB), the Trust, and patients. As part of the service, the ICB gets help with providing GLP‑1s (something they’re now required to fund under national policy) with reduced burden on GPs. The Trust can offer joined‑up support and reduces burden on hospital staff. Patients get choice and faster access.
 
