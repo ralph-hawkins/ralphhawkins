@@ -11,11 +11,11 @@ A challenge working on digital prevention services is the tension of providing h
 
 The highlight of my week was a talk by East Suffolk and North Essex NHS Foundation Trust (ESNEFT).
 
-Working with a tech partner, the Trust created an online channel for people with obesity to access care. Importantly this is about speaking to qualified healthcare professionals (doctors, psychologists, and specialist nurses) to get the same level of care as in‑person services. The Trust has a dedicated clinician responsible for the service and online patients. The digital channel offers direct referral into pathways that are often affected by obesity (for example, sleep apnoea and musculoskeletal). The service has some other features like diet and exercise guidance.
+Working with a tech partner, the Trust created an online channel for people with obesity to access care. Importantly this is about speaking to qualified healthcare professionals (doctors, psychologists, and specialist nurses) to get the same level of care as in‑person services. The Trust has a dedicated clinician responsible for the service and online patients. The digital channel offers direct referral into pathways that are often affected by obesity (for example, sleep apnoea and musculoskeletal).
 
 The Trust has also joined pathways that are usually offered by different parts of the NHS. It combines bariatric surgery and GLP‑1 weight‑loss medication within the same service. This allows the best solution for the patient to be provided. For example, bariatric surgery might be best for someone who is young with relatively low comorbidity, while GLP‑1 might be better for someone more elderly with longer established conditions.
 
-The important thing about the design of the service is integration. The users of the service are essentially remote patients, the level of care is identical to patients who attend appointments in‑person. They can move between online and in‑person care.
+The important thing is integration – users can move between online and in‑person care at the same standard of care.
 
 Remote access saves patients the time, cost and inconvenience of travelling for an appointment – valuable for everyone, but for people with BMI of 60 or higher, it makes a huge difference. It also means clinicians can see more people.
 
