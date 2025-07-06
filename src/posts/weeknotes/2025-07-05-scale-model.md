@@ -17,7 +17,7 @@ The Trust has also joined pathways that are usually offered by different parts o
 
 The important thing about the design of the service is integration. The users of the service are essentially remote patients, the level of care is identical to patients who attend appointments in‑person. They can move between online and in‑person care.
 
-Remote access saves patients the time, cost and inconvenience of travelling for an appointment - valuable for everyone, but for people with BMI of 60 or higher, it makes a huge difference. It also means clinicians can see more people.
+Remote access saves patients the time, cost and inconvenience of travelling for an appointment – valuable for everyone, but for people with BMI of 60 or higher, it makes a huge difference. It also means clinicians can see more people.
 
 The service feels transformational because it lines‑up incentives for the Integrated Care Board (ICB), the Trust, and patients. As part of the service, the ICB gets help with providing GLP‑1s (something they’re now required to fund under national policy) with reduced burden on GPs. The Trust can offer joined‑up support and reduce burden on hospital staff. Patients get choice between the two most effective treatments for obesity, and faster access to both.
 
