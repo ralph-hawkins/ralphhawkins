@@ -35,7 +35,7 @@ The evidence and logic of asking population level questions is clear. But the im
 
 I think the exact model we use to calculate risk is still up for grabs. Ideally we can use one that accurately calculates risk without feeling discriminatory. The team are also exploring if we can use different questions to get to the same calculation and ways to explain why the question is being asked, which offers some mitigation.
 
-Long term we hope to use data about the user to avoid asking as many questions as possible.
+Long term we hope to use data about the user to ask as few questions as we can.
 
 ## Incentives and integration
 
