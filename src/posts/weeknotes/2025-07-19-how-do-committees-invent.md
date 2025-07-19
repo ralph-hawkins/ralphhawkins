@@ -1,4 +1,4 @@
---
+---
 title: How do committees invent?
 date: 2025-07-19
 tags: weeknotes
@@ -20,6 +20,7 @@ Across the two areas, the overall pattern is the same. Use what data you have ab
 I think our work needs to unify. If you look at them with enough abstraction, these are very similar journeys. We’re still early in the work we’re doing in prevention and have a lot to learn. We’ve deliberately moved away from an abstracted platform approach to more specific condition‑led services. But eventually we want to get to the place where we can deal with a person’s health needs in a way that doesn’t silo them by a specific condition, but meets all their needs.
 
 Beyond treating prevention holistically, users shouldn’t have to be aware of the difference between ’prevention’ and ’treatment’ services. They just need to feel better. Ideally user journeys within the NHS would seamlessly hand‑off between people who are in a prevention part of the journey and people who need immediate care. There is already work in our teams to recognise when someone is at immediate risk, but right now, that hand‑off is pretty basic.
-Breaking down these silos is ultimately where we need to get to. That’s hard in the NHS – different funding, different governance, different metrics. I want to figure out how to do that well.
 
-There are opportunities to drive alignment. I think adopting the same ACG model gives us a shortcut to interoperability and will help add value sooner. In the longer term I think we need a shared framework to help users determine their best next action, whether that’s visiting A&E or quitting smoking.
+There are opportunities to improve alignment. I think adopting the same ACG model gives us a shortcut to interoperability and will help add value sooner. In the longer term I think we need a shared framework to help users determine their best next action, whether that’s visiting A&E or quitting smoking.
+
+Removing these silos is ultimately where we need to get to. That’s hard in the NHS – different funding, different governance, different metrics. Which makes me wonder whether user centred design in the NHS requires a fundamentally different model that would support alignment more organically. With better data sharing, I think you would want to create incentives around outcomes and how the centre supports the system holistically.
