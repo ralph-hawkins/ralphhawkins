@@ -1,5 +1,5 @@
 ---
-title: How do committees invent?
+title: The design of a system
 date: 2025-07-19
 tags: weeknotes
 layout: post
