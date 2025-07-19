@@ -5,7 +5,7 @@ tags: weeknotes
 layout: post
 ---
 
-The highlight this week was spending time with the Intelligent Navigation team and sharing what we’re each working on. Intelligent Navigation is one of the NHS app teams. They’re helping route people through the complexity of primary care (GPs, pharmacies, dentists), urgent care (walk‑in centres, NHS 111) and emergency care (A&E).
+The highlight this week was spending time with the Intelligent Navigation team and sharing what we’re each working on. We’ve spoken to them before, and identified that we’re closely aligned, but this week we got into the weeds a bit more. Intelligent Navigation is one of the NHS app teams. They’re helping route people through the complexity of primary care (GPs, pharmacies, dentists), urgent care (walk‑in centres, NHS 111) and emergency care (A&E).
 
 Their principles are essentially the same as ours. How do you use what you know about a person to make navigating the complexity of the NHS more efficient and direct people to where they need to be?
 
@@ -22,4 +22,4 @@ I think our work needs to unify. These are journeys that, if you look at them wi
 Beyond treating prevention holistically, users shouldn’t have to be aware of the difference between ’prevention’ and ’treatment’ services. They just need to feel better. Ideally user journeys within the NHS would seamlessly hand‑off between people who are in a prevention part of the journey and people who need immediate care. There is already work in our teams to recognise when someone is at immediate risk, but right now, that hand‑off is pretty basic.
 Breaking down these silos is ultimately where we need to get to. That’s hard in the NHS – different funding, different governance, different metrics. I want to figure out how to do that well.
 
-There are opportunities to drive alignment. I think adopting the same ACG model gives us a shortcut to interoperability and will help add value sooner. Longer term I think we need a shared framework to help users determine their best next action, whether that’s visiting A&E or quitting smoking.
+There’s an opportunity to drive alignment. I think adopting the same ACG model gives us a shortcut to interoperability and will help add value sooner. Longer term I think we need a shared framework to help users determine their best next action, whether that’s visiting A&E or quitting smoking.
