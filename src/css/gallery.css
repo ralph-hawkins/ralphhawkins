@@ -1,0 +1,85 @@
+/* Gallery Styles */
+
+.gallery {
+  width: 100%;
+}
+
+.gallery-item {
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+.gallery-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.gallery-images {
+  margin: var(--spacing-l) 0;
+}
+
+.gallery-images-group {
+  margin: var(--spacing-m) 0;
+}
+
+.gallery-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: var(--spacing-l);
+
+  /* Ensure images never fall off screen edges */
+  box-sizing: border-box;
+}
+
+/* Smaller gaps between grouped images */
+.gallery-images-group .gallery-image {
+  margin-bottom: var(--spacing-s);
+}
+
+.gallery-images-group .gallery-image:last-child {
+  margin-bottom: 0;
+}
+
+.gallery-item-content {
+  margin-top: var(--spacing-l);
+}
+
+.gallery-item-content p {
+  margin-bottom: var(--spacing-s);
+}
+
+/* Single gallery item page styles */
+.gallery-item-single {
+  padding-bottom: var(--spacing-xl);
+}
+
+.gallery-item-single .gallery-item-date {
+  margin-top: var(--spacing-xl);
+}
+
+.gallery-item-single .gallery-item-title {
+  padding-top: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 40em) {
+  .gallery-item {
+    margin-bottom: var(--spacing-l);
+    padding-bottom: var(--spacing-l);
+  }
+
+  .gallery-item-title {
+    font-size: 1.6rem;
+  }
+
+  .gallery-image {
+    margin-bottom: var(--spacing-m);
+  }
+
+  .gallery-images-group .gallery-image {
+    margin-bottom: var(--spacing-xs);
+  }
+}

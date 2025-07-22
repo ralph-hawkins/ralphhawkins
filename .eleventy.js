@@ -1,4 +1,5 @@
 const dateFilters = require("./src/_11ty/filters/date-filters.js");
+
 module.exports = function(eleventyConfig) {
   // Add date filters
   Object.keys(dateFilters).forEach(filterName => {
@@ -40,6 +41,13 @@ module.exports = function(eleventyConfig) {
     });
 
     return sortedGrouped;
+  });
+
+  // Add collection for gallery items (newest first)
+  eleventyConfig.addCollection("gallery", function(collectionApi) {
+    return collectionApi.getFilteredByTag("gallery").sort((a, b) => {
+      return b.date - a.date; // Sort by date, newest first
+    });
   });
 
   // Add assets
