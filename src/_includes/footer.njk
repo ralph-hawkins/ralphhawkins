@@ -1,33 +1,47 @@
 <footer>
   <div class="container">
-  {% if collections.weeknotesByDate %}
-    <h2>All notes</h2>
+  {% if page.url == '/graphic-design/' %}
+    {# Gallery page - show link to latest weeknote #}
+    <h2>Week notes</h2>
+    {% set latestPost = collections.weeknotes | reverse | first %}
+    {% if latestPost %}
+      <p><a href="{{ latestPost.url }}">Latest week note – {{ latestPost.data.title }}</a></p>
+    {% endif %}
+  {% else %}
+    {# Week note pages - show week notes history and link to gallery #}
+    {% if collections.weeknotesByDate %}
+      <h2>All notes</h2>
 
-    <div class="post-list-hierarchical">
-      {% for year, months in collections.weeknotesByDate %}
-        <div class="year-group">
-          <h3>{{ year }}</h3>
-          {% for month, posts in months %}
-            <div class="month-group">
-              <h4>{{ month }}</h4>
-              <ul class="post-list">
-                {% for post in posts %}
-                  <li class="{% if post.url == page.url %}current{% endif %}">
-                    <span class="date">{{ post.date.getDate().toString().padStart(2, '0') }}</span> –
-                    {% if post.url == page.url %}
-                      <span>{{ post.data.title }}</span>
-                    {% else %}
-                      <a href="{{ post.url }}">{{ post.data.title }}</a>
-                    {% endif %}
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endfor %}
-        </div>
-      {% endfor %}
-    </div>
+      <div class="post-list-hierarchical">
+        {% for year, months in collections.weeknotesByDate %}
+          <div class="year-group">
+            <h3>{{ year }}</h3>
+            {% for month, posts in months %}
+              <div class="month-group">
+                <h4>{{ month }}</h4>
+                <ul class="post-list">
+                  {% for post in posts %}
+                    <li class="{% if post.url == page.url %}current{% endif %}">
+                      <span class="date">{{ post.date.getDate().toString().padStart(2, '0') }}</span> –
+                      {% if post.url == page.url %}
+                        <span>{{ post.data.title }}</span>
+                      {% else %}
+                        <a href="{{ post.url }}">{{ post.data.title }}</a>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <h2>Other</h2>
+      <p><a href="/graphic-design/">Graphic design</a></p>
+    {% endif %}
   {% endif %}
+
     <h2>Contact</h2>
     <ul>
       <li><a href="mailto:info@ralphhawkins.co.uk">info@ralphhawkins.co.uk</a></li>

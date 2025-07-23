@@ -1,0 +1,32 @@
+---
+layout: base
+permalink: /graphic-design/
+---
+
+<div class="gallery">
+  {% for item in collections.gallery %}
+    <article class="gallery-item">
+      <h2>{{ item.data.title }}</h2>
+      <div>
+        <p>
+          {{ item.date | dateFormat }}<br>
+          {% if item.content %}
+              {{ item.content | safe }}
+          {% endif %}
+        </p>
+      </div>
+      {% if item.data.images %}
+        <div class="gallery-images {% if item.data.images.length > 1 %}gallery-images-group{% endif %}">
+          {% for image in item.data.images %}
+            <img
+              src="{{ image }}"
+              alt="{{ item.data.alt or item.data.title }}"
+              class="gallery-image"
+              loading="lazy"
+            >
+          {% endfor %}
+        </div>
+      {% endif %}
+    </article>
+  {% endfor %}
+</div>
