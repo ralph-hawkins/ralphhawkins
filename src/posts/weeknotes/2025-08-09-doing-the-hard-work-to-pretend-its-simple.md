@@ -5,7 +5,7 @@ tags: weeknotes
 layout: post
 ---
 
-## Prototyping strategy
+### Prototyping strategy
 
 At the beginning of the year I built a ‘provocatype’ to demonstrate how we thought the user journey for personalised prevention could work. It served a few purposes. The most important was to provoke people to tell us where our plans wouldn’t work or would be difficult.
 
@@ -15,7 +15,7 @@ It was incredibly valuable tool. We got a lot of useful feedback and one of our 
 
 I intended to revisit it as we’ve learnt more about how this could actually work. The teams in Personalised Prevention Services have done the hard work to think about what this will actually look like. My understanding of the NHS has also improved.
 
-## Prototiming
+### Prototiming
 
 With half of everyone away for August I found some of day to start thinking about a new demo. I’ve only managed to sketch about 10 pages in Lucid. I’m using where the teams have got to as a starting point, but going a step further into the future.
 
@@ -25,7 +25,7 @@ The purpose is similar to before but as we grow, we need more detail. We need to
 
 Trying to coordinate with the NHS app teams is one of the things I’m least confident about. We have routine conversations with the team, but they’re often theoretical. I worry that when it comes to reality we’ll realise we’ve been less in sync than we thought.
 
-## Design fiction
+### Design fiction
 
 With this new version, I want to take the time to be collaborative and bring‑in more perspectives, instead of smashing something together. I’m spending time working at page‑level detail with a focus on content. Thinking about patterns and how they can support the messy complexity we’ll need to support. It’s fun to design and iterate. It’s been a long time since I’ve done anything at this level of detail.
 
