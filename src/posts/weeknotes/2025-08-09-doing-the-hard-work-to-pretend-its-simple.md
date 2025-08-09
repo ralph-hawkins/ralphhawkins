@@ -9,15 +9,15 @@ layout: post
 
 At the beginning of the year I built a ‘provocatype’ to demonstrate how we thought the user journey for personalised prevention could work. It served a few purposes. The most important was to provoke people to tell us where our plans wouldn’t work or would be difficult.
 
-I think I built it in a couple of days, which probably means I built it in a couple of weeks. But it was built in a rush. It was very simple – a single linear journey on the ‘happy path’.
+I think I built it in a couple of days, which probably means I built it in a couple of weeks. But it was built in a rush. It was very simple – a single ,linear journey on the ‘happy path’.
 
-It was incredibly valuable tool. We got a lot of useful feedback and one of our projects is a direct result of demoing it.
+It was proved a valuable tool. We got a lot of useful feedback and one of our projects is a direct result of demoing it.
 
 I intended to revisit it as we’ve learnt more about how this could actually work. The teams in Personalised Prevention Services have done the hard work to think about what this will actually look like. My understanding of the NHS has also improved.
 
 ### Prototiming
 
-With half of everyone away for August I found some of day to start thinking about a new demo. I’ve only managed to sketch about 10 pages in Lucid. I’m using where the teams have got to as a starting point, but going a step further into the future.
+With half of everyone away for August I found some of day to start thinking about a new demo. I’ve only managed to sketch about 10 pages in Lucid so far. I’m using where the teams have got to as a starting point, but going a step further into the future.
 
 I want to think about what needs to be true for us to start joining condition‑led use cases into a single journey. One that works across multiple conditions and supports the non‑linear way people experience looking after their health.
 
