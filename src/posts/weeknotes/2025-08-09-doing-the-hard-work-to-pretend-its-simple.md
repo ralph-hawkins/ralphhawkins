@@ -11,7 +11,7 @@ At the beginning of the year I built a ‘provocatype’ to demonstrate how we t
 
 I think I built it in a couple of days, which probably means I built it in a couple of weeks. But it was built in a rush. It was very simple – a single, linear journey on the ‘happy path’.
 
-It was proved a valuable tool. We got a lot of useful feedback and one of our projects is a direct result of demoing it.
+It proved a valuable tool. We got a lot of useful feedback and one of our projects is a direct result of demoing it.
 
 I intended to revisit it as we’ve learnt more about how this could actually work. The teams in Personalised Prevention Services have done the hard work to think about what this will actually look like. My understanding of the NHS has also improved.
 
