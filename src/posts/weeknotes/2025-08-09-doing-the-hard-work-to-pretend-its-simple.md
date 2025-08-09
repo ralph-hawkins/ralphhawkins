@@ -23,13 +23,13 @@ I want to think about what needs to be true for us to start joining condition‑
 
 The purpose is similar to before but as we grow, we need more detail. We need to demonstrate to teams we’re working with, primarily the NHS app teams, what we’re planning so we can coordinate.
 
-Trying to coordinate with the NHS app teams is one of the things I’m least confident about. We have routine conversations with the team, but they’re often theoretical. I worry that when it comes to reality we’ll realise we’ve been less in sync than we thought.
+Trying to coordinate with the NHS app teams is one of the things I’m least confident about. We have routine conversations with the team, but the conversations are often theoretical. I worry that when it comes to reality we’ll realise we’ve been less in sync than we thought.
 
 ### Design fiction
 
-With this new version, I want to take the time to be collaborative and bring‑in more perspectives, instead of smashing something together. I’m spending time working at page‑level detail with a focus on content. Thinking about patterns and how they can support the messy complexity we’ll need to support. It’s fun to design and iterate. It’s been a long time since I’ve done anything at this level of detail.
+With this new version, I want to take the time to be collaborative and bring in more perspectives, instead of smashing something together. I’m spending time working at page‑level detail with a focus on content. Thinking about patterns and how they can handle the messy complexity we’ll need to manage. It’s fun to design and iterate. It’s been a long time since I’ve done anything at this level of detail.
 
-The constraints are still ill‑defined. I’m making assumptions and papering over complexity. I’m always frustrated by designers who ignore complex problems when they prototype. I understand the impulse – good design is about making things simple for users. But if the prototype just assumes a simple solution to a complex problem, it’s not helping anyone.
+The constraints are still ill‑defined. I’m making assumptions and papering over complexity. I don’t want to pretend we have solutions for everything, but we will need new ways of doing things before we can get to a coherent prevention service. Good design is about making things simple for users. But if the prototype just assumes a simple solution to a complex problem, it’s not helping anyone.
 
 To avoid this, I try to track my assumptions and questions as I go. The purpose of the exercise is the conversations we have because of it. It needs to be detailed and authentic so that the thinking rings true and we can discuss the important complexities.
 
