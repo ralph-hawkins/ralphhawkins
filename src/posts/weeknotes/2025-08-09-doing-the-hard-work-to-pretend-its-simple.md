@@ -9,7 +9,7 @@ layout: post
 
 At the beginning of the year I built a ‘provocatype’ to demonstrate how we thought the user journey for personalised prevention could work. It served a few purposes. The most important was to provoke people to tell us where our plans wouldn’t work or would be difficult.
 
-I think I built it in a couple of days, which probably means I built it in a couple of weeks. But it was built in a rush. It was very simple – a single ,linear journey on the ‘happy path’.
+I think I built it in a couple of days, which probably means I built it in a couple of weeks. But it was built in a rush. It was very simple – a single, linear journey on the ‘happy path’.
 
 It was proved a valuable tool. We got a lot of useful feedback and one of our projects is a direct result of demoing it.
 
