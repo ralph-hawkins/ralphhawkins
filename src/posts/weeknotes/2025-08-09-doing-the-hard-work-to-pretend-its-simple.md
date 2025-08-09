@@ -17,7 +17,7 @@ I intended to revisit it as we’ve learnt more about how this could actually wo
 
 ### Prototiming
 
-With half of everyone away for August I found some of day to start thinking about a new demo. I’ve only managed to sketch about 10 pages in Lucid so far. I’m using where the teams have got to as a starting point, but going a step further into the future.
+With half of everyone away for August I found some time to start thinking about a new demo. I’ve only managed to sketch about 10 pages in Lucid so far. I’m using where the teams have got to as a starting point, but going a step further into the future.
 
 I want to think about what needs to be true for us to start joining condition‑led use cases into a single journey. One that works across multiple conditions and supports the non‑linear way people experience looking after their health.
 
