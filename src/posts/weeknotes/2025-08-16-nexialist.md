@@ -17,9 +17,9 @@ I think making some working software will help with those limitations, but to do
 
 ### Unintended consequences
 
-I can’t say much about this, but one of our services, the users are hitting an edge case that was anticipated but didn’t expect to happen. It’s benign and basically an admin issue.
+I can’t say much about this, but in one of our services, the users are hitting an edge case that was anticipated but nobody expect to happen. It’s benign and basically an admin issue.
 
-I wasn’t part of the discussions for this service when it was being decided how much of a risk it was and whether it was worth mitigating. I’ve had plenty of discussions like this though. I find them really fun. Trying to sense out where the edges of a problem lie, how likely it is that a user will do it and what the consequences are. They’re the crunchy problems of real-world service design. I first worked on these kinds of problems working at GDS. I got to witness very smart people thinking about these and enjoyed being part of the conversation. They’re the dark matter of service design, if you get the decisions right, no one will ever know.
+I wasn’t part of the discussions for this service when it was being decided how much of a risk it was and whether it was worth mitigating. I’ve had plenty of discussions like this though. I find them really fun. Trying to sense out where the edges of a problem lie, how likely it is that a user will do it and what the consequences are. They’re the crunchy problems of real-world service design. They’re the dark matter of service design, if you get the decisions right, no one will ever know.
 
 ### Measuring success
 
