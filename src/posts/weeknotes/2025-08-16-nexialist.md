@@ -15,7 +15,7 @@ There are some limitations though. It’s too easy to think of this as a single 
 
 I think making some working software will help with those limitations, but to do that I basically need to build a fairly complex prototype that can handle (fictional) data about people, their health, activity, preferences etc, and match them to services. Maybe something hardcoded is more pragmatic, but might not support us in thinking through problems in as much detail.
 
-### Unintended consequences
+### Edge cases
 
 I can’t say much about this, but in one of our services, the users are hitting an edge case that was anticipated but nobody expect to happen. It’s benign and basically an admin issue.
 
