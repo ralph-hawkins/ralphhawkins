@@ -45,7 +45,7 @@ Don’t assume we will use the NHS app (for pilots, although that is where our s
 
 The use cases are our best way of testing risky assumption.
 
-As long as the teams are embodying these, I want to give them the trust and room they need to do their work. But there is a balance between reporting and overhead, between support and interference. I’m still learning about how to do this well.
+As long as the teams are embodying these, I want to give them the trust and room they need to do their work. But there is a balance between reporting and overhead, between support and interference. I’m still learning how to do.
 
 ---
 
