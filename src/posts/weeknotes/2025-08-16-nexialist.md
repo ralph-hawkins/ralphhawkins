@@ -39,7 +39,7 @@ Focus on complete journeys for specific cases rather than scalable component par
 
 Worry about connecting systems and scaling later.
 
-Don’t assume we will use the NHS app.
+Don’t assume we will use the NHS app (for pilots, although that is where our services will live eventually)
 
 **Stop if things aren’t working**
 
