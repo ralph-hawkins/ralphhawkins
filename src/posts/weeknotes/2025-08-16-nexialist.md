@@ -52,4 +52,4 @@ As long as the teams are embodying these, I want to give them the trust and room
 Two of our teams published design history posts recently. They’re great summaries of what the teams are doing:
 
 - [Physical activity results](https://design-history.prevention-services.nhs.uk/nhs-health-check-online/2025/07/physical-activity-results/) – NHS health check online
-- [Designing and testing a prototype](https://design-history.prevention-services.nhs.uk/lung-health-check/2025/08/lung-health-check-prototype/) – Lung health check
+- [Designing and testing a prototype](https://design-history.prevention-services.nhs.uk/lung-health-check/2025/08/lung-health-check-prototype/) – Lung health check
