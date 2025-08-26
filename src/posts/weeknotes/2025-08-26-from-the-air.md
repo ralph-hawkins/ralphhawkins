@@ -5,7 +5,7 @@ tags: weeknotes
 layout: post
 ---
 
-This week I attended a meeting to talk about plans to procure a service – it revealed a truth so obvious that I feel like a real dummy for not figuring it out sooner. ‘Transformation’ has nothing to do with agile vs waterfall, tech or user centred design. It’s about who takes responsibility for how services are delivered.
+This week I attended a meeting to talk about plans to procure a service – it revealed a truth so obvious that I feel like a real dummy for not figuring it out sooner. ‘Transformation’ is only tangentially about agile vs waterfall, tech and user centred design. It’s really about who takes responsibility for how services are delivered.
 
 ### This is your captain
 
