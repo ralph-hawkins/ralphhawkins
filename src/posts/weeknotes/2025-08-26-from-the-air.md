@@ -11,7 +11,7 @@ This week I attended a meeting to talk about plans to procure a service – it r
 
 The meeting was about plans for a health service pilot. This involves delivering a complex service at national scale, with multiple stakeholders including clinical commissioners, GPs, pharmacies, and behavioural support providers.
 
-The team plan to procure a supplier to run a pilot that combines medical treatment with behavioural support. The plan is to digitise the existing user journey using digital services to reduce capacity burden on the NHS – a sensible approach given the scale of demand they're facing.
+The team plan to procure a supplier to run a pilot that combines medical treatment with behavioural support. The plan is to digitise the existing user journey using digital services to reduce capacity burden on the NHS – a sensible approach given the scale of demand they’re facing.
 
 It was a big meeting with experienced people from policy, procurement, clinical and assurance backgrounds, and me representing the digital and user-centred design perspective. The team are focused on shipping value quickly and not getting mired in rounds of approvals and governance – an urgency I admire and fully support.
 
@@ -19,7 +19,7 @@ As we talked through the approach, I found myself thinking about different aspec
 
 ### We are about to attempt a crash landing
 
-Later that day, I happened to read this article – [Why ‘build vs buy’ is not about tech](https://medium.com/@quietly_bold/why-build-vs-buy-is-not-about-tech-4072f5d4871e) – it makes the point that ‘build vs buy’ is a proxy for questions about what type of organisation you are and what you're prepared to take responsibility for. This was a light bulb moment for me.
+Later that day, I happened to read this article – [Why ‘build vs buy’ is not about tech](https://medium.com/@quietly_bold/why-build-vs-buy-is-not-about-tech-4072f5d4871e) – it makes the point that ‘build vs buy’ is a proxy for questions about what type of organisation you are and what you’re prepared to take responsibility for. This was a light bulb moment for me.
 
 Everything about the culture of transformation in the public sector comes down to this question of responsibility. How did I not see this before?
 
@@ -31,7 +31,7 @@ I see the allure of outsourcing. It offers speed, certainty and offloads risk. W
 
 But I suspect this approach will create another siloed journey based around a single condition and treatment. Health conditions aren’t simple or isolated – they connect to multiple other issues and services. Users often need coordinated care across different specialities and providers.
 
-I don’t propose everything is built in-house. It's the [value chain](https://en.wikipedia.org/wiki/Value_chain) mapping of it all, what’s important to you and what’s a commodity. Outsource specific capabilities while maintaining accountability for how the parts work together. We need to own the user journey across multiple touch-points and iterate as we learn.
+I don’t propose everything is built in-house. It’s the [value chain](https://en.wikipedia.org/wiki/Value_chain) mapping of it all, what’s important to you and what’s a commodity. Outsource specific capabilities while maintaining accountability for how the parts work together. We need to own the user journey across multiple touch-points and iterate as we learn.
 
 ### Put your hands on your head
 
