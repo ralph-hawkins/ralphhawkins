@@ -13,7 +13,7 @@ The meeting was about plans for a health service pilot. This involves delivering
 
 The team plan to procure a supplier to run a pilot that combines medical treatment with behavioural support. The plan is to digitise the existing user journey using digital services to reduce capacity burden on the NHS – a sensible approach given the scale of demand they’re facing.
 
-It was a big meeting with experienced people from policy, procurement, clinical and assurance backgrounds, and me representing the digital and user-centred design perspective. The team are focused on shipping value quickly and not getting mired in rounds of approvals and governance – an urgency I admire and fully support.
+It was a big meeting with experienced people from policy, procurement, clinical and assurance backgrounds, and me representing the digital and user‑centred design perspective. The team are focused on shipping value quickly and not getting mired in rounds of approvals and governance – an urgency I admire and fully support.
 
 As we talked through the approach, I found myself thinking about different aspects of the challenge. The conversation focused on practical delivery questions – technical requirements, procurement timelines, operational constraints. Important considerations for a pilot of this complexity. But I kept coming back to a question that wasn’t being discussed – who owns the whole?
 
@@ -31,7 +31,7 @@ I see the allure of outsourcing. It offers speed, certainty and offloads risk. W
 
 But I suspect this approach will create another siloed journey based around a single condition and treatment. Health conditions aren’t simple or isolated – they connect to multiple other issues and services. Users often need coordinated care across different specialities and providers.
 
-I don’t propose everything is built in-house. It’s the [value chain](https://en.wikipedia.org/wiki/Value_chain) mapping of it all, what’s important to you and what’s a commodity. Outsource specific capabilities while maintaining accountability for how the parts work together. We need to own the user journey across multiple touch-points and iterate as we learn.
+I don’t propose everything is built in‑house. It’s the [value chain](https://en.wikipedia.org/wiki/Value_chain) mapping of it all, what’s important to you and what’s a commodity. Outsource specific capabilities while maintaining accountability for how the parts work together. We need to own the user journey across multiple touch‑points and iterate as we learn.
 
 ### Put your hands on your head
 
