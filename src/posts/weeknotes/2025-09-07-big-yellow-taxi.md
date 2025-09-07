@@ -5,7 +5,7 @@ tags: weeknotes
 layout: post
 ---
 
-## Pink hotels
+### Pink hotels
 
 I recently wrote about how my understanding of transportation fundamentally shifted. TL;DR transformation is about taking responsibility for the way you deliver services. When you outsource the whole, you outsource responsibility. Retaining control allows an organisation to learn, iterate, and reduce fragmentation to better meet users’ needs.
 
@@ -19,7 +19,7 @@ This week I’ve been thinking about other benefits of not outsourcing, things t
 
 There’s a wider social impact to the default assumption that outsourcing is more efficient. I’m beginning to wonder if the argument for efficiency isn’t a pretext for a lack of ambition.
 
-## Tree museums
+### Tree museums
 
 The [State of digital government review](https://www.gov.uk/government/publications/state-of-digital-government-review/state-of-digital-government-review) summarises all of this, but I’m not sure if it’s made a difference. The [NHS’ ten year plan](https://www.gov.uk/government/publications/10-year-health-plan-for-england-fit-for-the-future/fit-for-the-future-10-year-health-plan-for-england-executive-summary) promises transformation, but doesn’t set the conditions for it.
 
