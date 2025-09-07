@@ -7,7 +7,7 @@ layout: post
 
 ## Pink hotels
 
-I recently wrote about how my understanding of transportation fundamentally shifted. TL;DR transformation is about taking responsibility for the way you deliver services. When you outsource the whole you outsource responsibility. Retaining control allows an organisation to learn, iterate, and reduce fragmentation to better meet users’ needs.
+I recently wrote about how my understanding of transportation fundamentally shifted. TL;DR transformation is about taking responsibility for the way you deliver services. When you outsource the whole, you outsource responsibility. Retaining control allows an organisation to learn, iterate, and reduce fragmentation to better meet users’ needs.
 
 This week I’ve been thinking about other benefits of not outsourcing, things that risk averse procurement rules don’t take into account. When you build something yourself:
 
