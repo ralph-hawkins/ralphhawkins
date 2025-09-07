@@ -11,7 +11,7 @@ I recently wrote about how my understanding of transportation fundamentally shif
 
 This week I’ve been thinking about other benefits of not outsourcing, things that risk averse procurement rules don’t take into account. When you build something yourself:
 
-- you don't need to work with organisations whose stated values and leadership fundamentally conflict with those of the public sector
+- you don’t need to work with organisations whose stated values and leadership fundamentally conflict with those of the public sector
 - you fund teams, not projects gaining the benefits of institutional knowledge and first‑hand experience for the organisation
 - you retain the expertise to be a more informed buyer, buying smaller things that are easier to assess the value of
 - ideally you’re paying employees not corporations – people who aren’t rich enough to not pay taxes and spend money locally
