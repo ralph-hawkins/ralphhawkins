@@ -34,7 +34,7 @@ footer .year-group h4 {
 
 footer div.month-group h4 {
   font-size: var(--font-size-base);
-  marign-bottom: none;
+  margin-bottom: 0;
   border-top: 0.1rem solid var(--color-text);
 }
 
@@ -50,4 +50,23 @@ footer .post-list li.current::before {
   top: 0;
   color: var(--color-link);
   font-weight: bold;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-text);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  font-size: 0.9rem;
+}
+
+.skip-link:focus {
+  top: 6px;
+  background: var(--color-focus);
+  color: var(--color-text);
 }

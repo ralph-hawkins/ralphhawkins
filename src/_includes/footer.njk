@@ -24,7 +24,7 @@
                     <li class="{% if post.url == page.url %}current{% endif %}">
                       <span class="date">{{ post.date.getDate().toString().padStart(2, '0') }}</span> –
                       {% if post.url == page.url %}
-                        <span>{{ post.data.title }}</span>
+                        <span aria-current="page">{{ post.data.title }}</span>
                       {% else %}
                         <a href="{{ post.url }}">{{ post.data.title }}</a>
                       {% endif %}

@@ -13,6 +13,12 @@ a {
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0.4, 1); /* Fast in, slower out */
 }
 
+@media (prefers-reduced-motion: reduce) {
+  a {
+    transition: none;
+  }
+}
+
 a:hover {
   color: var(--color-link);
   background-color: var(--color-focus);
@@ -36,6 +42,23 @@ a:focus {
   text-decoration: none;
   /* Remove transition for focus state to ensure immediate feedback */
   transition: none;
+}
+
+/* Modern focus-visible support */
+a:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 0.2rem solid transparent;
+  color: var(--color-text);
+  background-color: var(--color-focus);
+  box-shadow: 0 -0.1rem var(--color-focus), 0 0.3rem var(--color-text);
+  text-decoration: none;
 }
 
 hr {
