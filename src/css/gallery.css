@@ -51,19 +51,6 @@
   margin-bottom: var(--spacing-s);
 }
 
-/* Single gallery item page styles */
-.gallery-item-single {
-  padding-bottom: var(--spacing-xl);
-}
-
-.gallery-item-single .gallery-item-date {
-  margin-top: var(--spacing-xl);
-}
-
-.gallery-item-single .gallery-item-title {
-  padding-top: 0;
-}
-
 /* Responsive adjustments */
 @media (max-width: 40em) {
   .gallery-item {
@@ -71,9 +58,6 @@
     padding-bottom: var(--spacing-l);
   }
 
-  .gallery-item-title {
-    font-size: 1.6rem;
-  }
 
   .gallery-image {
     margin-bottom: var(--spacing-m);

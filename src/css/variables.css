@@ -6,7 +6,7 @@
   --color-link-visited: #505a5f;
   --color-focus: #ffdd00;
   --color-border: #0b0c0c;
-  --color-background: #FF7F4F;
+  --color-background: #EBEDF0;
 
   /* Spacing */
   --spacing-xs: 0.3rem;
@@ -16,7 +16,7 @@
   --spacing-xl: 3.1rem;
 
   /* Typography */
-  --font-family: "volksans", arial, sans-serif;
+  --font-family: "volksans", helvetica, arial, sans-serif;
   --font-size-base: 1.3rem;
   --line-height-base: 1.5;
 

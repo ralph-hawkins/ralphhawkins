@@ -8,16 +8,6 @@
   width: 100%;
 }
 
-/* Adjustments for mobile */
-@media (max-width: 40em) {
-  .container {
-    padding-left: calc(var(--side-padding) + 1.5em); /* Keep space for arrow on mobile */
-  }
-}
-
-div.date {
-  margin-top: var(--spacing-xl);
-}
 
 .date p {
   line-height: 1rem;
@@ -29,20 +19,20 @@ div.date {
 
 header {
   min-height: 80vh;
-  position: relative;
   display: flex;
   align-items: center;
+  background: var(--color-background);
+  margin: 0;
   padding: 0;
 }
 
-/* Main content that scrolls over header */
 main {
-  min-height: 100vh; /* Full viewport height to ensure enough content */
+  min-height: 100vh;
   position: relative;
-  z-index: 2; /* Higher than header */
-  margin-top: -3rem; /* Creates overlap with header */
-  border-top: 0.1rem solid var(--color-border);
-  background-color: whitesmoke;
+  z-index: 2;
+  margin: 0;
+  padding-top: var(--spacing-xl);
+  background: var(--color-background);
 }
 
 
