@@ -7,13 +7,13 @@ layout: post
 
 ### Training
 
-I supported prototype training on Monday, helping people get a sense of what it takes to build prototypes using the [NHS prototype kit](https://prototype-kit.service-manual.nhs.uk/). [Ed](https://www.linkedin.com/in/ed-horsford/) and [Frankie](https://www.linkedin.com/in/frankieroberto/) have created a great day that gives people what they need to start using it. It was lovely to see the enthusiasm from people across disciplines to get into making stuff.
+I supported prototype training on Monday, helping people get a sense of what it takes to build prototypes using the [NHS prototype kit](https://prototype-kit.service-manual.nhs.uk/). [Ed](https://www.linkedin.com/in/ed-horsford/) and [Frankie](https://www.linkedin.com/in/frankieroberto/) have created a great day that gives people what they need to start using it. It was lovely to see people from across disciplines enthusiastically making stuff. Also the first time I’ve ever used a web‑based text editor.
 
 I’m not sure the [GOV.UK prototype kit](https://prototype-kit.service.gov.uk/) gets the recognition it deserves for its role in supporting government transformation. A community (by which I mean, mostly unfunded) project that made prototyping in code using the same frontend components as the live services the default. It’s a multiplier in speed and efficiency of design. It lowers the barrier to making realistic design that translates directly to production code. It forces designers to think in the material of delivery.
 
 ### Making pretend things
 
-I’ve begun building a new prototype to explore what our longer-term vision for personalised prevention services could look like. I’m not using a prototyping kit for this one. To attempt to model a future state where the NHS App is a native platform for personalised journeys, I needed more complex logic and routing than the kits provide.
+I’ve begun building a new prototype to explore what our longer‑term vision for personalised prevention services could look like. I’m not using a prototyping kit for this one. To attempt to model a future state where the NHS App is a native platform for personalised journeys, I needed more complex logic and routing than the kits provide.
 
 The trade-off is that I’ve spent more time than I’d like on aesthetics, though I’m still using the [GOV.UK design system](https://design-system.service.gov.uk/) for the basics. It’s interesting to see the effect that fidelity has on people.  I showed a colleague a page they’d seen as a wireframe a few times before. Seeing it like it would appear on a phone, their reaction was very different.
 
