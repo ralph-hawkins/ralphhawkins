@@ -7,7 +7,7 @@ layout: post
 
 ### Training
 
-I supported prototype training on Monday, helping people get a sense of what it takes to build prototypes using the [NHS prototype kit](https://prototype-kit.service-manual.nhs.uk/). [Ed](https://www.linkedin.com/in/ed-horsford/) and [Frankie](https://www.linkedin.com/in/frankieroberto/) have created a great day that gives people what they need to start using it. It was great to see people from different disciplines enthusiastically making stuff. Also the first time I’ve ever used a web‑based text editor.
+I supported prototype training on Monday, helping people get a sense of what it takes to build prototypes using the [NHS prototype kit](https://prototype-kit.service-manual.nhs.uk/). [Ed](https://www.linkedin.com/in/ed-horsford/) and [Frankie](https://www.linkedin.com/in/frankieroberto/) have created a great day that gives people what they need to start using it. It was lovely seeing people from different disciplines enthusiastically making stuff. Also the first time I’ve ever used a web‑based text editor.
 
 I’m not sure the [GOV.UK prototype kit](https://prototype-kit.service.gov.uk/) gets the recognition it deserves for its role in supporting government transformation. A community (by which I mean, mostly unfunded) project that made prototyping in code using the same frontend components as the live services the default. It’s a multiplier in speed and efficiency of design. It lowers the barrier to making realistic design that translates directly to production code. It forces designers to think in the material of delivery.
 
