@@ -19,7 +19,7 @@ The trade-off is that I’ve spent more time than I’d like on aesthetics, thou
 
 ### Making real things
 
-The work our teams is doing is starting to become more real and with that comes lots of exciting learnings and some new tensions.
+The work our teams are doing is starting to become more real and with that comes lots of exciting learnings and some new tensions.
 
 I’m never sure if communicating through presentations is a good idea. Using visuals is useful, and having things set down is too. But the precision is a funny thing. Putting something in a deck doesn’t make it true. But not being precise about what you’re planning will raise alarm bells. So much energy goes into internal communication. The job I had before joining the public sector was at a startup of about 5 people. We’d chat about things and build as we went. My first day in government, I joined a meeting about a meeting and it felt ridiculous, but that’s my life now. Complex orgs.
 
