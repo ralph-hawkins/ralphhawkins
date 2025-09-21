@@ -2,6 +2,11 @@ body {
   color: var(--color-text);
   font-family: var(--font-family);
   scroll-padding-bottom: 5rem;
+  background: linear-gradient(30deg, var(--color-background) 0%, lightblue 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 a {

@@ -21,7 +21,7 @@ header {
   min-height: 70vh;
   display: flex;
   align-items: center;
-  background: var(--color-background);
+  background: transparent;
   margin: 0;
   padding: 0;
 }
@@ -32,7 +32,7 @@ main {
   z-index: 2;
   margin: 0;
   padding-top: var(--spacing-xl);
-  background: var(--color-background);
+  background: transparent;
 }
 
 
