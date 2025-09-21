@@ -20,7 +20,7 @@ function generateRandomGradient() {
 
   document.body.style.background = `linear-gradient(${angle}deg, ${firstColor} 75%, ${secondColor} 100%)`;
   document.body.style.backgroundAttachment = 'fixed';
-  document.body.style.backgroundSize = 'cover';
+  document.body.style.backgroundSize = '100vw 100vh';
   document.body.style.backgroundRepeat = 'no-repeat';
   document.body.style.minHeight = '100vh';
 }
