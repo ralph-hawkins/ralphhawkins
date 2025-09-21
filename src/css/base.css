@@ -4,8 +4,9 @@ body {
   scroll-padding-bottom: 5rem;
   background: linear-gradient(30deg, var(--color-background) 0%, lightblue 100%);
   background-attachment: fixed;
-  background-size: cover;
+  background-size: 100vw 100vh;
   background-repeat: no-repeat;
+  background-position: center;
   min-height: 100vh;
 }
 

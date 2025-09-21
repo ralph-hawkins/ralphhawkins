@@ -22,6 +22,7 @@ function generateRandomGradient() {
   document.body.style.backgroundAttachment = 'fixed';
   document.body.style.backgroundSize = '100vw 100vh';
   document.body.style.backgroundRepeat = 'no-repeat';
+  document.body.style.backgroundPosition = 'center';
   document.body.style.minHeight = '100vh';
 }
 
