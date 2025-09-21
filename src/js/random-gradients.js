@@ -18,12 +18,10 @@ function generateRandomGradient() {
   const firstColor = 'var(--color-background)';
   const secondColor = randomLightColor();
 
-  document.body.style.background = `linear-gradient(${angle}deg, ${firstColor} 75%, ${secondColor} 100%)`;
-  document.body.style.backgroundAttachment = 'fixed';
-  document.body.style.backgroundSize = '100vw 100vh';
-  document.body.style.backgroundRepeat = 'no-repeat';
-  document.body.style.backgroundPosition = 'center';
-  document.body.style.minHeight = '100vh';
+  document.body.style.setProperty('--gradient-angle', `${angle}deg`);
+  document.body.style.setProperty('--gradient-color', secondColor);
+  document.body.style.setProperty('--gradient-start', '75%');
+  document.body.style.setProperty('--gradient-end', '100%');
 }
 
 // Run

@@ -2,12 +2,19 @@ body {
   color: var(--color-text);
   font-family: var(--font-family);
   scroll-padding-bottom: 5rem;
-  background: linear-gradient(30deg, var(--color-background) 0%, lightblue 100%);
-  background-attachment: fixed;
-  background-size: 100vw 100vh;
-  background-repeat: no-repeat;
-  background-position: center;
   min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(var(--gradient-angle, 30deg), var(--color-background) var(--gradient-start, 0%), var(--gradient-color, lightblue) var(--gradient-end, 100%));
+  z-index: -1;
 }
 
 a {
