@@ -4,10 +4,10 @@ layout: base
 {% set latestPost = collections.weeknotes | reverse | first %}
 {% if latestPost %}
 <script defer>
-  window.location.href = "{{ latestPost.url }}";
+  window.location.href = "{{ latestPost.url }}?from=home";
 </script>
 <noscript>
-  <meta http-equiv="refresh" content="0; url={{ latestPost.url }}">
+  <meta http-equiv="refresh" content="0; url={{ latestPost.url }}?from=home">
 </noscript>
 <p>Redirecting to latest weeknotes...</p>
 <p><a href="{{ latestPost.url }}">Click here if not redirected</a></p>
