@@ -17,7 +17,7 @@ Then there’s the domain. Through my career I’ve enjoyed seeing the back-end 
 
 The learning curve for health is basically a wall.
 
-## Personalised Prevention Services
+### Personalised Prevention Services
 
 When I joined, it was hard to judge what was in flux and what was normal. I realise now that I didn’t appreciate how new Personalised Prevention Services was.
 
@@ -49,11 +49,11 @@ I spent a few days on some slides that defined how I saw our strategy and create
 
 It felt good to have something to share, iterate and work on together. With Georgina, Irina and people across Personal Prevention Service we evolved and refined our aims.
 
-## Personalised prevention vision
+### Personalised prevention vision
 
 Our vision was simple — make it easy for people to check their health, understand their risks, and find the right services to stay well. Put like that, it’s hard to argue with. The detail involves using digital health assessments to help people understand their health risks and connect them to the most appropriate services. For example, someone with asthma is eligible for a yearly flu vaccine, but if they also smoke heavily and haven’t had their lungs checked recently, addressing that should take priority.
 
-## Provocatyping
+### Provocatyping
 
 Irina called the example journey the ‘provocatype’. Making it clear that the journey was not a prototype, had not been tested, wasn’t possible given how we operate currently, but showed our vision.
 
@@ -65,7 +65,7 @@ It also meant we could think about other capabilities we needed.
 
 We planned a discovery into the possibilities of component based health checks. Exploring if its possible to standardise and reuse the individual parts of a health assessment (for example, a check of blood pressure or some lifestyle questions). It started two-weeks ago.
 
-## Now
+### Now
 
 That’s sort of where we are now. A lot of other things have happened in that time, but I think that’s the important stuff.
 
@@ -75,7 +75,7 @@ The Health Assessment discovery is growing from our original vision. I’m proud
 
 The highlight of this week was speaking to a team of researchers looking at health assessments for people with learning difficulties. Aside from being incredibly important, it brings home the complexity of use-cases we can support.
 
-## People
+### People
 
 I wanted to join NHSE because of the people I knew working there.
 
@@ -93,6 +93,6 @@ I was and still am devastated by her death. My heart goes out to everyone who kn
 
 I’m grateful for the support I got from everyone at NHSE.
 
-## Next
+### Next
 
 I’m planning to write shorter post about what I’ve done each week going forward. If you’ve read this far, I appreciate you ;-)

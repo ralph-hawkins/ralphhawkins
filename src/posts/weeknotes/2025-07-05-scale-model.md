@@ -7,7 +7,7 @@ layout: post
 
 A challenge working on digital prevention services is the tension of providing healthcare that works for individuals on a scale that works for the country.
 
-## Remote access to healthcare professionals
+### Remote access to healthcare professionals
 
 The highlight of my week was a talk by East Suffolk and North Essex NHS Foundation Trust (ESNEFT).
 
@@ -23,7 +23,7 @@ The service feels transformational because it lines‑up incentives for the Inte
 
 For me, working from the centre, with a focus on scale, this level of integration between physical and digital feels distant. Even a one‑time hand‑off from our services to local services is difficult. Truly integrated digital and in‑person care is years away. But I am convinced this is what we need to strive for.
 
-## Population level questions
+### Population level questions
 
 One of our services is looking at digitising the lung cancer screening eligibility assessment – something that currently happens over the phone for most people.
 
@@ -37,7 +37,7 @@ I think the exact model we use to calculate risk is still up for grabs. Ideally 
 
 Long term we hope to use data the NHS holds on the user so we need to ask fewer questions.
 
-## Incentives and integration
+### Incentives and integration
 
 Both examples show the challenge. Individual Trusts control their local system, employ clinicians and change how pathways operate, but national services have to work across a complex set of unrelated systems.
 

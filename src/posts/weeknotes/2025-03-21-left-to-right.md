@@ -9,9 +9,9 @@ The interesting times within NHS England continue.
 
 For me the week had two main highlights, a Personalised Prevention Service senior leadership team (SLT) get together and a couple of Services Week sessions.
 
-## Senior leadership
+### Senior leadership
 
-### Aside on job titles
+#### Aside on job titles
 
 My job title is lead service designer, I’m trying to be less weird about it.
 
@@ -23,7 +23,7 @@ In the past I’ve also avoided mentioning my ’level’ – not ’senior’ o
 
 Well‑designed organisational structures provide accountability and support diversity.
 
-### Make things open, it makes them better
+#### Make things open, it makes them better
 
 Anyway – I spent a day this week in an SLT meeting.
 
@@ -35,13 +35,13 @@ The end result is some much needed structure, added accountability and better lo
 
 Thanks to everyone involved, especially [Emily Houghton](https://www.linkedin.com/in/emily-houghton-92367b32/) who held the space for us to be ourselves.
 
-## Services week
+### Services week
 
 This week was Service Week – bringing the public sector together to share best practices and improve public services.
 
 I contributed to two sessions but didn’t go to any others. Thankfully, [recordings of the session are on YouTube](https://www.youtube.com/playlist?list=PLoe8p5EhqZ2Irg0VDGiho6NA1AoA-gUuB)
 
-### Stop mapping, start doing
+#### Stop mapping, start doing
 
 [Sarah Fisher](https://www.linkedin.com/in/sarah-fisher-6149b1242/) and I ran a session on mapping. I used it to discuss some of my struggles as a service designer, hoping it would resonate with others.
 
@@ -49,7 +49,7 @@ I really enjoyed the session. The contribution from everyone was incredible, I�
 
 Here’s my takeaways.
 
-#### Maps are good for thinking, bad for communicating
+Maps are good for thinking, bad for communicating
 
 Maps are most valuable for the people creating them rather than for those consuming them. The process of mapping helps teams organise and create shared understanding.
 
@@ -59,17 +59,17 @@ Maps can be designed to be consumed by others, but those are rarely as valuable 
 
 If you need to communicate what you have in a map, written summaries and slide decks are more effective.
 
-#### Maps are disposable
+Maps are disposable
 
 No one revisits their maps. There are no ‘living documents’ – good to remember when starting mapping.
 
-#### You don’t always need to go from left to right
+You don’t always need to go from left to right
 
 Traditional service maps can be rigid. Showing the back‑and‑forth of real user journeys can makes maps unreadable.
 
 [Vero Jermolina](https://www.linkedin.com/in/veronikajermolina/) described using London tube map visual language –  an elegant way to show decisions and stages using familiar visual language.
 
-#### Maps aren’t a way to validate what service designer do
+Maps aren’t a way to validate what service designer do
 
 This addresses my core anxiety. With less tangible output as a service designer, maps can seem like proof of work.
 
@@ -85,6 +85,6 @@ Sessions that bring together multiple things are great. There’s only a loose c
 
 I’ve seen Frankie run this kind of session internally before and was very happy to take part. I also enjoy Frankie’s disdain for slides.
 
-## First Personalised Prevention Services design history post
+### First Personalised Prevention Services design history post
 
 The [Personalised Prevention Platform team published an excellent summary of their discovery](https://design-history.prevention-services.nhs.uk/personalised-prevention-platform/2025/03/discovery-summary/).

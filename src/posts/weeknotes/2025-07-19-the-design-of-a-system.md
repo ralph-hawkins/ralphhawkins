@@ -5,7 +5,7 @@ tags: weeknotes
 layout: post
 ---
 
-The highlight this week was spending time with the Intelligent Navigation team and sharing what we’re each working on. We’ve spoken to them before, and identified that we’re closely aligned, but this week we got into the weeds a bit more. Intelligent Navigation is one of the NHS app teams. They’re helping route people through the complexity of primary care (GPs, pharmacies, dentists), urgent care (walk‑in centres, NHS 111) and emergency care (A&E).
+The highlight this week was spending time with the Intelligent Navigation team and sharing what we’re each working on. We’ve spoken to them before, and identified that we’re closely aligned, but this week we got into the weeds a bit more. Intelligent Navigation is one of the NHS app teams. They’re helping route people through the complexity of primary care (GPs, pharmacies, dentists), urgent care (walk‑in centres, NHS 111) and emergency care (A&E).
 
 Their principles are essentially the same as ours. How do you use what you know about a person to make navigating the complexity of the NHS more efficient and direct people to where they need to be?
 
