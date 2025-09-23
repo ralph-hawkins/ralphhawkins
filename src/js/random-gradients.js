@@ -26,7 +26,7 @@ function generateRandomGradient() {
   document.body.style.setProperty('--gradient-angle', `${angle}deg`);
   document.body.style.setProperty('--gradient-color', firstColor);
   document.body.style.setProperty('--gradient-start', '0%');
-  document.body.style.setProperty('--gradient-end', '100%');
+  document.body.style.setProperty('--gradient-end', '30%');
 }
 
 // Run
