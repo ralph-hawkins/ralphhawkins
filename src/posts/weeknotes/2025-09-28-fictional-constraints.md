@@ -20,3 +20,7 @@ I’m trying to balance making this workable and not too complicated. But it’s
 I think this approach is useful. It’s forcing me to make realistic compromises and think through how this would work.
 
 The real constraints aren’t in the last mile of interface design. They’re things like – if you refer a user to a lung cancer check, knowing which provider runs that service, being able to handle each individual provider’s processes and having the contracts in place to do any of that.
+
+---
+
+Our team working on a [health coach posted their first design history](https://design-history.prevention-services.nhs.uk/ai-health-coach/2025/09/) this week.
