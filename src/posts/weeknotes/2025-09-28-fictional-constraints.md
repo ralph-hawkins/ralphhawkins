@@ -9,7 +9,7 @@ I’m continuing to prototype how our service might look when we move from condi
 
 It’s a funny thing to design because I’m working with fictional constraints. I’m trying to make those constraints as real as possible, but that’s making my life harder.
 
-To prevent myself from making everything too perfect for one use case, I’ve started with 2 personas. The personas are (JSON files with) lists of characteristics, like their age, how much they smoke and how active they are. My goal is to randomly generate a persona and have the prototype journey work for them. This way I’m forcing myself to design journeys that are driven by data and can cope with a broad range of scenarios.
+To prevent myself from making everything too perfect for one use case, I’ve started with 2 personas. The personas are (JSON files with) lists of characteristics, like age, how much they smoke and how active they are. My goal is to randomly generate a persona and have the prototype journey work for them. This way I’m forcing myself to design journeys that are driven by data and can cope with a broad range of scenarios.
 
 This means I’m spending as much time thinking about the data as the interface. After about 3 iterations, the data has gotten fairly nuanced. There’s a list of risks (smoking, drinking, or lack of physical activity). Risks are prioritised (smoking is worse than drinking). Each persona’s risk has a level of severity (high, medium, and low). Risks have interventions (smoking has 2 interventions – lung cancer check and quitting smoking). Each intervention has services (quitting smoking has apps like the NHS quit smoking app and a fictional national digital smoking cessation service). This way I can make recommendations based on a persona’s information.
 
