@@ -27,7 +27,7 @@ The other thing we wanted from the day is for people to get to know each other b
 
 ### What we mean when we talk about personalisation
 
-I asked [Paola&nbsp;Roccuzzo](https://www.linkedin.com/in/paola/) to come and speak to us. Paola worked on a project that looked into how [GOV.UK](http://GOV.UK) would work if it was personalised.
+[Paola&nbsp;Roccuzzo](https://www.linkedin.com/in/paola/) very kindly agreed to come and speak to our teams. Paola worked on a project that looked into how [GOV.UK](http://GOV.UK) would work if it was personalised.
 
 Her work demonstrates the value of having people who care about language and user‑centred design involved in projects from the start (and not expecting content designers to be people who polish language at the end). She’s created meaningful definitions of what personalisation and its component parts are.
 
