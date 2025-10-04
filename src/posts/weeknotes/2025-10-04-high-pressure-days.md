@@ -39,7 +39,7 @@ We have a fortnightly catchup for UCD people in Personalised prevention services
 
 I’d asked [Charley&nbsp;Pothecary](https://www.linkedin.com/in/charleypothecary/) and [Emma&nbsp;Parnell](https://www.linkedin.com/in/emma-parnell-4b90a94a/) to run a session on co‑design. In the past I’ve had a bit of a bias against co‑design. I’ve held a scepticism that ‘co‑design’ is performative, users might be able to tell you what they want but it’s the designers job to give them what they need.
 
-Working in healthcare this year has made me shift that view. I’m convinced that designing with people is a necessary part of our process. People’s attitudes to health is emotive and complex and we need to work with people to find what works for them.
+Working in healthcare this year has made me shift that view. I’m convinced that designing with people is a necessary part of our process. People’s attitudes to health are emotive and complex and we need to work with people to find what works for them.
 
 Charley and Emma’s experience and expertise in designing for and with people on complex, highly emotional subjects is part of why we hired them.
 
@@ -51,9 +51,7 @@ The other thing was how we make sure co‑design has mutual benefit for all. If 
 
 ### Talking therapies pilot
 
-We launched a pilot this week. It’s small, but the overhead of getting anything out into the world and have real people using it is so high here that it‘s a victory.
-
-Having something in hands of real users has already taught us things. For example, we hand off to a service finder that has a brittle search algorithm and we need to be careful how we prepare users for that.
+We launched a pilot this week. It’s small, but the overhead of getting anything out into the world and have real people using it is so high here that it‘s a victory. More importantly having something in the hands of real users has already taught us things. For example, we hand off to a service finder that has a brittle search algorithm and we need to be careful how we prepare users for that.
 
 I’m pleased for the team. Hopefully we’ll be following it up with another pilot or at least something else in the hands of real people very soon.
 
