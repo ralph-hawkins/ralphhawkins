@@ -1,5 +1,5 @@
 ---
-title: High pressure days
+title: High  pressure days
 date: 2025-10-04
 tags: weeknotes
 layout: post
@@ -7,9 +7,9 @@ layout: post
 
 ### Planning
 
-We had an in‑person 3‑month planning day with our teams. We have 5 teams loosely aligned around helping people understand their health and find support to stay well.
+We had an in‑person 3‑month planning day with our teams. We have 5&nbsp;teams loosely aligned around helping people understand their health and find support to stay well.
 
-Our focus for the day was thinking about how we help our teams collaborate. We ran a session where the teams mapped the next 3 months work against a high‑level journey map. This gives visibility of where there’s overlap and need to work together.
+Our focus for the day was thinking about how we help our teams collaborate. We ran a session where the teams mapped the next 3&nbsp;months work against a high‑level journey map. This gives visibility of where there’s overlap and need to work together.
 
 We also asked the teams to talk about common things they’re all dealing with:
 
@@ -27,7 +27,7 @@ The other thing we wanted from the day is for people to get to know each other b
 
 ### What we mean when we talk about personalisation
 
-I asked [Paola Roccuzzo](https://www.linkedin.com/in/paola/) to come and speak to us. Paola worked on a project that looked into how [GOV.UK](http://GOV.UK) would work if it was personalised.
+I asked [Paola&nbsp;Roccuzzo](https://www.linkedin.com/in/paola/) to come and speak to us. Paola worked on a project that looked into how [GOV.UK](http://GOV.UK) would work if it was personalised.
 
 Her work demonstrates the value of having people who care about language and user centred design involved in projects from the start (and not expecting content designers to be people who polish language at the end). She’s created meaningful definitions of what personalisation and its component parts are.
 
@@ -37,7 +37,7 @@ She gave a great talk, I could feel people’s understanding shifting as she spo
 
 We have a fortnightly catchup for UCD people in Personalised prevention services.
 
-I’d asked [Charley Pothecary](https://www.linkedin.com/in/charleypothecary/) and [Emma Parnell](https://www.linkedin.com/in/emma-parnell-4b90a94a/) to run a session on co-design. In the past I’ve tended to have a bit of a bias against co-design. I’ve held a scepticism that ‘co-design’ is performative, users might be able to tell you what they want but it’s the designers job to give them what they need.
+I’d asked [Charley&nbsp;Pothecary](https://www.linkedin.com/in/charleypothecary/) and [Emma&nbsp;Parnell](https://www.linkedin.com/in/emma-parnell-4b90a94a/) to run a session on co-design. In the past I’ve tended to have a bit of a bias against co-design. I’ve held a scepticism that ‘co-design’ is performative, users might be able to tell you what they want but it’s the designers job to give them what they need.
 
 Working in healthcare this year has made me shift that view. I’m convinced that designing with people is a necessary part of our process. People’s attitudes to health is emotive and complex and we need to work with people to find what works for them.
 
@@ -59,13 +59,13 @@ I’m pleased for the team. Hopefully we’ll be following it up with another pi
 
 ### Health kiosks
 
-We visited a community centre in Tower Hamlets where they’re piloting health kiosks – machines that measure height, weight, and blood pressure in about 4 minutes.
+We visited a community centre in Tower&nbsp;Hamlets where they’re piloting health kiosks – machines that measure height, weight, and blood pressure in about 4 minutes.
 
 Turns out I’m an inch shorter than I thought and have mildly raised blood pressure.
 
 The quirks of a service like this are interesting. Lots of people return repeatedly. Having immediate feedback about your health is potentially quite addictive. Groups who feel stigma in traditional healthcare prefer the machine. White men who learn they’re shorter and heavier than expected assume the machine is wrong and give it a low NPS score.
 
-The Tower Hamlets pilot is similar to one in Southwark. Both validate some of our assumptions. People are willing to check their health but translating that into outcomes is hard. We heard about a pilot in Watford that has focused on connecting people to services, I’m keen to learn more about that.
+The Tower&nbsp;Hamlets pilot is similar to one in Southwark. Both validate some of our assumptions. People are willing to check their health but translating that into outcomes is hard. We heard about a pilot in Watford that has focused on connecting people to services, I’m keen to learn more about that.
 
 Kiosks will need to be part of what we offer. Multiple access routes matter for reaching people who need support most.
 
@@ -75,7 +75,7 @@ This week I completed a year at NHSE. As a special treat I was logged out of eve
 
 ---
 
-[Mat Johnson](https://www.linkedin.com/in/demotive/) and [Roz Strachan](https://www.linkedin.com/in/roz-s-3b6b411/) published 2 great design history posts this week. Both explore the hard details we need to get right to make our services work:
+[Mat&nbsp;Johnson](https://www.linkedin.com/in/demotive/) and [Roz&nbsp;Strachan](https://www.linkedin.com/in/roz-s-3b6b411/) published 2&nbsp;great design history posts this week. Both explore the hard details we need to get right to make our services work:
 
 - [Showing people options they can act on](https://design-history.prevention-services.nhs.uk/personalised-prevention-platform/2025/10/presenting-opportunities-to-take-action/)
 - [Gauging intent](https://design-history.prevention-services.nhs.uk/personalised-prevention-platform/2025/10/gauging-intent/)
