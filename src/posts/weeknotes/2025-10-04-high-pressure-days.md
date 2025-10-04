@@ -37,7 +37,7 @@ She gave a great talk, I could feel people’s understanding shifting as she spo
 
 We have a fortnightly catchup for UCD people in Personalised prevention services.
 
-I’d asked [Charley&nbsp;Pothecary](https://www.linkedin.com/in/charleypothecary/) and [Emma&nbsp;Parnell](https://www.linkedin.com/in/emma-parnell-4b90a94a/) to run a session on co-design. In the past I’ve tended to have a bit of a bias against co‑design. I’ve held a scepticism that ‘co‑design’ is performative, users might be able to tell you what they want but it’s the designers job to give them what they need.
+I’d asked [Charley&nbsp;Pothecary](https://www.linkedin.com/in/charleypothecary/) and [Emma&nbsp;Parnell](https://www.linkedin.com/in/emma-parnell-4b90a94a/) to run a session on co-design. In the past I’ve had a bit of a bias against co‑design. I’ve held a scepticism that ‘co‑design’ is performative, users might be able to tell you what they want but it’s the designers job to give them what they need.
 
 Working in healthcare this year has made me shift that view. I’m convinced that designing with people is a necessary part of our process. People’s attitudes to health is emotive and complex and we need to work with people to find what works for them.
 
