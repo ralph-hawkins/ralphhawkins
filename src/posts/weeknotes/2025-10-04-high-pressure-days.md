@@ -33,21 +33,21 @@ Her work demonstrates the value of having people who care about language and use
 
 She gave a great talk, I could feel people’s understanding shifting as she spoke. I’m keen for these definitions to become part of our everyday vocabulary.
 
-### Co-design
+### Co‑design
 
 We have a fortnightly catchup for UCD people in Personalised prevention services.
 
-I’d asked [Charley&nbsp;Pothecary](https://www.linkedin.com/in/charleypothecary/) and [Emma&nbsp;Parnell](https://www.linkedin.com/in/emma-parnell-4b90a94a/) to run a session on co-design. In the past I’ve tended to have a bit of a bias against co-design. I’ve held a scepticism that ‘co-design’ is performative, users might be able to tell you what they want but it’s the designers job to give them what they need.
+I’d asked [Charley&nbsp;Pothecary](https://www.linkedin.com/in/charleypothecary/) and [Emma&nbsp;Parnell](https://www.linkedin.com/in/emma-parnell-4b90a94a/) to run a session on co-design. In the past I’ve tended to have a bit of a bias against co‑design. I’ve held a scepticism that ‘co‑design’ is performative, users might be able to tell you what they want but it’s the designers job to give them what they need.
 
 Working in healthcare this year has made me shift that view. I’m convinced that designing with people is a necessary part of our process. People’s attitudes to health is emotive and complex and we need to work with people to find what works for them.
 
 Charley and Emma’s experience and expertise in designing for and with people on complex, highly emotional subjects is part of why we hired them.
 
-The session they ran was great, in a similar way to Paola’s session, it started with clarity about what good co-design is and isn’t.
+The session they ran was great, in a similar way to Paola’s session, it started with clarity about what good co‑design is and isn’t.
 
 Some things that stood out was about how co‑design is part of partnering with other organisations well. Bringing them into the process so we work together in a way that works for all parties. Charley and Emma referred to it as co‑designing the co‑design.
 
-The other thing was how we make sure co‑design has mutual benefit for all. If the service is unlikely to meet the needs of the people involved in the co-design then it’s probably better not to put people through this process.
+The other thing was how we make sure co‑design has mutual benefit for all. If the service is unlikely to meet the needs of the people involved in the co‑design then it’s probably better not to put people through this process.
 
 ### Talking therapies pilot
 
