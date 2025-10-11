@@ -13,7 +13,7 @@ To reduce the amount of hard‑coding necessary I spent time refactoring it. Eac
 
 - apps (for example, Active 10 or Couch to 5k)
 - appointments (for example, booking lung cancer screening or a cholesterol test at a pharmacy, or running club)
-- online services (for example, finding a diabetes coach)
+- online services (for example, finding a diabetes coach, or speaking to an online therapist)
 
 Each service type follows the same pattern, only the content changes, which is set in a config file.
 
