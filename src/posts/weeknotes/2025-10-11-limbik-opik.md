@@ -17,7 +17,7 @@ To reduce the amount of hard‑coding necessary I spent time refactoring it. Eac
 
 Each service type follows the same pattern, only the content changes, which is set in a config file.
 
-I’ve also built a more sophisticated approach for recommending services. Initially, I hard‑coded priority. If the persona had a risk that matched the service, then the user would be recommended that service. This didn’t factor in that some services are better at addressing multiple risk factors. For example, stopping smoking impacts:
+I’ve also built a more sophisticated approach for recommending services. Initially, I hard‑coded priority. If the persona had a risk that matched the service, then the user would be recommended that service. This didn’t factor in that some services are better at addressing multiple risks. For example, stopping smoking impacts:
 
 - lung cancer
 - cardiovascular disease
