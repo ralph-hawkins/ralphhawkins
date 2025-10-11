@@ -7,7 +7,7 @@ layout: post
 
 ### Personalisation eats data
 
-I’ve been continuing to build a prototype to test how personalised prevention could work – assessing someone’s health risks and connecting them to the right services.
+I’ve been continuing to build a prototype to demonstrate how personalised prevention could work – assessing someone’s health risks and connecting them to the right services.
 
 To reduce the amount of hard‑coding necessary I spent time refactoring it. Each prevention service now fits into one of 3 types:
 
