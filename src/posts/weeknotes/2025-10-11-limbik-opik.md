@@ -43,7 +43,7 @@ However recommending that someone who is eligible for lung cancer screening down
 - mental health: low
 
 This means the prioritisation is more appropriate. All of this is a long way of saying – the more accurately you want to recommend services, the more detailed data you need about those services. Personalisation will be limited by and a product of curation and maintenance.
-This isn’t really a technical problem – it’s an incentive problem. Who benefits enough from accurate recommendations to invest in ongoing curation? Local services are closer to the detail, but would need to see clear benefit from maintaining this level of data. I spend a lot of time thinking about whether it’s possible to create a system that will be correctly incentivised to do this. This genuinely might be a use case for AI.
+This is a policy and incentive problem. Who benefits enough from accurate recommendations to invest in ongoing curation? Local services are closer to the detail, but would need to see clear benefit from maintaining this level of data. I spend a lot of time thinking about whether it’s possible to create a system that will be correctly incentivised to do this. This genuinely might be a use case for AI.
 
 For the demo at least, separating clinical referral from behavioural recommendations will help. This will allow us to present both as next steps but create a distinction that allows the stricter eligibility criteria of screening and vaccination to take precedence over behaviour change recommendations. I need to add eligibility to the model.
 
