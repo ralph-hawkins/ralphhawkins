@@ -55,7 +55,7 @@ I have this nagging issue in my mind when I’m working on the demo – it’s f
 Health is a messy area and we’ve tried to limit the scope of our work to make what we’re doing manageable. But scope and silos are essentially the same thing to a user.
 It’s hard not to be led by conditions and organisational scope even when our stated goal is to cut across them.
 
-## AI health coach
+### AI health coach
 
 We’re working on an AI health coach to help people build healthier habits. It’s a tricky project because of how novel the work is and how clinical governance is built on predictability and accountability.
 
