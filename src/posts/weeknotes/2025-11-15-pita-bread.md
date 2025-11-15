@@ -17,7 +17,7 @@ But it’s accepted wisdom in digital that you shouldn’t build platforms too e
 
 This has been moderately successful. One team has integrated with existing NHS services and moved as fast as anything does here. But this has been harder than we anticipated, primarily due to high technical and clinical governance overhead. As a result, we haven’t been able to test our assumptions as much as we’d hoped.
 
-Now there’s a new coordination team and we’re reorganising again. The vision is right. Reorganising so we can work with the NHS app as it focuses on better coordinated journeys is sensible. But we’re in a phase of uncertainty. The exact scope of the new team and how it impacts  Personalised Prevention Services is unclear.
+Now there’s a new coordination team and we’re reorganising again. Reorganising so we can work with the NHS app as it focuses on better coordinated journeys is sensible. But we’re in a phase of uncertainty. The exact scope of the new team and how it impacts  Personalised Prevention Services is unclear.
 
 ### The unit of delivery is the team
 
