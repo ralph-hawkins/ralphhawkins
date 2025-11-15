@@ -21,7 +21,7 @@ Now there’s a new coordination team and we’re reorganising again. Reorganisi
 
 ### The unit of delivery is the team
 
-It’s a gap between strategic good and what it means for people doing the work.
+There’s gap between strategic good and what it means for people doing the work.
 
 Strategic reorganisation makes sense – reducing duplication and coordinating better. But for teams doing the work, it means relationships they’ve built might be disrupted, understanding they’ve developed might not transfer, and the work they’ve started might need to change direction.
 
