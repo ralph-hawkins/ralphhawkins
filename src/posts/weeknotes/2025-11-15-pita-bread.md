@@ -5,7 +5,7 @@ tags: weeknotes
 layout: post
 ---
 
-We had a 2‑day Personalised Prevention Services leadership meeting this week. Some of it was about reflecting on the past year,  but most of it was about looking forward and reorganising our work. Our leader – [Emily](https://www.linkedin.com/in/emily-houghton-92367b32/) – is moving to lead cross‑portfolio coordination, in a new team working on how screening, vaccination, behaviour change and home testing work together with a focus on creating a coordinated experience in the NHS app.
+We had a 2‑day Personalised Prevention Services leadership meeting this week. Some of it was about reflecting on the past year,  but most of it was about looking forward and reorganising our work. Our leader – [Emily](https://www.linkedin.com/in/emily-houghton-92367b32/) – is moving to lead cross‑portfolio coordination in a new team working on how screening, vaccination, behaviour change and home testing work together with a focus on creating a coordinated experience in the NHS app.
 
 ### Making things happen
 
