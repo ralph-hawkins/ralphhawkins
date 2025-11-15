@@ -23,7 +23,7 @@ Now there’s a new coordination team and we’re reorganising again. Reorganisi
 
 There’s gap between strategic good and what it means for people doing the work.
 
-Strategic reorganisation makes sense – reducing duplication and coordinating better. But for teams doing the work, it means relationships they’ve built might be disrupted, understanding they’ve developed might not transfer, and the work they’ve started might need to change direction.
+Strategic reorganisation makes sense – reducing duplication and coordinating better. But for teams doing the work, it means relationships they’ve built might be disrupted, understanding they’ve developed might not transfer, and work they’ve started might need to change direction.
 
 I sit between those two perspectives. I helped create the strategy. I support the delivery teams. Both views feel true and they don’t quite fit together.
 
