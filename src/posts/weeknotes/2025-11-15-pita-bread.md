@@ -1,6 +1,6 @@
 ---
 title: Prevention In The App bread
-date: 2025-10-11
+date: 2025-11-15
 tags: weeknotes
 layout: post
 ---
