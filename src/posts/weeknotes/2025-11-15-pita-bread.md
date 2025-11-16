@@ -11,7 +11,7 @@ We had a 2‑day Personalised Prevention Services leadership meeting this week. 
 
 The vision for Personalised Prevention Services – help people understand risks and connect them to the right support – has been accepted across Digital Prevention Services (the portfolio our team sits within).
 
-When we first wrote it, we thought being agnostic about use‑cases was a strength. Build components for assessing risk and connecting to services, then apply them everywhere. For example, a ‘check your blood pressure’ component once, then reuse it in heart disease screening, diabetes prevention, and stroke risk assessments. Infrastructure that could support multiple use‑cases and conditions.
+When we first wrote it, we thought being agnostic about use‑cases was a strength. Build components for assessing risk and connecting to services, then apply them everywhere. For example, a ‘check your blood pressure’ component could be used in heart disease screening, diabetes prevention, and stroke risk assessments. Infrastructure that could support multiple use‑cases and conditions.
 
 But it’s accepted wisdom in digital that you shouldn’t build platforms too early. You’re building complexity before you’ve proven it’s necessary. So we switched. Teams would own end‑to‑end journeys for single use cases instead.
 
