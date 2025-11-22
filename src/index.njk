@@ -1,7 +1,8 @@
 ---
 layout: base
 ---
-{% set latestPost = collections.weeknotes | reverse | first %}
+{# Get latest public weeknote (excludes preview posts) #}
+{% set latestPost = collections.publicWeeknotes | reverse | first %}
 {% if latestPost %}
 <script defer>
   window.location.href = "{{ latestPost.url }}?from=home";

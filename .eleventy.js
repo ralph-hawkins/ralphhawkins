@@ -6,9 +6,20 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter(filterName, dateFilters[filterName]);
   });
 
+  // Add collection for public weeknotes only
+  // Excludes any weeknotes with preview: true in front matter
+  // Use this collection for navigation, footer lists, and homepage redirects
+  eleventyConfig.addCollection("publicWeeknotes", function(collectionApi) {
+    return collectionApi.getFilteredByTag("weeknotes")
+      .filter(post => !post.data.preview);
+  });
+
   // Add collection for weeknotes grouped by year and month
+  // Only includes public weeknotes (preview posts are filtered out)
   eleventyConfig.addCollection("weeknotesByDate", function(collectionApi) {
-    const posts = collectionApi.getFilteredByTag("weeknotes").reverse();
+    const posts = collectionApi.getFilteredByTag("weeknotes")
+      .filter(post => !post.data.preview) // Exclude preview posts
+      .reverse();
     const grouped = {};
 
     posts.forEach(post => {
