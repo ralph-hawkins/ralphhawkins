@@ -3,7 +3,6 @@ title: The health record keeps the score
 date: 2025-11-22
 tags: weeknotes
 layout: post
-preview: true
 ---
 
 This week I told the people I work with that I’m leaving my current team (Personalised Prevention Services) and joining the new team focusing on how prevention services will be coordinated in the NHS app.
