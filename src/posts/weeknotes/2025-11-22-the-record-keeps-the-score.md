@@ -17,7 +17,7 @@ Leaving Personalised Prevention Services has been playing heavily on my mind. Th
 
 I’ve also found an incredible collaborator who I’m sad I’ll no longer be working closely with. Throughout my career I’ve found that I do my best work with an ally. Someone to bounce ideas off and play with. Having a close working relationship with people is the best thing about day‑to‑day work. In chronological order – [Frankie](https://www.linkedin.com/in/frankieroberto/), [Roz](https://www.linkedin.com/in/roz-s-3b6b411/), [Tingting](https://www.linkedin.com/in/dr-tingting-zhao-99179142/), [Sarah](https://www.linkedin.com/in/sarahcunliffe/), [Ed](https://www.linkedin.com/in/ed-horsford/), [Rory](https://www.linkedin.com/in/roryjhs/), [Ed again...](https://youtu.be/DOLUWZjWxc4?si=0fp2Jx_V7sjK8BdE), [Hebe](https://www.linkedin.com/in/hebe-dinkele-05676216a/), [Rowena](https://www.linkedin.com/in/rowenawebster/) and this year [Irina](https://www.linkedin.com/in/irina-pencheva-2b431825/) have all made working fun – collaborators who make me far better than I am by myself.
 
-Irina has been an exceptional collaborator. The person I’ve gained the most from working with – a partnership where we turn each other’s half‑thoughts into tangible outcomes because we get where the other one is coming from and build and spark off each other.
+Irina has been an exceptional collaborator. The person I’ve gained the most from working with – a partnership where we trust each other and turn each other’s half‑thoughts into tangible outcomes because we get where the other one is coming from and build and spark off each other.
 
 I’m sad it’s coming to an end.
 
