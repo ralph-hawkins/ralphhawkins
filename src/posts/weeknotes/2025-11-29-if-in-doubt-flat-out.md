@@ -15,7 +15,7 @@ This is an ongoing struggle, the organisations that make our teams aren’t cons
 
 ### Problems
 
-I spent an hour with some of the people who will be involved in the new prevention in the app team. It was fun to nerd out on things, talking about superstructures and if we could run a service using just [Notify](https://www.notifications.service.gov.uk/). But ultimately I don’t think we made a lot of progress. Not a criticism. Early work is all about figuring these things out.
+I spent an hour with some of the people who will be involved in the new ‘Prevention in The App‘ (or whatever we’ll be called) team. It was fun to nerd out on things, talking about superstructures and if we could run a service using just [Notify](https://www.notifications.service.gov.uk/). But ultimately I don’t think we made a lot of progress. Not a criticism. Early work is all about figuring these things out.
 
 I don’t think I should have started with the question of what should we do first. It’s secondary to the problem we’re trying to solve. Not an hour wasted, but another reminder of why trying to define solutions before defining the problem is seductive but never the best use of time.
 
