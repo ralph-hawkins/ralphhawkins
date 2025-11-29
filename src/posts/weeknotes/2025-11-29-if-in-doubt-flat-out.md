@@ -9,9 +9,9 @@ layout: post
 
 This week someone described a designer in one of our teams as “challenging”. My immediate response was – good, they’re doing their job. If a service designer isn’t challenging a team, either everything is perfect or the designer isn’t doing their job.
 
-On slower reflection I think this comes down to the cultural differences in the organisations that contribute to the services we work on. The designer in question was challenging the team’s priorities based on a wealth of experience and thorough research, then giving pragmatic, well-reasoned ways that work should be prioritised. In a design-led organisation this kind of challenge is welcome. The perception that being challenging is a bad thing has nothing to do with how they acted and everything to do with the expectation of the person that found them challenging.
+On slower reflection I think this comes down to the cultural differences in the organisations that contribute to the services we work on. The designer in question was challenging the team’s priorities based on a wealth of experience and thorough research, then giving pragmatic, well‑reasoned ways that work should be prioritised. In a design‑led organisation this kind of challenge is welcome. The perception that being challenging is a bad thing has nothing to do with how they acted and everything to do with the expectation of the person that found them challenging.
 
-This is an ongoing struggle, the organisations that make our teams aren’t consistently design-led. The structures and cultures of the organisations we work with don't reward people for the things we want them to. It’s constant friction. Another example of what you lose through outsourcing. Government procurement frameworks don’t value culture.
+This is an ongoing struggle, the organisations that make our teams aren’t consistently design‑led. The structures and cultures of the organisations we work with don't reward people for the things we want them to. It’s constant friction. Another example of what you lose through outsourcing. Government procurement frameworks don’t value culture.
 
 ### Problems
 
