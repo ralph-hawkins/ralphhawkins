@@ -57,7 +57,7 @@ I then started building it in Illustrator. I save and create a new file anytime 
 
 {{ image("/images/weeknotes/2025-12-13-well-rendered/020.png", "Vector iteration: yellow shield with rainbow stripe behind NHS logo, blue heart, syringes, squiggle, hands, Digital prevention services blue ribbon") }}
 
-{{ image("/images/weeknotes/2025-12-13-well-rendered/021.png", "Final sticker design: yellow shield with rainbow, NHS logo, syringe, square root symbol, magnifying glass icons, blue heart with hands, blue ribbons reading Digital prevention services, light blue background") }}
+{{ image("/images/weeknotes/2025-12-13-well-rendered/021.png", "Final sticker design: yellow shield with rainbow, NHS logo, syringe, heart-rate symbol, magnifying glass icons, blue heart with hands, blue ribbons reading Digital prevention services, light blue background") }}
 
 {{ image("/images/weeknotes/2025-12-13-well-rendered/022.jpeg", "Photo of the printed sticker on a MacBook laptop") }}
 
