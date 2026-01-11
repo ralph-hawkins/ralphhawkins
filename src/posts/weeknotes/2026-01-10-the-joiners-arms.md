@@ -1,6 +1,6 @@
 ---
 title: The joiner’s arms
-date: 2025-12-13
+date: 2025-12-10
 tags: weeknotes
 layout: post
 preview: true
