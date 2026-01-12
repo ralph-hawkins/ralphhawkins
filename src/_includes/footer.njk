@@ -13,14 +13,14 @@
       <h2>All notes</h2>
 
       <div class="post-list-hierarchical">
-        {% for year, months in collections.weeknotesByDate %}
+        {% for yearGroup in collections.weeknotesByDate %}
           <div class="year-group">
-            <h3>{{ year }}</h3>
-            {% for month, posts in months %}
+            <h3>{{ yearGroup.year }}</h3>
+            {% for monthGroup in yearGroup.months %}
               <div class="month-group">
-                <h4>{{ month }}</h4>
+                <h4>{{ monthGroup.month }}</h4>
                 <ul class="post-list">
-                  {% for post in posts %}
+                  {% for post in monthGroup.posts %}
                     <li class="{% if post.url == page.url %}current{% endif %}">
                       <span class="date">{{ post.date.getDate().toString().padStart(2, '0') }}</span> –
                       {% if post.url == page.url %}

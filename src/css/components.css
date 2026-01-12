@@ -26,15 +26,14 @@ footer .year-group h4 {
   font-size: 1.4rem;
 }
 
+footer div.year-group:not(:last-of-type) {
+  border-bottom: 0.1rem solid var(--color-text);
+}
+
 footer div.month-group h4 {
   font-size: var(--font-size-base);
   margin-bottom: 0;
   border-top: 0.1rem solid var(--color-text);
-}
-
-footer div.month-group:last-of-type {
-  border-bottom: 0.1rem solid var(--color-text);
-  margin-bottom: var(--spacing-xl);
 }
 
 footer .post-list li.current::before {

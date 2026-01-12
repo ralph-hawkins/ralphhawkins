@@ -32,26 +32,27 @@ module.exports = function(eleventyConfig) {
       grouped[year][month].push(post);
     });
 
-    // Convert to sorted structure for consistent ordering
-    const sortedGrouped = {};
+    // Convert to array structure to preserve descending order
+    // (JS objects iterate integer-like keys in ascending order)
     const years = Object.keys(grouped).sort((a, b) => b - a); // Sort years descending
 
-    years.forEach(year => {
-      sortedGrouped[year] = {};
-      const months = Object.keys(grouped[year]);
+    return years.map(year => {
+      const monthNames = Object.keys(grouped[year]);
       // Sort months by date rather than alphabetically
-      months.sort((a, b) => {
+      monthNames.sort((a, b) => {
         const dateA = new Date(`${a} 1, ${year}`);
         const dateB = new Date(`${b} 1, ${year}`);
         return dateB - dateA; // Descending order
       });
 
-      months.forEach(month => {
-        sortedGrouped[year][month] = grouped[year][month];
-      });
+      return {
+        year,
+        months: monthNames.map(month => ({
+          month,
+          posts: grouped[year][month]
+        }))
+      };
     });
-
-    return sortedGrouped;
   });
 
   // Add collection for gallery items (newest first)
