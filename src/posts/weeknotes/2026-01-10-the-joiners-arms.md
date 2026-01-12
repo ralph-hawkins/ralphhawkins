@@ -37,7 +37,7 @@ I had a good conversation with head of design for the app, [Mike Gallagher](htt
 My immediate future has two streams of work.
 
 1. Understanding what we can connect quickly and usefully within Digital Prevention Services.
-2. Defining what a coherent set of health management features should look like for NHS app users.
+2. Defining what a coherent health management experience will look like for NHS app users.
 
 Speaking to teams across DPSP will inform how we do both, so my next month of work will be about understanding what people are working on and where there are opportunities.
 
