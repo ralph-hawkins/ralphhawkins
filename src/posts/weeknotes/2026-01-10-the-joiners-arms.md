@@ -32,7 +32,7 @@ The scope is not totally clear to me yet. I think it lies somewhere between ‘p
 
 The scope will be in part set by how the app team want to federate responsibility. I think the app team are seeking to support more teams to work autonomously. From a distance, it looks like a question of topology or information architecture.
 
-I had a good conversation with head of design for the app, [Mike Gallagher](https://www.linkedin.com/in/mike-gallagher-50aa6966/), about this. Part of the conversation was also about one of the most fundamental problems for the app – how to connect stuff to other stuff. This is the same problem I’ve been grappling with for the last year. Connecting stuff to stuff addresses a core problem of the NHS that manifests everywhere. How do you reduce the overhead of understanding your health and navigating a system as complex as the NHS?
+I had a good conversation with design lead for the app, [Mike Gallagher](https://www.linkedin.com/in/mike-gallagher-50aa6966/), about this. Part of the conversation was also about one of the most fundamental problems for the app – how to connect stuff to other stuff. This is the same problem I’ve been grappling with for the last year. Connecting stuff to stuff addresses a core problem of the NHS that manifests everywhere. How do you reduce the overhead of understanding your health and navigating a system as complex as the NHS?
 
 My immediate future has two streams of work.
 
