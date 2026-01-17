@@ -7,7 +7,7 @@ layout: post
 
 Prevention in the app is no more – we’re now Managing my health. This is positive for us because it gives a clear scope and we no longer share an acronym with ’pain in the arse’.
 
-This week I finished the demo I’ve been building in Swift to show what it looks like when we can connect between health checks, screening and vaccines. It’s similar to what I’d built before, but using the components the app team have been testing as part of their exploration of whether the NHS app should be a native app.
+This week I finished the demo I’ve been building in Swift to show what it looks like when we can connect between health checks, screening and vaccines. It’s similar to what I’d built before, but using the components the app team have been testing as part of their exploration of [whether the NHS app should be a native app](https://mikegallagher.org/posts/where-are-we-now/).
 
 It took me longer than I anticipated to finish because:
 
