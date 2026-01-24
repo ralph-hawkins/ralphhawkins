@@ -32,7 +32,7 @@ footer div.year-group:not(:last-of-type) {
 
 footer div.month-group h4 {
   font-size: var(--font-size-base);
-  margin-bottom: 0;
+  margin-bottom: 8px;
   border-top: 0.1rem solid var(--color-text);
 }
 
