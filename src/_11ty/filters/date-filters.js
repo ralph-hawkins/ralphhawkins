@@ -20,5 +20,14 @@ module.exports = {
    */
   dateFormat: function(date) {
     return DateTime.fromJSDate(date).toFormat("d LLLL yyyy");
+  },
+
+  /**
+   * Format a date as ISO 8601 for structured data
+   * @param {Date} date - The date to format
+   * @return {string} The ISO formatted date string
+   */
+  isoDate: function(date) {
+    return DateTime.fromJSDate(date).toISO();
   }
 };

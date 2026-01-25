@@ -3,6 +3,7 @@ title: Dilated peoples
 date: 2026-01-17
 tags: weeknotes
 layout: post
+description: Managing my health
 ---
 
 ‘Prevention in the app’ is no more – we’re now ‘Managing my health’. This is positive for us because it gives a clear scope and we no longer share an acronym with ’pain in the arse’.

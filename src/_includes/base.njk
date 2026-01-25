@@ -9,10 +9,59 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
     <link rel="shortcut icon" href="/images/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if description %}
+    <meta name="description" content="{{ description }}">
+    {% elif content %}
+    <meta name="description" content="{{ content | striptags | truncate(155) }}">
+    {% else %}
+    <meta name="description" content="Ralph Hawkins is a service designer working in the public sector with NHS England, helping people stay healthy.">
+    {% endif %}
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     <link rel="stylesheet" href="/css/main.css">
     <title>{% if title %}{{ title }} – {% endif %}Ralph Hawkins</title>
     <script src="/js/random-gradients.js"></script>
     <script src="/js/auto-scroll.js"></script>
+    {% if tags and 'weeknotes' in tags %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ title }}",
+      "datePublished": "{{ date | isoDate }}",
+      "author": {
+        "@type": "Person",
+        "name": "Ralph Hawkins",
+        "url": "{{ site.url }}"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Ralph Hawkins"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ site.url }}{{ page.url }}"
+      }
+    }
+    </script>
+    {% else %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Ralph Hawkins",
+      "url": "{{ site.url }}",
+      "author": {
+        "@type": "Person",
+        "name": "Ralph Hawkins",
+        "jobTitle": "Service Designer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "NHS England"
+        }
+      }
+    }
+    </script>
+    {% endif %}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>

@@ -3,6 +3,7 @@ title: The joiner’s arms
 date: 2026-01-10
 tags: weeknotes
 layout: post
+description: New year, new team, new scope.
 ---
 
 I started working in a different team this week. A team that sits across Digital Prevention Services Portfolio (DPSP). The team will be doing some new work – figuring out how we coordinate prevention services in the NHS app.

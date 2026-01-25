@@ -3,6 +3,7 @@ title: Another korma
 date: 2026-01-23
 tags: weeknotes
 layout: post
+description: How much prevention can we put in the NHS app?
 ---
 
 This week, Manage my Health went from being me, to a proper team of 3. This has been great, progress feels more tangible and I get stuff out of my head. When new people join the team or we talk about the work, I often mention that I think we as an organisation are over‑indexed on the NHS app. The NHS is a massive (set of) organisation(s) with GP surgeries, hospitals, websites, etc and that focussing heavily on an app feels like a strategy that underutilises the strengths of the NHS. I think these days the desire to make apps, born out of FOMO, has mostly translated into the desire to do AI. I guess apps are moving into the trough of disillusionment phase.
