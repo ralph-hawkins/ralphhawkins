@@ -14,9 +14,9 @@ The first priority for Manage my Health is to find something we can ship relativ
 
 We spoke to product leads across Digital Prevention Services this week about their work and working with the NHS app.
 
-The app sits at the apex of all the things that are difficult about working in the NHS. It’s on top of a patchwork of technology, data, organisations. Finding the right people is messy. Creating joined‑up experiences is difficult because the basic building blocks you’d hope exist – like standardised ways of classifying appointments – don’t. The plumbing is fucked.
+The app sits at the apex of all the things that are difficult about working in the NHS. It’s on top of a patchwork of technology, data, organisations. Finding eligible people is messy. Creating joined‑up experiences is difficult because the basic building blocks you’d expect to exist – like standardised ways of classifying appointments – don’t. The plumbing is fucked.
 
-Because everything is so hard, even things you’d think should obviously exist – like a list of screenings you’ve attended – need to prove their value. [Dan Bower](https://www.linkedin.com/in/danielbower/) questioned whether the app adds value for some journeys. If we send someone a link and it works, why add the friction of logging in first? It’s a good challenge.
+Because everything is so hard, even things you’d think should exist – like a list of screenings you’ve attended – need to prove their value. [Dan Bower](https://www.linkedin.com/in/danielbower/) questioned whether the app adds value for some journeys. If we send someone a link and it works, why add the friction of logging in first?
 
 But the app has an outsized influence, in one good way at least. It’s a point of coalescence for the NHS. Something that the rest of the organisation can see as useful – a way into their services. Our job is to find a way of doing that which works for users.
 
