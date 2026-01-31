@@ -46,4 +46,4 @@ Use what digital communication is good at. Example: prompt someone to complete a
 ### Health goals
 Support sustained behaviour change. Example: set one goal, receive a monthly check‑in asking how it’s going.
 
-Looking at that list, I worry there’s nothing in the sweet spot – shippable within weeks or a few months *and* adds real value. We spent time last week defining criteria for choosing what to work on. I think we can simplify – find something that looks remotely achievable.
+Looking at that list, I worry there’s nothing in the sweet spot – shippable within weeks or a few months and adds real value. We spent time last week defining criteria for choosing what to work on. I think we can simplify this to – find something that looks remotely achievable.
