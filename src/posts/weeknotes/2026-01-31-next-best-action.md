@@ -18,7 +18,7 @@ The app sits at the apex of all the things that are difficult about working in t
 
 Because everything is so hard, even things you’d think should exist – like a list of screenings you’ve attended – need to prove their value. [Dan Bower](https://www.linkedin.com/in/danielbower/) questioned whether the app adds value for some journeys. If we send someone a link and it works, why add the friction of logging in first?
 
-But the app has an outsized influence, in one good way at least. It’s a point of coalescence for the NHS. Something that the rest of the organisation can see as useful – a way into their services. Our job is to find a way of doing that which works for users.
+The app has an outsized influence, in one good way at least. It’s a point of coalescence for the NHS. Something that the rest of the organisation can see as useful – a way into their services. Our job is to find a way of doing that which works for users.
 
 In the spirit of working openly, here are some high‑level ideas we’ve been discussing. Very early days, not yet agreed, not exhaustive. Not filtered by how achievable they might be.
 
