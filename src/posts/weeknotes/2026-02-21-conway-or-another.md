@@ -54,6 +54,6 @@ We have some other ideas about smaller experiments we can develop – ways to te
 
 ### Some excellent design history posts published this week
 
-[Cohort to contact in prevention – are we all talking the same language?
+- [Cohort to contact in prevention – are we all talking the same language?
 ](https://design-history.prevention-services.nhs.uk/cohorting-as-a-service/2026/02/cohort-to-contact/)
-[What we learned about how people recall their smoking history](https://design-history.prevention-services.nhs.uk/lung-health-check/2026/02/iterating-smoking-history/)
+- [What we learned about how people recall their smoking history](https://design-history.prevention-services.nhs.uk/lung-health-check/2026/02/iterating-smoking-history/)
