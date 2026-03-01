@@ -12,7 +12,7 @@ But it’s actually quite an easy thing to answer. Don’t make users have to th
 
 Easy to say. Hard to do. The user experience as a whole is no one’s responsibility.
 
-Can we give a connected experience for a whole pathway? In my head is the way GOV.UK treats ’learn to drive’ as a single thing a person does, not 17 separate transactions.
+Can we give a connected experience for a whole pathway? In way GOV.UK treats ’learn to drive’ as a single thing a person does, not 17 separate transactions.
 
 I started mapping the process a person goes through – from first contact about cervical cancer screening, just after they turn 24 and a half, through to treatment if it’s needed. But with all of these things it’s an abstraction. The map is not the territory. I keep a list of things I’m not including, to be transparent about how surface my representation is – people with learning difficulties, language barriers, those experiencing homelessness, survivors of sexual violence. The list gets long quickly.
 
