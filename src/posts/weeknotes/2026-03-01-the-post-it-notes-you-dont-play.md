@@ -20,5 +20,5 @@ From that mapping, a theme emerged. Things that are connected for a user – a l
 
 The fix doesn’t start with tech or design standards. It starts with relationships between things that are connected for the user but not the organisation.
 
-The NHS app might be the best way to help the NHS think differently about how it helps users understand services. Not because the app solves the problem, but because it forces connections. To connect a journey in the app, you have to connect the organisations behind it. Can the NHS app own the experience. Not by controlling every organisation behind it. By being the place where the user’s journey is whole, even when the system isn’t.
+The NHS app might be the best way to help the NHS think differently about how it helps users understand services. Not because the app solves the problem, but because it offers connections. To connect a journey in the app, you have to connect the organisations behind it. Can the NHS app own the experience. Not by controlling every organisation behind it. By being the place where the user’s journey is whole, even when the system isn’t.
 
