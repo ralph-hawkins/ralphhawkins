@@ -1,45 +1,40 @@
 <footer>
+  <hr>
   <div class="container">
   {% if page.url == '/graphic-design/' %}
-    {# Gallery page - show link to latest public weeknote (excludes preview posts) #}
+    {# Gallery page - show link to latest public week note (excludes preview posts) #}
     <h2>Week notes</h2>
     {% set latestPost = collections.publicWeeknotes | reverse | first %}
     {% if latestPost %}
       <p><a href="{{ latestPost.url }}">Latest week note – {{ latestPost.data.title }}</a></p>
+      <a href="/notes-list/">All week notes</a>
     {% endif %}
   {% else %}
-    {# Week note pages - show week notes history and link to gallery #}
-    {% if collections.weeknotesByDate %}
-      <h2>All notes</h2>
+    {# Week note pages - show prev/next navigation #}
+    {% set previousPost = collections.publicWeeknotes | getPrevPost(page) %}
+    {% set nextPost = collections.publicWeeknotes | getNextPost(page) %}
 
-      <div class="post-list-hierarchical">
-        {% for yearGroup in collections.weeknotesByDate %}
-          <div class="year-group">
-            <h3>{{ yearGroup.year }}</h3>
-            {% for monthGroup in yearGroup.months %}
-              <div class="month-group">
-                <h4>{{ monthGroup.month }}</h4>
-                <ul class="post-list">
-                  {% for post in monthGroup.posts %}
-                    <li class="{% if post.url == page.url %}current{% endif %}">
-                      <span class="date">{{ post.date.getDate().toString().padStart(2, '0') }}</span> –
-                      {% if post.url == page.url %}
-                        <span aria-current="page">{{ post.data.title }}</span>
-                      {% else %}
-                        <a href="{{ post.url }}">{{ post.data.title }}</a>
-                      {% endif %}
-                    </li>
-                  {% endfor %}
-                </ul>
-              </div>
-            {% endfor %}
-          </div>
-        {% endfor %}
-      </div>
-
-      <h2>Other</h2>
-      <p><a href="/graphic-design/">Graphic design</a></p>
+    {% if previousPost or nextPost %}
+      <h2>More week notes</h2>
+      <nav aria-label="Post navigation" class="post-nav">
+        {% if nextPost %}
+          <p class="post-nav-link post-nav-next">
+            <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
+          </p>
+        {% endif %}
+        {% if previousPost %}
+          <p class="post-nav-link post-nav-prev">
+            <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>
+          </p>
+        {% endif %}
+        <a href="/notes-list/">All week notes</a>
+      </nav>
     {% endif %}
+  {% endif %}
+
+  {% if page.url != '/graphic-design/' %}
+    <h2>Other</h2>
+    <a href="/graphic-design/">Graphic design</a>
   {% endif %}
 
     <h2>Contact</h2>

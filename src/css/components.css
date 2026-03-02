@@ -10,39 +10,61 @@ footer ul {
   padding: 0;
 }
 
-footer .post-list li {
+/* Prev/next post navigation */
+.post-nav-link {
+  position: relative;
+}
+
+.post-nav p {
+  margin: 0;
+}
+
+.post-nav p:last-of-type {
+  margin-bottom: var(--spacing-xs);
+}
+
+.post-nav-prev::before {
+  content: "←";
+  position: absolute;
+  left: -1.5em;
+  color: var(--color-link);
+  font-weight: bold;
+}
+
+.post-nav-next::before {
+  content: "→";
+  position: absolute;
+  left: -1.5em;
+  color: var(--color-link);
+  font-weight: bold;
+}
+
+/* All notes page post list */
+.post-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.post-list li {
   position: relative;
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
 }
 
-footer .post-list li .date {
-  flex-shrink: 0; /* Prevent date from shrinking */
-  min-width: 2rem; /* Ensure consistent date width */
+.post-list li .date {
+  flex-shrink: 0;
+  min-width: 2rem;
 }
 
-footer .year-group h4 {
-  font-size: 1.4rem;
-}
-
-footer div.year-group:not(:last-of-type) {
+div.year-group:not(:last-of-type) {
   border-bottom: 0.1rem solid var(--color-text);
 }
 
-footer div.month-group h4 {
+div.month-group h3 {
   font-size: var(--font-size-base);
   margin-bottom: 8px;
   border-top: 0.1rem solid var(--color-text);
-}
-
-footer .post-list li.current::before {
-  content: "→";
-  position: absolute;
-  left: -1.5em;
-  top: 0;
-  color: var(--color-link);
-  font-weight: bold;
 }
 
 /* Skip link */

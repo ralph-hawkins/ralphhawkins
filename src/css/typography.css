@@ -21,14 +21,14 @@ h1 {
 
 h2 {
   font-size: 1.9rem;
-  padding-top: var(--spacing-m);
+  padding-top: var(--spacing-l);
   line-height: 1.25;
 }
 
 h3 {
   font-size: 1.4rem;
   line-height: 1.25;
-  padding-top: var(--spacing-m);
+  padding-top: var(--spacing-l);
 }
 
 h4 {

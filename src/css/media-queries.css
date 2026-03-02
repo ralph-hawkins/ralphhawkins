@@ -33,8 +33,9 @@
     padding-left: calc(var(--side-padding) + 1.2em);
   }
 
-  /* Ensure arrow is still visible but not too far left */
-  footer .post-list li.current::before {
+  /* Arrows are still visible but not too far left */
+  .post-nav-prev::before,
+  .post-nav-next::before {
     left: -1.2em;
   }
 
@@ -44,7 +45,7 @@
   }
 }
 
-/* Ensure the container has proper positioning context */
+/* Container has proper positioning context */
 .container {
   position: relative;
 }

@@ -1,0 +1,27 @@
+---
+layout: notes
+title: All week notes
+---
+
+{% if collections.weeknotesByDate %}
+  <div class="post-list-hierarchical">
+    {% for yearGroup in collections.weeknotesByDate %}
+      <div class="year-group">
+        <h2>{{ yearGroup.year }}</h2>
+        {% for monthGroup in yearGroup.months %}
+          <div class="month-group">
+            <h3>{{ monthGroup.month }}</h3>
+            <ul class="post-list">
+              {% for post in monthGroup.posts %}
+                <li>
+                  <span class="date">{{ post.date.getDate().toString().padStart(2, '0') }}</span> –
+                  <a href="{{ post.url }}">{{ post.data.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

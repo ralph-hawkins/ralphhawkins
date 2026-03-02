@@ -62,6 +62,17 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // Navigation filters for prev/next post links
+  eleventyConfig.addFilter("getPrevPost", function(collection, page) {
+    const index = collection.findIndex(post => post.url === page.url);
+    return index > 0 ? collection[index - 1] : null;
+  });
+
+  eleventyConfig.addFilter("getNextPost", function(collection, page) {
+    const index = collection.findIndex(post => post.url === page.url);
+    return index >= 0 && index < collection.length - 1 ? collection[index + 1] : null;
+  });
+
   // Add assets
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
