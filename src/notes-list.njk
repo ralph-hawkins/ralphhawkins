@@ -14,8 +14,12 @@ title: All week notes
             <ul class="post-list">
               {% for post in monthGroup.posts %}
                 <li>
-                  <span class="date">{{ post.date.getDate().toString().padStart(2, '0') }}</span> –
-                  <a href="{{ post.url }}">{{ post.data.title }}</a>
+                  <span class="date">{{ post.date.getDate().toString().padStart(2, '0') }}</span><span>–</span><div class="post-detail">
+                    <a href="{{ post.url }}">{{ post.data.title }}</a>
+                    {% if post.data.description %}
+                      <p class="post-description">{{ post.data.description }}</p>
+                    {% endif %}
+                  </div>
                 </li>
               {% endfor %}
             </ul>

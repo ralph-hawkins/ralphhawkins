@@ -52,9 +52,12 @@ footer ul {
   gap: 0.5rem;
 }
 
+.post-list li .post-description {
+  margin: 0 0 0.5rem;
+}
+
 .post-list li .date {
   flex-shrink: 0;
-  min-width: 2rem;
 }
 
 div.year-group:not(:last-of-type) {
