@@ -15,7 +15,7 @@ I spent time this week writing and polishing a deck – probably more than was s
 
 Still, I could have been more precise. I used the phrase ‘in the app’ throughout, assuming it was obvious. But ‘in the app’ could mean a link to a website, a native journey. Something shown to everyone or only at the right authentication level, or something personalised and persistent.
 
-Getting stuff written with clarity is how we make progress during early, ambiguous phases. I’ve been struggling to get the time to document the ideas we’re working on in detail. Too much of it lives in my head. We can’t move as a team until I externalise it. It’s not a good way to run a team.
+Getting stuff written with clarity is how we make progress during early, ambiguous phases. I’ve been struggling to get the time to document the ideas we’re working on in detail. Too much of it lives in my head. We can’t move as a team until I externalise it.
 
 A deck is a useful first iteration. Get stuff down on a page, make it look legit and get a reaction. Be wrong on the internet. Our vision – ‘Connecting NHS services in the app so it is easy for people to prevent ill health – for themselves and the people they care for.’ We’re still testing whether connection is the right frame.
 
