@@ -17,17 +17,11 @@ I used the phrase ‘in the app’ throughout, assuming it was obvious. But ‘i
 
 I’ve struggled to find the time to get the ideas I have down in detail. The ideas, the research, the framing – too much of it lives in my head. We can’t move as a team until I externalise it. It’s not a good way to run a team.
 
-### Vision
-
 A deck is a useful first iteration. Get stuff down on a page, make it look legit and get a reaction. Be wrong on the internet. Our vision – ‘Connecting NHS services in the app so it is easy for people to prevent ill health – for themselves and the people they care for.’ We’re still testing whether connection is the right frame.
 
 A couple of things I may have been wrong about – in a meeting, if not on the internet. Only relevant things belong in the app, and the app is the right place to coordinate prevention services. Arguably this is counter to the 10‑year plan commitment that the NHS app will be the front door to the entire NHS. To put the entire NHS into an app without replicating real‑world complexity on a screen, you need to help people find what’s relevant to them. Curation is a design principle. But it requires something the NHS isn’t set up for – sharing data across services so the app knows what‘s relevant to show you. That‘s the hardest button to button.
 
-### Transactional to relational
-
-The transactional to relational scale is a way of being open about scope. Transactional services – like vaccines – are discrete, low‑intensity, and the app already does them. Relational services – managing type 2 diabetes, losing weight – are ongoing, complex, and would represent a significant shift in what the app is for. We want to start with transactional services and build from there. The framing gives us a way to say where our scope is now and where it might go in the future.
-
-### Idea themes
+The transactional to relational scale is a way of being open about scope. Transactional services – like vaccines – are discrete, low‑intensity, and the app already does them. Relational services – managing type 2 diabetes, losing weight – are ongoing, complex, and would represent a significant shift in what the app is for. We want to start with transactional services and build from there.
 
 We’ve grouped our ideas into four themes, each named for the job it does for someone:
 
@@ -38,4 +32,4 @@ We’ve grouped our ideas into four themes, each named for the job it does for s
 
 Each theme has ambitious outcomes and a list of smaller, concrete, shippable ideas underneath.
 
-Writing things down is how I make them real. I’ve started working through the ideas – as dispassionately as I can – getting them out of my head and into a shape the team can use. We‘ll discuss them and prioritise them. That process is necessary, but it’s not the point. The point is what happens next – how we make a difference to people’s health.
+Writing things down is how I make them real. I’ve started working through the ideas – as dispassionately as I can – getting them out of my head and into a shape the team can use. We‘ll discuss them and prioritise them. That process is necessary, but it’s not the point. The point is how we make a difference to people’s health. Until we can start having an impact I’m going to feel uncomfortable.
