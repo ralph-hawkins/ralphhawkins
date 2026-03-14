@@ -11,7 +11,7 @@ description: Talking about making stuff happen
 
 Polished decks are a sign that people are spending more time talking about stuff than making stuff happen. But communicating well is fundamental to doing the right thing and getting people to work with you.
 
-I spent time this week writing and polishing a deck – probably more than was strictly necessary. I care about how we communicate as a team. This is the first time we’ve written down what Managing my health is for. Clear language, nothing that hides what we mean. Even then I could have been sharper. Feedback helped.
+I spent time this week writing and polishing a deck – probably more than was strictly necessary. I care about how we communicate as a team. This is the first time we’ve written down what Managing my health is for. Clear language, nothing to hide behind. No use of ‘empowered‘. Even then I could have been sharper. Feedback helped.
 
 I used the phrase ‘in the app’ throughout, assuming it was obvious. But ‘in the app’ could mean a link to a website, a native journey, something shown to everyone, something only shown to people with the right level of authentication, or something personalised and persistent. I need to be clearer.
 
