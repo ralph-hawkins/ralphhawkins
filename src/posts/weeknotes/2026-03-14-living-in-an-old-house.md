@@ -5,29 +5,27 @@ tags: weeknotes
 layout: post
 description: Talking about making stuff happen
 ---
-{% from "image.njk" import image %}
 
+{% from "image.njk" import image %}
 {{ image("/images/weeknotes/2026-03-14-living-in-an-old-house/DSCF2979.jpg", "Stickers on a laptop focusing an orca with the words 'DPSP' and 'Managing my health'") }}
 
-Sometimes slick decks are a sign that people are spending more time talking about stuff than making stuff happen. This week was one of those weeks – more framing than making. But communicating well is fundamental to doing the right thing and getting people to work with you. If I’m honest, we’re not moving as fast as I’d like. But this week felt like progress – we got clearer on what we’re doing and clearer with the people around us. Here’s some of what we’re working on, all of it still in progress.
+Polished decks are a sign that people are spending more time talking about stuff than making stuff happen. But communicating well is fundamental to doing the right thing and getting people to work with you.
+
+I spent time this week writing and polishing a deck – probably more than was strictly necessary. I care about how we communicate as a team. This is the first time we’ve written down what Managing my health is for. Clear language, nothing that hides what we mean. Even then I could have been sharper. Feedback helped.
+
+I used the phrase ‘in the app’ throughout, assuming it was obvious. But ‘in the app’ could mean a link to a website, a native journey, something shown to everyone, something only shown to people with the right level of authentication, or something personalised and persistent. I need to be clearer.
+
+I’ve struggled to find the time to get the ideas I have down in detail. The ideas, the research, the framing – too much of it lives in my head. We can’t move as a team until I externalise it. It’s not a good way to run a team.
 
 ### Vision
 
-’Connecting NHS services in the app so it is easy for people to prevent ill health – for themselves and the people they care for.’ Not the most snappy – it could probably be refined further. But the point is we’re interested in connecting existing services across the whole NHS (national and local, digital and in‑person) and reducing the friction that currently gets in the way of people looking after their health.
+A deck is a useful first iteration. Get stuff down on a page, make it look legit and get a reaction. Be wrong on the internet. Our vision – ‘Connecting NHS services in the app so it is easy for people to prevent ill health – for themselves and the people they care for.’ We’re still testing whether connection is the right frame.
 
-### Where we sit
-
-Our team is supporting Digital Prevention Services and the NHS App to meet the 10‑year plan, which means being in the intersection of three sets of priorities:
-
-- The NHS App will be the companion that makes it easier for people to access the NHS – while making it easier for the NHS to care for its patients
-- Building the NHS that helps people stay well, before they need the NHS that makes them better
-- By 2028, the app will be a full front door to the entire NHS
-
-I believe only things relevant to the user belong in the NHS App. This might seem counter to the idea of a full front door. But I think it’s a necessary part of making that achievable. You can’t put the entire NHS into an app without replicating real‑world complexity on a screen. The only way to make a full front door work is to show people what’s relevant to them. Curation is a design principle. But it requires something the NHS isn’t set up for – sharing data across services. In our case, sharing data so the app knows what’s relevant to show you. That’s the hardest button to button.
+A couple of things I may have been wrong about – in a meeting, if not on the internet. Only relevant things belong in the app, and the app is the right place to coordinate prevention services. Arguably this is counter to the 10‑year plan commitment that the NHS app will be the front door to the entire NHS. To put the entire NHS into an app without replicating real‑world complexity on a screen, you need to help people find what’s relevant to them. Curation is a design principle. But it requires something the NHS isn’t set up for – sharing data across services so the app knows what‘s relevant to show you. That‘s the hardest button to button.
 
 ### Transactional to relational
 
-We’re trying to aid conversations and thinking by using the scale of ‘transactional’ vs ‘relational’ services as a heuristic – it’s a shorthand for how many interactions a user needs, how intense they are, over what period, and where the data goes. The things currently in the app are the most transactional – like vaccines. For us to ship anything quickly, we need to focus there first. Relational services will be harder and represent a greater shift in how people think about the NHS App.
+The transactional to relational scale is a way of being open about scope. Transactional services – like vaccines – are discrete, low‑intensity, and the app already does them. Relational services – managing type 2 diabetes, losing weight – are ongoing, complex, and would represent a significant shift in what the app is for. We want to start with transactional services and build from there. The framing gives us a way to say where our scope is now and where it might go in the future.
 
 ### Idea themes
 
@@ -40,4 +38,4 @@ We’ve grouped our ideas into four themes, each named for the job it does for s
 
 Each theme has ambitious outcomes and a list of smaller, concrete, shippable ideas underneath.
 
-I find this ambiguous phase of work enjoyable, but we need to make stuff happen. Doing one thing, hoping it leads to another, without being able to draw a straight line between them. Write up the ideas. Get clearer on the outcomes. Prioritise, prioritise, prioritise.
+Writing things down is how I make them real. I’ve started working through the ideas – as dispassionately as I can – getting them out of my head and into a shape the team can use. We‘ll discuss them and prioritise them. That process is necessary, but it’s not the point. The point is what happens next – how we make a difference to people’s health.
