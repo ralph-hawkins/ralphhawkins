@@ -11,11 +11,11 @@ description: Talking about making stuff happen
 
 Polished decks are a sign that people are spending more time talking about stuff than making stuff happen. But communicating well is fundamental to doing the right thing and getting people to work with you.
 
-I spent time this week writing and polishing a deck – probably more than was strictly necessary. I care about how we communicate as a team. This is the first time we’ve written down what Managing my health is for. Clear language, nothing to hide behind. No use of ‘empowered‘.
+I spent time this week writing and polishing a deck – probably more than was strictly necessary. This is the first time our team has stated what Managing my health is for. I care about how we communicate. Clear language, nothing to hide behind. No use of ‘empowered‘.
 
-I still could have been more precise. I used the phrase ‘in the app’ throughout, assuming it was obvious. But ‘in the app’ could mean a link to a website, a native journey. Something shown to everyone or only at the right authentication level, or something personalised and persistent.
+Still, I could have been more precise. I used the phrase ‘in the app’ throughout, assuming it was obvious. But ‘in the app’ could mean a link to a website, a native journey. Something shown to everyone or only at the right authentication level, or something personalised and persistent.
 
-I’ve struggled to find the time to get the ideas I have down in detail. The ideas, the research, the framing – too much of it lives in my head. We can’t move as a team until I externalise it. It’s not a good way to run a team.
+I’ve been struggling to get the time to document the ideas e’re working on in detail. Too much of it lives in my head. We can’t move as a team until I externalise it. It’s not a good way to run a team.
 
 A deck is a useful first iteration. Get stuff down on a page, make it look legit and get a reaction. Be wrong on the internet. Our vision – ‘Connecting NHS services in the app so it is easy for people to prevent ill health – for themselves and the people they care for.’ We’re still testing whether connection is the right frame.
 
