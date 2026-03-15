@@ -9,11 +9,11 @@ description: Talking about making stuff happen
 {% from "image.njk" import image %}
 {{ image("/images/weeknotes/2026-03-14-living-in-an-old-house/DSCF2979.jpg", "Stickers on a laptop focusing an orca with the words 'DPSP' and 'Managing my health'") }}
 
-There’s a trap in design leadership where you spend your time explaining what you're doing instead of making things happen.
+I worry communication is too often an end in itself. Explaining what we want to happen instead of making it happen.
 
 I spent some time this week writing a deck to set out the framing of what the Managing my health team is doing. I care that we communicate well. Clear language, nothing to hide behind. No use of ‘empowered‘.
 
-Still, I could have been more precise. I used the phrase ‘in the app’ throughout, assuming it was clear what that means. But ‘in the app’ could mean a link to a website, a native journey. Something shown to everyone or only at the right authentication level, or something personalised and persistent. Setting our direction with clarity is part of making progress during early, ambiguous phases.
+Still, I could have been more precise. I used the phrase ‘in the app’ throughout, assuming it was clear what that means. But ‘in the app’ could mean a link to a website, a native journey. Something shown to everyone or only at the right authentication level, or something personalised and persistent.
 
 A deck is a useful first iteration. Get stuff down on a page, make it look legit and get a reaction. Be wrong on the internet. Our vision – ‘Connecting NHS services in the app so it is easy for people to prevent ill health – for themselves and the people they care for.’ Connecting services across the NHS is the frame we're working with. We might be wrong.
 
@@ -28,8 +28,10 @@ We’ve grouped our ideas into four themes, each named for the job it does for s
 - I manage my condition and stop it getting worse
 - I get joined‑up care, from screening to treatment
 
+The themes are vaguely in order of impact (lowest to highest), all of them are difficult.
+
 Each theme has measurable outcomes and a list of smaller, concrete, shippable ideas underneath.
 
-I’ve been struggling to get the time to document the ideas we have in detail. There’s a lot of them and the detail lives in my head. Once I have documented our ideas – as dispassionately as I can – the team can prioritise them.
+I’ve struggled to find the time to get our ideas down in detail. Too much of it lives in my head. We can't move as a team until I externalise it. Once I have documented our ideas – as dispassionately as I can – the team can prioritise them.
 
-Setting context and vision and process is necessary, but it’s not the goal. The goal is to make a difference to people’s health. Until we can start having an impact I’m going to feel uncomfortable.
+Communicating the process is necessary, but it's not the point. The goal is to make a difference to people’s health. Until we can start having an impact I’m going to feel uncomfortable.
