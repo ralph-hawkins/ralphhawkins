@@ -32,4 +32,4 @@ We’ve grouped our ideas into four themes, each named for the job it does for s
 
 Each theme has ambitious outcomes and a list of smaller, concrete, shippable ideas underneath.
 
-Writing things down is how I make them real. I’ve started working through the ideas – as dispassionately as I can – getting them out of my head and into a shape the team can use. We‘ll discuss them and prioritise them. That process is necessary, but it’s not the point. The point is how we make a difference to people’s health. Until we can start having an impact I’m going to feel uncomfortable.
+Writing things down is how I make them real. I’m getting our ideas documented – as dispassionately as I can – out of my head and into a shape the team can use. We‘ll discuss them and prioritise them. That process is necessary, but it’s not the point. The point is how we make a difference to people’s health. Until we can start having an impact I’m going to feel uncomfortable.
