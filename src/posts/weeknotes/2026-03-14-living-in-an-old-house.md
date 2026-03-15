@@ -7,7 +7,7 @@ description: Talking about making stuff happen
 ---
 
 {% from "image.njk" import image %}
-{{ image("/images/weeknotes/2026-03-14-living-in-an-old-house/DSCF2979.jpg", "Stickers on a laptop focusing an orca with the words 'DPSP' and 'Managing my health'") }}
+{{ image("/images/graphic-design/DSCF2979.jpg", "Stickers on a laptop focusing a mission patch showing a sweaty orca jumping through a circle with the words 'DPSP' and 'Managing my health'") }}
 
 I worry communication can become an end in itself. Explaining what we want to happen instead of making it happen.
 
