@@ -15,9 +15,9 @@ I spent some time this week writing a deck to set out the framing of what the Ma
 
 Still, I could have been more precise. I used the phrase ‘in the app’ throughout, assuming it was clear what that means. But ‘in the app’ could mean a link to a website, a native journey. Something shown to everyone or only at the right authentication level, or something personalised and persistent.
 
-A deck is a useful first iteration. Get stuff down on a page, make it look legit and get a reaction. Be wrong on the internet. Our vision – ‘Connecting NHS services in the app so it is easy for people to prevent ill health – for themselves and the people they care for.’ Connecting services across the NHS is the frame we're working with. We might be wrong.
+A deck is a useful first iteration. Get stuff down on a page, make it look legit and get a reaction. Be wrong on the internet. Our vision – ‘Connecting NHS services in the app so it is easy for people to prevent ill health – for themselves and the people they care for.’ Connecting services across the NHS is the frame we’re working with. We might be wrong.
 
-We’re committed to the 10‑year plan vision that the NHS app is the front door to the entire NHS, while also believing that only relevant things belong in it. These aims seem contradictory. But the only way to be a front door to everything without overwhelming people is to help them find what matters to them. Curation is a design principle. It requires something the NHS isn’t set up for – sharing data across services so the app knows what's relevant to show you. The hardest button to button.
+We’re committed to the 10‑year plan vision that the NHS app is the front door to the entire NHS, while also believing that only relevant things belong in it. These aims seem contradictory. But the only way to be a front door to everything without overwhelming people is to help them find what matters to them. Curation is a design principle. It requires something the NHS isn’t set up for – sharing data across services so the app knows what’s relevant to show you. The hardest button to button.
 
 The transactional to relational scale is a way of being open about scope. Transactional services – like vaccines – are discrete, low‑intensity, and the app already does them. Relational services – managing type 2 diabetes, losing weight – are ongoing, complex, and would represent a significant shift in what the app is for. We want to start with transactional services and build from there.
 
@@ -32,6 +32,6 @@ The themes are vaguely in order of impact (lowest to highest), all of them are d
 
 Each theme has measurable outcomes and a list of smaller, concrete, shippable ideas underneath.
 
-I’ve struggled to find the time to get our ideas down in detail. Too much of it lives in my head. We can't move as a team until I externalise it. Once I have documented our ideas – as dispassionately as I can – the team can prioritise them.
+I’ve struggled to find the time to get our ideas down in detail. Too much of it lives in my head. We can’t move as a team until I externalise it. Once I have documented our ideas – as dispassionately as I can – the team can prioritise them.
 
 Communicating the process is necessary, but it's not the point. The goal is to make a difference to people’s health. Until we can start having an impact I’m going to feel uncomfortable.
