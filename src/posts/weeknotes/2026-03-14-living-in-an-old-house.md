@@ -28,6 +28,6 @@ We’ve grouped our ideas into four themes, each named for the job it does for s
 
 Each theme has measueable outcomes and a list of smaller, concrete, shippable ideas underneath.
 
-I’ve been struggling to get the time to document the ideas we’re have in detail. Too much of it lives in my head. Once I have documented our ideas – as dispassionately as I can. The team prioritise them. 
+I’ve been struggling to get the time to document the ideas we have in detail. Too much of it lives in my head. Once I have documented our ideas – as dispassionately as I can – team prioritise them. 
 
 Setting context and vision and process is necessary, but it’s not the goal. The goal is to make a difference to people’s health. Until we can start having an impact I’m going to feel uncomfortable.
