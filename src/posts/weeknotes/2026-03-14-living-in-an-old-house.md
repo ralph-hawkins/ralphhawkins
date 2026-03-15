@@ -9,7 +9,7 @@ description: Talking about making stuff happen
 {% from "image.njk" import image %}
 {{ image("/images/weeknotes/2026-03-14-living-in-an-old-house/DSCF2979.jpg", "Stickers on a laptop focusing an orca with the words 'DPSP' and 'Managing my health'") }}
 
-I worry communication is too often an end in itself. Explaining what we want to happen instead of making it happen.
+I worry communication can become an end in itself. Explaining what we want to happen instead of making it happen.
 
 I spent some time this week writing a deck to set out the framing of what the Managing my health team is doing. I care that we communicate well. Clear language, nothing to hide behind. No use of ‘empowered‘.
 
