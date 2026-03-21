@@ -6,9 +6,9 @@ layout: post
 description: Testing an idea about testing and learning
 ---
 
-This week I spent two days at the Products and Platforms planning event. The fifth one of these I've attended – they’re starting to feel less overwhelming. One of the sessions was an unconference session on test and learn. The discussion focused on problems people face trying to be agile in a deeply risk‑averse organisation.
+This week I spent two days at the Products and Platforms planning event. The fifth one of these I've attended – they’re starting to feel less overwhelming. One of the unconference sessions was on test and learn. The discussion focused on problems people face trying to be agile in a deeply risk‑averse organisation.
 
-For services that help users form habits or manage conditions this is a fundamental blocker. The normal moderated research sessions we can do in the alpha phase aren’t sufficient. In an interview a participant might tell you they’d quit smoking or start exercising, but would they? What would their actual experience be like?
+For services that help users form habits or manage conditions, governance that doesn’t support us to test and learn is a blocker. The normal moderated research sessions we can do in the alpha phase aren’t sufficient. In an interview a participant might tell you they’d quit smoking or start exercising, but would they? What would their actual experience be like?
 
 We need a way to test the purpose of the service, to see if we can impact behaviour over time. But putting something unmoderated out into the world without following the rigorous standards designed for scaled services has proved so hard that teams have given‑up trying to do the necessary testing in alpha and had to move to private beta to get anything done. Quick, small‑scale pilots are extremely difficult.
 
