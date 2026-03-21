@@ -18,7 +18,7 @@ I think for good reason. Pilots are often an end in themselves, or can be seen a
 
 Last year, I went to a meeting about running a pilot. A big meeting, lots of investment in time, lots of expertise in the room. I asked a few times what the pilot was looking to learn, the team said that they were going to get to that. I still don’t understand why anyone would decide to run a pilot before knowing what they need to learn from it.
 
-As an assessor I’d struggle to pass a team through an alpha assessment without proving the core purpose of their service worked. I think part of the solution might be as simple as working with the various governance boards to create an in‑between phase — between testing prototypes in alpha and building the MVP in private beta. A ‘live alpha’.
+As an assessor I’d struggle to pass a team through an alpha assessment without proving the core purpose of their service worked. I think part of the solution might be as simple as working with the various governance boards to create an in‑between phase – between testing prototypes in alpha and building the MVP in private beta. A ‘live alpha’.
 
 [Irina](https://www.linkedin.com/in/irina-pencheva-2b431825/) and I wrote a definition of pilots last year. A working service, tested with a limited group of real users, for a defined period – not built to scale, with clear success criteria and a decision point at the end. The idea was that it would sit within the second phase of an alpha.
 
