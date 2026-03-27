@@ -1,8 +1,13 @@
 
 footer {
-  padding-top: var(--spacing-xl);
+  min-height: 100vh;
+  padding-top: 0;
   padding-bottom: var(--spacing-xl);
   background: transparent;
+}
+
+footer > hr {
+  margin-top: 0;
 }
 
 footer ul {

@@ -7,7 +7,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: var(--spacing-m);
 }
 
@@ -16,23 +16,28 @@ h1 {
   line-height: 0.8;
   padding-top: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
-  font-weight: 900;
+  font-weight: bold;
 }
 
 h2 {
-  font-size: 1.9rem;
-  padding-top: var(--spacing-l);
+  font-size: 2.28rem;
+  padding-top: var(--spacing-xl);
   line-height: 1.25;
 }
 
+.date + h2 {
+  padding-top: 0px;
+}
+
+
 h3 {
-  font-size: 1.4rem;
+  font-size: 1.68rem;
   line-height: 1.25;
   padding-top: var(--spacing-l);
 }
 
 h4 {
-  font-size: 1.3rem;
+  font-size: 1.56rem;
   line-height: 1.25;
   padding-top: var(--spacing-m);
 }
