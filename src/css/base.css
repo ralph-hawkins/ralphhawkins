@@ -22,7 +22,7 @@ body::before {
 a {
   color: var(--color-link);
   text-decoration: underline;
-  text-decoration-thickness: 0.05em;
+  text-decoration-thickness: max(1px, 0.05em);
   text-underline-offset: 0.1em;
   background-color: transparent; /* Explicit starting state for transition */
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0.4, 1); /* Fast in, slower out */
@@ -38,7 +38,7 @@ a:hover {
   color: var(--color-link);
   background-color: var(--color-focus);
   text-decoration: underline;
-  text-decoration-thickness: 0.05em;
+  text-decoration-thickness: max(1px, 0.05em);
 }
 
 a:visited {
