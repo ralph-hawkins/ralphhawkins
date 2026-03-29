@@ -6,7 +6,7 @@ layout: post
 description: Looking really hard at the inside of my navel
 ---
 
-My parents have a tray of colourful wooden blocks in various shapes and sizes. I played with them as a kid, my nieces and my son have played with them. The standard game is to see how tall a tower you can make before the child knocks it over.
+My parents have a tray of colourful wooden blocks in various shapes and sizes. I played with them as a kid, my nieces and my son play with them. The standard game is to see how tall a tower you can make before the child knocks it over.
 
 Since my son is less destructive these days, I’ve stopped making a tower to be destroyed, I just build something aesthetic. Something sculptural and visually pleasing. It’s a small pleasure to indulge that bit of my brain. Letting a sense of emotion and aesthetics guide me, deliberately avoiding efficiency. This feels like creativity to me. It doesn’t feel like design.
 
