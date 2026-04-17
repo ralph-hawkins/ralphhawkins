@@ -20,9 +20,10 @@ h1 {
 }
 
 h2 {
-  font-size: 2.28rem;
+  font-size: 3.16rem;
   padding-top: var(--spacing-xl);
-  line-height: 1.25;
+  line-height: 0.975;
+  text-wrap: balance;
 }
 
 .date + h2 {
@@ -31,15 +32,17 @@ h2 {
 
 
 h3 {
-  font-size: 1.68rem;
-  line-height: 1.25;
+  font-size: 2.22rem;
+  line-height: 1.15;
   padding-top: var(--spacing-l);
+  text-wrap: balance;
 }
 
 h4 {
   font-size: 1.56rem;
-  line-height: 1.25;
+  line-height: 1.325;
   padding-top: var(--spacing-m);
+  text-wrap: balance;
 }
 
 p {
