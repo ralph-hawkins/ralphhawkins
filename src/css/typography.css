@@ -1,6 +1,6 @@
 
 body {
-  font-size: var(--font-size-base);
+  font-size: var(--body-size, var(--font-size-base));
   line-height: var(--line-height-base);
   background-color: whitesmoke;
 }
@@ -9,10 +9,11 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
   font-weight: 600;
   margin-bottom: var(--spacing-m);
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: 4.5rem;
+  font-size: var(--h1-size, 4.5rem);
   line-height: 0.8;
   padding-top: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
@@ -20,9 +21,9 @@ h1 {
 }
 
 h2 {
-  font-size: 2.28rem;
+  font-size: var(--h2-size, 2.28rem);
+  line-height: var(--h2-lh, 1.25);
   padding-top: var(--spacing-xl);
-  line-height: 1.25;
 }
 
 .date + h2 {
@@ -31,25 +32,25 @@ h2 {
 
 
 h3 {
-  font-size: 1.68rem;
-  line-height: 1.25;
+  font-size: var(--h3-size, 1.68rem);
+  line-height: var(--h3-lh, 1.25);
   padding-top: var(--spacing-l);
 }
 
 h4 {
-  font-size: 1.56rem;
-  line-height: 1.25;
+  font-size: var(--h4-size, 1.56rem);
+  line-height: var(--h4-lh, 1.25);
   padding-top: var(--spacing-m);
 }
 
 p {
   margin-bottom: var(--spacing-s);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
+  font-size: var(--body-size, var(--font-size-base));
+  line-height: var(--body-lh, var(--line-height-base));
 }
 
 li, a {
-  font-size: var(--font-size-base);
+  font-size: var(--body-size, var(--font-size-base));
 }
 
 ul, ol {
