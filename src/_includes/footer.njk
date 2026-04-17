@@ -3,7 +3,7 @@
   <div class="container">
   {% if page.url == '/graphic-design/' %}
     {# Gallery page - show link to latest public week note (excludes preview posts) #}
-    <h2>Week notes</h2>
+    <h3>Week notes</h3>
     {% set latestPost = collections.publicWeeknotes | reverse | first %}
     {% if latestPost %}
       <p><a href="{{ latestPost.url }}">Latest week note – {{ latestPost.data.title }}</a></p>
@@ -15,7 +15,7 @@
     {% set nextPost = collections.publicWeeknotes | getNextPost(page) %}
 
     {% if previousPost or nextPost %}
-      <h2>More week notes</h2>
+      <h3>More week notes</h3>
       <nav aria-label="Post navigation" class="post-nav">
         {% if nextPost %}
           <p class="post-nav-link post-nav-next">
@@ -33,11 +33,11 @@
   {% endif %}
 
   {% if page.url != '/graphic-design/' %}
-    <h2>Other</h2>
+    <h3>Other</h3>
     <a href="/graphic-design/">Graphic design</a>
   {% endif %}
 
-    <h2>Contact</h2>
+    <h3>Contact</h3>
     <ul>
       <li><a href="mailto:info@ralphhawkins.co.uk">info@ralphhawkins.co.uk</a></li>
       <li><a href="https://bsky.app/profile/ralphhawkins.bsky.social">Bluesky</a></li>
