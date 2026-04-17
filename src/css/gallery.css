@@ -10,7 +10,6 @@
 }
 
 .gallery-item:last-child {
-  border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
 }
@@ -26,12 +25,8 @@
 .gallery-image {
   display: block;
   width: 100%;
-  max-width: 100%;
   height: auto;
   margin-bottom: var(--spacing-l);
-
-  /* Ensure images never fall off screen edges */
-  box-sizing: border-box;
 }
 
 /* Smaller gaps between grouped images */

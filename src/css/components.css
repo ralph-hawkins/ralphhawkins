@@ -1,7 +1,5 @@
-
 footer {
   min-height: 100vh;
-  padding-top: 0;
   padding-bottom: var(--spacing-xl);
   background: transparent;
 }
@@ -28,21 +26,16 @@ footer ul {
   margin-bottom: var(--spacing-xs);
 }
 
-.post-nav-prev::before {
-  content: "←";
+.post-nav-prev::before,
+.post-nav-next::before {
   position: absolute;
   left: -1.5em;
   color: var(--color-link);
   font-weight: bold;
 }
 
-.post-nav-next::before {
-  content: "→";
-  position: absolute;
-  left: -1.5em;
-  color: var(--color-link);
-  font-weight: bold;
-}
+.post-nav-prev::before { content: "←"; }
+.post-nav-next::before { content: "→"; }
 
 /* All notes page post list */
 .post-list {
