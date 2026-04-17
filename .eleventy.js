@@ -79,7 +79,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
-  eleventyConfig.addPassthroughCopy({"node_modules/@chenglou/pretext/dist": "js/pretext"});
 
   // Add site data
   eleventyConfig.addGlobalData("site", {
