@@ -8,6 +8,12 @@ footer > hr {
   margin-top: 0;
 }
 
+footer h2 {
+  font-size: 2.22rem;
+  line-height: 1.15;
+  margin-bottom: 0.5lh;
+}
+
 footer ul {
   list-style-type: none;
   padding: 0;
