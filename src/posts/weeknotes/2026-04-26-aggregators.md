@@ -18,7 +18,7 @@ Each of these questions has many sub‑questions.
 
 By results and findings we mean the outcomes of NHS tests, checks and screening, including what they mean and what to do next.
 
-These things make something a result or finding:
+For us, these things make something a result or finding:
 
 - personal to the user (not general health advice)
 - the output of a measurement, test, check, or screen the NHS did
