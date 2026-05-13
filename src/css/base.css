@@ -1,5 +1,6 @@
 body {
   color: var(--color-text);
+  background: var(--color-background);
   font-family: var(--font-family);
   scroll-padding-bottom: 5rem;
   min-height: 100vh;
@@ -15,7 +16,28 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(var(--gradient-angle, 30deg), var(--gradient-color, lightblue) var(--gradient-start, 0%), var(--color-background) var(--gradient-end, 100%));
+  background:
+    /* Top: defined yellow lobe (sharper edge) */
+    radial-gradient(
+      circle 325px at calc(50% + var(--blob-x, 0px)) calc(46% + var(--blob-y, 0px)),
+      hsla(var(--blob-hue-1, 70), 90%, 72%, 0.425),
+      hsla(var(--blob-hue-1, 70), 90%, 72%, 0.275) 45%,
+      hsla(var(--blob-hue-1, 70), 90%, 72%, 0) 78%
+    ),
+    /* Middle: green lobe, slightly softer */
+    radial-gradient(
+      circle 388px at calc(50% + var(--blob-x, 0px)) calc(56% + var(--blob-y, 0px)),
+      hsla(var(--blob-hue-2, 130), 75%, 70%, 0.375),
+      hsla(var(--blob-hue-2, 130), 75%, 70%, 0.175) 50%,
+      hsla(var(--blob-hue-2, 130), 75%, 70%, 0) 82%
+    ),
+    /* Bottom: wide soft halo trailing below — most blur */
+    radial-gradient(
+      ellipse 1125px 813px at calc(50% + var(--blob-x, 0px)) calc(66% + var(--blob-y, 0px)),
+      hsla(var(--blob-hue-2, 130), 70%, 72%, 0.14),
+      hsla(var(--blob-hue-2, 130), 70%, 72%, 0) 70%
+    );
+  opacity: var(--blob-opacity, 1);
   z-index: -1;
 }
 

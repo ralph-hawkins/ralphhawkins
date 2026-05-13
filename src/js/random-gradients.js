@@ -1,33 +1,42 @@
-// Random gradient for body background
-function generateRandomGradient() {
-  // Angle between 90 and 270 degrees
-  function randomAngle() {
-    return Math.floor(Math.random() * 180) + 90;
+// Single-blob background: analogous hues, drifts on scroll, fades to footer.
+(function () {
+  const root = document.documentElement;
+  const baseHue1 = Math.floor(Math.random() * 360);
+  // Analogous: 25–55° from hue1, so the two lobes share a colour family.
+  const baseHue2 = (baseHue1 + 25 + Math.floor(Math.random() * 30)) % 360;
+
+  // Restrict drift to the upper semicircle so the blob always moves up or
+  // sideways relative to scroll, never down.
+  const angle = Math.PI + Math.random() * Math.PI;
+  const dir = { x: Math.cos(angle), y: Math.sin(angle) };
+
+  const SCROLL_FACTOR = 0.2;
+  const HUE_SHIFT_PER_VIEWPORT = 40;
+
+  function apply(scrollY) {
+    const vh = window.innerHeight || 1;
+    const offset = (scrollY / vh) * HUE_SHIFT_PER_VIEWPORT;
+    root.style.setProperty('--blob-hue-1', ((baseHue1 + offset) % 360 + 360) % 360);
+    root.style.setProperty('--blob-hue-2', ((baseHue2 + offset) % 360 + 360) % 360);
+
+    const dist = scrollY * SCROLL_FACTOR;
+    root.style.setProperty('--blob-x', `${dir.x * dist}px`);
+    root.style.setProperty('--blob-y', `${dir.y * dist}px`);
+
+    const max = (document.documentElement.scrollHeight - vh) || 1;
+    const progress = Math.min(1, Math.max(0, scrollY / max));
+    root.style.setProperty('--blob-opacity', 1 - progress);
   }
 
-  // Generate colour (avoiding green: 90-150 degrees)
-  function randomLightColor() {
-    let hue;
-    if (Math.random() < 0.5) {
-      hue = Math.floor(Math.random() * 70);
-    } else {
-      hue = Math.floor(Math.random() * 190) + 170;
-    }
-    const saturation = Math.floor(Math.random() * 40) + 20; // 20-60% saturation
-    const lightness = Math.floor(Math.random() * 20) + 75; // 75-95% lightness (very light)
-    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-  }
+  apply(window.scrollY);
 
-  // Apply gradient to body
-  const angle = randomAngle();
-  const firstColor = randomLightColor();
-  const secondColor = 'var(--color-background)';
-
-  document.body.style.setProperty('--gradient-angle', `${angle}deg`);
-  document.body.style.setProperty('--gradient-color', firstColor);
-  document.body.style.setProperty('--gradient-start', '0%');
-  document.body.style.setProperty('--gradient-end', '30%');
-}
-
-// Run
-document.addEventListener('DOMContentLoaded', generateRandomGradient);
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      apply(window.scrollY);
+      ticking = false;
+    });
+  }, { passive: true });
+})();
