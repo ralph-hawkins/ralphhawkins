@@ -19,22 +19,22 @@ body::before {
   background:
     /* Top: defined yellow lobe (sharper edge) */
     radial-gradient(
-      circle 325px at calc(50% + var(--blob-x, 0px)) calc(46% + var(--blob-y, 0px)),
-      hsla(var(--blob-hue-1, 70), 90%, 72%, 0.425),
-      hsla(var(--blob-hue-1, 70), 90%, 72%, 0.275) 45%,
+      circle calc(clamp(300px, 45vw, 620px) * var(--blob-scale-1, 1)) at calc(50% + var(--blob-x, 0px)) calc(46% + var(--blob-y, 0px)),
+      hsla(var(--blob-hue-1, 70), 90%, 72%, 1),
+      hsla(var(--blob-hue-1, 70), 90%, 72%, 0.82) 45%,
       hsla(var(--blob-hue-1, 70), 90%, 72%, 0) 78%
     ),
     /* Middle: green lobe, slightly softer */
     radial-gradient(
-      circle 388px at calc(50% + var(--blob-x, 0px)) calc(56% + var(--blob-y, 0px)),
-      hsla(var(--blob-hue-2, 130), 75%, 70%, 0.375),
-      hsla(var(--blob-hue-2, 130), 75%, 70%, 0.175) 50%,
+      circle calc(clamp(340px, 54vw, 740px) * var(--blob-scale-2, 1)) at calc(50% + var(--blob-x, 0px)) calc(56% + var(--blob-y, 0px)),
+      hsla(var(--blob-hue-2, 130), 75%, 70%, 1),
+      hsla(var(--blob-hue-2, 130), 75%, 70%, 0.52) 50%,
       hsla(var(--blob-hue-2, 130), 75%, 70%, 0) 82%
     ),
     /* Bottom: wide soft halo trailing below — most blur */
     radial-gradient(
-      ellipse 1125px 813px at calc(50% + var(--blob-x, 0px)) calc(66% + var(--blob-y, 0px)),
-      hsla(var(--blob-hue-2, 130), 70%, 72%, 0.14),
+      ellipse calc(clamp(700px, 156vw, 2100px) * var(--blob-scale-3, 1)) calc(clamp(500px, 113vw, 1500px) * var(--blob-scale-3, 1)) at calc(50% + var(--blob-x, 0px)) calc(66% + var(--blob-y, 0px)),
+      hsla(var(--blob-hue-2, 130), 70%, 72%, 0.42),
       hsla(var(--blob-hue-2, 130), 70%, 72%, 0) 70%
     );
   opacity: var(--blob-opacity, 1);

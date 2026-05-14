@@ -16,14 +16,14 @@
     {% if previousPost or nextPost %}
       <h2>More week notes</h2>
       <nav aria-label="Post navigation" class="post-nav">
-        {% if nextPost %}
-          <p class="post-nav-link post-nav-next">
-            <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
-          </p>
-        {% endif %}
         {% if previousPost %}
           <p class="post-nav-link post-nav-prev">
             <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>
+          </p>
+        {% endif %}
+        {% if nextPost %}
+          <p class="post-nav-link post-nav-next">
+            <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
           </p>
         {% endif %}
         <a href="/notes-list/">All week notes</a>
