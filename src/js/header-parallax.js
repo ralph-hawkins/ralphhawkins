@@ -6,7 +6,7 @@
   if (!header) return;
 
   const SLICES = 15;
-  const BLUR_STEP = Math.max(2.5, window.innerWidth / 400);
+  const BLUR_STEP = Math.max(5, window.innerWidth / 250);
   const SATURATE = 1.3;
 
   const wrapper = document.createElement('div');

@@ -21,14 +21,26 @@ header {
   z-index: 0;
 }
 
-.header-blur-wrapper {
+.header-blur-wrapper,
+header::before {
   position: absolute;
   inset: 0;
-  z-index: -2;
   transform-origin: bottom;
   transform: scaleY(var(--bands-scale, 1));
   pointer-events: none;
   will-change: transform;
+}
+
+.header-blur-wrapper {
+  z-index: -2;
+}
+
+header::before {
+  content: '';
+  z-index: -1;
+  background:
+    repeating-linear-gradient(to bottom, var(--bands-highlight-stops)),
+    linear-gradient(to bottom, var(--bands-stops));
 }
 
 .header-blur-slice {
@@ -36,44 +48,6 @@ header {
   left: 0;
   right: 0;
   height: calc(100% / 15);
-}
-
-header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      color-mix(in srgb, var(--color-background) 20%, transparent) 0%,
-      0.67%,
-      transparent 3.33%,
-      6%,
-      color-mix(in srgb, var(--color-background) 20%, transparent) 6.67%
-    ),
-    linear-gradient(
-      to bottom,
-      color-mix(in srgb, var(--color-background) 0%, transparent) 0% 6.67%,
-      color-mix(in srgb, var(--color-background) 5%, transparent) 6.67% 13.33%,
-      color-mix(in srgb, var(--color-background) 10%, transparent) 13.33% 20%,
-      color-mix(in srgb, var(--color-background) 15%, transparent) 20% 26.67%,
-      color-mix(in srgb, var(--color-background) 20%, transparent) 26.67% 33.33%,
-      color-mix(in srgb, var(--color-background) 25%, transparent) 33.33% 40%,
-      color-mix(in srgb, var(--color-background) 30%, transparent) 40% 46.67%,
-      color-mix(in srgb, var(--color-background) 35%, transparent) 46.67% 53.33%,
-      color-mix(in srgb, var(--color-background) 40%, transparent) 53.33% 60%,
-      color-mix(in srgb, var(--color-background) 45%, transparent) 60% 66.67%,
-      color-mix(in srgb, var(--color-background) 50%, transparent) 66.67% 73.33%,
-      color-mix(in srgb, var(--color-background) 55%, transparent) 73.33% 80%,
-      color-mix(in srgb, var(--color-background) 60%, transparent) 80% 86.67%,
-      color-mix(in srgb, var(--color-background) 65%, transparent) 86.67% 93.33%,
-      color-mix(in srgb, var(--color-background) 70%, transparent) 93.33% 100%
-    );
-  transform-origin: bottom;
-  transform: scaleY(var(--bands-scale, 1));
-  pointer-events: none;
-  will-change: transform;
 }
 
 main {
