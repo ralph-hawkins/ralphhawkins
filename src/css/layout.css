@@ -24,6 +24,7 @@ main {
   position: relative;
   z-index: 2;
   padding: var(--spacing-xl) 0;
+  background: color-mix(in srgb, var(--color-background) 25%, transparent);
 }
 
 .figure {
