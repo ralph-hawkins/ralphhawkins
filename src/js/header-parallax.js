@@ -5,7 +5,7 @@
   const header = document.querySelector('header');
   if (!header) return;
 
-  const SLICES = 15;
+  const SLICES = 30;
   const BLUR_STEP = Math.max(5, window.innerWidth / 250);
   const SATURATE = 1.3;
 

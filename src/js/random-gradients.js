@@ -27,7 +27,9 @@
   ];
 
   const INITIAL_OFFSET_X = (Math.random() - 0.5) * 0.5 * window.innerWidth;
-  const INITIAL_OFFSET_Y = (Math.random() - 0.5) * 0.5 * window.innerHeight;
+  const yDir = Math.random() < 0.5 ? -1 : 1;
+  const yMag = (0.15 + Math.random() * 0.1) * window.innerHeight;
+  const INITIAL_OFFSET_Y = yDir * yMag;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
