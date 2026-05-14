@@ -5,11 +5,11 @@ tags: weeknotes
 layout: post
 ---
 
-### The end of NHS England
+### The end of NHS England
 
-It’s been a tough week for people in NHS England (NHSE). I’m not sure how much I can say about the restructuring. NHSE has done great, important things. I’m sad to see the toll the uncertainty is taking on the people who work there. For now, everyone is carrying on, waiting for clarity.
+It’s been a tough week for people in NHS England (NHSE). I’m not sure how much I can say about the restructuring. NHSE has done great, important things. I’m sad to see the toll the uncertainty is taking on the people who work there. For now, everyone is carrying on, waiting for clarity.
 
-If you’re wondering what NHSE is – it’s the policy and digital part of how the NHS is run in England. As [Simon Wilson said on Bluesky](https://bsky.app/profile/officeofwilson.com/post/3lk3oydqudk2n), “most ordinary people out there think ‘NHS England‘ is the English bit of the NHS.”
+If you’re wondering what NHSE is – it’s the policy and digital part of how the NHS is run in England. As [Simon Wilson said on Bluesky](https://bsky.app/profile/officeofwilson.com/post/3lk3oydqudk2n), “most ordinary people out there think ‘NHS England‘ is the English bit of the NHS.”
 
 ### Artificial intelligence (AI)
 
@@ -23,7 +23,7 @@ Once those basics are right, is there a benefit to using AI? Definitely.
 
 ### Big room planning
 
-Platforms and Products (which Digital Prevention Services belongs to) held ‘big room planning’. It’s a day where teams show what their working on.
+Platforms and Products (which Digital Prevention Services belongs to) held ‘big room planning’. It’s a day where teams show what their working on.
 
 There’s not much planning, but it’s useful way to get an oversight of what’s happening around us and get to know the people doing it.
 

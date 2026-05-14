@@ -6,7 +6,7 @@ layout: post
 description: Everyone sends a letter to the GP
 ---
 
-[Oli Lovell](https://www.linkedin.com/in/oli-l-670a22254/) asked me what it would look like to create the optimal experience for users looking after their health. It’s one of those questions that feels both easy and hard. I spend a lot of time thinking about the user experience for prevention services – I feel like I should be able to answer easily – but I haven’t spent much time actually thinking about the perfect experience, because I spend all my time looking at problems.
+[Oli Lovell](https://www.linkedin.com/in/oli-l-670a22254/) asked me what it would look like to create the optimal experience for users looking after their health. It’s one of those questions that feels both easy and hard. I spend a lot of time thinking about the user experience for prevention services – I feel like I should be able to answer easily – but I haven’t spent much time actually thinking about the perfect experience, because I spend all my time looking at problems.
 
 But it’s actually quite an easy thing to answer. Don’t make users have to think. Show them what they need. Help them move through any journey – coping with the infinite complexity of health and associated factors – show them only the most useful things without limiting their options.
 

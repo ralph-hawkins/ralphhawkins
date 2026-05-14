@@ -8,9 +8,9 @@ description: Does a view of vaccines and screening make sense for users?
 
 This week I ‘finished’ prototyping our first ‘idea’. It’s been a useful exercise – thinking through making, surfacing questions.
 
-In the first few weeks of the year we spoke to teams across Digital Prevention Services, looking for places we could add value as a team that looks across prevention services. We came up with a list of ideas, shortlisted them and presented back to our team. We ended-up bringing several ideas together. Which means we have something that is a vision, but is a long way from being achievable.
+In the first few weeks of the year we spoke to teams across Digital Prevention Services, looking for places we could add value as a team that looks across prevention services. We came up with a list of ideas, shortlisted them and presented back to our team. We ended‑up bringing several ideas together. Which means we have something that is a vision, but is a long way from being achievable.
 
-The prototype shows users which health screenings and vaccinations they’re eligible for, lets them book appointments, record vaccines they’ve had elsewhere, and opt out of things. It also supports proxy management — for example, parents can view and manage their children’s vaccinations. This is a lot of things. Way beyond what we can do now. That wasn’t what I wanted to make first. Last year I created a prototype of a vision and I knew it wasn’t realistic. I’d like to focus more on iteration instead of visions, we need to split out what we can start with.
+The prototype shows users which health screenings and vaccinations they’re eligible for, lets them book appointments, record vaccines they’ve had elsewhere, and opt out of things. It also supports proxy management – for example, parents can view and manage their children’s vaccinations. This is a lot of things. Way beyond what we can do now. That wasn’t what I wanted to make first. Last year I created a prototype of a vision and I knew it wasn’t realistic. I’d like to focus more on iteration instead of visions, we need to split out what we can start with.
 
 ### Does ‘prevention’ make sense to users?
 
@@ -34,7 +34,7 @@ I think the minimum we’d need to do is help users to book these things. Giving
 
 From the list view – we could help users manage what they’re eligible for. For example, there are some vaccines where eligibility can change depending on information the NHS won’t have a record of. For example, if you have become a carer. But if you were to tell us that, we’d know you were eligible for Covid and flu vaccines. Or the user could tell us they got flu vaccine in another country, then we could record that and show it in the history and stop reminding eligible people to get one.
 
-We have a hypothesis that if we want to personalise a person’s experience in the NHS the self‑reported data is fundamental. The NHS Health Check Online private beta is already doing this. Testing other ways this could work would be valuable.
+We have a hypothesis that if we want to personalise a person’s experience in the NHS the self‑reported data is fundamental. The NHS Health Check Online private beta is already doing this. Testing other ways this could work would be valuable.
 
 There’s a tension here that if we know something about a person then someone is clinically responsible for it, we can’t ask for someone’s blood pressure without taking responsibility for it. Asking a user if they have had a vaccine might be a way we can test this idea with relative clinical simplicity.
 
