@@ -20,7 +20,7 @@ This gets grouped in with the idea that no worrying results should be shown to t
 - not understanding a result – not knowing what the result means for a person’s health or what will happen next. This merges into the need for reassurance, that you’ll be cared for
 - need for empathy and understanding – to not feel alone with a result
 
-The design for each is different. I think we can design against all three, providing systemic thresholds and allowing for clinical discretion. My hope is that we can give people more results sooner, with less stress. The design for this needs to work for the whole journey and not rely on humans never making mistakes.
+The design for each problem is different. I think we can providing systemic thresholds and allow for clinical discretion. My hope is that we can give people more results sooner, with less stress. The design for this needs to work for the whole journey and not rely on humans never making mistakes.
 
 The absolute worst case for all of this is when it happens in a way that no one has designed. The software is working as intended, but the experience for users is created by the gaps between parts of the NHS.
 
