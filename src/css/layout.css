@@ -40,11 +40,6 @@ header {
   pointer-events: none;
   background-color: color-mix(in srgb, var(--color-background) var(--bar-opacity, 0%), transparent);
   box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-background) 20%, transparent);
-  transition: top 90ms ease-out, bottom 90ms ease-out;
-}
-
-.header-bars.is-resetting .header-bar {
-  transition: top 450ms ease-out, bottom 450ms ease-out;
 }
 
 main {
