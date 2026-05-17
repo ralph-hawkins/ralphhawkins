@@ -6,11 +6,11 @@ layout: post
 description: What we’re learning about users getting results
 ---
 
-We’re 5 or 6 weeks into a 4-week discovery on how we could help publish results. The work we planned at the start is wrapped‑up.
+We’re 5 or 6 weeks into a 4‑week discovery on how we could help publish results. The work we planned at the start is wrapped‑up.
 
 The main thing we have left to understand is how we work with teams in alpha. The teams in digital prevention loosely fit into 2 categories, mature and already meeting the user need in a good enough way or new and seeking support. We want to work with at least one team who is already providing results to users. This gives us the real world experience of how teams work and the benefit of their experience.
 
-The mature teams are generally sending results to users in message or letters and our research shows that works well for most users. Improving results for those teams will be an incremental improvement for users. We think there’s longer term value that this will offer but to meet the 10-year plan’s aim of making the NHS app the front door to everything, a team like us needs to start with something.
+The mature teams are generally sending results to users in message or letters and our research shows that works well for most users. Improving results for those teams will be an incremental improvement for users. We think there’s longer term value that this will offer but to meet the 10‑year plan’s aim of making the NHS app the front door to everything, a team like us needs to start with something.
 
 We want to approach teams with as much clarity (but also flexibility) as we can so they know what they’re agreeing to when they say they’ll work with us.
 
