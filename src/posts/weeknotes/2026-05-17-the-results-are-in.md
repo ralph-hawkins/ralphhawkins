@@ -18,7 +18,7 @@ This gets grouped in with the idea that no worrying results should be shown to t
 
 - waiting for a result – the no news is good news is the most hostile version of this
 - not understanding a result – not knowing what the result means for a person’s health or what will happen next. This merges into the need for reassurance, that you’ll be cared for
-- need for empathy and understanding – to not feel alone with a result.
+- need for empathy and understanding – to not feel alone with a result
 
 The design for each is different. I think we can design against all three, providing systemic thresholds and allowing for clinical discretion. My hope is that we can give people more results sooner, with less stress. The design for this needs to work for the whole journey and not rely on humans never making mistakes.
 
