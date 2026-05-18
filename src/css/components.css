@@ -21,28 +21,43 @@ footer ul {
 }
 
 /* Prev/next post navigation */
+.post-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  column-gap: var(--spacing-m);
+  row-gap: var(--spacing-m);
+}
+
 .post-nav-link {
   position: relative;
+  flex: 0 0 calc(50% - var(--spacing-m) / 2);
 }
 
 .post-nav p {
   margin: 0;
 }
 
-.post-nav p:last-of-type {
-  margin-bottom: var(--spacing-xs);
+.post-nav > a {
+  flex: 0 0 auto;
 }
 
-.post-nav-prev::before,
-.post-nav-next::before {
+.post-nav-prev::before {
   position: absolute;
   left: -1.5em;
   color: var(--color-link);
   font-weight: bold;
+  content: "←";
 }
 
-.post-nav-prev::before { content: "←"; }
-.post-nav-next::before { content: "→"; }
+.post-nav-next::after {
+  position: absolute;
+  top: 0;
+  left: calc(var(--arrow-x, 100%) + 0.4em);
+  color: var(--color-link);
+  font-weight: bold;
+  content: "→";
+}
 
 /* All notes page post list */
 .post-list {

@@ -28,9 +28,8 @@
     padding-left: calc(var(--side-padding) + 1.2em);
   }
 
-  /* Arrows are still visible but not too far left */
-  .post-nav-prev::before,
-  .post-nav-next::before {
+  /* Arrow stays visible but not too far left */
+  .post-nav-prev::before {
     left: -1.2em;
   }
 
