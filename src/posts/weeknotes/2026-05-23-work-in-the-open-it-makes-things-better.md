@@ -14,6 +14,6 @@ But external accountability needs a culture that supports it internally. An orga
 
 A healthy, respectful organisation is a precondition of working openly. In a healthy culture, leaders tell you what’s going on. People can be honest about what is and isn’t working, and own mistakes made for good reasons without fear. Transparency runs in both directions – leaders explaining decisions to the people doing the work, and people doing the work raising concerns without fear of consequences.
 
-Principles are good, but they only go so far if the leadership doesn’t believe in them. Working openly as an organisation isn't about show and tells and design history posts – these are signs of an organisation’s health, not the thing itself. It's about accountability to the people you work with. It’s about trust and respect.
+Principles are good, but they only go so far if the leadership doesn’t believe in them. Working openly as an organisation isn’t about show and tells and design history posts – these are signs of an organisation’s health, not the thing itself. It’s about accountability to the people you work with. It’s about trust and respect.
 
 This week I watched people live these values at their own cost. How we show up matters.
