@@ -8,7 +8,7 @@ description: Accountability is a decision
 
 A spicy week at work – decisions made, and people left to speculate. IYKYK.
 
-It’s made me think about what working in the open means. The GDS principle talks about sharing code, showing work and discussing mistakes publicly. At its core, working in the open is working accountably. Much of the principle, like having public repos, is about being accountable to taxpayers.
+It’s made me think about what working in the open means. [The GDS principle](https://www.gov.uk/guidance/government-design-principles#make-things-open-it-makes-things-better) talks about sharing code, showing work and discussing mistakes publicly. At its core, working in the open is working accountably. Much of the principle, like making the code we write open to everyone, is about being accountable to taxpayers.
 
 But external accountability needs a culture that supports it internally. An organisation that hides decisions from its own staff will struggle to be genuinely open with the public. The way leaders treat the people doing the work shows up in how the organisation holds itself to account publicly. Concealment is a decision. So is transparency. It’s also a habit, something that can only work if it’s actively sustained.
 
