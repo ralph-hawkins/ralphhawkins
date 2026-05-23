@@ -38,8 +38,9 @@ footer ul {
   margin: 0;
 }
 
-.post-nav > a {
-  flex: 0 0 auto;
+.post-nav-all {
+  flex: 0 0 100%;
+  margin: 0;
 }
 
 .post-nav-prev::before {
