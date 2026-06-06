@@ -24,7 +24,7 @@ We’re close to wrapping up a discovery into how we might help prevention servi
 
 They were essentially asking why we were looking at results and whether it was really worthwhile. Teams in Digital Prevention are doing a good job of communicating what people need to understand through messages, as long as the results are positive and one‑off. A well‑written message offers the user what they need. It also gives the team what they need – easy to shape and iterate the content.
 
-Improving results isn’t a big value add on its own. The point of results is that they’re a foothold – the first place we can start joining prevention services up, a way to support teams that aren’t working with the app. Two things sit awkwardly together. Results aren’t the prize. But the work has to be worth doing now.
+Improving results isn’t a big value add on its own. The point of results is that they’re a foothold – the first place we can start joining prevention services up, a way to support teams that aren’t working with the app. Two things sit awkwardly together. On its own, the results work is low value. But it still has to be worth doing now.
 
 ### You didn’t have to do it but you would anyway
 
