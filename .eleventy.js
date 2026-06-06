@@ -73,6 +73,12 @@ module.exports = function(eleventyConfig) {
     return index >= 0 && index < collection.length - 1 ? collection[index + 1] : null;
   });
 
+  // Sequential number of a post within a collection (oldest = 1)
+  eleventyConfig.addFilter("getPostNumber", function(collection, page) {
+    const index = collection.findIndex(post => post.url === page.url);
+    return index >= 0 ? index + 1 : null;
+  });
+
   // Add assets
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");

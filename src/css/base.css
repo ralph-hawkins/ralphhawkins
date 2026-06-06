@@ -77,6 +77,6 @@ a:focus-visible {
 
 hr {
   margin: var(--spacing-xl) 0;
-  height: 0.1rem;
+  height: 0.05rem;
   background: var(--color-border);
 }

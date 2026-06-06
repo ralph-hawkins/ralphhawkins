@@ -43,6 +43,25 @@ footer ul {
   margin: 0;
 }
 
+/* Date + week note count grid (mirrors .post-nav columns) */
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  column-gap: var(--spacing-m);
+  row-gap: var(--spacing-m);
+  margin-bottom: 2lh;
+}
+
+.post-meta p {
+  flex: 0 0 calc(50% - var(--spacing-m) / 2);
+  margin: 0;
+}
+
+.post-meta-count {
+  text-align: right;
+}
+
 .post-nav-prev::before {
   position: absolute;
   left: -1.5em;

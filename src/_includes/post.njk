@@ -3,11 +3,14 @@ layout: base
 ---
 
 <article>
-  <div class="date">
-    <p>{{ date | dateFormat }}</p>
+  {% set postNumber = collections.publicWeeknotes | getPostNumber(page) %}
+  <div class="date post-meta">
+    <p class="post-meta-date">{{ date | dateFormat }}</p>
+    {% if postNumber %}
+      <p class="post-meta-count">Week note {{ postNumber }}</p>
+    {% endif %}
   </div>
   <h2>{{ title }}</h2>
-
   <div class="post-content">
     {{ content | safe }}
   </div>
