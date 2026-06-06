@@ -10,7 +10,7 @@ description: Strategic vs tactical innit
 
 I spent the last week and a half helping [Richard Pope](https://www.linkedin.com/in/richardjpope/) create a deck on what the NHS could look like if the technology that supports patients, clinicians, and admin staff was modern and interoperable. The purpose was to show how well‑designed, connected technology could reduce burden on everyone involved and let people focus on the stuff that matters when it comes to dealing with ill health.
 
-We created 9 demos showing example journeys. A patient does a pre‑consultation check‑in with an AI, which the clinician reviews before the appointment. Ambient voice supports the consultation itself, so the patient leaves with clear, structured notes and next steps. Stuff that is technically possible and happens in places within the NHS, but without consistency and join‑up.
+We created 9 demos showing example journeys. For example, a patient does a pre‑consultation check‑in with an AI, which the clinician reviews before the appointment. Ambient voice supports the consultation itself, so the patient leaves with clear, structured notes and next steps. Stuff that is technically possible and happens in places within the NHS, but without consistency and join‑up.
 
 The demos themselves were screens in the app and websites, stitched together using After Effects. Smoke and mirrors. I smashed a lot of stuff together. I think what we had in the end is really interesting, things I’d like to explore more in slower time.
 
