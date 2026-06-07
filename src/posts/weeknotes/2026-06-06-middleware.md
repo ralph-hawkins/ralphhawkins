@@ -8,7 +8,7 @@ description: Strategic vs tactical innit
 
 ### Blame the caffeine
 
-I spent the last week and a half helping [Richard Pope](https://www.linkedin.com/in/richardjpope/) create a deck on what the NHS could look like if the technology that supports patients, clinicians, and admin staff was modern and interoperable. The purpose was to show how well‑designed, connected technology could reduce burden on everyone involved and let people focus on the stuff that matters when it comes to dealing with ill health.
+I spent the last week and a half helping [Richard Pope](https://www.linkedin.com/in/richardjpope/) create a deck on what the NHS could look like if the technology that supports patients, clinicians, and admin staff was modern and interoperable. The purpose was to show how well‑designed, connected technology could reduce burden on everyone involved and let people focus on the stuff that matters when it comes to dealing with health.
 
 We created 9 demos showing example journeys. For example, a patient does a pre‑consultation check‑in with an AI, which the clinician reviews before the appointment. Ambient voice supports the consultation itself, so the patient leaves with clear, structured notes and next steps. Stuff that is technically possible and happens in places within the NHS, but without consistency and join‑up.
 
