@@ -1,8 +1,6 @@
 ---
 title: The results are in
 date: 2026-05-17
-tags: weeknotes
-layout: post
 description: What we’re learning about users getting results
 ---
 

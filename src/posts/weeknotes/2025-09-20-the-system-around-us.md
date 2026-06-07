@@ -1,8 +1,6 @@
 ---
 title: The system around us
 date: 2025-09-20
-tags: weeknotes
-layout: post
 ---
 
 ### Training

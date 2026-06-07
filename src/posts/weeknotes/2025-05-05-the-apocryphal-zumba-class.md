@@ -1,8 +1,6 @@
 ---
 title: The apocryphal Zumba class
 date: 2025-05-05
-tags: weeknotes
-layout: post
 ---
 
 ### Grades, Roles, Culture

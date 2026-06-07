@@ -1,8 +1,6 @@
 ---
 title: Ill communication
 date: 2025-03-28
-tags: weeknotes
-layout: post
 ---
 
 This week was chaotic, but also productive.

@@ -1,8 +1,6 @@
 ---
 title: Doing the hard work to pretend it’s simple
 date: 2025-08-09
-tags: weeknotes
-layout: post
 ---
 
 ### Prototyping strategy

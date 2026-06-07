@@ -1,8 +1,6 @@
 ---
 title: Work in the open, it makes things better
 date: 2026-05-23
-tags: weeknotes
-layout: post
 description: Accountability is a decision
 ---
 

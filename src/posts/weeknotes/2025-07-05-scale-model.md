@@ -1,8 +1,6 @@
 ---
 title: Scale model
 date: 2025-07-05
-tags: weeknotes
-layout: post
 ---
 
 A challenge working on digital prevention services is the tension of providing healthcare that works for individuals on a scale that works for the country.

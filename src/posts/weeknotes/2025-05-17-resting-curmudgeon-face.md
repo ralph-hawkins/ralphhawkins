@@ -1,8 +1,6 @@
 ---
 title: Resting curmudgeon face
 date: 2025-05-17
-tags: weeknotes
-layout: post
 ---
 
 ### Services now, platforms later

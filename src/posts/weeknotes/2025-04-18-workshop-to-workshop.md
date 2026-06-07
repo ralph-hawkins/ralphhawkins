@@ -1,8 +1,6 @@
 ---
 title: From workshop to workshop
 date: 2025-04-18
-tags: weeknotes
-layout: post
 ---
 
 I’ve worked 4 days over the last fortnight. The mix of childcare, sporadic work and other stuff going on, means I’m not sure I’ve got much chance of writing anything coherent this week.

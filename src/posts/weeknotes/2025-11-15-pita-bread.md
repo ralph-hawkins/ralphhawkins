@@ -1,8 +1,6 @@
 ---
 title: Prevention In The App bread
 date: 2025-11-15
-tags: weeknotes
-layout: post
 ---
 
 We had a 2‑day Personalised Prevention Services leadership meeting this week. Some of it was about reflecting on the past year,  but most of it was about looking forward and reorganising our work. Our leader is moving to lead cross‑portfolio coordination in a new team. Working on how screening, vaccination, behaviour change and home testing work together with a focus on creating a coordinated experience in the NHS app.

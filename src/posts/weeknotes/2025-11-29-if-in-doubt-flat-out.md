@@ -1,8 +1,6 @@
 ---
 title: If in doubt, flat out
 date: 2025-11-29
-tags: weeknotes
-layout: post
 ---
 
 ### With all the experience

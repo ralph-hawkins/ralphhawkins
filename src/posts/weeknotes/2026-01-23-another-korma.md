@@ -1,8 +1,6 @@
 ---
 title: Another korma
 date: 2026-01-23
-tags: weeknotes
-layout: post
 description: How much prevention can we put in the NHS app?
 ---
 

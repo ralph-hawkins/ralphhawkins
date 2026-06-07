@@ -1,8 +1,6 @@
 ---
 title: More water in the Ribena
 date: 2025-05-10
-tags: weeknotes
-layout: post
 ---
 
 ### Health assessments discovery

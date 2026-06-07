@@ -1,8 +1,6 @@
 ---
 title: Middle(of no)ware
 date: 2026-06-06
-tags: weeknotes
-layout: post
 description: Strategic vs tactical innit
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: Next best action
 date: 2026-01-31
-tags: weeknotes
-layout: post
 description: Where does Manage my Health start?
 ---
 

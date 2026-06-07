@@ -1,8 +1,6 @@
 ---
 title: Living in an old house
 date: 2026-03-14
-tags: weeknotes
-layout: post
 description: Talking about making stuff happen
 ---
 

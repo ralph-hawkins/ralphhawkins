@@ -1,8 +1,6 @@
 ---
 title: Well rendered
 date: 2025-12-13
-tags: weeknotes
-layout: post
 ---
 
 {% from "image.njk" import image %}

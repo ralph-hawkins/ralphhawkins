@@ -1,8 +1,6 @@
 ---
 title: Alignment
 date: 2025-07-15
-tags: weeknotes
-layout: post
 ---
 
 I had Covid last week. Too much time on YouTube led me down a design rabbit hole. Two videos resonated.

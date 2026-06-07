@@ -1,8 +1,6 @@
 ---
 title: I heard you like apps, so I put an app in your app
 date: 2026-02-15
-tags: weeknotes
-layout: post
 description: Personalisation is hard
 ---
 

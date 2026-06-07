@@ -1,8 +1,6 @@
 ---
 title: Live alpha
 date: 2026-03-22
-tags: weeknotes
-layout: post
 description: Testing an idea about testing and learning
 ---
 

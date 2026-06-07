@@ -1,8 +1,6 @@
 ---
 title: From the air
 date: 2025-08-26
-tags: weeknotes
-layout: post
 ---
 
 This week I attended a meeting to talk about plans to procure a service – it revealed a truth so obvious that I feel like a real dummy for not figuring it out sooner. ‘Transformation’ is only tangentially about agile vs waterfall, tech and user centred design. It’s really about who takes responsibility for how services are delivered.

@@ -1,8 +1,6 @@
 ---
 title: How soon is now?
 date: 2025-06-06
-tags: weeknotes
-layout: post
 ---
 
 4‑day week after spending last week at Het Meerdal Center Parks.

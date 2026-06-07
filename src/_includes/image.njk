@@ -1,14 +1,11 @@
-{% macro image(src, alt, caption="", className="", maxWidth="100%") %}
+{% macro image(src, alt, caption="", className="", maxWidth="100%", width="", height="") %}
   <figure class="figure {{ className }}">
     <img
       src="{{ src }}"
       alt="{{ alt }}"
       class="figure-img"
       style="max-width: {{ maxWidth }};"
-      loading="lazy"
-      width="800"
-      height="600"
-    >
+      loading="lazy"{% if width %} width="{{ width }}"{% endif %}{% if height %} height="{{ height }}"{% endif %}>
     {% if caption %}
       <figcaption class="figure-caption">{{ caption }}</figcaption>
     {% endif %}

@@ -1,8 +1,6 @@
 ---
 title: This week in the world’s largest quango
 date: 2025-03-14
-tags: weeknotes
-layout: post
 ---
 
 ### The end of NHS England

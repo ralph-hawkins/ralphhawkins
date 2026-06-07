@@ -1,8 +1,6 @@
 ---
 title: People’s thoughts and feelings
 date: 2025-05-24
-tags: weeknotes
-layout: post
 ---
 
 I burnt a lot of time this week on stuff that I neither contributed much to or got much value from. I could have been better at prioritising my time. Writing this as a reminder to do a better job in the future. Also to read invite descriptions and not just the titles.

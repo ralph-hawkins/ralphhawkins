@@ -1,8 +1,6 @@
 ---
 title: What happens in Mural, stays in Mural
 date: 2025-04-25
-tags: weeknotes
-layout: post
 ---
 
 Or Lucid, Miro, or whatever.

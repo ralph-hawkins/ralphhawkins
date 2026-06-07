@@ -1,8 +1,6 @@
 ---
 title: Aggregators
 date: 2026-04-26
-tags: weeknotes
-layout: post
 description: Half‑way through a discovery into improving results in the NHS app
 ---
 

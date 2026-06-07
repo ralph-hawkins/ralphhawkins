@@ -1,8 +1,6 @@
 ---
 title: You don’t always need to go from left to right
 date: 2025-03-21
-tags: weeknotes
-layout: post
 ---
 
 The interesting times within NHS England continue.

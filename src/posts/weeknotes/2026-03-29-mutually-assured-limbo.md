@@ -1,8 +1,6 @@
 ---
 title: Mutually assured limbo
 date: 2026-03-29
-tags: weeknotes
-layout: post
 description: Working with materials
 ---
 

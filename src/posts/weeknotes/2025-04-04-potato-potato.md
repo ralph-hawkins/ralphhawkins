@@ -1,8 +1,6 @@
 ---
 title: Potato, potato
 date: 2025-04-04
-tags: weeknotes
-layout: post
 ---
 
 This week I've been thinking about how teams work together and organisational culture.

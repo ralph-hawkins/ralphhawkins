@@ -1,8 +1,6 @@
 ---
 title: Big yellow taxi
 date: 2025-09-07
-tags: weeknotes
-layout: post
 ---
 
 ### Pink hotels

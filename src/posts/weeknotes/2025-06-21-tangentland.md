@@ -1,8 +1,6 @@
 ---
 title: Tangentland
 date: 2025-06-21
-tags: weeknotes
-layout: post
 ---
 
 This week we had one of those workshops where everything’s going fine until it turns out different people are working with different assumptions.

@@ -1,8 +1,6 @@
 ---
 title: Everyone wants a map
 date: 2025-03-09
-tags: weeknotes
-layout: post
 ---
 This week I’ve been worrying about how much time I spend thinking about alignment, continuing to shape a discovery into health assessments and getting closer to the Personalised Prevention Platform team.
 

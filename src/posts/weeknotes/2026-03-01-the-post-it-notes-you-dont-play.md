@@ -1,8 +1,6 @@
 ---
 title: The (post‑it) notes you don’t play
 date: 2026-03-01
-tags: weeknotes
-layout: post
 description: Everyone sends a letter to the GP
 ---
 

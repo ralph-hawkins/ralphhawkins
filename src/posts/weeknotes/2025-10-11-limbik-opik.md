@@ -1,8 +1,6 @@
 ---
 title: Limbic Öpik
 date: 2025-10-11
-tags: weeknotes
-layout: post
 ---
 
 ### Personalisation eats data

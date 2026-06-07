@@ -1,8 +1,6 @@
 ---
 title: The joiner’s arms
 date: 2026-01-10
-tags: weeknotes
-layout: post
 description: New year, new team, new scope
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: Exchanging long protein strings
 date: 2026-02-07
-tags: weeknotes
-layout: post
 description: Does cross‑cutting mean distracting people?
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: 5 months at NHS England
 date: 2025-02-28
-tags: weeknotes
-layout: post
 ---
 
 I’ve been working at NHS England (NHSE) for 5 months. It’s been intense and I’ve learnt a lot.

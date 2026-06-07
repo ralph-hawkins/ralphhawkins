@@ -1,8 +1,6 @@
 ---
 title: Conway or another
 date: 2026-02-20
-tags: weeknotes
-layout: post
 description: Does a view of vaccines and screening make sense for users?
 ---
 

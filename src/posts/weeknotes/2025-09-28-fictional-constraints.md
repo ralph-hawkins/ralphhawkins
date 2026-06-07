@@ -1,8 +1,6 @@
 ---
 title: Fictional constraints
 date: 2025-09-28
-tags: weeknotes
-layout: post
 ---
 
 I’m continuing to prototype how our service might look when we move from condition‑led journeys to something more joined‑up.

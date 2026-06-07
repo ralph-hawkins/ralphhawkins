@@ -1,8 +1,6 @@
 ---
 title: High pressure days
 date: 2025-10-04
-tags: weeknotes
-layout: post
 ---
 
 ### Planning
