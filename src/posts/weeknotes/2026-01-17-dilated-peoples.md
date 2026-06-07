@@ -23,7 +23,7 @@ When I started learning front‑end for web, a dev gave me a tip I still think a
 
 ### What else could a cross‑cutting team do?
 
-The first phase is understanding what teams across Digital Prevention Services are working on. Over the next few weeks we’ll find where connecting journeys might improve outcomes and run experiments around these.
+The first phase is understanding what teams across Digital Prevention Services are working on. Over the next few weeks we’ll find where connecting journeys might improve outcomes and run experiments around these.
 
 I’ve been thinking about what else we can do. Prevention governance is local – local authorities commission behaviour change, ICBs own screening uptake, vaccination happens through pharmacies and GPs. But the app is national. How do we design for this?
 

@@ -22,5 +22,5 @@ I don’t think I should have started with the question of what should we do fir
 ---
 
 Personalised prevention design history posts published this week:
-- [Learning through small‑scale experimentation](https://design-history.prevention-services.nhs.uk/talking-therapies/2025/11/learning-through-small-scale-experimentation/) – Talking Therapies
+- [Learning through small‑scale experimentation](https://design-history.prevention-services.nhs.uk/talking-therapies/2025/11/learning-through-small-scale-experimentation/) – Talking Therapies
 - [Naming the service – for the pilot](https://design-history.prevention-services.nhs.uk/personalised-prevention-platform/2025/11/naming-the-service/) – Weight Management

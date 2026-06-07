@@ -43,4 +43,4 @@ The systems approach helps navigate healthcare complexity. But without designing
 
 ---
 
-Credit to [Irina Pencheva](https://www.linkedin.com/in/irina-pencheva-2b431825/), who I stole the title for this week’s note from.
+Credit to [Irina Pencheva](https://www.linkedin.com/in/irina-pencheva-2b431825/), who I stole the title for this week’s note from.

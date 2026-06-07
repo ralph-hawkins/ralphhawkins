@@ -32,7 +32,7 @@ The team are likely to create a first use case around pre‑screening for lung c
 
 ### Life and death business cases
 
-As part of the Spending Review, Digital Prevention Services is creating several business cases.
+As part of the Spending Review, Digital Prevention Services is creating several business cases.
 
 Creating a business case for our strategy adds useful rigour and invites wider collaboration.
 
@@ -56,6 +56,6 @@ I have a strong bias against enterprise software, but I'll support a pragmatic s
 
 ### Links
 
-- Mike Gallagher – design lead for NHS app and lovely person, writes literary week notes. Last week’s post on [the tension between middle management and being a designer who designs](https://mikegallagher.org/weeknote-wc-28-april-2025/) perfectly articulates my experience.
+- Mike Gallagher – design lead for NHS app and lovely person, writes literary week notes. Last week’s post on [the tension between middle management and being a designer who designs](https://mikegallagher.org/weeknote-wc-28-april-2025/) perfectly articulates my experience.
 
 - Unrelated to public sector service design – I watched this [video on the ethics of fake guitar videos](https://youtu.be/R1QEV9euGAg?si=HjqDPdZryCp9cb9E) by Adam Neely. It’s more interesting than it sounds, especially when he gets into how each music genre has its own set of culturally acceptable behaviours.

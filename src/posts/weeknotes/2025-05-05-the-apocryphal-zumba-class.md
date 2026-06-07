@@ -46,6 +46,6 @@ I’ve started to add how our future journeys (some potential MVPs and our long�
 
 ---
 
-I got this week’s title from [Mat Johnson](https://bsky.app/profile/demotive.bsky.social). Mat is a designer in one of the teams in Personalised Prevention Services. Working on how we help people access the most appropriate services easily.
+I got this week’s title from [Mat Johnson](https://bsky.app/profile/demotive.bsky.social). Mat is a designer in one of the teams in Personalised Prevention Services. Working on how we help people access the most appropriate services easily.
 
 I like working with Mat for lots of reasons, but especially because it’s like working with an English folk artist. If he’d been born 50 years earlier he would’ve been hanging out with Ted and Sylvia but, instead he’s thinking deeply and speaking lyrically about the difference between Zumba classes and gardening clubs.

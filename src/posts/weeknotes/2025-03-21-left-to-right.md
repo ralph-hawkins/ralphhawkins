@@ -7,7 +7,7 @@ layout: post
 
 The interesting times within NHS England continue.
 
-For me the week had two main highlights, a Personalised Prevention Services senior leadership team (SLT) get together and a couple of Services Week sessions.
+For me the week had two main highlights, a Personalised Prevention Services senior leadership team (SLT) get together and a couple of Services Week sessions.
 
 ### Senior leadership
 

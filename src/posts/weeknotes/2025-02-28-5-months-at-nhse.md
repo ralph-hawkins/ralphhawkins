@@ -7,7 +7,7 @@ layout: post
 
 I’ve been working at NHS England (NHSE) for 5 months. It’s been intense and I’ve learnt a lot.
 
-I joined at the beginning of October 2024 as service design lead for Personalised Prevention Services, which sits within Digital Prevention Services.
+I joined at the beginning of October 2024 as service design lead for Personalised Prevention Services, which sits within Digital Prevention Services.
 
 In my first months I was drowning in complexity.
 

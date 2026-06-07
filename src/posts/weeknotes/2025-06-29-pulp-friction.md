@@ -31,7 +31,7 @@ Only highly motivated people or those with good support navigate this system. Pe
 
 A lot of our work will be to remove the friction that wears away at motivation. But making healthy choices is difficult for most people. Finding time to exercise or cook healthy meals requires effort, planning, often money, and other trade‑offs in people’s lives.
 
-This article in The Guardian – [Britain in 2025: sick man of Europe battling untreated illness crisis](https://www.theguardian.com/society/2025/jun/29/britain-in-2025-sick-man-of-europe-battling-untreated-illness-crisis), has a powerful example of the impact removing real‑world friction has:
+This article in The Guardian – [Britain in 2025: sick man of Europe battling untreated illness crisis](https://www.theguardian.com/society/2025/jun/29/britain-in-2025-sick-man-of-europe-battling-untreated-illness-crisis), has a powerful example of the impact removing real‑world friction has:
 
 > In Fleetwood, eight miles north of Blackpool, NHS bosses spotted that a large number of children were failing to turn up to mental health appointments. They realised it was because families could not afford the two‑hour round trip on public transport. Since moving the service to Fleetwood, the child and adolescent mental health services waiting list has fallen to almost zero. A&E attendances for children in mental health crisis have decreased by 59%.
 

@@ -13,7 +13,7 @@ I think I built it in a couple of days, which probably means I built it in a cou
 
 It proved a valuable tool. We got a lot of useful feedback and one of our projects is a direct result of demoing it.
 
-I intended to revisit it as we’ve learnt more about how this could actually work. The teams in Personalised Prevention Services have done the hard work to think about what this will actually look like. My understanding of the NHS has also improved.
+I intended to revisit it as we’ve learnt more about how this could actually work. The teams in Personalised Prevention Services have done the hard work to think about what this will actually look like. My understanding of the NHS has also improved.
 
 ### Prototiming
 

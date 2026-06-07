@@ -13,9 +13,9 @@ I’m not sure the [GOV.UK prototype kit](https://prototype-kit.service.gov.uk/)
 
 ### Making pretend things
 
-I’ve begun building a new prototype to explore what our longer‑term vision for personalised prevention services could look like. I’m not using a prototyping kit for this one. To attempt to model a future state where the NHS App is a native platform for personalised journeys, I needed more complex logic and routing than the kits provide.
+I’ve begun building a new prototype to explore what our longer‑term vision for personalised prevention services could look like. I’m not using a prototyping kit for this one. To attempt to model a future state where the NHS App is a native platform for personalised journeys, I needed more complex logic and routing than the kits provide.
 
-The trade-off is that I’ve spent more time than I’d like on aesthetics, though I’m still using the [GOV.UK design system](https://design-system.service.gov.uk/) for the basics. It’s interesting to see the effect that fidelity has on people.  I showed a colleague a page they’d seen as a wireframe a few times before. Seeing it like it would appear on a phone, their reaction was very different.
+The trade‑off is that I’ve spent more time than I’d like on aesthetics, though I’m still using the [GOV.UK design system](https://design-system.service.gov.uk/) for the basics. It’s interesting to see the effect that fidelity has on people.  I showed a colleague a page they’d seen as a wireframe a few times before. Seeing it like it would appear on a phone, their reaction was very different.
 
 ### Making real things
 

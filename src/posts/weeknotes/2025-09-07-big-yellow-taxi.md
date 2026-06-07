@@ -23,10 +23,10 @@ There’s a wider social impact to the default assumption that outsourcing is mo
 
 The [State of digital government review](https://www.gov.uk/government/publications/state-of-digital-government-review/state-of-digital-government-review) summarises all of this, but I’m not sure if it’s made a difference. The [NHS’ ten year plan](https://www.gov.uk/government/publications/10-year-health-plan-for-england-fit-for-the-future/fit-for-the-future-10-year-health-plan-for-england-executive-summary) promises transformation, but doesn’t set the conditions for it.
 
-Building quality in-house capacity takes time. The best time to plant a tree was ten years ago, but it feels like the trees get chopped down faster than new ones are being planted.
+Building quality in‑house capacity takes time. The best time to plant a tree was ten years ago, but it feels like the trees get chopped down faster than new ones are being planted.
 
 I’m spending some of my time next week building a demo to show that we are as polished and as far reaching as the enterprise software we’re competing with.
 
 ---
 
-The NHS Health check online team published a design history post on the excellent [work they’re doing to translate complex medical data into understandable, actionable information the public can use](https://design-history.prevention-services.nhs.uk/nhs-health-check-online/2025/09/cholesterol-results/).
+The NHS Health check online team published a design history post on the excellent [work they’re doing to translate complex medical data into understandable, actionable information the public can use](https://design-history.prevention-services.nhs.uk/nhs-health-check-online/2025/09/cholesterol-results/).

@@ -63,4 +63,4 @@ The team had their first sprint playback for alpha – which means they are now 
 
 ---
 
-Not sure if this is a brag or not – but the continuing highlight of my job is working with the incredible UCD team in Personalised Prevention Services. They’re all great humans who are incredible at their jobs. I’m so happy to be part of this team and to get to play a role in supporting them.
+Not sure if this is a brag or not – but the continuing highlight of my job is working with the incredible UCD team in Personalised Prevention Services. They’re all great humans who are incredible at their jobs. I’m so happy to be part of this team and to get to play a role in supporting them.

@@ -9,7 +9,7 @@ A challenge working on digital prevention services is the tension of providing h
 
 ### Remote access to healthcare professionals
 
-The highlight of my week was a talk by East Suffolk and North Essex NHS Foundation Trust (ESNEFT).
+The highlight of my week was a talk by East Suffolk and North Essex NHS Foundation Trust (ESNEFT).
 
 Working with a tech partner, the Trust created an online channel for people with obesity to access care. Importantly this is about speaking to qualified healthcare professionals (doctors, psychologists, and specialist nurses) to get the same level of care as in‑person services. The Trust has a dedicated clinician responsible for the service and online patients. The digital channel offers direct referral into pathways that are often affected by obesity (for example, sleep apnoea and musculoskeletal).
 
@@ -19,7 +19,7 @@ The important thing is integration – users can move between online and in‑pe
 
 Remote access saves patients the time, cost and inconvenience of travelling for an appointment – valuable for everyone, but for people with BMI of 60 or higher, it makes a huge difference. It also means clinicians can see more people.
 
-The service feels transformational because it lines‑up incentives for the Integrated Care Board (ICB), the Trust, and patients. As part of the service, the ICB gets help with providing GLP‑1s (something they’re now required to fund under national policy) with reduced burden on GPs. The Trust can offer joined‑up support and reduce burden on hospital staff. Patients get choice between the two most effective treatments for obesity, and faster access to both.
+The service feels transformational because it lines‑up incentives for the Integrated Care Board (ICB), the Trust, and patients. As part of the service, the ICB gets help with providing GLP‑1s (something they’re now required to fund under national policy) with reduced burden on GPs. The Trust can offer joined‑up support and reduce burden on hospital staff. Patients get choice between the two most effective treatments for obesity, and faster access to both.
 
 For me, working from the centre, with a focus on scale, this level of integration between physical and digital feels distant. Even a one‑time hand‑off from our services to local services is difficult. Truly integrated digital and in‑person care is years away. But I am convinced this is what we need to strive for.
 

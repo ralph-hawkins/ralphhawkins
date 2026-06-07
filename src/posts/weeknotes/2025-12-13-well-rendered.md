@@ -15,19 +15,19 @@ I knew this would come my way the second I heard about it. Initially I was very 
 
 The stickers were then voted on by everyone. These two stickers were the joint winners.
 
-{{ image("/images/weeknotes/2025-12-13-well-rendered/001.jpg", "Hand-drawn sticker design with cupped hands holding a rainbow circle containing a heart, building, phone, medical cross, and stick figures") }}
+{{ image("/images/weeknotes/2025-12-13-well-rendered/001.jpg", "Hand‑drawn sticker design with cupped hands holding a rainbow circle containing a heart, building, phone, medical cross, and stick figures") }}
 
-{{ image("/images/weeknotes/2025-12-13-well-rendered/002.jpg", "Hand-drawn shield design with DNA helix, heart, syringe, and the words Digital Prevention") }}
+{{ image("/images/weeknotes/2025-12-13-well-rendered/002.jpg", "Hand‑drawn shield design with DNA helix, heart, syringe, and the words Digital Prevention") }}
 
 Sadly for me these were two of the more sane designs.
 
 After a few sketches, the visual language of heraldry felt like a good fit. Starting with a shield as the base and then throwing as many things as possible at it, felt appropriate.
 
-{{ image("/images/weeknotes/2025-12-13-well-rendered/004.png", "Pencil sketch of an ornate heraldic crest with hands holding a heart, banner reading Digital Prevention Services, and decorative flourishes") }}
+{{ image("/images/weeknotes/2025-12-13-well-rendered/004.png", "Pencil sketch of an ornate heraldic crest with hands holding a heart, banner reading Digital Prevention Services, and decorative flourishes") }}
 
-{{ image("/images/weeknotes/2025-12-13-well-rendered/005.png", "Pencil sketch of a shield crest with NHS logo, search icon, heart monitor, syringe, hands holding heart, and Digital Prevention Services banner") }}
+{{ image("/images/weeknotes/2025-12-13-well-rendered/005.png", "Pencil sketch of a shield crest with NHS logo, search icon, heart monitor, syringe, hands holding heart, and Digital Prevention Services banner") }}
 
-{{ image("/images/weeknotes/2025-12-13-well-rendered/006.png", "Refined pencil sketch of shield crest with NHS helmet, DNA helixes, corn cobs, magnifying glass, crossed syringes, hands holding heart, and Digital Prevention Services banner") }}
+{{ image("/images/weeknotes/2025-12-13-well-rendered/006.png", "Refined pencil sketch of shield crest with NHS helmet, DNA helixes, corn cobs, magnifying glass, crossed syringes, hands holding heart, and Digital Prevention Services banner") }}
 
 I then started building it in Illustrator. I save and create a new file anytime I’m going to do something irreversible. These are some of the stages.
 
@@ -43,13 +43,13 @@ I then started building it in Illustrator. I save and create a new file anytime 
 
 {{ image("/images/weeknotes/2025-12-13-well-rendered/013.png", "Vector iteration: blue shield with NHS logo, heart and hands, with blank blue ribbon banner") }}
 
-{{ image("/images/weeknotes/2025-12-13-well-rendered/014.png", "Vector iteration: blue shield with NHS logo, pink heart, hands, DNA helixes surrounding, pink ribbon with Digital Prevention Services text and Estd. 2024") }}
+{{ image("/images/weeknotes/2025-12-13-well-rendered/014.png", "Vector iteration: blue shield with NHS logo, pink heart, hands, DNA helixes surrounding, pink ribbon with Digital Prevention Services text and Estd. 2024") }}
 
 {{ image("/images/weeknotes/2025-12-13-well-rendered/015.png", "Vector iteration: adding pink lungs above the shield with DNA helixes and pink border") }}
 
-{{ image("/images/weeknotes/2025-12-13-well-rendered/016.png", "Vector iteration: simplified pink and blue design with shield, heart, syringe, and three stacked banners reading Digital Prevention Services") }}
+{{ image("/images/weeknotes/2025-12-13-well-rendered/016.png", "Vector iteration: simplified pink and blue design with shield, heart, syringe, and three stacked banners reading Digital Prevention Services") }}
 
-{{ image("/images/weeknotes/2025-12-13-well-rendered/017.png", "Vector iteration: pink intestines framing the shield, lungs on top, syringe to the side, Digital Prevention Services banners") }}
+{{ image("/images/weeknotes/2025-12-13-well-rendered/017.png", "Vector iteration: pink intestines framing the shield, lungs on top, syringe to the side, Digital Prevention Services banners") }}
 
 {{ image("/images/weeknotes/2025-12-13-well-rendered/018.png", "Vector iteration: bold yellow shield with NHS logo, squiggle motif, hands holding heart, sparkles, and Digital prevention services ribbon") }}
 
@@ -57,7 +57,7 @@ I then started building it in Illustrator. I save and create a new file anytime 
 
 {{ image("/images/weeknotes/2025-12-13-well-rendered/020.png", "Vector iteration: yellow shield with rainbow stripe behind NHS logo, blue heart, syringes, squiggle, hands, Digital prevention services blue ribbon") }}
 
-{{ image("/images/weeknotes/2025-12-13-well-rendered/021.png", "Final sticker design: yellow shield with rainbow, NHS logo, syringe, heart-rate symbol, magnifying glass icons, blue heart with hands, blue ribbons reading Digital prevention services, light blue background") }}
+{{ image("/images/weeknotes/2025-12-13-well-rendered/021.png", "Final sticker design: yellow shield with rainbow, NHS logo, syringe, heart‑rate symbol, magnifying glass icons, blue heart with hands, blue ribbons reading Digital prevention services, light blue background") }}
 
 {{ image("/images/weeknotes/2025-12-13-well-rendered/022.jpeg", "Photo of the printed sticker on a MacBook laptop") }}
 

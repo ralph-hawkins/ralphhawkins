@@ -7,7 +7,7 @@ layout: post
 
 This week we had one of those workshops where everything’s going fine until it turns out different people are working with different assumptions.
 
-Other parts of NHS England (NHSE) and Department for Health and Social Care (DHSC) have come to similar conclusions to us about how users will access prevention services in the future. We want to align our work and theirs and start working together to help more people get support to reduce their health risks.
+Other parts of NHS England (NHSE) and Department for Health and Social Care (DHSC) have come to similar conclusions to us about how users will access prevention services in the future. We want to align our work and theirs and start working together to help more people get support to reduce their health risks.
 
 The delivery team (and I) think we can help people improve their health by:
 

@@ -7,11 +7,11 @@ layout: post
 
 ### Services now, platforms later
 
-Until this week we had 2 teams working on the core of our longer-term strategy. The Health Assessment team, which just finished a discovery and the Personalised Prevention Platform partway through its alpha.
+Until this week we had 2 teams working on the core of our longer‑term strategy. The Health Assessment team, which just finished a discovery and the Personalised Prevention Platform partway through its alpha.
 
 The 2 teams were working on 2 parts of the same journey. Find out your health risks, get support to reduce or manage them.
 
-We’ve given a lot of thought to whether this should be 1 team and the value of 2 teams working independently, what we gain by being agnostic to use-cases and what we loose. Long‑term, assessing health should happen independently of connecting to services. But short‑term, 2 teams like this places too large a bet on needing platforms. Building platforms before proving ideas adds complexity and slows us down.
+We’ve given a lot of thought to whether this should be 1 team and the value of 2 teams working independently, what we gain by being agnostic to use‑cases and what we loose. Long‑term, assessing health should happen independently of connecting to services. But short‑term, 2 teams like this places too large a bet on needing platforms. Building platforms before proving ideas adds complexity and slows us down.
 
 Now we have 2 teams building specific use case journeys. 1 team will create a journey for pre‑screening lung health checks, getting screening if needed, and support for identified risks (like smoking cessation). The other helps people identify obesity risk and manage their health.
 
@@ -19,7 +19,7 @@ I’m excited about this change. It gives us more focus to test ideas sooner.
 
 ### We’re all the app team
 
-I met with Department of Health and Social Care (DHSC) this week. During intros, NHS England people referred to ‘the app’. Someone from DHSC asked which app. DHSC has many (Food scanner, Weight loss plan, Couch to 5k, etc).
+I met with Department of Health and Social Care (DHSC) this week. During intros, NHS England people referred to ‘the app’. Someone from DHSC asked which app. DHSC has many (Food scanner, Weight loss plan, Couch to 5k, etc).
 
 We have 1, the NHS app.
 
@@ -40,7 +40,7 @@ Last week I read 2 great articles about local health work:
 - [In Greater Manchester, we have a plan to put prevention at the heart of the health system](https://www.politicshome.com/opinion/article/greater-manchester-plan-put-prevention-heart-health-system)
 - [Neighbourhoods as engines of change](https://medium.com/@jamestplunkett/neighbourhoods-as-engines-of-change-ce98e0c2a65d)
 
-I also spoke to Midlands Partnership Trust about their pilot coordinating psychosocial and community support for people with obesity. Inspirational work.
+I also spoke to Midlands Partnership Trust about their pilot coordinating psychosocial and community support for people with obesity. Inspirational work.
 
 Our model for helping people manage health risks connects them to services (like quitting smoking or diabetes risk coaching).
 
@@ -54,9 +54,9 @@ I question if connecting to services is the right model. Is the interface‑to�
 
 We kicked off work with DHSC this week.
 
-It’s called the ’AI health coach’. It takes existing Better Health apps as the starting point, each focused on single outcomes (healthier eating, exercising, drinking less) and will explore if using AI can create something that offers holistic support.
+It’s called the ’AI health coach’. It takes existing Better Health apps as the starting point, each focused on single outcomes (healthier eating, exercising, drinking less) and will explore if using AI can create something that offers holistic support.
 
-An interesting project. An important test for offering joined-up care at scale.
+An interesting project. An important test for offering joined‑up care at scale.
 
 The team will run a short discovery. I’m super interested to see what they find.
 

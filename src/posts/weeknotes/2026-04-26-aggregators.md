@@ -41,7 +41,7 @@ Results in the patient record have limitations:
 - we can’t group related results together (like HPV and Cytology tests)
 - we can’t show change over time (like weight or blood pressure trends)
 
-The NHS Health Check online results page might be a better model, but it only works for one set of tests. There’s no wider journey beyond it, except a GP referral when results need follow‑up.
+The NHS Health Check online results page might be a better model, but it only works for one set of tests. There’s no wider journey beyond it, except a GP referral when results need follow‑up.
 
 At this stage of the discovery, things are taking shape. We’re seeing good evidence of how we can better meet user needs. There’s long‑term potential to add value if results all work in the same way. And there’s enough consistency in team approaches to feel like we can offer tech that won’t be too much of a burden to adopt.
 
