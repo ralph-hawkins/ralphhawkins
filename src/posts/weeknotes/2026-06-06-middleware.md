@@ -26,4 +26,4 @@ Improving results isn’t a big value add on its own. The point of results is th
 
 ### You didn’t have to do it but you would anyway
 
-The team were right to question the work we’re doing and think broadly. The answer they deserved wasn’t ‘we tried that’ – it was a line from this work to the future. I failed to make that clear in the moment.
+The team were right to question the work we’re doing and think broadly. The answer they deserved wasn’t ‘we tried that’ – it was a better connection from this work to a future where the NHS is better joined‑up. I failed to make that clear in the moment.
