@@ -1,7 +1,7 @@
 ---
 title: The results are in
 date: 2026-05-17
-description: What we’re learning about users getting results
+description: What we’re learning about users getting results.
 ---
 
 We’re 5 or 6 weeks into a 4‑week discovery on how we could help publish results. The work we planned at the start is wrapped up.

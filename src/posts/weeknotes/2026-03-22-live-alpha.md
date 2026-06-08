@@ -1,7 +1,7 @@
 ---
 title: Live alpha
 date: 2026-03-22
-description: Testing an idea about testing and learning
+description: Testing an idea about testing and learning.
 ---
 
 This week I spent two days at the Products and Platforms planning event. The fifth one of these I’ve attended – they’re starting to feel less overwhelming. One of the unconference sessions was on test and learn. The discussion focused on problems people face trying to be agile in a deeply risk‑averse organisation.

@@ -1,7 +1,7 @@
 ---
 title: Work in the open, it makes things better
 date: 2026-05-23
-description: Accountability is a decision
+description: Accountability is a decision.
 ---
 
 A spicy week at work – decisions made, and people left to speculate. IYKYK.

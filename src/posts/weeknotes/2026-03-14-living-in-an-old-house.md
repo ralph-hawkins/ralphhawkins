@@ -1,7 +1,7 @@
 ---
 title: Living in an old house
 date: 2026-03-14
-description: Talking about making stuff happen
+description: Talking about making stuff happen.
 ---
 
 {% from "image.njk" import image %}

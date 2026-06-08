@@ -1,7 +1,7 @@
 ---
 title: Mutually assured limbo
 date: 2026-03-29
-description: Working with materials
+description: Working with materials.
 ---
 
 My parents have a tray of colourful wooden blocks in various shapes and sizes. I played with them as a kid, my nieces played with them when they were little, my son plays with them now. The game is usually to see how tall a tower you can make before the child knocks it over.

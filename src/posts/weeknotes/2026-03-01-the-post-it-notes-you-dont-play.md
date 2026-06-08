@@ -1,7 +1,7 @@
 ---
 title: The (post‑it) notes you don’t play
 date: 2026-03-01
-description: Everyone sends a letter to the GP
+description: Everyone sends a letter to the GP.
 ---
 
 [Oli Lovell](https://www.linkedin.com/in/oli-l-670a22254/) asked me what it would look like to create the optimal experience for users looking after their health. It’s one of those questions that feels both easy and hard. I spend a lot of time thinking about the user experience for prevention services – I feel like I should be able to answer easily – but I haven’t spent much time actually thinking about the perfect experience, because I spend all my time looking at problems.

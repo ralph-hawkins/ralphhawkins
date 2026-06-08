@@ -1,7 +1,7 @@
 ---
 title: Middle(of no)ware
 date: 2026-06-06
-description: Strategic vs tactical innit
+description: Strategic vs tactical innit.
 ---
 
 ### Blame the caffeine

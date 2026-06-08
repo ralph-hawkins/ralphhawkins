@@ -1,7 +1,7 @@
 ---
 title: Aggregators
 date: 2026-04-26
-description: Half‑way through a discovery into improving results in the NHS app
+description: Half‑way through a discovery into improving results in the NHS app.
 ---
 
 We’re half‑way through a discovery into how Digital Prevention Services teams present results to NHS app users.

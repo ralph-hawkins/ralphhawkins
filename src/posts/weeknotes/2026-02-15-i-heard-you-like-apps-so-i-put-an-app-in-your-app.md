@@ -1,7 +1,7 @@
 ---
 title: I heard you like apps, so I put an app in your app
 date: 2026-02-15
-description: Personalisation is hard
+description: Personalisation is hard.
 ---
 
 Doing work in a big org sometimes feels like trying to leave the house with a toddler. If you could stack the tasks back to back, the whole thing would take 15 minutes. But instead you need to carefully coordinate each thing individually. Give 5 minute warnings, distract, play, indulge, not lose your shit when they refuse to wear a coat even though it’s raining. They can sense when you’re stressed and so remaining calm is vital.
