@@ -13,6 +13,42 @@
   padding-bottom: var(--spacing-xl);
 }
 
+.post-description {
+  margin-top: 2lh;
+  margin-bottom: 2lh;
+}
+
+/* Mask reveal: each item's text rises up from below, out of its own
+   overflow mask, so the top of the line appears before the bottom.
+   Each item is masked independently and runs on page load. */
+@keyframes rise-reveal {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.post-meta p,
+.post-description {
+  overflow: hidden;
+}
+
+.post-meta p > span,
+.post-description > span {
+  display: block;
+  animation: rise-reveal 0.8s ease-in-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-meta p,
+  .post-description {
+    overflow: visible;
+  }
+
+  .post-meta p > span,
+  .post-description > span {
+    animation: none;
+  }
+}
+
 header {
   min-height: 70vh;
   display: flex;
