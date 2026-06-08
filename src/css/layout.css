@@ -47,7 +47,7 @@
 .post-meta p > span,
 .post-description > span {
   display: block;
-  animation: rise-reveal 0.8s ease-in-out both;
+  animation: rise-reveal 1.2s ease-in-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
