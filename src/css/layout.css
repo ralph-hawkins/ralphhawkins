@@ -22,13 +22,26 @@
    overflow mask, so the top of the line appears before the bottom.
    Each item is masked independently and runs on page load. */
 @keyframes rise-reveal {
-  from { transform: translateY(100%); }
+  from { transform: translateY(calc(100% + var(--reveal-extra, 0px))); }
   to { transform: translateY(0); }
 }
 
 .post-meta p,
 .post-description {
   overflow: hidden;
+}
+
+/* The tight line-height on .date p is shorter than the glyph, so the
+   mask would clip the ascenders and descenders. Pad both sides to give
+   the glyph room, cancel it with negative margins so the layout stays
+   tight, and push the hidden start further down (--reveal-extra) so the
+   text still begins fully below the now-taller mask. */
+.post-meta p {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  margin-top: -0.3rem;
+  margin-bottom: -0.3rem;
+  --reveal-extra: 0.45rem;
 }
 
 .post-meta p > span,
