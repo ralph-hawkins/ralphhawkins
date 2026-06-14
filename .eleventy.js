@@ -1,10 +1,15 @@
 const dateFilters = require("./src/_11ty/filters/date-filters.js");
+const { imageSize } = require("./src/_11ty/filters/image-size.js");
 
 module.exports = function(eleventyConfig) {
   // Add date filters
   Object.keys(dateFilters).forEach(filterName => {
     eleventyConfig.addFilter(filterName, dateFilters[filterName]);
   });
+
+  // Reads intrinsic width/height from an image file so templates can reserve
+  // layout space and avoid CLS.
+  eleventyConfig.addFilter("imageSize", imageSize);
 
   // Add collection for public weeknotes only
   // Excludes any weeknotes with preview: true in front matter
@@ -85,6 +90,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
+  eleventyConfig.addPassthroughCopy("src/CNAME");
 
   // Add site data
   eleventyConfig.addGlobalData("site", {

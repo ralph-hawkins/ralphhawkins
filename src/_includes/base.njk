@@ -2,50 +2,10 @@
 <html lang="en">
 <head>
     {% include "head-common.njk" %}
-    <script src="/js/header-parallax.js" defer></script>
+    <script src="/js/header-bars.js" defer></script>
     <script src="/js/post-nav-arrow.js" defer></script>
-    <script src="/js/auto-scroll.js"></script>
-    {% if tags and 'weeknotes' in tags %}
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "{{ title }}",
-      "datePublished": "{{ date | isoDate }}",
-      "author": {
-        "@type": "Person",
-        "name": "Ralph Hawkins",
-        "url": "{{ site.url }}"
-      },
-      "publisher": {
-        "@type": "Person",
-        "name": "Ralph Hawkins"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{ site.url }}{{ page.url }}"
-      }
-    }
-    </script>
-    {% else %}
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Ralph Hawkins",
-      "url": "{{ site.url }}",
-      "author": {
-        "@type": "Person",
-        "name": "Ralph Hawkins",
-        "jobTitle": "Service Designer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "NHS England"
-        }
-      }
-    }
-    </script>
-    {% endif %}
+    <script src="/js/auto-scroll.js" defer></script>
+    <script src="/js/post-mask.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -60,6 +20,10 @@
       </p>
       {% if page.url.startsWith('/graphic-design/') %}
       <p>I also studied graphic design.</p>
+      {% else %}
+      <p>
+        These are my week notes.
+      </p>
       {% endif %}
     </div>
   </header>

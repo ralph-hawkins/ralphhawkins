@@ -5,17 +5,19 @@ layout: base
 <article>
   <hr>
   {% set postNumber = collections.publicWeeknotes | getPostNumber(page) %}
-  <div class="date post-meta">
-    <p class="post-meta-date"><span>{{ date | dateFormat }}</span></p>
-    {% if postNumber %}
-      <p class="post-meta-count"><span>Week note {{ postNumber }}</span></p>
+  <div class="post-header">
+    <div class="date post-meta">
+      {% if postNumber %}
+        <p class="post-meta-count"><span>Week note {{ postNumber }}</span></p>
+      {% endif %}
+      <p class="post-meta-date"><span>{{ date | dateFormat }}</span></p>
+    </div>
+    <h2>{{ title }}</h2>
+    {% if description %}
+      <p class="post-description"><span>{{ description }}</span></p>
     {% endif %}
   </div>
-  <h2>{{ title }}</h2>
-  {% if description %}
-    <p class="post-description"><span>{{ description }}</span></p>
-  {% endif %}
-  <hr>
+  <hr class="post-mask-line">
   <div class="post-content">
     {{ content | safe }}
   </div>

@@ -1,7 +1,6 @@
-// Header bands stretch upward from the header's bottom as the page scrolls.
-// 15 static bars, each with its own backdrop blur and tint stepping along an
-// ease-out curve from clear at the top to fully blurred/tinted at the bottom.
-// The layer's vertical scale is driven by scroll position.
+// 15 static bars stacked behind the header, each with its own backdrop blur and
+// tint stepping along an ease-out curve from clear at the top to fully
+// blurred/tinted at the bottom. Entirely static — no scroll or load motion.
 (function () {
   const header = document.querySelector('header');
   if (!header) return;
@@ -40,22 +39,4 @@
     barsLayer.appendChild(bar);
   }
   header.appendChild(barsLayer);
-
-  function apply(scrollY) {
-    const headerHeight = header.offsetHeight || 1;
-    const scale = 1 + Math.max(0, scrollY) / headerHeight;
-    root.style.setProperty('--bands-scale', scale);
-  }
-
-  apply(window.scrollY);
-
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      apply(window.scrollY);
-      ticking = false;
-    });
-  }, { passive: true });
 })();

@@ -1,11 +1,14 @@
 ---
 layout: base
+description: "Ralph Hawkins is a service designer in the public sector, currently at NHS England. Weekly notes on the work of designing public services."
 ---
 {# Get latest public weeknote (excludes preview posts) #}
 {% set latestPost = collections.publicWeeknotes | reverse | first %}
 {% if latestPost %}
-<script defer>
-  window.location.href = "{{ latestPost.url }}?from=home";
+<script>
+  {# replace() keeps the homepage out of history so Back doesn't bounce
+     the visitor forward into a redirect loop. #}
+  window.location.replace("{{ latestPost.url }}?from=home");
 </script>
 <noscript>
   <meta http-equiv="refresh" content="0; url={{ latestPost.url }}?from=home">

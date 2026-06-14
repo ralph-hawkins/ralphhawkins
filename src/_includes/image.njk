@@ -1,11 +1,16 @@
 {% macro image(src, alt, caption="", className="", maxWidth="100%", width="", height="") %}
+  {# Use explicit width/height when passed, otherwise read them from the file
+     so the browser can reserve space and avoid layout shift. #}
+  {% set _dim = src | imageSize %}
+  {% set _w = width if width else (_dim.width if _dim) %}
+  {% set _h = height if height else (_dim.height if _dim) %}
   <figure class="figure {{ className }}">
     <img
       src="{{ src }}"
       alt="{{ alt }}"
       class="figure-img"
       style="max-width: {{ maxWidth }};"
-      loading="lazy"{% if width %} width="{{ width }}"{% endif %}{% if height %} height="{{ height }}"{% endif %}>
+      loading="lazy"{% if _w %} width="{{ _w }}"{% endif %}{% if _h %} height="{{ _h }}"{% endif %}>
     {% if caption %}
       <figcaption class="figure-caption">{{ caption }}</figcaption>
     {% endif %}

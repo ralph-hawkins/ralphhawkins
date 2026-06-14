@@ -59,6 +59,10 @@ footer ul {
 }
 
 .post-meta-count {
+  text-align: left;
+}
+
+.post-meta-date {
   text-align: right;
 }
 

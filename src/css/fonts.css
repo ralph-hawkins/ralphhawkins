@@ -8,7 +8,8 @@
 
 @font-face {
   font-family: 'Volksans';
-  src: url('/fonts/volksans/volksans-SemiBold.woff') format('woff');
+  src: url('/fonts/volksans/volksans-SemiBold.woff2') format('woff2'),
+       url('/fonts/volksans/volksans-SemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -18,14 +19,6 @@
   font-family: 'Volksans';
   src: url('/fonts/volksans/volksans-Bold.woff2') format('woff2');
   font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Volksans';
-  src: url('/fonts/volksans/volksans-Black.woff2') format('woff2');
-  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }

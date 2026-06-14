@@ -1,10 +1,14 @@
-@import 'reset.css';
+/* Import order matters: variables first so custom properties are defined,
+   then base element styles, then component/layout styles, with
+   media-queries LAST so its responsive overrides win the cascade
+   (a @media wrapper adds no specificity, so source order decides ties). */
+@import 'variables.css';
 
-@import 'base.css';
-@import 'components.css';
+@import 'reset.css';
 @import 'fonts.css';
+@import 'base.css';
+@import 'typography.css';
+@import 'components.css';
 @import 'gallery.css';
 @import 'layout.css';
 @import 'media-queries.css';
-@import 'typography.css';
-@import 'variables.css';

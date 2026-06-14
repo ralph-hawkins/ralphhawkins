@@ -9,7 +9,33 @@
   line-height: 1rem;
 }
 
+/* Scroll reveal: the post header (meta + title + description) pins at
+   --post-pin-offset and is clipped away at the rule line as the body rises over
+   it, so it disappears cleanly (no overlap) as you scroll while the body stays
+   frosted — the blob shows through it the whole time. The rule is the rising
+   body's leading edge. Pinning is pure CSS (position: sticky); post-mask.js
+   drives the clip. Under reduced motion neither applies and the body stays in
+   normal flow on the frosted page. */
+.post-header {
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .post-header {
+    position: sticky;
+    top: var(--post-pin-offset);
+    will-change: clip-path;
+  }
+}
+
+.post-mask-line {
+  position: relative;
+  z-index: 3;
+}
+
 .post-content {
+  position: relative;
+  z-index: 2;
   padding-bottom: var(--spacing-xl);
 }
 
@@ -74,9 +100,7 @@ header {
   position: absolute;
   inset: 0;
   z-index: -1;
-  transform-origin: bottom;
-  transform: scaleY(var(--bands-scale, 1));
-  will-change: transform;
+  /* Entirely static — the bars never scale or move. */
   pointer-events: none;
 }
 

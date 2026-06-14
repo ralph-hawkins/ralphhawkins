@@ -18,11 +18,14 @@ permalink: /graphic-design/
       {% if item.data.images %}
         <div class="gallery-images {% if item.data.images.length > 1 %}gallery-images-group{% endif %}">
           {% for image in item.data.images %}
+            {% set _dim = image | imageSize %}
             <img
               src="{{ image }}"
               alt="{{ item.data.alt or item.data.title }}"
               class="gallery-image"
-              loading="lazy"
+              loading="lazy"{% if _dim %}
+              width="{{ _dim.width }}"
+              height="{{ _dim.height }}"{% endif %}
             >
           {% endfor %}
         </div>

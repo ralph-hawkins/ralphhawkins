@@ -60,10 +60,19 @@
     apply(0);
     window.addEventListener('scroll', () => apply(0), { passive: true });
   } else {
+    // Continuous loop drives the idle hover. Pause it while the tab is hidden
+    // so a backgrounded page stops recomputing the blob (and the backdrop
+    // blur layered over it) instead of burning CPU/battery.
+    let rafId = null;
     function loop(time) {
       apply(time);
-      requestAnimationFrame(loop);
+      rafId = requestAnimationFrame(loop);
     }
-    requestAnimationFrame(loop);
+    function start() { if (rafId === null) rafId = requestAnimationFrame(loop); }
+    function stop() { if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; } }
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop(); else start();
+    });
+    start();
   }
 })();

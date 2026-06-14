@@ -24,4 +24,7 @@
   --content-width: 65ch;
   --side-padding: 1rem;
   --header-height: 50vh;
+  /* Where a post pins on scroll AND where a direct visit loads to (auto-scroll.js
+     reads this), so the load position and the pinned position are identical. */
+  --post-pin-offset: 40px;
 }
