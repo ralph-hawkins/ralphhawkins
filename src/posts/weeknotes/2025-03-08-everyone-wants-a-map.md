@@ -44,7 +44,7 @@ Two weeks in, the discovery team is getting into the weeds of the problem space.
 
 Including risk calculations in discovery was right. I’m looking forward to seeing what the team recommend.
 
-### Working with Personalised Prevention Platform
+### Working with Personalised Prevention Platform
 
 The Personalised Prevention Platform (PPP) team have just started an alpha phase and I’m filling the service designer gap in the team.
 

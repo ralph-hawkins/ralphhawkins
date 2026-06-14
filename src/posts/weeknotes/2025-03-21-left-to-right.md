@@ -75,7 +75,7 @@ I need to be more comfortable with my non‑tangible contributions.
 
 Vicky Houghton‑Price’s blog post ‘[Do you need another map? Probably not](https://medium.com/design-bootcamp/do-you-need-another-map-probably-not-2f8a8a7a9773)’ describes this perfectly.
 
-### Digital Prevention Services – open show and tell
+### Digital Prevention Services – open show and tell
 
 I contributed to [Frankie Roberto‘s](https://bsky.app/profile/frankieroberto.com) open show and tell on Digital Prevention Services. A quick run through of 5 related services.
 
@@ -83,6 +83,6 @@ Sessions that bring together multiple things are great. There’s only a loose c
 
 I’ve seen Frankie run this kind of session internally before and was very happy to take part. I also enjoy Frankie’s disdain for slides.
 
-### First Personalised Prevention Services design history post
+### First Personalised Prevention Services design history post
 
 The [Personalised Prevention Platform team published an excellent summary of their discovery](https://design-history.prevention-services.nhs.uk/personalised-prevention-platform/2025/03/discovery-summary/).

@@ -89,7 +89,11 @@
 }
 
 header {
+  /* svh (with a vh fallback) so the hero doesn't grow/shrink as the mobile URL
+     bar shows/hides — that resize would shift the post content below it and make
+     the scroll-reveal clip jump. */
   min-height: 70vh;
+  min-height: 70svh;
   display: flex;
   align-items: center;
   position: relative;
