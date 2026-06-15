@@ -8,13 +8,13 @@ layout: base
   <div class="post-header">
     <div class="date post-meta">
       {% if postNumber %}
-        <p class="post-meta-count"><span>Week note {{ postNumber }}</span></p>
+        <p class="post-meta-count">Week note {{ postNumber }}</p>
       {% endif %}
-      <p class="post-meta-date"><span>{{ date | dateFormat }}</span></p>
+      <p class="post-meta-date">{{ date | dateFormat }}</p>
     </div>
     <h2>{{ title }}</h2>
     {% if description %}
-      <p class="post-description"><span>{{ description }}</span></p>
+      <p class="post-description">{{ description }}</p>
     {% endif %}
   </div>
   <hr class="post-mask-line">

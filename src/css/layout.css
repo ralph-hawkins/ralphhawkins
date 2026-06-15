@@ -44,48 +44,16 @@
   margin-bottom: 2lh;
 }
 
-/* Mask reveal: each item's text rises up from below, out of its own
-   overflow mask, so the top of the line appears before the bottom.
-   Each item is masked independently and runs on page load. */
-@keyframes rise-reveal {
-  from { transform: translateY(calc(100% + var(--reveal-extra, 0px))); }
-  to { transform: translateY(0); }
-}
-
-.post-meta p,
-.post-description {
-  overflow: hidden;
-}
-
-/* The tight line-height on .date p is shorter than the glyph, so the
-   mask would clip the ascenders and descenders. Pad both sides to give
-   the glyph room, cancel it with negative margins so the layout stays
-   tight, and push the hidden start further down (--reveal-extra) so the
-   text still begins fully below the now-taller mask. */
+/* The meta's tight line-height (.date p) is shorter than the glyph, so the ink
+   overflows the box top — which the scroll-reveal clip (bound to the header box)
+   can't cover, leaving a sliver. Pad the box to contain the ink and clip it
+   there, cancelling the padding with negative margins so the layout stays tight. */
 .post-meta p {
+  overflow: hidden;
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
   margin-top: -0.3rem;
   margin-bottom: -0.3rem;
-  --reveal-extra: 0.45rem;
-}
-
-.post-meta p > span,
-.post-description > span {
-  display: block;
-  animation: rise-reveal 1.2s ease-in-out both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .post-meta p,
-  .post-description {
-    overflow: visible;
-  }
-
-  .post-meta p > span,
-  .post-description > span {
-    animation: none;
-  }
 }
 
 header {
