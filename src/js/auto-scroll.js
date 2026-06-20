@@ -9,8 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (dateElement) {
       const rect = dateElement.getBoundingClientRect();
       const elementTop = rect.top + window.scrollY;
-      // Same offset the post header pins at, so the load position and the pinned
-      // position coincide (see --post-pin-offset / post-mask.js).
+      // Leave a small gap above the date on load (see --post-pin-offset).
       const offsetVar = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--post-pin-offset'));
       const offset = Number.isFinite(offsetVar) ? offsetVar : 40;
       window.scrollTo({
