@@ -1,6 +1,6 @@
 ---
 title: Provocagram
-description: Drawing pictures of operational possibility
+description: Drawing pictures
 date: 2026-06-20
 ---
 
