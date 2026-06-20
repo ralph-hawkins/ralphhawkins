@@ -12,7 +12,7 @@ This discovery, I’ve noticed that I assume the detail in my head is shared by 
 
 A diagram is a good way to get everyone seeing the same thing. A week or so ago I created a rough picture of a solution we could try. It shows how users get results in the NHS App today, and how we could change that – so results provide context and are coordinated with messaging.
 
-I showed the provocagram to [Frankie](https://www.linkedin.com/in/frankieroberto/) – his response was “are you an architect now?” It’s a legit question. I’m not an architect, but I’ve drawn a technical solution. I just want to find a way of moving things forward, having something to talk around. I don’t want to cosplay as a technical person. But I know enough to see opportunities. One team makes a small change to tens of thousands of result types. Maybe we could make a big change to fewer than twenty. Fewer results. More care in each one. Let’s find out.
+I showed the diagram to [Frankie](https://www.linkedin.com/in/frankieroberto/) – his response was “are you an architect now?” It’s a legit question. I’m not an architect, but I’ve drawn a technical solution. I just want to find a way of moving things forward, having something to talk around. I don’t want to cosplay as a technical person. But I know enough to see opportunities. One team makes a small change to tens of thousands of result types. Maybe we could make a big change to fewer than twenty. Fewer results. More care in each one. Let’s find out.
 
 <hr>
 
