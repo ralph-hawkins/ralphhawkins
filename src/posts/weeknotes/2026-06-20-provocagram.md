@@ -6,7 +6,7 @@ date: 2026-06-20
 
 We’re at least 4 weeks into wrapping up a 4-week discovery. The service manual says you know a discovery is done when “you have a list of ideas you’d like to test at alpha and an idea of which one you’d like to test first.”
 
-The line between a discovery and an alpha isn’t so helpful in practice. Bringing research together into something that feels like a solution inevitably creates more questions to answer. Specificity of what we’re doing next matters because we’re looking to partner with other teams. Teams need to know what they’re agreeing to.
+The line between a discovery and an alpha isn’t so helpful in practice. Bringing research together into something that feels like a solution inevitably creates more questions to answer. Specificity of what we’re doing next matters because we’re looking to partner with other teams. Those teams need to know what they’re agreeing to.
 
 This discovery, I’ve noticed I assume detail in my head is shared by other people. We’ve learnt so much, but the team has been changing throughout the last couple of months. I’ve felt confident in the direction we had for alpha, but others in the team were still worried. A few separate times, a detail I felt was baked into the solution was missing from other people’s mental models. Thankfully we’ve got a team that is good at discussing and raising concerns. This has all helped refine what we’re doing.
 
