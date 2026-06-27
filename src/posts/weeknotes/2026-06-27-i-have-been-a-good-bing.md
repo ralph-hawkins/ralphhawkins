@@ -1,5 +1,5 @@
 ---
-title: "I have been a good bing. :-)"
+title: "I have been a good bing. 😊"
 description: If we remove humans from the loop, what do we put back?
 date: 2026-06-27
 ---
