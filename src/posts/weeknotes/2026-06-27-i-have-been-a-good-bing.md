@@ -8,7 +8,7 @@ If we want more things to be in the app – the NHS 10-year plan says we do – 
 
 There’s a basic but implicit assumption in the app being a companion – fewer of your interactions with the NHS will be with a human. I don’t think that’s inherently bad. But interactions that get mediated by a screen instead of a human have to work for the user. The minimum requirement is clarity.
 
-We’ve been looking at test results a lot. The test results feed in the app shows you test results from your GP health record. But the results appear as they were written by the lab that did the test. If they’re designed at all, they’re designed to be read by a clinician. The human has been removed from the loop. But now they’re available to people in the app. You get to figure out what your 1/4 result for the AUDIT‑C score‑freq drunk 6+units (fem)/8+units (male) means.
+We’ve been looking at test results a lot. The test results feed in the app shows you test results from your GP health record. But the results appear as they were written by the lab that did the test. If they’re designed at all, they’re designed to be read by a clinician. But now they’re available to people in the app. The human has been removed from the loop. You get to figure out what your 1/4 result for the AUDIT‑C score‑freq drunk 6+units (fem)/8+units (male) means.
 
 The lack of clarity is hard to measure. But I assume it reinforces health inequalities. The people with the least health literacy, and the least time to decode this stuff, are harmed the most.
 
