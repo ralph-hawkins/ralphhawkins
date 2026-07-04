@@ -1,16 +1,20 @@
 ---
 title: Self‑aware crustaceans
-description: Process beats outcomes every time.
+description: More processes create more processes
 date: 2026-07-04
 ---
 
-The NHS is many organisations posing as one. It’s complex. Process beats outcomes every time.
+The NHS is many organisations posing as one. It’s complex. Process beats outcomes.
 
-NHS England is one of many within the NHS. Within that there are seams – we’re still NHS Digital, we just happen to be inside NHS England.
+NHS England (NHSE) is one of the many organisations in the NHS. Within NHSE there are seams – we’re still NHS Digital, we just happen to be inside NHSE.
 
 The seams mean that even if we attempt to build the right thing, the organisation can still treat it as foreign. Putting work into the hands of users is two jobs. Building the service and not having the organisation reject it.
 
-This complexity rewards those who can navigate it. I suspect that leads to more complexity. There is a lot of talk of platforms and there are technical working groups, planning days, design councils, all aimed at dealing with the complexity. But they’re processes that create processes. As far as I can tell there is nothing that gives clarity. The 10-year plan, as underwhelming as it is, at least gives us something to coalesce around. Something to point at and agree on.
+This complexity rewards those who can navigate it. I suspect that leads to more complexity. There is a lot of talk of platforms and there are technical working groups, planning days, design councils, all aimed at reducing complexity. More processes create more processes. Teams get stuck.
+
+Some process earns its place – service assessments do more good than harm. At least, I understand them.
+
+We’re all trying to do good, but it's hard to know if we’re moving in the same direction. As underwhelming as it is, the 10-year plan at least gives us something to coalesce around. Something to point at and agree on.
 
 Navigating the organisation takes more effort and is harder to get right than designing the service that gets to users. It feels like working in a bucket of crabs. Everyone is trying to climb out.
 
