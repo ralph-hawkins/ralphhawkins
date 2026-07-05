@@ -16,6 +16,6 @@ In our team we’ve been referring to the alpha being about data and politics. E
 
 We’re all trying to do good, but in the absence of clarity it’s hard to know if we’re moving in the same direction. As underwhelming as it is, the 10‑year plan at least gives us something to coalesce around. Something to point at and agree on.
 
-Navigating the organisation takes more effort and is harder to get right than designing the service that gets to users. It feels like working in a bucket of crabs. Everyone is trying to climb out.
+Navigating the organisation takes more effort and is harder to get right than designing the service that gets to users. It feels like working in a bucket of crabs. Everyone is trying to climb out. The thing to remember is that we’re a crab too. Inside the bucket we can only fix from our perspective. Every local fix creates new process or boundary. We climb a little higher and pull the other crabs down.
 
-The thing to remember is that we’re a crab too. We’re not stuck in traffic, we are traffic. I don’t want to pull the other crabs down. But from in here, all I can see is claws and legs – and when people push back on our work, I can’t tell if they’re pulling us down or building a crab ladder.
+We’re not stuck in traffic, we are traffic. I don’t want to pull the other crabs down. But from in here, all I can see is claws and legs – and when people push back on our work, I can’t tell if they’re pulling us down or building a crab ladder.
