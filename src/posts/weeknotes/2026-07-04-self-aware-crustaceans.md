@@ -1,7 +1,7 @@
 ---
 title: Self‑aware crustaceans
-description: Working with the social boundaries of the NHS
-date: 2026-07-04
+description: Working with the social boundaries of the NHS.
+date: 2026-07-05
 ---
 
 The NHS is many organisations posing as one. It’s complex. Process beats outcomes.
