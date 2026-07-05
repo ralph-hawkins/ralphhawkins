@@ -1,18 +1,18 @@
 ---
 title: Self‑aware crustaceans
-description: More processes create more processes.
+description: Process beats outcomes.
 date: 2026-07-04
 ---
 
 The NHS is many organisations posing as one. It’s complex. Process beats outcomes.
 
-NHS England (NHSE) is one of the many organisations in the NHS. Within NHSE there are seams – we’re still NHS Digital, we just happen to be inside NHSE now.
+NHS England (NHSE) is one of the many organisations in the NHS. Within NHSE there are seams – we’re still NHS Digital, we just happen to be inside NHSE.
 
 The seams and organisational complexity mean that even if we attempt to build the right thing, the organisation can still treat it as foreign. Putting work into the hands of users is two jobs. Building the service and stopping the organisation from rejecting it.
 
 This complexity rewards those who can navigate it. I suspect that leads to more complexity. There is a lot of talk of platforms and there are technical working groups, planning days, design councils, all aimed at reducing complexity. More processes create more processes. Teams get stuck.
 
-Some process earns its place – service assessments do more good than harm. At least, I understand them.
+Some process is necessary, especially when it comes to health. Service assessments do more good than harm. At least, I understand them. Other processes are less clear.
 
 We’re all trying to do good, but it’s hard to know if we’re moving in the same direction. As underwhelming as it is, the 10‑year plan at least gives us something to coalesce around. Something to point at and agree on.
 
