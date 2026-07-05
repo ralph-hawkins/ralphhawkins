@@ -14,7 +14,7 @@ This complexity rewards those who can navigate it. I suspect that leads to more 
 
 In our team we’ve been referring to the alpha being about data and politics. Essentially all early work in NHSE is about data and politics. The data question is – can we connect fragmented systems to make something valuable for users? There are many politics questions. Can we ship with a scope tight enough not to tread on toes, but not so big that others want in or feel threatened by it? The boundaries and how we cross them shape the work.
 
-We’re all trying to do good, but it’s hard to know if we’re moving in the same direction. As underwhelming as it is, the 10‑year plan at least gives us something to coalesce around. Something to point at and agree on.
+We’re all trying to do good, but in the absence of clarity it’s hard to know if we’re moving in the same direction. As underwhelming as it is, the 10‑year plan at least gives us something to coalesce around. Something to point at and agree on.
 
 Navigating the organisation takes more effort and is harder to get right than designing the service that gets to users. It feels like working in a bucket of crabs. Everyone is trying to climb out.
 
