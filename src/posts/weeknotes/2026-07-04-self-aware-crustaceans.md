@@ -10,7 +10,7 @@ NHS England (NHSE) is one of the many organisations in the NHS. Within NHSE the
 
 The seams and organisational complexity mean that even if we attempt to build the right thing, the organisation can still treat it as foreign. Putting work into the hands of users is two jobs. Building the service and stopping the organisation from rejecting it.
 
-This complexity rewards those who can navigate it. I suspect that leads to more complexity. Some process is necessary and good when working in health. It’s the machinery for getting work into users’ hands. Politics is how we get through the process — know who to speak to, get a board to approve, or avoid the board in the first place.
+This complexity rewards those who can navigate it. I suspect that leads to more complexity. Some process is necessary and good when working in health. It’s the machinery for getting work into users’ hands. Politics is how we get through the process – know who to speak to, get a board to approve, or avoid the board in the first place.
 
 In our team we’ve been referring to the alpha being about data and politics. Essentially all early work in NHSE is about data and politics. The data question is – can we connect fragmented systems to make something valuable for users? There are many politics questions. Can we ship with a scope tight enough not to tread on toes, but not so big that others want in or feel threatened by it? The boundaries and how we cross them shape the work.
 
