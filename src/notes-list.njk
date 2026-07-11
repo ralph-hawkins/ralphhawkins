@@ -1,8 +1,11 @@
 ---
-layout: notes
+layout: base
 title: All week notes
+description: "Every week note by Ralph Hawkins, grouped by year and month."
+hero: false
 ---
 
+<h1>All week notes</h1>
 {% if collections.weeknotesByDate %}
   <div class="post-list-hierarchical">
     {% for yearGroup in collections.weeknotesByDate %}
