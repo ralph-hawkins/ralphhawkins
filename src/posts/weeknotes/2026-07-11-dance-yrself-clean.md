@@ -6,7 +6,7 @@ date: 2026-07-11
 
 ### It happens all the time
 
-Designers don’t seem to talk much about small‑scale relationship‑building. When we do, it's through a framework, with a digital whiteboard, in a workshop – and my soul exits my body.
+Designers don’t seem to talk much about small‑scale relationship‑building. When we do, it’s through a framework, with a digital whiteboard, in a workshop – and my soul exits my body.
 
 I spent this week planning how we propose to work with teams. I’m aiming for something that builds trust and keeps things light.
 
