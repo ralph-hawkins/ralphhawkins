@@ -6,15 +6,16 @@ date: 2026-07-11
 
 ### It happens all the time
 
-I spent time this week planning how we work with the teams we want to partner with. Designers don’t talk much about this kind of small‑scale relationship‑building. When we do, we turn it into a framework with a canvas and a workshop, and my soul exits my body.
+Designers don’t seem to talk much about small-scale relationship-building. When we do, it's through a framework, with a digital whiteboard, in a workshop – and my soul exits my body.
+I spent this week planning how we propose to work with teams.
 
 Loose working relationships between partner organisations and teams are fundamental to how we work in government. A bit of friendly piggybacking. Build some trust, get some work done.
 
 ### Killing it with close inspection
 
-Informal partnerships are mutually beneficial ways of working with organisational overhead kept to a workable minimum.
+Good informal partnerships are mutually beneficial ways of working with organisational overhead kept to a workable minimum.
 
-Replacing trust with MOUs and SLAs – yielding to the organisation – is a good way to kill goodwill and momentum.
+Replacing trust with MOUs and SLAs – yielding to formality – is a good way to kill goodwill and momentum.
 
 ### It works just like a need
 
@@ -24,7 +25,7 @@ I find it hard to resist doing this with the people I work with too. As long as 
 
 ### Present company expect it
 
-I don’t hate spending time on warming people up, finding the benefit we are both working towards and ultimately building trust. But I do find it easy to think of this as the work to do the work, less important and more ephemeral.
+I don’t hate spending time on warming people up, finding the benefit we are both working towards and ultimately building trust. But I do find it easy to think of this as the work to do the work, less important and more intangible.
 
 I can look back at times where I’ve not done this work and then been frustrated or surprised the project I’ve been driving hasn’t made the progress I expected.
 
