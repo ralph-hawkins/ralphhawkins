@@ -20,7 +20,7 @@ Good informal partnerships are mutually beneficial ways of working with organisa
 
 I’m aware that I’m a designer who works most comfortably at a level of remove from the user. I like my users spherical and in a vacuum. A predictable set of behaviours and motivations, boiled down to some user needs.
 
-I find it hard to resist doing this with the people I work with too. As long as the work makes sense to me, everything should fall into place. I abstract them into a set of interests and incentives. Abstracting people is necessary for dealing with scale and guaranteed to burn your relationships with 5 people.
+I find it hard to resist doing this with the people I work with too. As long as the work makes sense to me, everything should fall into place. I abstract them into a set of interests and incentives. Abstracting people is necessary for dealing with scale and guaranteed to burn your relationships with individuals.
 
 ### Present company expect it
 
