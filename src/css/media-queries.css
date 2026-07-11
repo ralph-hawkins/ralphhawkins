@@ -1,10 +1,5 @@
 /* Typography responsive styles */
 @media (min-width: 40em) {
-  h1 {
-    font-size: 4.5rem;
-    margin-bottom: var(--spacing-xl);
-  }
-
   h2 {
     font-size: 3.52rem;
     margin-bottom: var(--spacing-l);
@@ -37,9 +32,4 @@
   body {
     overflow-x: hidden;
   }
-}
-
-/* Container has proper positioning context */
-.container {
-  position: relative;
 }

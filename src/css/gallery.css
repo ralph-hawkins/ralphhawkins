@@ -38,14 +38,6 @@
   margin-bottom: 0;
 }
 
-.gallery-item-content {
-  margin-top: var(--spacing-l);
-}
-
-.gallery-item-content p {
-  margin-bottom: var(--spacing-s);
-}
-
 /* Responsive adjustments */
 @media (max-width: 40em) {
   .gallery-item {

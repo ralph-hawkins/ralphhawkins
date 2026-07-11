@@ -1,6 +1,7 @@
+{%- set isGalleryPage = page.url == '/graphic-design/' -%}
 <footer>
   <div class="container">
-  {% if page.url == '/graphic-design/' %}
+  {% if isGalleryPage %}
     {# Gallery page - show link to latest public week note (excludes preview posts) #}
     <h2>Week notes</h2>
     {% set latestPost = collections.publicWeeknotes | reverse | first %}
@@ -31,7 +32,7 @@
     {% endif %}
   {% endif %}
 
-  {% if page.url != '/graphic-design/' %}
+  {% if not isGalleryPage %}
     <h2>Other</h2>
     <a href="/graphic-design/">Graphic design</a>
   {% endif %}
