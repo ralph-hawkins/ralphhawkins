@@ -27,11 +27,14 @@ module.exports = function(eleventyConfig) {
     const posts = collectionApi.getFilteredByTag("weeknotes")
       .filter(post => !post.data.preview) // Exclude preview posts
       .reverse();
-    const grouped = {};
 
+    // Group by numeric year and month (0–11) so ordering is plain number
+    // sorting; the month's display name is formatted only at the end, never
+    // parsed back from a string.
+    const grouped = {};
     posts.forEach(post => {
       const year = post.date.getFullYear();
-      const month = post.date.toLocaleString('en-GB', { month: 'long' });
+      const month = post.date.getMonth();
 
       if (!grouped[year]) grouped[year] = {};
       if (!grouped[year][month]) grouped[year][month] = [];
@@ -41,25 +44,17 @@ module.exports = function(eleventyConfig) {
 
     // Convert to array structure to preserve descending order
     // (JS objects iterate integer-like keys in ascending order)
-    const years = Object.keys(grouped).sort((a, b) => b - a); // Sort years descending
-
-    return years.map(year => {
-      const monthNames = Object.keys(grouped[year]);
-      // Sort months by date rather than alphabetically
-      monthNames.sort((a, b) => {
-        const dateA = new Date(`${a} 1, ${year}`);
-        const dateB = new Date(`${b} 1, ${year}`);
-        return dateB - dateA; // Descending order
-      });
-
-      return {
+    return Object.keys(grouped)
+      .sort((a, b) => b - a) // Sort years descending
+      .map(year => ({
         year,
-        months: monthNames.map(month => ({
-          month,
-          posts: grouped[year][month]
-        }))
-      };
-    });
+        months: Object.keys(grouped[year])
+          .sort((a, b) => b - a) // Sort months descending
+          .map(month => ({
+            month: new Date(year, month).toLocaleString('en-GB', { month: 'long' }),
+            posts: grouped[year][month]
+          }))
+      }));
   });
 
   // Add collection for gallery items (newest first)
