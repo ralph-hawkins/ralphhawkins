@@ -1,5 +1,7 @@
+const path = require("path");
 const dateFilters = require("./src/_11ty/filters/date-filters.js");
 const { imageSize } = require("./src/_11ty/filters/image-size.js");
+const { inlineImports } = require("./src/_11ty/css-bundle.js");
 
 module.exports = function(eleventyConfig) {
   // Add date filters
@@ -84,8 +86,21 @@ module.exports = function(eleventyConfig) {
     return index >= 0 ? index + 1 : null;
   });
 
+  // Bundle CSS: main.css has its @import chain inlined at build time and is
+  // written to /css/main.css as a single file; every other .css file is a
+  // partial of that bundle, so it compiles to nothing on its own (returning
+  // undefined tells Eleventy to skip it). Registering .css as a template
+  // format also makes the dev server watch the partials for changes.
+  eleventyConfig.addTemplateFormats("css");
+  eleventyConfig.addExtension("css", {
+    outputFileExtension: "css",
+    compile: function (inputContent, inputPath) {
+      if (path.basename(inputPath) !== "main.css") return;
+      return () => inlineImports(inputPath);
+    }
+  });
+
   // Add assets
-  eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("src/images");

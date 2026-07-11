@@ -1,7 +1,10 @@
 /* Import order matters: variables first so custom properties are defined,
    then base element styles, then component/layout styles, with
    media-queries LAST so its responsive overrides win the cascade
-   (a @media wrapper adds no specificity, so source order decides ties). */
+   (a @media wrapper adds no specificity, so source order decides ties).
+
+   These imports are inlined at build time (src/_11ty/css-bundle.js), so the
+   site ships a single /css/main.css with this exact source order. */
 @import 'variables.css';
 
 @import 'reset.css';
