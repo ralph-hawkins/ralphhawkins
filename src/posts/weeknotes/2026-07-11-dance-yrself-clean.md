@@ -13,9 +13,7 @@ Loose working relationships between partner organisations and teams are fundamen
 
 ### Killing it with close inspection
 
-Good informal partnerships are mutually beneficial ways of working with organisational overhead kept to a workable minimum.
-
-Replacing trust with MOUs and SLAs – yielding to formality – is a good way to kill goodwill and momentum.
+Good informal partnerships are mutually beneficial ways of working with organisational overhead kept to a workable minimum. Replacing trust with formality is a good way to kill goodwill and momentum.
 
 ### It works just like a need
 
