@@ -44,7 +44,10 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "{{ title }}",
+  {#- dump JSON-encodes the value (quotes included) and safe skips HTML
+     autoescaping — inside a script block entities like &quot; would be
+     read as literal text, not decoded. #}
+  "headline": {{ title | dump | safe }},
   "datePublished": "{{ date | isoDate }}",
   "author": {
     "@type": "Person",
