@@ -6,7 +6,8 @@ date: 2026-07-11
 
 ### It happens all the time
 
-Designers don’t seem to talk much about small-scale relationship-building. When we do, it's through a framework, with a digital whiteboard, in a workshop – and my soul exits my body.
+Designers don’t seem to talk much about small‑scale relationship‑building. When we do, it's through a framework, with a digital whiteboard, in a workshop – and my soul exits my body.
+
 I spent this week planning how we propose to work with teams.
 
 Loose working relationships between partner organisations and teams are fundamental to how we work in government. A bit of friendly piggybacking. Build some trust, get some work done.
@@ -31,4 +32,4 @@ I can look back at times where I’ve not done this work and then been frustrate
 
 The people we’re working with are how we get work to happen. Building trust takes time. Showing people that we understand their needs and have the capability to deliver on our (however loose) commitments is the only way these informal relationships work.
 
-Keeping these relationships human is the work and the joy. The shape of the relationship shapes the work. While it’s informal, it’s mutual. The relationship dies when the organisation absorbs it.
+Keeping these relationships human is the work and the joy. The shape of the relationship shapes the work. While it’s informal, it’s mutual. The relationships die when the organisation absorbs them.
