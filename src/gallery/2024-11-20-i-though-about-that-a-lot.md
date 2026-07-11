@@ -1,7 +1,6 @@
 ---
 title: I thought about that a lot
 date: 2024-11-20
-tags: gallery
 images:
   - /images/graphic-design/i-thought-about-that-a-lot/book-01.jpg
   - /images/graphic-design/i-thought-about-that-a-lot/book-02.jpg
