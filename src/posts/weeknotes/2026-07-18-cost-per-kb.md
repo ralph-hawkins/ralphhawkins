@@ -28,7 +28,7 @@ If the demand‑side problem was time and ability – that reading government da
 
 If anyone can now read and analyse the data, the constraint moves back to the supply side. Supply is hard. Contracts Finder publishes [less than half of NHS contract awards](https://medium.com/understanding-spend/want-to-know-who-won-a-public-contract-the-chances-are-that-you-never-will-a0d3e3b9aced). The mechanisms of open government don’t have the teeth to be useful, and AI can’t analyse data that was never published. It requires government to put more effort into being open and accountable. But if it did, maybe the impact would be felt this time.
 
-[Making things open might make things even better](https://www.gov.uk/guidance/government-design-principles).
+[Making things open might make things even better](https://www.gov.uk/guidance/government-design-principles#make-things-open-it-makes-things-better).
 
 ---
 
