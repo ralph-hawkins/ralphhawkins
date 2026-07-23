@@ -20,6 +20,23 @@ module.exports = function(eleventyConfig) {
   // Per-post SVG favicon in the same seeded colours, as a data URI.
   eleventyConfig.addFilter("blobFavicon", require("./src/_11ty/og-images.js").faviconDataUri);
 
+  // Markdown footnotes ([^1] syntax). The caption override drops the default
+  // [n] brackets so the reference is a bare superscript digit — see footnote
+  // styles in components.css.
+  eleventyConfig.amendLibrary("md", (md) => {
+    md.use(require("markdown-it-footnote"));
+    md.renderer.rules.footnote_caption = (tokens, idx) => {
+      let n = String(tokens[idx].meta.id + 1);
+      if (tokens[idx].meta.subId > 0) n += `:${tokens[idx].meta.subId}`;
+      return n;
+    };
+    md.renderer.rules.footnote_block_open = () =>
+      '<hr class="footnotes-sep">\n' +
+      '<section class="footnotes">\n' +
+      '<h3>Foot notes</h3>\n' +
+      '<ol class="footnotes-list">\n';
+  });
+
   // Add collection for public weeknotes only
   // Excludes any weeknotes with preview: true in front matter
   // Use this collection for navigation, footer lists, and homepage redirects

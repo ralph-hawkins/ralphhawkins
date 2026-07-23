@@ -112,6 +112,41 @@ div.month-group h3 {
   border-top: 0.1rem solid var(--color-text);
 }
 
+/* Footnotes (markdown-it-footnote). Plain superscript digits for the inline
+   reference; the list at the foot of the post hangs its numbers in the
+   margin. */
+.footnote-ref a {
+  text-decoration: none;
+}
+
+sup.footnote-ref {
+  /* Keep the raised digit from opening up the line box. */
+  line-height: 0;
+}
+
+.footnotes-list {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: footnote;
+}
+
+.footnote-item {
+  counter-increment: footnote;
+  position: relative;
+}
+
+/* The number hangs in the margin like the footer's post-nav arrows
+   (.post-nav-prev::before) — the note text stays aligned with body text. */
+.footnote-item::before {
+  content: counter(footnote);
+  position: absolute;
+  left: -1.5em;
+}
+
+.footnote-item p {
+  margin-bottom: var(--spacing-s);
+}
+
 /* Skip link */
 .skip-link {
   position: absolute;
