@@ -14,7 +14,18 @@
 <link rel="preload" href="/fonts/volksans/volksans-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/volksans/volksans-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" type="image/png" href="/images/favicon.png">
+{%- if tags and 'weeknotes' in tags %}
+{#- Post pages get an SVG favicon in the post's seeded blob colours; the PNG
+    above stays as the fallback for browsers without SVG favicon support. #}
+<link rel="icon" type="image/svg+xml" href="{{ page.fileSlug | blobFavicon }}">
+{%- endif %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{%- if tags and 'weeknotes' in tags %}
+{#- Browser chrome tints to the post's blob colour. #}
+<meta name="theme-color" content="hsl({{ page.fileSlug | blobHue }}, 90%, 72%)">
+{%- else %}
+<meta name="theme-color" content="#EBEDF0">
+{%- endif %}
 <meta name="description" content="{{ metaDescription }}">
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 

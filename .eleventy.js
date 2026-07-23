@@ -17,6 +17,9 @@ module.exports = function(eleventyConfig) {
   // its share card (random-gradients.js reads this off <html data-blob-hue>).
   eleventyConfig.addFilter("blobHue", require("./src/_11ty/og-images.js").hueFromSlug);
 
+  // Per-post SVG favicon in the same seeded colours, as a data URI.
+  eleventyConfig.addFilter("blobFavicon", require("./src/_11ty/og-images.js").faviconDataUri);
+
   // Add collection for public weeknotes only
   // Excludes any weeknotes with preview: true in front matter
   // Use this collection for navigation, footer lists, and homepage redirects

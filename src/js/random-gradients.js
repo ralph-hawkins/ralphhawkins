@@ -62,8 +62,13 @@
     root.style.setProperty('--blob-opacity', 1 - progress);
   }
 
+  // Set the custom properties synchronously so the very first paint has the
+  // right hues. Waiting for the first requestAnimationFrame let a
+  // view-transition snapshot capture the CSS default hues (70/130), which
+  // flashed yellow-green for a frame when navigating between posts.
+  apply(0);
+
   if (reduceMotion) {
-    apply(0);
     window.addEventListener('scroll', () => apply(0), { passive: true });
   } else {
     // Continuous loop drives the idle hover. Pause it while the tab is hidden

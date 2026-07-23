@@ -1,3 +1,53 @@
+/* Cross-document view transition. The page chrome (header, main, footer) is
+   pulled into its own snapshot groups and swaps instantly — cross-fading two
+   scrolled documents ghosts their text through each other. All that's left
+   in the root snapshot is the gradient blob, so navigating reads as the
+   colours gliding from one post's seed to the next under a stable page.
+   Progressive enhancement — unsupported browsers just navigate. */
+@view-transition {
+  navigation: auto;
+}
+
+header {
+  view-transition-name: hero;
+}
+
+main {
+  view-transition-name: content;
+}
+
+footer {
+  view-transition-name: site-footer;
+}
+
+::view-transition-group(hero),
+::view-transition-group(content),
+::view-transition-group(site-footer),
+::view-transition-new(hero),
+::view-transition-new(content),
+::view-transition-new(site-footer) {
+  animation: none;
+}
+
+/* The old chrome must vanish, not fade — main's glass is translucent, so a
+   lingering old snapshot would double-expose the text. */
+::view-transition-old(hero),
+::view-transition-old(content),
+::view-transition-old(site-footer) {
+  display: none;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
 body {
   color: var(--color-text);
   background: var(--color-background);

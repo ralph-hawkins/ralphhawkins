@@ -193,4 +193,31 @@ async function generateOgImages(outputDir) {
   return jobs.length;
 }
 
-module.exports = { generateOgImages, hueFromSlug };
+// Per-post favicon: the post's two blob lobes as soft radial gradients on a
+// rounded tile, with the site's "R" mark (favicon.png) layered on top, as an
+// inline data URI (no extra file or request).
+let rMarkBase64;
+function faviconDataUri(slug) {
+  const hue1 = hueFromSlug(slug);
+  const hue2 = (hue1 + 40) % 360;
+  if (!rMarkBase64) {
+    rMarkBase64 = fs.readFileSync(path.join(SRC_DIR, "images", "favicon.png")).toString("base64");
+  }
+  const svg =
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">` +
+    `<defs>` +
+    `<radialGradient id="a"><stop offset="0" stop-color="hsl(${hue1},90%,72%)"/><stop offset="0.45" stop-color="hsla(${hue1},90%,72%,0.82)"/><stop offset="0.78" stop-color="hsla(${hue1},90%,72%,0)"/></radialGradient>` +
+    `<radialGradient id="b"><stop offset="0" stop-color="hsl(${hue2},75%,70%)"/><stop offset="0.5" stop-color="hsla(${hue2},75%,70%,0.52)"/><stop offset="0.82" stop-color="hsla(${hue2},75%,70%,0)"/></radialGradient>` +
+    `<clipPath id="c"><rect width="64" height="64" rx="14"/></clipPath>` +
+    `</defs>` +
+    `<rect fill="#EBEDF0" width="64" height="64" rx="14"/>` +
+    `<g clip-path="url(#c)">` +
+    `<circle cx="42" cy="18" r="34" fill="url(#a)"/>` +
+    `<circle cx="28" cy="42" r="44" fill="url(#b)"/>` +
+    `</g>` +
+    `<image href="data:image/png;base64,${rMarkBase64}" x="7" y="7" width="50" height="50"/>` +
+    `</svg>`;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
+module.exports = { generateOgImages, hueFromSlug, faviconDataUri };
