@@ -21,8 +21,8 @@
 {%- endif %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {%- if tags and 'weeknotes' in tags %}
-{#- Browser chrome tints to the post's blob colour. #}
-<meta name="theme-color" content="hsl({{ page.fileSlug | blobHue }}, 90%, 72%)">
+{#- Browser chrome gets a 20% tint of the post's blob colour. #}
+<meta name="theme-color" content="{{ page.fileSlug | blobThemeColor }}">
 {%- else %}
 <meta name="theme-color" content="#EBEDF0">
 {%- endif %}

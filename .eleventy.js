@@ -20,6 +20,9 @@ module.exports = function(eleventyConfig) {
   // Per-post SVG favicon in the same seeded colours, as a data URI.
   eleventyConfig.addFilter("blobFavicon", require("./src/_11ty/og-images.js").faviconDataUri);
 
+  // Browser-chrome theme colour: 20% tint of the post's blob hue.
+  eleventyConfig.addFilter("blobThemeColor", require("./src/_11ty/og-images.js").themeColor);
+
   // Markdown footnotes ([^1] syntax). The caption override drops the default
   // [n] brackets so the reference is a bare superscript digit — see footnote
   // styles in components.css.

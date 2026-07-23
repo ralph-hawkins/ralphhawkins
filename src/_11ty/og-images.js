@@ -220,4 +220,25 @@ function faviconDataUri(slug) {
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
-module.exports = { generateOgImages, hueFromSlug, faviconDataUri };
+// Browser-chrome theme colour: a 20% tint of the post's first blob hue —
+// hsl(hue, 90%, 72%) mixed 20/80 with the site background — precomputed to a
+// hex value because <meta name="theme-color"> can't use color-mix().
+function themeColor(slug) {
+  const hue = hueFromSlug(slug);
+  // hsl(hue, 90%, 72%) → rgb
+  const s = 0.9, l = 0.72;
+  const c = (1 - Math.abs(2 * l - 1)) * s;
+  const x = c * (1 - Math.abs(((hue / 60) % 2) - 1));
+  const m = l - c / 2;
+  const sextant = Math.floor(hue / 60) % 6;
+  const [r, g, b] = [
+    [c, x, 0], [x, c, 0], [0, c, x], [0, x, c], [x, 0, c], [c, 0, x]
+  ][sextant].map(v => (v + m) * 255);
+  // 20% colour over the #EBEDF0 background
+  const background = [235, 237, 240];
+  return "#" + [r, g, b]
+    .map((v, i) => Math.round(0.2 * v + 0.8 * background[i]).toString(16).padStart(2, "0"))
+    .join("");
+}
+
+module.exports = { generateOgImages, hueFromSlug, faviconDataUri, themeColor };
