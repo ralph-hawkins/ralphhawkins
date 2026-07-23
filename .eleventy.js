@@ -13,6 +13,10 @@ module.exports = function(eleventyConfig) {
   // layout space and avoid CLS.
   eleventyConfig.addFilter("imageSize", imageSize);
 
+  // Same slug→hue seed the OG images use, so a post's live blob colours match
+  // its share card (random-gradients.js reads this off <html data-blob-hue>).
+  eleventyConfig.addFilter("blobHue", require("./src/_11ty/og-images.js").hueFromSlug);
+
   // Add collection for public weeknotes only
   // Excludes any weeknotes with preview: true in front matter
   // Use this collection for navigation, footer lists, and homepage redirects
@@ -93,6 +97,15 @@ module.exports = function(eleventyConfig) {
       if (path.basename(inputPath) !== "main.css") return;
       return () => inlineImports(inputPath);
     }
+  });
+
+  // Generate Open Graph images for week notes and the homepage after each
+  // build. Writes to _site/images/og/; head-common.njk points at these when a
+  // page has no explicit image in front matter.
+  eleventyConfig.on("eleventy.after", async ({ dir }) => {
+    const { generateOgImages } = require("./src/_11ty/og-images.js");
+    const count = await generateOgImages(path.join(dir.output, "images", "og"));
+    if (count > 0) console.log(`[og-images] rendered ${count} image(s)`);
   });
 
   // Add assets

@@ -4,7 +4,7 @@
    would scroll to the first .date element it finds — on a listing page
    that's a list item's date, not a post date. -#}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"{% if tags and 'weeknotes' in tags %} data-blob-hue="{{ page.fileSlug | blobHue }}"{% endif %}>
 <head>
     {% include "head-common.njk" %}
     {%- if hero !== false %}

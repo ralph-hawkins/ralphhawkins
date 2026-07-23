@@ -2,9 +2,15 @@
 // and gently hovers when idle.
 (function () {
   const root = document.documentElement;
-  const baseHue1 = Math.floor(Math.random() * 360);
+  // Posts carry a slug-seeded hue (data-blob-hue, set at build) so the page's
+  // colours match the post's Open Graph card; elsewhere the roll is random.
+  const seededHue = parseInt(root.dataset.blobHue, 10);
+  const baseHue1 = Number.isNaN(seededHue) ? Math.floor(Math.random() * 360) : seededHue;
   // Analogous: 25–55° from hue1, so the two lobes share a colour family.
-  const baseHue2 = (baseHue1 + 25 + Math.floor(Math.random() * 30)) % 360;
+  // Seeded pages use the fixed +40 offset the OG card uses.
+  const baseHue2 = Number.isNaN(seededHue)
+    ? (baseHue1 + 25 + Math.floor(Math.random() * 30)) % 360
+    : (baseHue1 + 40) % 360;
 
   // Restrict drift to the upper semicircle so the blob always moves up or
   // sideways relative to scroll, never down.
