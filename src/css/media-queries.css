@@ -1,20 +1,5 @@
-/* Typography responsive styles */
-@media (min-width: 40em) {
-  h2 {
-    font-size: 3.52rem;
-    margin-bottom: var(--spacing-l);
-  }
-
-  h3 {
-    font-size: 2.76rem;
-    margin-bottom: var(--spacing-m);
-  }
-
-  h4 {
-    font-size: 2.16rem;
-    margin-bottom: var(--spacing-m);
-  }
-}
+/* Heading sizes are fluid via the --font-size-* clamps in variables.css —
+   no breakpoint overrides. */
 
 /* Additional mobile adjustments for small screens */
 @media (max-width: 30em) {
@@ -28,7 +13,8 @@
     left: -1.2em;
   }
 
-  /* Add some overflow protection */
+  /* Safety net for unbroken content (e.g. a long URL in a post). The h1,
+     which used to overflow at this width, is handled by its clamp() now. */
   body {
     overflow-x: hidden;
   }

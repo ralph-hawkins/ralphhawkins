@@ -8,17 +8,27 @@
   --color-border: #0b0c0c;
   --color-background: #EBEDF0;
 
-  /* Spacing */
-  --spacing-xs: 0.3rem;
-  --spacing-s: 0.9rem;
+  /* Spacing — multiples of the base line (1.3rem × 1.5 = 1.95rem), so block
+     spacing shares one vertical rhythm: ⅙, ½, ⅔, 1 and 1½ lines. */
+  --spacing-xs: 0.33rem;
+  --spacing-s: 0.98rem;
   --spacing-m: 1.3rem;
-  --spacing-l: 1.9rem;
-  --spacing-xl: 3.1rem;
+  --spacing-l: 1.95rem;
+  --spacing-xl: 2.93rem;
 
   /* Typography */
-  --font-family: "volksans", helvetica, arial, sans-serif;
+  --font-family: "volksans", "volksans-fallback", helvetica, arial, sans-serif;
   --font-size-base: 1.3rem;
   --line-height-base: 1.5;
+
+  /* Type scale — one ×1.42 ladder, fluid between a 390px floor (the old
+     mobile sizes) and a 1024px ceiling that runs ×1.42 from the body size
+     (1.85 / 2.62 / 3.73rem). The h1 additionally shrinks below 390px so
+     "Hawkins" clears the side padding on the narrowest phones. */
+  --font-size-h1: clamp(3.6rem, 18.5vw, 4.5rem);
+  --font-size-h2: clamp(3.16rem, 2.81rem + 1.44vw, 3.73rem);
+  --font-size-h3: clamp(2.22rem, 1.97rem + 1.01vw, 2.62rem);
+  --font-size-h4: clamp(1.56rem, 1.38rem + 0.73vw, 1.85rem);
 
   /* Layout */
   --content-width: 65ch;

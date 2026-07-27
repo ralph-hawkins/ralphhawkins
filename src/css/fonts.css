@@ -6,6 +6,18 @@
   font-display: swap;
 }
 
+/* Arial adjusted to Volksans' metrics (96.42% width ratio, 900/-250/0
+   vertical metrics on 1000 upm) so text set in the fallback occupies the
+   same space and the swap to Volksans doesn't reflow the page. */
+@font-face {
+  font-family: 'volksans-fallback';
+  src: local('Arial');
+  size-adjust: 96.42%;
+  ascent-override: 93.34%;
+  descent-override: 25.93%;
+  line-gap-override: 0%;
+}
+
 @font-face {
   font-family: 'Volksans';
   src: url('/fonts/volksans/volksans-SemiBold.woff2') format('woff2'),

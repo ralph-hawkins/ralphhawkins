@@ -8,7 +8,7 @@ footer > hr {
 }
 
 footer h2 {
-  font-size: 2.22rem;
+  font-size: var(--font-size-h3);
   line-height: 1.15;
   margin-bottom: 0.5lh;
 }
@@ -52,7 +52,7 @@ footer ul {
 }
 
 .post-meta p {
-  flex: 0 0 calc(50% - var(--spacing-m) / 2);
+  flex: 0 1 auto;
   margin: 0;
 }
 
@@ -60,8 +60,13 @@ footer ul {
   text-align: left;
 }
 
-.post-meta-date {
+.post-meta .post-meta-date {
   text-align: right;
+  /* Never break mid-date ("20 February / 2026"): the column is content-sized
+     and pushed right, and on the narrowest screens the whole date drops to
+     its own right-aligned line instead. */
+  white-space: nowrap;
+  margin-left: auto;
 }
 
 .post-nav-prev::before {
@@ -145,6 +150,19 @@ sup.footnote-ref {
 
 .footnote-item p {
   margin-bottom: var(--spacing-s);
+}
+
+/* For content that should exist for the accessibility tree but not the eye,
+   e.g. the graphic-design page's h1 (its visible intro lives in the hero). */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* Skip link */
