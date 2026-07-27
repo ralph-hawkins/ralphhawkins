@@ -40,29 +40,26 @@ header {
   z-index: 0;
 }
 
-.header-bars {
+.header-glass {
   position: absolute;
   inset: 0;
   z-index: -1;
-  /* Entirely static — the bars never scale or move. */
+  /* Entirely static — the layers never scale or move. */
   pointer-events: none;
 }
 
-.header-bar {
+.header-glass-blur,
+.header-glass-tint {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: var(--bar-top, 0%);
-  bottom: var(--bar-bottom, calc(100% - 100% / 15));
+  inset: 0;
   pointer-events: none;
-  background-color: color-mix(in srgb, var(--color-background) var(--bar-opacity, 0%), transparent);
 }
 
 main {
   min-height: 100vh;
   position: relative;
   z-index: 2;
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-xl) 0 0;
 }
 
 .figure {

@@ -1,42 +1,60 @@
-// 15 static bars stacked behind the header, each with its own backdrop blur and
-// tint stepping along an ease-out curve from clear at the top to fully
-// blurred/tinted at the bottom. Entirely static — no scroll or load motion.
+// 15 stepped "glass" bars behind the header, easing from clear at the top to
+// fully blurred/tinted at the bottom. The steps are hard stops in a single
+// tint gradient and in the mask that feathers a single backdrop-blur layer —
+// visually the stacked bars, but drawn on two full-height elements. Entirely
+// static — no scroll or load motion.
+// Must stay two full-height layers, not stacked strip elements: iOS Safari
+// clamps backdrop sampling to each element's own bounds, so thin bars whose
+// blur exceeds their height render as flat saturated stripes.
 (function () {
   const header = document.querySelector('header');
   if (!header) return;
 
-  const BARS = 15;
-  const BASE_PCT = 100 / BARS;
+  const STEPS = 15;
   const BLUR_STEP = Math.max(10, window.innerWidth / 125);
   const SATURATE = 1.3;
   const OPACITY_STEP = 5;
-  const MAX_OPACITY = BARS * OPACITY_STEP;
-  const MAX_BLUR = BARS * BLUR_STEP;
-  const stepEase = (i) => {
-    const t = i / BARS;
-    return 1 - (1 - t) * (1 - t);
-  };
+  const MAX_OPACITY = STEPS * OPACITY_STEP;
+  const MAX_BLUR = STEPS * BLUR_STEP;
+  const stepEase = (t) => 1 - (1 - t) * (1 - t);
 
   const root = document.documentElement;
   root.style.setProperty('--content-bg-opacity', `${MAX_OPACITY.toFixed(2)}%`);
   root.style.setProperty('--content-bg-blur', `${MAX_BLUR.toFixed(2)}px`);
 
-  const barsLayer = document.createElement('div');
-  barsLayer.className = 'header-bars';
-  barsLayer.setAttribute('aria-hidden', 'true');
-  for (let i = 0; i < BARS; i++) {
-    const ease = stepEase(i);
-    const top = +(i * BASE_PCT).toFixed(2);
-    const bottom = +(100 - (i + 1) * BASE_PCT).toFixed(2);
-    const bar = document.createElement('div');
-    bar.className = 'header-bar';
-    bar.style.setProperty('--bar-opacity', `${(ease * MAX_OPACITY).toFixed(2)}%`);
-    bar.style.setProperty('--bar-top', `${top.toFixed(2)}%`);
-    bar.style.setProperty('--bar-bottom', `${bottom.toFixed(2)}%`);
-    const filter = `blur(${(ease * MAX_BLUR).toFixed(2)}px) saturate(${SATURATE})`;
-    bar.style.backdropFilter = filter;
-    bar.style.webkitBackdropFilter = filter;
-    barsLayer.appendChild(bar);
+  const tintStops = [];
+  const maskStops = [];
+  for (let i = 0; i < STEPS; i++) {
+    const ease = stepEase(i / STEPS);
+    const from = ((i / STEPS) * 100).toFixed(2);
+    const to = (((i + 1) / STEPS) * 100).toFixed(2);
+    const tintColor = `color-mix(in srgb, var(--color-background) ${(ease * MAX_OPACITY).toFixed(2)}%, transparent)`;
+    const maskColor = `rgb(0 0 0 / ${(ease * 100).toFixed(2)}%)`;
+    tintStops.push(`${tintColor} ${from}%`, `${tintColor} ${to}%`);
+    maskStops.push(`${maskColor} ${from}%`, `${maskColor} ${to}%`);
   }
-  header.appendChild(barsLayer);
+
+  const glass = document.createElement('div');
+  glass.className = 'header-glass';
+  glass.setAttribute('aria-hidden', 'true');
+
+  // The blur layer is painted first so the tint above it stays out of its
+  // backdrop — matching the old bars, where each bar's own tint was painted
+  // over its filtered result rather than saturated by it.
+  const blur = document.createElement('div');
+  blur.className = 'header-glass-blur';
+  const filter = `blur(${MAX_BLUR.toFixed(2)}px) saturate(${SATURATE})`;
+  blur.style.backdropFilter = filter;
+  blur.style.webkitBackdropFilter = filter;
+  const mask = `linear-gradient(to bottom, ${maskStops.join(', ')})`;
+  blur.style.maskImage = mask;
+  blur.style.webkitMaskImage = mask;
+
+  const tint = document.createElement('div');
+  tint.className = 'header-glass-tint';
+  tint.style.background = `linear-gradient(to bottom, ${tintStops.join(', ')})`;
+
+  glass.appendChild(blur);
+  glass.appendChild(tint);
+  header.appendChild(glass);
 })();
