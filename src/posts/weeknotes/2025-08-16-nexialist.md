@@ -3,7 +3,7 @@ title: Nexialist
 date: 2025-08-16
 ---
 
-### Provocatype 2 – this time it’s personal
+## Provocatype 2 – this time it’s personal
 
 Managed to speak to a few people about the provocatype I’ve been working on. It’s still in Lucid and I’ve only got as far as stitching together a relatively simple journey – what’s available to someone relatively healthy.
 
@@ -13,13 +13,13 @@ There are some limitations though. It’s too easy to think of this as a single 
 
 I think making some working software will help with those limitations, but to do that I basically need to build a fairly complex prototype that can handle (fictional) data about people, their health, activity, preferences etc, and match them to services. Maybe something hardcoded is more pragmatic, but might not support us in thinking through problems in as much detail.
 
-### Edge cases
+## Edge cases
 
 I can’t say much about this, but in one of our services, the users are hitting an edge case that was anticipated but nobody expect to happen. It’s benign and basically an admin issue.
 
 I wasn’t part of the discussions for this service when it was being decided how much of a risk it was and whether it was worth mitigating. I’ve had plenty of discussions like this though. I find them really fun. Trying to sense out where the edges of a problem lie, how likely it is that a user will do it and what the consequences are. They’re the crunchy problems of real‑world service design. They’re the dark matter of service design, if you get the decisions right, no one will ever know.
 
-### Measuring success
+## Measuring success
 
 I had a couple of chats with people about how we measure if a team is working well. When you are working in an environment where services are live and has real users, the measures are usually pretty obvious. Most of our services are in the early stages and are at the mercy of externalities that make doing the job of shipping services and getting to real users a slow process. In the meantime, how do we judge if the team are doing well?
 

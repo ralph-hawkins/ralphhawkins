@@ -20,28 +20,28 @@ The app has an outsized influence, in one good way at least. It’s a point of c
 
 In the spirit of working openly, here are some high‑level ideas we’ve been discussing. Very early days, not yet agreed, not exhaustive. Not filtered by how achievable they might be.
 
-### Personalised health risk summary
+## Personalised health risk summary
 Make abstract risk more tangible. Example: persistently showing your heart age after completing an NHS Health Check.
 
-### User‑submitted data
+## User‑submitted data
 Improve personalisation and control. Example: recording a vaccine you had privately or abroad, so you don’t get prompted for something you’ve already done.
 
-### Local NHS can enable home monitoring
+## Local NHS can enable home monitoring
 Give users easier access to monitoring that connects with their care. Example: an ICB selects a cohort who need to record blood pressure, using the app to track it.
 
-### Next best action
+## Next best action
 Guide users through the complexity. Example: after an NHS Health Check identifies lung cancer screening eligibility, suggest completing the pre‑screening questionnaire.
 
-### Book a prevention specialist
+## Book a prevention specialist
 Help users get consultation on what they could be doing. Example: pilot using WhatsApp or any messaging platform with a small cohort.
 
-### Prevention overview
+## Prevention overview
 Clearer expectations of what’s upcoming and access to records. Example: a summary screen showing vaccination, screening, and health checks.
 
-### Better messages
+## Better messages
 Use what digital communication is good at. Example: prompt someone to complete an NHS Health Check after a vaccination – catching them while they’re engaged.
 
-### Health goals
+## Health goals
 Support sustained behaviour change. Example: set one goal, receive a monthly check‑in asking how it’s going.
 
 Looking at that list, I worry there’s nothing in the sweet spot – shippable within weeks or a few months and adds real value. We spent time last week defining criteria for choosing what to work on. I think we can simplify this to – find something that looks remotely achievable.

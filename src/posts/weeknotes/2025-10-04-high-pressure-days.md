@@ -3,7 +3,7 @@ title: High pressure days
 date: 2025-10-04
 ---
 
-### Planning
+## Planning
 
 We had an in‑person 3‑month planning day with our teams. We have 5&nbsp;teams loosely aligned around helping people understand their health and find support to stay well.
 
@@ -23,7 +23,7 @@ And areas where some teams are dealing with now and others will need to in the f
 
 The other thing we wanted from the day is for people to get to know each other better. That basically meant not packing the day too tightly and including some activities that helped people to build bridges.
 
-### What we mean when we talk about personalisation
+## What we mean when we talk about personalisation
 
 [Paola&nbsp;Roccuzzo](https://www.linkedin.com/in/paola/) very kindly agreed to come and speak to our teams. Paola worked on a project that looked into how [GOV.UK](http://GOV.UK) would work if it was personalised.
 
@@ -31,7 +31,7 @@ Her work demonstrates the value of having people who care about language and use
 
 She gave a great talk, I could feel people’s understanding shifting as she spoke. I’m keen for these definitions to become part of our everyday vocabulary.
 
-### Co‑design
+## Co‑design
 
 We have a fortnightly catch‑up for UCD people in Personalised prevention services.
 
@@ -47,13 +47,13 @@ Some things that stood out was about how co‑design is part of partnering with 
 
 The other thing was how we make sure co‑design has mutual benefit for all. If the service is unlikely to meet the needs of the people involved in the co‑design then it’s probably better not to put people through this process.
 
-### Talking therapies pilot
+## Talking therapies pilot
 
 We launched a pilot this week. It’s small, but the overhead of getting anything out into the world and have real people using it is so high here that it‘s a victory. More importantly, having something in the hands of real users has already taught us things. For example, we hand off to a service finder that has a brittle search algorithm and we need to be careful how we prepare users for that.
 
 I’m pleased for the team. Hopefully we’ll be following it up with another pilot or at least something else in the hands of real people very soon.
 
-### Health kiosks
+## Health kiosks
 
 We visited a community centre in Tower&nbsp;Hamlets where they’re piloting health kiosks – machines that measure height, weight, and blood pressure in about 4 minutes.
 
@@ -65,7 +65,7 @@ The Tower&nbsp;Hamlets pilot is similar to one in Southwark. Both validate some 
 
 Kiosks will need to be part of what we offer. Multiple access routes matter for reaching people who need support most.
 
-### 1‑year at NHSE
+## 1‑year at NHSE
 
 This week I completed a year at NHSE. As a special treat I was logged out of everything.
 

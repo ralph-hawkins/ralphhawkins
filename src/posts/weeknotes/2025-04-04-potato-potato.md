@@ -5,7 +5,7 @@ date: 2025-04-04
 
 This week I've been thinking about how teams work together and organisational culture.
 
-### Bringing teams together
+## Bringing teams together
 
 I feel like I spend more of my time speaking to people about what they’re doing than I do working on things myself.
 
@@ -23,7 +23,7 @@ Putting an in‑person 4-hour workshop for 8 people to come from across the coun
 
 It was a good session. Smart people being engaged makes these things fun. At the end of the session, it seemed clear that there was an improved view from both teams, a bit of realignment and some gaps identified. I’m hopeful that future conversations across the teams will be clearer. We also realised the need for some shared definitions.
 
-### Internal comms and culture
+## Internal comms and culture
 
 As I wrote about last week, the Digital Prevention Services Portfolio (DPSP) is refining how it communicates. Getting a clear message is helpful to the way we work, and the people we work with. The better we understand what we’re doing, the more effectively we can move in the same direction.
 

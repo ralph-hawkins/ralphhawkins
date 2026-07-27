@@ -3,7 +3,7 @@ title: More water in the Ribena
 date: 2025-05-10
 ---
 
-### Health assessments discovery
+## Health assessments discovery
 
 The discovery into health assessments finished this week.
 
@@ -28,7 +28,7 @@ The team are likely to create a first use case around pre‑screening for lung c
 - it proves the potential advantage of our strategy, making each contact more valuable, in this case helping more eligible people access screening and support to stop smoking
 
 
-### Life and death business cases
+## Life and death business cases
 
 As part of the Spending Review, Digital Prevention Services is creating several business cases.
 
@@ -38,7 +38,7 @@ Projecting years ahead for something so unproven requires big leaps of imaginati
 
 Looking at our work through an economic lens is necessary but gets dark fast. There are measures of economic value for years of life added, working life extended, and quality of life. I find it hard not to think about what these numbers mean for real people and their families. It’s unsettling.
 
-### Vendors
+## Vendors
 
 We often speak to external companies who have built something in our space and want to work with us.
 
@@ -52,7 +52,7 @@ I have a strong bias against enterprise software, but I'll support a pragmatic s
 
 ---
 
-### Links
+## Links
 
 - Mike Gallagher – design lead for NHS app and lovely person, writes literary week notes. Last week’s post on [the tension between middle management and being a designer who designs](https://mikegallagher.org/weeknote-wc-28-april-2025/) perfectly articulates my experience.
 

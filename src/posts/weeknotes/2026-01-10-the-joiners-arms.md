@@ -6,7 +6,7 @@ description: New year, new team, new scope.
 
 I started working in a different team this week. A team that sits across Digital Prevention Services Portfolio (DPSP). The team will be doing some new work – figuring out how we coordinate prevention services in the NHS app.
 
-### Origin story
+## Origin story
 
 I've spoken to a few people this week about how this work came about. I think there's more to the story than I know, but roughly:
 
@@ -20,7 +20,7 @@ That’s what the new team will be looking at.
 
 Also – I want to emphasise to anyone reading this from DPSP – this doesn’t mean we are in any way a gatekeeper, or blocker to teams working with the app. Keep doing the things you’re doing.
 
-### Scope
+## Scope
 
 The scope is not totally clear to me yet. I think it lies somewhere between ‘prevention in the app’ and ‘manage my health’.
 

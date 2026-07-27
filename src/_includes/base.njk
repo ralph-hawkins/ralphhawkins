@@ -18,9 +18,12 @@
   {%- if hero !== false %}
   <header>
     <div class="container">
-      <h1>
+      {#- Masthead, not the document title — every page's h1 is its own
+         subject (post title, list heading), since / redirects to the
+         latest post and there is no homepage document. -#}
+      <p class="hero-title">
         Ralph Hawkins
-      </h1>
+      </p>
       <p>
         I’m a service designer who works in the public sector,
         currently with NHS England helping people stay healthy.

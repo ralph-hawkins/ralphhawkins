@@ -5,7 +5,7 @@ date: 2025-04-25
 
 Or Lucid, Miro, or whatever.
 
-### Like a G6
+## Like a G6
 
 I had a meeting this week with some people from a central government organisation. One of the people on the call was introduced as the ‘G6’.
 
@@ -26,7 +26,7 @@ Once I understood this, other things about the civil service started making a li
 
 I’m so much happier to be working in a place that makes sense to me. Multidisciplinary teams figuring out problems and making stuff.
 
-### End‑to‑end service design
+## End‑to‑end service design
 
 I’ve been speaking to more service designers this week. 
 
@@ -42,7 +42,7 @@ I didn’t get the job.
 
 ---
 
-### Links
+## Links
 
 Some excellent blog posts this week:
 

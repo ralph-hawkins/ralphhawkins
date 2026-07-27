@@ -7,7 +7,7 @@ date: 2025-06-06
 
 Even on holiday it’s hard to switch my brain off from service design. There were lots of ways friction could be removed from the experience. Like, the park makes it hard to rent or buy things once you’re there that you could have preordered. If we were organised enough to know we needed to preorder towels, we’d have brought our own. A simple way of requesting a few things you need on arrival would be a massive benefit to families and easy money for the park. I assume there are some organisational seams behind it, or maybe it’s about managing capacity. I wonder if Center Parks have any service designers, it would be a fun job.
 
-### 5 services, 5 models
+## 5 services, 5 models
 
 When I joined NHSE 9 months ago our portfolio had 1 service in alpha and 1 in discovery. We now have 5 projects. I’m proud of the work we’ve done to grow so fast and grateful for the trust people have put in us.
 
@@ -17,7 +17,7 @@ The interesting thing that occurred to me this week is how the first version tha
 
 It’s still early days, but it’s exciting to see how the services will develop. In the long term we will need to manage this complexity. Spending more time thinking about the more important stages between our siloed services and something more coherent has been on my agenda for too long. I’ve been better this week with protecting my time, but I consistently underestimate how long work will take.
 
-### I am human and I need to be loved
+## I am human and I need to be loved
 
 The Digital Prevention Services team has regular sessions where external speakers talk about their work.
 

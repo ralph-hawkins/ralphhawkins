@@ -3,7 +3,7 @@ title: Resting curmudgeon face
 date: 2025-05-17
 ---
 
-### Services now, platforms later
+## Services now, platforms later
 
 Until this week we had 2 teams working on the core of our longer‑term strategy. The Health Assessment team, which just finished a discovery and the Personalised Prevention Platform partway through its alpha.
 
@@ -15,7 +15,7 @@ Now we have 2 teams building specific use case journeys. 1 team will create a jo
 
 I’m excited about this change. It gives us more focus to test ideas sooner.
 
-### We’re all the app team
+## We’re all the app team
 
 I met with Department of Health and Social Care (DHSC) this week. During intros, NHS England people referred to ‘the app’. Someone from DHSC asked which app. DHSC has many (Food scanner, Weight loss plan, Couch to 5k, etc).
 
@@ -31,7 +31,7 @@ Our teams’ work needs to integrate with the app. We’re coordinating with the
 
 I also keep having to remind myself the app is just 1 channel. The NHS is a system with many ways to reach users and a good strategy will use that.
 
-### Local support
+## Local support
 
 Last week I read 2 great articles about local health work:
 
@@ -48,7 +48,7 @@ Research shows showing relevant support is useful. We don’t yet know if people
 
 I question if connecting to services is the right model. Is the interface‑to‑service hand‑off missing steps? We might need something richer – a human who understands health needs and wider context, helps set goals and supports the journey. That sounds more expensive, but if it’s happening locally, we should help people find that support.
 
-### Welcoming our AI overlords
+## Welcoming our AI overlords
 
 We kicked off work with DHSC this week.
 
@@ -60,7 +60,7 @@ The team will run a short discovery. I’m super interested to see what they fin
 
 ---
 
-### Links
+## Links
 
 - [Breaking siloes with a service catalogue](https://medium.com/@carolinefinucane/breaking-siloes-with-a-service-catalogue-515b41332c9a) by Caroline Finucane
 - [Designing new social objects (preventative healthcare as an example)](https://waysofdoing.rpp.works/notes/designing-new-social-objects-preventative-healthcare-as-an-example) by Richard Pope

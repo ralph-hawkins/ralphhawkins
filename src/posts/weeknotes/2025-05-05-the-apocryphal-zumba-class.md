@@ -3,7 +3,7 @@ title: The apocryphal Zumba class
 date: 2025-05-05
 ---
 
-### Grades, Roles, Culture
+## Grades, Roles, Culture
 
 After last week’s post on finding it weird when people are simply introduced by their grade and not their role, [Sarah Fisher](https://www.linkedin.com/in/sarah-fisher-6149b1242/) (Deputy Director for Screening services) had some feedback.
 
@@ -15,7 +15,7 @@ In the past I’ve tried to give an explanation of my role. Something like ‘I�
 
 I still think there’s something about the hierarchy implicit in using grades as proxy for role that I find uncomfortable. It’s often a shorthand for who is allowed to make decisions and who isn’t.
 
-### Nudging and Boosting
+## Nudging and Boosting
 
 Sarah also shared this [paper on the limitations of nudging and how boosting is a more effective method for helping people achieve their goals](https://www.cambridge.org/core/journals/behavioural-public-policy/article/moving-from-nudging-to-boosting-empowering-behaviour-change-to-address-global-challenges/CB945AC75691B12619D7C0F08A78B0CD).
 
@@ -30,7 +30,7 @@ Boosting recognises that people will act in the best interest of the community i
 For prevention my hope is we make the means more accessible. Nobody needs nagging about their health.
 I’m sure nudging is here to stay, given that it’s cheap and puts responsibility on the individual. But I really enjoyed how this paper sets out a useful distinction between supporting people and trying to manipulate them.
 
-### Service Visualisation
+## Service Visualisation
 
 More yapping on about mapping and visualisation.
 

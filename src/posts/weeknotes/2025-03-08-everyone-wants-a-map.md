@@ -4,7 +4,7 @@ date: 2025-03-09
 ---
 This week I’ve been worrying about how much time I spend thinking about alignment, continuing to shape a discovery into health assessments and getting closer to the Personalised Prevention Platform team.
 
-### Alignment
+## Alignment
 
 If you were designing a system that was prone to duplication, it would look like public health in England. As far as I understand it, we have at least five policy organisations and more than 1,000 organisations responsible for delivery.
 
@@ -16,14 +16,14 @@ Taken to the extreme, it’s risk‑averse and biases against action. I can’t 
 
 I’m aiming for us to be pragmatic with a sprinkling of denial. Speak to people while we push on with delivery. Accept the risk. Hope that if we’re ahead of other people they’ll have to align to us. Map only what’s relevant. Align as we go.
 
-### Health assessment discovery
+## Health assessment discovery
 
 When [Irina Pencheva](https://www.linkedin.com/in/irina-pencheva-2b431825/) and I first scoped the exploration into health assessments, it had two aims:
 
 1. Establish the impact of making more health assessments digital (we already have the NHS health check online)
 2. Investigate if we can do this through health assessment components (for example, if two or more assessments need a blood pressure check, can it be the same code, design, protocols etc.)
 
-#### Risk calculation
+### Risk calculation
 
 Before the discovery kicked‑off, Irina and I spent time thinking about gaps in what was happening against what needed to happen to meet our vision for personalised prevention.
 
@@ -44,7 +44,7 @@ Two weeks in, the discovery team is getting into the weeds of the problem space.
 
 Including risk calculations in discovery was right. I’m looking forward to seeing what the team recommend.
 
-### Working with Personalised Prevention Platform
+## Working with Personalised Prevention Platform
 
 The Personalised Prevention Platform (PPP) team have just started an alpha phase and I’m filling the service designer gap in the team.
 
@@ -54,7 +54,7 @@ I joined them as a team member on Wednesday and then didn’t have the capacity 
 
 The time I have spent with the team has been valuable. Getting into the detail of the problems is reassuring and is helping me to refine our strategy.
 
-### Next week
+## Next week
 
 I’m going to:
 

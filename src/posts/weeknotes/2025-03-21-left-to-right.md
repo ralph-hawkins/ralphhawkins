@@ -7,9 +7,9 @@ The interesting times within NHS England continue.
 
 For me the week had two main highlights, a Personalised Prevention Services senior leadership team (SLT) get together and a couple of Services Week sessions.
 
-### Senior leadership
+## Senior leadership
 
-#### Aside on job titles
+### Aside on job titles
 
 My job title is lead service designer, I’m trying to be less weird about it.
 
@@ -21,7 +21,7 @@ In the past I’ve also avoided mentioning my ’level’ – not ’senior’ o
 
 Well‑designed organisational structures provide accountability and support diversity.
 
-#### Make things open, it makes them better
+### Make things open, it makes them better
 
 Anyway – I spent a day this week in an SLT meeting.
 
@@ -33,13 +33,13 @@ The end result is some much needed structure, added accountability and better lo
 
 Thanks to everyone involved, especially [Emily Houghton](https://www.linkedin.com/in/emily-houghton-92367b32/) who held the space for us to be ourselves.
 
-### Services week
+## Services week
 
 This week was Service Week – bringing the public sector together to share best practices and improve public services.
 
 I contributed to two sessions but didn’t go to any others. Thankfully, [recordings of the session are on YouTube](https://www.youtube.com/playlist?list=PLoe8p5EhqZ2Irg0VDGiho6NA1AoA-gUuB)
 
-#### Stop mapping, start doing
+### Stop mapping, start doing
 
 [Sarah Fisher](https://www.linkedin.com/in/sarah-fisher-6149b1242/) and I ran a session on mapping. I used it to discuss some of my struggles as a service designer, hoping it would resonate with others.
 
@@ -75,7 +75,7 @@ I need to be more comfortable with my non‑tangible contributions.
 
 Vicky Houghton‑Price’s blog post ‘[Do you need another map? Probably not](https://medium.com/design-bootcamp/do-you-need-another-map-probably-not-2f8a8a7a9773)’ describes this perfectly.
 
-### Digital Prevention Services – open show and tell
+## Digital Prevention Services – open show and tell
 
 I contributed to [Frankie Roberto‘s](https://bsky.app/profile/frankieroberto.com) open show and tell on Digital Prevention Services. A quick run through of 5 related services.
 
@@ -83,6 +83,6 @@ Sessions that bring together multiple things are great. There’s only a loose c
 
 I’ve seen Frankie run this kind of session internally before and was very happy to take part. I also enjoy Frankie’s disdain for slides.
 
-### First Personalised Prevention Services design history post
+## First Personalised Prevention Services design history post
 
 The [Personalised Prevention Platform team published an excellent summary of their discovery](https://design-history.prevention-services.nhs.uk/personalised-prevention-platform/2025/03/discovery-summary/).

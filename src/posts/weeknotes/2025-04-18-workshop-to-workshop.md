@@ -11,7 +11,7 @@ I spent time talking about how to organise work.
 
 I met 4 people we’re considering working with.
 
-### Prevention and risk
+## Prevention and risk
 
 A core component of designing for health care is managing risk. The risks are literally life or death. Working in prevention we come up against how we can proportionally account for risk on a daily basis.
 
@@ -21,7 +21,7 @@ So without any confidence in our risk calculations we take the worst case scenar
 
 We rarely consider the opposite risk – not delivering a service at all. We spend time and energy documenting potential risks of something new, but almost none measuring the harm of the current situation in comparison. The risks of action are weighted more heavily than the risks of inaction.
 
-### Types of service designer
+## Types of service designer
 
 3 of the 4 people I spoke to in the last couple of weeks were service designers.
 

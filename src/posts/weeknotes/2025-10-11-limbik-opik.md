@@ -3,7 +3,7 @@ title: Limbic Öpik
 date: 2025-10-11
 ---
 
-### Personalisation eats data
+## Personalisation eats data
 
 I’ve been continuing to build a prototype to demonstrate how personalised prevention could work – assessing someone’s health risks and connecting them to the right services.
 
@@ -47,13 +47,13 @@ For the demo at least, separating clinical referral from behavioural recommendat
 
 I think that also means I can model behaviour change services better, adding something that allows for more nuanced judgments between similar services like Active 10 and Couch to 5K. This will be necessary when I add user preference. I knew when I started this that I’d be building something more complex than necessary to simply demo our vision, but as I wrote about last week, it allows me to play with the problems a real service will face.
 
-### Scope and silos
+## Scope and silos
 
 I have this nagging issue in my mind when I’m working on the demo – it’s focused on health issues that can be addressed through behaviour change because that’s the core of our work, but I’ve also included a bit of screening and a bit of monitoring. All of this is a bit arbitrary, but somewhat reflects the work going on within our teams and some things that are immediately adjacent.
 Health is a messy area and we’ve tried to limit the scope of our work to make what we’re doing manageable. But scope and silos are essentially the same thing to a user.
 It’s hard not to be led by conditions and organisational scope even when our stated goal is to cut across them.
 
-### AI health coach
+## AI health coach
 
 We’re working on an AI health coach to help people build healthier habits. It’s a tricky project because of how novel the work is and how clinical governance is built on predictability and accountability.
 

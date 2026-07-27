@@ -3,7 +3,7 @@ title: If in doubt, flat out
 date: 2025-11-29
 ---
 
-### With all the experience
+## With all the experience
 
 This week someone described a designer in one of our teams as “challenging”. My immediate response was – good, they’re doing their job. If a service designer isn’t challenging a team, either everything is perfect or the designer isn’t doing their job.
 
@@ -11,7 +11,7 @@ On slower reflection I think this comes down to the cultural differences in the 
 
 This is an ongoing struggle, the organisations that make our teams aren’t consistently design‑led. The structures and cultures of the organisations we work with don't reward people for the things we want them to. It’s constant friction. Another example of what you lose through outsourcing. Government procurement frameworks don’t value culture.
 
-### Problems
+## Problems
 
 I spent an hour with some of the people who will be involved in the new ‘Prevention in The App‘ (or whatever we’ll be called) team. It was fun to nerd out on things, talking about superstructures and if we could run a service using just [Notify](https://www.notifications.service.gov.uk/). But ultimately I don’t think we made a lot of progress. Not a criticism. Early work is all about figuring these things out.
 

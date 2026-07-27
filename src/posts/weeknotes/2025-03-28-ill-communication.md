@@ -15,7 +15,7 @@ I started writing a summary at the end of last week. Something to point to so we
 
 I’d like to be able to speed up work like this, but I need time to think and hone. Clarity is important.
 
-### Drawing, thinking and talking
+## Drawing, thinking and talking
 
 {% from "image.njk" import image %}
 {{ image("/images/note-book-sketch.png", "hand‑drawn sketch on paper showing a process flow") }}
@@ -28,7 +28,7 @@ Visualising at speed as I talk helps me to reduce miscommunication and build on 
 
 Working remotely I got pretty quick at using Lucid, but it’s a different thing.
 
-### Principles about principles
+## Principles about principles
 
 There was a Digital Prevention Services extended senior leadership team (ESLT) get together this week.
 
@@ -40,6 +40,6 @@ We also discussed the NHS principles and whether we need our own for Digital Pr
 
 I had forgotten that the NHS has the principle ‘design to protect the environment’. It’s obviously the right thing to do. But I don’t think I’ve ever seen anyone take a tangible action to do this my entire time in the public sector. With all the new AI work everyone is excited for, I wonder how we might address that principle.
 
-### Supporting the next generation of user experience design
+## Supporting the next generation of user experience design
 
 In memory of Vicky Teinaki, the Northern User Experience community have created a [GoFundMe](https://www.gofundme.com/f/honouring-vicky-teinaki-a-legacy-of-learning-and-sharing?attribution_id=sl:002069fd-4c8c-4557-aaa4-35205c42beb8&lang=en_US&utm_campaign=man_sharesheet_dash&utm_content=amp13_c-amp14_t1&utm_medium=customer&utm_source=copy_link) to raise money towards travel and accommodation costs for one person – ideally someone who wouldn’t otherwise be able to attend, such as a student or someone currently out of work.

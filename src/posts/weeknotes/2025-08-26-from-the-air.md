@@ -5,7 +5,7 @@ date: 2025-08-26
 
 This week I attended a meeting to talk about plans to procure a service – it revealed a truth so obvious that I feel like a real dummy for not figuring it out sooner. ‘Transformation’ is only tangentially about agile vs waterfall, tech and user centred design. It’s really about who takes responsibility for how services are delivered.
 
-### This is your captain
+## This is your captain
 
 The meeting was about plans for a health service pilot. This involves delivering a complex service at national scale, with multiple stakeholders including clinical commissioners, GPs, pharmacies, and behavioural support providers.
 
@@ -15,13 +15,13 @@ It was a big meeting with experienced people from policy, procurement, clinical 
 
 As we talked through the approach, I found myself thinking about different aspects of the challenge. The conversation focused on practical delivery questions – technical requirements, procurement timelines, operational constraints. Important considerations for a pilot of this complexity. But I kept coming back to a question that wasn’t being discussed – who owns the whole?
 
-### We are about to attempt a crash landing
+## We are about to attempt a crash landing
 
 Later that day, I happened to read this article – [Why ‘build vs buy’ is not about tech](https://medium.com/@quietly_bold/why-build-vs-buy-is-not-about-tech-4072f5d4871e) – it makes the point that ‘build vs buy’ is a proxy for questions about what type of organisation you are and what you’re prepared to take responsibility for. This was a light bulb moment for me.
 
 Everything about the culture of transformation in the public sector comes down to this question of responsibility. How did I not see this before?
 
-### Place your tray tables in their upright, locked position
+## Place your tray tables in their upright, locked position
 
 This pilot involves implementing complex services that span multiple domains – clinical, technical, and operational. The team are proposing to outsource the solution to a supplier, rather than owning the complexity of how different parts work together.
 
@@ -31,7 +31,7 @@ But I suspect this approach will create another siloed journey based around a si
 
 I don’t propose everything is built in‑house. It’s the [value chain](https://en.wikipedia.org/wiki/Value_chain) mapping of it all, what’s important to you and what’s a commodity. Outsource specific capabilities while maintaining accountability for how the parts work together. We need to own the user journey across multiple touch‑points and iterate as we learn.
 
-### Put your hands on your head
+## Put your hands on your head
 
 Taking responsibility for something as large as rolling out a drug that will be used by millions is overwhelming. And maybe too expensive. Maybe it can’t be that government increasingly takes on more and more things.
 

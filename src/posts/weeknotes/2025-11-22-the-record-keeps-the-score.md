@@ -21,6 +21,6 @@ I’m sad it’s coming to an end.
 
 I don’t start working on the new team until January, but I’ve had a few conversations about the new work this week. There are a lot of unknowns. I’m thinking about what we’ll do first. Should we start by combining the data we have for a person – on vaccines, screening, health assessments and behaviour change support – and present it in the app? Or should we start with a specific journey? I spent some time researching and mapping the touchpoints from risk identification to management and escalation for type 2 diabetes. There’s opportunity there.
 
-### AI and public good
+## AI and public good
 
 We had an excellent talk this week from [Dr Jessica Morley](https://www.linkedin.com/in/jessicarosemorley/) about AI and healthcare for public good. It was packed with ideas and challenging truths. Simultaneously pragmatic and inspiring. I need to go back and watch her talk again. Everything she said resonated, but one thing stands out – we’re moving to data‑first diagnosis. With the work we’re doing – we are no longer diagnosing a patient’s body, we’re diagnosing their record. It’s a startling truth – one of those moments when someone says out loud the thing you hadn’t realised you’d assumed.

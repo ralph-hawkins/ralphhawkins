@@ -10,13 +10,13 @@ In the first few weeks of the year we spoke to teams across Digital Prevention�
 
 The prototype shows users which health screenings and vaccinations they’re eligible for, lets them book appointments, record vaccines they’ve had elsewhere, and opt out of things. It also supports proxy management – for example, parents can view and manage their children’s vaccinations. This is a lot of things. Way beyond what we can do now. That wasn’t what I wanted to make first. Last year I created a prototype of a vision and I knew it wasn’t realistic. I’d like to focus more on iteration instead of visions, we need to split out what we can start with.
 
-### Does ‘prevention’ make sense to users?
+## Does ‘prevention’ make sense to users?
 
 The core of the idea explores whether there’s value in combining the view a user has of their vaccines and screening in one place. This builds on the work the vaccines team are doing to show the user what they have had and are eligible.
 
 This tests one of my biggest concerns – that ‘prevention‘ is a concept that makes sense to users, and we’re not just shipping our org structure. Putting these together in one view gives us some sense of what this means. When it comes to testing, we’ll need to start with card‑sorting to stop us from influencing the participant’s view.
 
-### Can we show things that work differently side by side?
+## Can we show things that work differently side by side?
 
 There are many difficult things about actually combining screening and vaccines. There is no single, reliable record of those things. We don’t get screening attendance data until weeks after the appointment. Vaccinations are recorded in different places depending on the vaccine and who and where it was given.
 
@@ -28,7 +28,7 @@ Taking a leap of faith that we can get the data. Is it useful to show people wha
 
 I think the minimum we’d need to do is help users to book these things. Giving people the means to take action and not nagging them to do something without making it easy to do it is a principle of our team.
 
-### Can users tell us things the NHS doesn’t know?
+## Can users tell us things the NHS doesn’t know?
 
 From the list view – we could help users manage what they’re eligible for. For example, there are some vaccines where eligibility can change depending on information the NHS won’t have a record of. For example, if you have become a carer. But if you were to tell us that, we’d know you were eligible for Covid and flu vaccines. Or the user could tell us they got flu vaccine in another country, then we could record that and show it in the history and stop reminding eligible people to get one.
 
@@ -36,11 +36,11 @@ We have a hypothesis that if we want to personalise a person’s experience in t
 
 There’s a tension here that if we know something about a person then someone is clinically responsible for it, we can’t ask for someone’s blood pressure without taking responsibility for it. Asking a user if they have had a vaccine might be a way we can test this idea with relative clinical simplicity.
 
-### Can we design for the system as well as the user?
+## Can we design for the system as well as the user?
 
 Part of our team’s purpose is to speed up prevention teams working in the app and make the journeys they create work better for users by offering a coherent journey across services. If a page that shows users what they’re eligible for also works better for people building services, that’s an exciting proposition. Can we offer a simple way for teams to onboard their services and present them in context?
 
-### Presenting prevention
+## Presenting prevention
 
 We’re trying to keep the scope of the thing we do first small, none of that is small. We’re looking at ways we can work with teams, but also we need to be realistic about the complexity of the work we’re doing.
 
@@ -50,7 +50,7 @@ We have some other ideas about smaller experiments we can develop – ways to te
 
 ---
 
-### Some excellent design history posts published this week
+## Some excellent design history posts published this week
 
 - [Cohort to contact in prevention – are we all talking the same language?
 ](https://design-history.prevention-services.nhs.uk/cohorting-as-a-service/2026/02/cohort-to-contact/)

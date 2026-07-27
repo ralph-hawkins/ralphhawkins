@@ -19,7 +19,7 @@ Using AI to teach me to program in a new language has been mixed. It’s great i
 
 When I started learning front‑end for web, a dev gave me a tip I still think about. Type all the things, don’t copy and paste. It helps to retain the things you need. With Claude, it’s not just copy and pasting I’m actively resisting but also just having the LLM write my code for me. I try not to put anything into my work that I don’t understand.
 
-### What else could a cross‑cutting team do?
+## What else could a cross‑cutting team do?
 
 The first phase is understanding what teams across Digital Prevention Services are working on. Over the next few weeks we’ll find where connecting journeys might improve outcomes and run experiments around these.
 

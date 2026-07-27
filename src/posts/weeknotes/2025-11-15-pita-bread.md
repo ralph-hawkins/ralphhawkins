@@ -5,7 +5,7 @@ date: 2025-11-15
 
 We had a 2‑day Personalised Prevention Services leadership meeting this week. Some of it was about reflecting on the past year,  but most of it was about looking forward and reorganising our work. Our leader is moving to lead cross‑portfolio coordination in a new team. Working on how screening, vaccination, behaviour change and home testing work together with a focus on creating a coordinated experience in the NHS app.
 
-### Making things happen
+## Making things happen
 
 The vision for Personalised Prevention Services – help people understand risks and connect them to the right support – has been accepted across Digital Prevention Services (the portfolio our team sits within).
 
@@ -17,7 +17,7 @@ This has been moderately successful. One team has integrated with existing NHS s
 
 Now there’s a new coordination team and we’re reorganising again. Reorganising so we can work with the NHS app as it focuses on better coordinated journeys is sensible. But we’re in a phase of uncertainty. The exact scope of the new team and how it impacts  Personalised Prevention Services is unclear.
 
-### The unit of delivery is the team
+## The unit of delivery is the team
 
 There’s gap between strategic good and what it means for people doing the work.
 

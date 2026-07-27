@@ -12,17 +12,17 @@ It made me wonder if there’s a comparable metric for the way we ship services 
 
 Claude found a study of the Norwegian department that radically in‑sourced everything, showing that [in‑sourcing was no cheaper but faster and better quality](https://link.springer.com/article/10.1007/s10664-025-10722-1). Getting Claude to do the research made me wonder if there was new potential for open, accountable government.
 
-### Supply
+## Supply
 
 [The Performance Platform](https://gds.blog.gov.uk/2012/10/23/performance-platform-beta/) was an early part of GDS. The theory was that if government published how its services performed, everyone would benefit. Ministers would see what things cost. Teams would compare themselves and improve. And the public, an “[army of armchair auditors](https://www.gov.uk/government/news/eric-pickles-shows-us-the-money-as-departmental-books-are-opened-to-an-army-of-armchair-auditors)” would hold government to account.
 
 GDS attempted to mandate supply of open data.
 
-### Demand
+## Demand
 
 I worked on Performance Platform for a few months in 2014. There were massive gaps in the data (departments rarely, if ever, published), and metrics that everyone agreed were admirable in principle but nobody found practical value in. There were very few examples of anyone doing anything with the data. Some supply, but as far as anyone could tell us, no demand. The departments themselves didn’t use it, because it wasn’t detailed enough to be useful to them. Other than some internet‑famous bloggers, no one was using it. No journalists, armchair or otherwise. [Performance Platform was retired in 2021](https://dataingovernment.blog.gov.uk/2021/02/18/new-guidance-for-publishing-data/).
 
-### Better demand
+## Better demand
 
 If the demand‑side problem was time and ability – that reading government data takes weeks of skilled work nobody could spare – that problem might now be resolved.
 
