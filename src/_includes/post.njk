@@ -3,7 +3,6 @@ layout: base
 ---
 
 <article>
-  <hr>
   {% set postNumber = collections.publicWeeknotes | getPostNumber(page) %}
   {% set postVersion = page.inputPath | postVersion %}
   <div class="post-header">
@@ -30,7 +29,9 @@ layout: base
   </div>
   <hr>
   {% if postVersion %}
-    <dl class="post-colophon">
+    <details class="post-colophon">
+      <summary>Colophon</summary>
+      <dl>
       <dt>Version</dt>
       <dd>{{ postVersion.version }}{% if postVersion.draft %} (draft){% endif %}</dd>
       {% if postVersion.published %}
@@ -38,10 +39,10 @@ layout: base
         <dd><time datetime="{{ postVersion.published | isoDate }}">{{ postVersion.published | dateTimeFormat }}</time></dd>
       {% endif %}
       {% if postVersion.updated %}
-        <dt>Updated</dt>
+        <dt>Last updated</dt>
         <dd><time datetime="{{ postVersion.updated | isoDate }}">{{ postVersion.updated | dateTimeFormat }}</time></dd>
       {% endif %}
-    </dl>
-    <hr>
+      </dl>
+    </details>
   {% endif %}
 </article>

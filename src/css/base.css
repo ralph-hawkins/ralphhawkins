@@ -94,7 +94,8 @@ body::before {
 a {
   color: var(--color-link);
   text-decoration: underline;
-  text-decoration-thickness: max(1px, 0.05em);
+  /* px, not em: always a crisp hairline, matching the hr rule. */
+  text-decoration-thickness: 1px;
   text-underline-offset: 0.1em;
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0.4, 1);
 }
@@ -117,7 +118,8 @@ a:visited:hover {
   color: var(--color-link);
 }
 
-a:focus-visible {
+a:focus-visible,
+summary:focus-visible {
   outline: 0.2rem solid transparent;
   color: var(--color-text);
   background-color: var(--color-focus);
@@ -127,6 +129,7 @@ a:focus-visible {
 
 hr {
   margin: var(--spacing-xl) 0;
-  height: 0.1rem;
-  background: var(--color-border);
+  /* px, not rem: always a crisp hairline regardless of root size rounding. */
+  height: 1px;
+  background: var(--color-text);
 }

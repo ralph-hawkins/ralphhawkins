@@ -70,13 +70,81 @@ footer ul {
 }
 
 /* Version + publish-time colophon at the foot of a post, fed from git
-   history (see src/_11ty/post-versions.js). Key/value grid: dt in the left
-   column, dd in the right. */
+   history (see src/_11ty/post-versions.js). A details disclosure: link-styled
+   summary with a ► hanging in the left margin (like the post-nav arrows) that
+   rotates open, revealing a key/value grid (dt left column, dd right). */
 .post-colophon {
+  margin: 0 0 2lh;
+  /* Lets ::details-content transition block-size from 0 to auto. */
+  interpolate-size: allow-keywords;
+}
+
+/* Open/close animation: block-size 0 → auto on the built-in content wrapper,
+   with content-visibility flipping discretely at the transition's end so the
+   close animates too. Browsers without ::details-content support just snap. */
+.post-colophon::details-content {
+  block-size: 0;
+  overflow-y: clip;
+  transition:
+    block-size 0.2s ease,
+    content-visibility 0.2s allow-discrete;
+}
+
+.post-colophon[open]::details-content {
+  block-size: auto;
+}
+
+.post-colophon summary {
+  /* Suppress the native marker — we draw our own ►. */
+  list-style: none;
+  /* Shrink-wrap so the hover highlight covers the word, not the full line. */
+  width: fit-content;
+  position: relative;
+  cursor: pointer;
+  color: var(--color-link);
+  /* Match the link underline and hover fade in base.css. */
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.1em;
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0.4, 1);
+}
+
+.post-colophon summary::-webkit-details-marker {
+  display: none;
+}
+
+.post-colophon summary:hover {
+  background-color: var(--color-focus);
+}
+
+.post-colophon summary::before {
+  content: "\25BA";
+  /* Hangs in the left margin like the post-nav arrows; being out of flow
+     also keeps the summary's underline off it. */
+  position: absolute;
+  left: -1.5em;
+  color: var(--color-link);
+  transition: transform 0.2s ease;
+}
+
+.post-colophon[open] summary::before {
+  transform: rotate(90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-colophon::details-content,
+  .post-colophon summary,
+  .post-colophon summary::before {
+    transition: none;
+  }
+}
+
+.post-colophon dl {
   display: grid;
   grid-template-columns: max-content 1fr;
   column-gap: var(--spacing-m);
-  margin: 0 0 2lh;
+  margin: var(--spacing-s) 0 0;
+  font-size: var(--font-size-small);
   font-variant-numeric: tabular-nums;
 }
 
