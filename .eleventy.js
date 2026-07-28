@@ -2,6 +2,7 @@ const path = require("path");
 const dateFilters = require("./src/_11ty/filters/date-filters.js");
 const { imageSize } = require("./src/_11ty/filters/image-size.js");
 const { inlineImports } = require("./src/_11ty/css-bundle.js");
+const { postVersion, resetCacheIfNewCommits } = require("./src/_11ty/post-versions.js");
 
 module.exports = function(eleventyConfig) {
   // Add date filters
@@ -22,6 +23,14 @@ module.exports = function(eleventyConfig) {
 
   // Browser-chrome theme colour: 20% tint of the post's blob hue.
   eleventyConfig.addFilter("blobThemeColor", require("./src/_11ty/og-images.js").themeColor);
+
+  // Version + publish metadata derived from git history: the first commit
+  // where a post exists without preview: true is v1.0 and sets the publish
+  // timestamp; every later commit touching the file bumps the minor version
+  // (unless its subject contains [skip-version]). Needs full history in CI —
+  // the deploy workflow checks out with fetch-depth: 0.
+  eleventyConfig.addFilter("postVersion", postVersion);
+  eleventyConfig.on("eleventy.before", resetCacheIfNewCommits);
 
   // Markdown footnotes ([^1] syntax). The caption override drops the default
   // [n] brackets so the reference is a bare superscript digit — see footnote

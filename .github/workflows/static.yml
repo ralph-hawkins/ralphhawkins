@@ -20,6 +20,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          # Full history: post versions and publish times are derived from
+          # git log at build time (src/_11ty/post-versions.js).
+          fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:

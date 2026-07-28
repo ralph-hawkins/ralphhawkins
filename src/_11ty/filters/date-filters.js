@@ -10,7 +10,21 @@ module.exports = {
    * @return {string} The formatted date string
    */
   dateFormat: function(date) {
-    return DateTime.fromJSDate(date).toFormat("d LLLL yyyy");
+    return DateTime.fromJSDate(date)
+      .setZone("Europe/London")
+      .toFormat("d LLLL yyyy");
+  },
+
+  /**
+   * Format a date with its time as HH:mm, d LLLL yyyy (e.g. 20:48, 18 July
+   * 2026), pinned to UK time so commits made abroad still read consistently.
+   * @param {Date} date - The date to format
+   * @return {string} The formatted date-time string
+   */
+  dateTimeFormat: function(date) {
+    return DateTime.fromJSDate(date)
+      .setZone("Europe/London")
+      .toFormat("HH:mm, d LLLL yyyy");
   },
 
   /**

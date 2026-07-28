@@ -5,12 +5,19 @@ layout: base
 <article>
   <hr>
   {% set postNumber = collections.publicWeeknotes | getPostNumber(page) %}
+  {% set postVersion = page.inputPath | postVersion %}
   <div class="post-header">
     <div class="date post-meta">
       {% if postNumber %}
         <p class="post-meta-count">Week note {{ postNumber }}</p>
       {% endif %}
-      <p class="post-meta-date">{{ date | dateFormat }}</p>
+      {# Publish date from git history, like the colophon; front-matter date
+         is the fallback for drafts and uncommitted files. #}
+      {% set headerDate = date %}
+      {% if postVersion and postVersion.published %}
+        {% set headerDate = postVersion.published %}
+      {% endif %}
+      <p class="post-meta-date">{{ headerDate | dateFormat }}</p>
     </div>
     <h1 class="page-title">{{ title }}</h1>
     {% if description %}
@@ -22,4 +29,19 @@ layout: base
     {{ content | safe }}
   </div>
   <hr>
+  {% if postVersion %}
+    <dl class="post-colophon">
+      <dt>Version</dt>
+      <dd>{{ postVersion.version }}{% if postVersion.draft %} (draft){% endif %}</dd>
+      {% if postVersion.published %}
+        <dt>Published</dt>
+        <dd><time datetime="{{ postVersion.published | isoDate }}">{{ postVersion.published | dateTimeFormat }}</time></dd>
+      {% endif %}
+      {% if postVersion.updated %}
+        <dt>Updated</dt>
+        <dd><time datetime="{{ postVersion.updated | isoDate }}">{{ postVersion.updated | dateTimeFormat }}</time></dd>
+      {% endif %}
+    </dl>
+    <hr>
+  {% endif %}
 </article>

@@ -69,6 +69,21 @@ footer ul {
   margin-left: auto;
 }
 
+/* Version + publish-time colophon at the foot of a post, fed from git
+   history (see src/_11ty/post-versions.js). Key/value grid: dt in the left
+   column, dd in the right. */
+.post-colophon {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: var(--spacing-m);
+  margin: 0 0 2lh;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-colophon dd {
+  margin: 0;
+}
+
 .post-nav-prev::before {
   position: absolute;
   left: -1.5em;

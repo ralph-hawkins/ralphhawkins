@@ -29,7 +29,6 @@ h2 {
   font-size: var(--font-size-h2);
   line-height: 0.975;
   padding-top: var(--spacing-xl);
-  margin-bottom: 1lh;
 }
 
 /* Post/page titles: h1 in the outline, h2 optics — the hero masthead stays
@@ -38,7 +37,9 @@ h2 {
   font-size: var(--font-size-h2);
   line-height: 0.975;
   padding-top: var(--spacing-xl);
-  margin-bottom: 1lh;
+  /* Same ⅔-line below-heading space as the shared h1–h6 rule, declared here
+     to beat the h1 element rule's --spacing-xl on specificity. */
+  margin-bottom: var(--spacing-m);
   font-weight: 600;
 }
 
@@ -54,14 +55,12 @@ h3 {
   font-size: var(--font-size-h3);
   line-height: 1.15;
   padding-top: var(--spacing-l);
-  margin-bottom: 1lh;
 }
 
 h4 {
   font-size: var(--font-size-h4);
   line-height: 1.325;
   padding-top: var(--spacing-m);
-  margin-bottom: 1lh;
 }
 
 /* Inside a post the outline runs h1 title → h2/h3 sections, but sections
@@ -104,11 +103,23 @@ p:has(+ ul), p:has(+ ol) {
   font-variant-numeric: tabular-nums;
 }
 
+/* Quoted voice: bold, flush with the body text, marked by an opening quote
+   hanging in the left margin — so quotes read as quotes without breaking the
+   leading grid the way a size or colour change would. */
 blockquote {
-  border-left: 0.1rem solid var(--color-border);
+  position: relative;
   margin-left: 0;
-  padding-left: 1rem;
-  /* Quoted voice: the same grey as visited links, so quotes read as quotes
-     without breaking the leading grid the way a size change would. */
-  color: var(--color-link-visited);
+  padding-left: 0;
+  font-weight: bold;
+}
+
+blockquote::before {
+  content: "\201C";
+  position: absolute;
+  right: 100%;
+}
+
+/* Closing mark runs on from the last line of the quote. */
+blockquote > p:last-of-type::after {
+  content: "\201D";
 }

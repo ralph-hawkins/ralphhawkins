@@ -25,21 +25,21 @@ I had a couple of chats with people about how we measure if a team is working we
 
 There are some principles for the phase of work we’re in:
 
-**Move fast**
+### Move fast
 
 Deliver quick, not perfect services. Work‑arounds and manual processes are good enough for testing.
 
-**Create the end‑to‑end for a few**
+### Create the end‑to‑end for a few
 
 Focus on complete journeys for specific cases rather than scalable component parts for everyone.
 
-**Learning not platforms**
+### Learning not platforms
 
 Worry about connecting systems and scaling later.
 
 Don’t assume we will use the NHS app (for pilots, although that is where our services will live eventually)
 
-**Stop if things aren’t working**
+### Stop if things aren’t working
 
 The use cases are our best way of testing risky assumption.
 
