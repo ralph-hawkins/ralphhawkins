@@ -3,7 +3,7 @@ footer {
   padding-bottom: var(--spacing-xl);
 }
 
-footer > hr {
+footer > hr:first-child {
   margin-top: 0;
 }
 
@@ -11,6 +11,12 @@ footer h2 {
   font-size: var(--font-size-h3);
   line-height: 1.15;
   margin-bottom: 0.5lh;
+}
+
+/* A heading straight after a footer hr: drop the h2's own top padding so
+   the gap is just the hr's bottom margin, not both stacked. */
+footer .container > h2:first-child {
+  padding-top: 0;
 }
 
 footer ul {
