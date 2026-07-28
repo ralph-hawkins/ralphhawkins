@@ -48,6 +48,14 @@ footer {
   }
 }
 
+/* Overscroll: the canvas behind the page matches the theme-color meta — the
+   post's 20% blob tint (inlined on <html> in base.njk), or the plain site
+   background elsewhere — so iOS chrome, rubber-band area and page read as
+   one surface. */
+html {
+  background: var(--color-overscroll, var(--color-background));
+}
+
 body {
   color: var(--color-text);
   background: var(--color-background);
@@ -55,6 +63,11 @@ body {
   scroll-padding-bottom: 5rem;
   min-height: 100vh;
   position: relative;
+  /* Now that html paints its own (overscroll) background, body's no longer
+     propagates to the canvas — it paints on body itself, which would cover
+     the negative-z blob layer. A stacking context on body puts its
+     background beneath its negative-z children again. */
+  z-index: 0;
   display: flex;
   flex-direction: column;
 }

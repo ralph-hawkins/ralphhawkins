@@ -4,7 +4,9 @@
    would scroll to the first .date element it finds — on a listing page
    that's a list item's date, not a post date. -#}
 <!DOCTYPE html>
-<html lang="en"{% if tags and 'weeknotes' in tags %} data-blob-hue="{{ page.fileSlug | blobHue }}"{% endif %}>
+{#- --color-overscroll matches the theme-color meta (see head-common.njk), so
+   the iOS rubber-band area and browser chrome read as one surface. -#}
+<html lang="en"{% if tags and 'weeknotes' in tags %} data-blob-hue="{{ page.fileSlug | blobHue }}" style="--color-overscroll: {{ page.fileSlug | blobThemeColor }}"{% endif %}>
 <head>
     {% include "head-common.njk" %}
     {%- if hero !== false %}
