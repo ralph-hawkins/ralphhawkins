@@ -64,7 +64,10 @@ main {
   min-height: 100vh;
   position: relative;
   z-index: 2;
-  padding: var(--spacing-xl) 0 0;
+  /* Symmetric top/bottom padding: the bottom edge also stops the last
+     child's margin collapsing out, so content can't sit tight on the
+     footer's hr. */
+  padding: var(--spacing-xl) 0;
 }
 
 .figure {

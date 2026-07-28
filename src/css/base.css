@@ -94,8 +94,7 @@ body::before {
 a {
   color: var(--color-link);
   text-decoration: underline;
-  /* px, not em: always a crisp hairline, matching the hr rule. */
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: var(--hairline-width);
   text-underline-offset: 0.1em;
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0.4, 1);
 }
@@ -129,7 +128,7 @@ summary:focus-visible {
 
 hr {
   margin: var(--spacing-xl) 0;
-  /* px, not rem: always a crisp hairline regardless of root size rounding. */
-  height: 1px;
-  background: var(--color-text);
+  /* Drawn as a border, not height+background, so it shares the one
+     --hairline declaration with every other rule line. */
+  border-top: var(--hairline);
 }

@@ -5,8 +5,12 @@
   --color-link-hover: #003078;
   --color-link-visited: #505a5f;
   --color-focus: #ffdd00;
-  --color-border: #505a5f;
   --color-background: #EBEDF0;
+
+  /* Every rule line on the site — hrs, footer dividers, list borders — is
+     this one hairline; the width alone also sizes link underlines. */
+  --hairline-width: 1px;
+  --hairline: var(--hairline-width) solid var(--color-text);
 
   /* Spacing — multiples of the base line (1.3rem × 1.5 = 1.95rem), so block
      spacing shares one vertical rhythm: ⅙, ½, ⅔, 1 and 1½ lines. */

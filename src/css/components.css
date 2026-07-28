@@ -110,7 +110,7 @@ footer ul {
   color: var(--color-link);
   /* Match the link underline and hover fade in base.css. */
   text-decoration: underline;
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: var(--hairline-width);
   text-underline-offset: 0.1em;
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0.4, 1);
 }
@@ -197,13 +197,13 @@ footer ul {
 }
 
 div.year-group:not(:last-of-type) {
-  border-bottom: 0.1rem solid var(--color-text);
+  border-bottom: var(--hairline);
 }
 
 div.month-group h3 {
   font-size: var(--font-size-base);
   margin-bottom: 8px;
-  border-top: 0.1rem solid var(--color-text);
+  border-top: var(--hairline);
 }
 
 /* Footnotes (markdown-it-footnote). Plain superscript digits for the inline
