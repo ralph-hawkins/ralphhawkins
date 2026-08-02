@@ -45,6 +45,17 @@ header {
   z-index: 0;
 }
 
+/* Full-width hairline on the header's bottom edge, like the footer's rules.
+   Absolutely positioned so it doesn't join the header's flex row or open a
+   gap in the glass between header and main. */
+header > hr {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+}
+
 .header-glass {
   position: absolute;
   inset: 0;
