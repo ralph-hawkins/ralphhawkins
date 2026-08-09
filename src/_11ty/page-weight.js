@@ -93,7 +93,26 @@ function solve(template, assetBytes) {
   return { display, kb, total: null, settled: false };
 }
 
-function weighPage(htmlPath, outputDir) {
+// Find the file behind a URL, preferring the built copy but falling back to
+// the source.
+//
+// The fallback is not a nicety. Passthrough copy (src/js, src/fonts,
+// src/images) runs alongside the template write and is not necessarily
+// finished when eleventy.after fires, so looking only in the output directory
+// finds the scripts missing on some builds and not others — which silently
+// dropped the Weight row from whichever posts happened to be processed first.
+// A passthrough copy is byte-identical to its source, so reading the source
+// gives exactly the same number without depending on the timing.
+function resolveAsset(url, outputDir, inputDir) {
+  const relative = url.replace(/^\//, "");
+  const built = path.join(outputDir, relative);
+  if (fs.existsSync(built)) return built;
+  const source = path.join(inputDir, relative);
+  if (fs.existsSync(source)) return source;
+  return null;
+}
+
+function weighPage(htmlPath, outputDir, inputDir) {
   const template = fs.readFileSync(htmlPath, "utf8");
   if (!template.includes(TOKEN)) return null;
 
@@ -102,8 +121,8 @@ function weighPage(htmlPath, outputDir) {
   let assetBytes = 0;
 
   for (const url of subresources(template)) {
-    const assetPath = path.join(outputDir, url.replace(/^\//, ""));
-    if (!fs.existsSync(assetPath)) {
+    const assetPath = resolveAsset(url, outputDir, inputDir);
+    if (!assetPath) {
       missing.push(url);
       continue;
     }
@@ -143,13 +162,13 @@ function htmlFiles(dir) {
   return found;
 }
 
-function weighPages(outputDir) {
+function weighPages(outputDir, inputDir) {
   const results = [];
   for (const file of htmlFiles(outputDir)) {
-    const result = weighPage(file, outputDir);
+    const result = weighPage(file, outputDir, inputDir);
     if (result) results.push(result);
   }
   return results;
 }
 
-module.exports = { weighPages, weighPage, transferSize, GZIP_LEVEL, TOKEN };
+module.exports = { weighPages, weighPage, resolveAsset, transferSize, GZIP_LEVEL, TOKEN };

@@ -154,12 +154,13 @@ module.exports = function(eleventyConfig) {
     if (count > 0) console.log(`[og-images] rendered ${count} image(s)`);
   });
 
-  // Fill in each post colophon's Weight, once every file that counts towards
-  // it exists on disk. Runs after the OG pass, which writes images no page
-  // requests, so ordering between the two doesn't matter.
+  // Fill in each post colophon's Weight. Passed the input directory as well
+  // as the output one because passthrough copy may still be in flight here —
+  // see resolveAsset in page-weight.js. Runs after the OG pass, which writes
+  // images no page requests, so ordering between the two doesn't matter.
   eleventyConfig.on("eleventy.after", ({ dir }) => {
     const { weighPages } = require("./src/_11ty/page-weight.js");
-    const weighed = weighPages(dir.output);
+    const weighed = weighPages(dir.output, dir.input);
     if (weighed.length === 0) return;
     const dropped = weighed.filter(page => page.dropped);
     const unsettled = weighed.filter(page => !page.dropped && !page.settled);
