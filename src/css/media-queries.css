@@ -12,10 +12,4 @@
   .post-nav-prev::before {
     left: -1.2em;
   }
-
-  /* Safety net for unbroken content (e.g. a long URL in a post). The h1,
-     which used to overflow at this width, is handled by its clamp() now. */
-  body {
-    overflow-x: hidden;
-  }
 }

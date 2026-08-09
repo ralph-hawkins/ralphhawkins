@@ -6,21 +6,21 @@
 // Must stay two full-height layers, not stacked strip elements: iOS Safari
 // clamps backdrop sampling to each element's own bounds, so thin bars whose
 // blur exceeds their height render as flat saturated stripes.
+//
+// The surface's own values live in CSS (--glass-* in variables.css) and are
+// applied to .header-glass-blur by layout.css. Only the 15 step stops are
+// generated here, since CSS can't ease a gradient's stops. Reading the
+// opacity back out means the bottom step lands exactly on the surface main
+// and the footer use, with the number written down once.
 (function () {
   const header = document.querySelector('header');
   if (!header) return;
 
   const STEPS = 15;
-  const BLUR_STEP = Math.max(10, window.innerWidth / 125);
-  const SATURATE = 1.3;
-  const OPACITY_STEP = 5;
-  const MAX_OPACITY = STEPS * OPACITY_STEP;
-  const MAX_BLUR = STEPS * BLUR_STEP;
   const stepEase = (t) => 1 - (1 - t) * (1 - t);
 
-  const root = document.documentElement;
-  root.style.setProperty('--content-bg-opacity', `${MAX_OPACITY.toFixed(2)}%`);
-  root.style.setProperty('--content-bg-blur', `${MAX_BLUR.toFixed(2)}px`);
+  const glassOpacity =
+    parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--glass-opacity')) || 75;
 
   const tintStops = [];
   const maskStops = [];
@@ -28,7 +28,7 @@
     const ease = stepEase(i / STEPS);
     const from = ((i / STEPS) * 100).toFixed(2);
     const to = (((i + 1) / STEPS) * 100).toFixed(2);
-    const tintColor = `color-mix(in srgb, var(--color-background) ${(ease * MAX_OPACITY).toFixed(2)}%, transparent)`;
+    const tintColor = `color-mix(in srgb, var(--color-background) ${(ease * glassOpacity).toFixed(2)}%, transparent)`;
     const maskColor = `rgb(0 0 0 / ${(ease * 100).toFixed(2)}%)`;
     tintStops.push(`${tintColor} ${from}%`, `${tintColor} ${to}%`);
     maskStops.push(`${maskColor} ${from}%`, `${maskColor} ${to}%`);
@@ -43,9 +43,6 @@
   // over its filtered result rather than saturated by it.
   const blur = document.createElement('div');
   blur.className = 'header-glass-blur';
-  const filter = `blur(${MAX_BLUR.toFixed(2)}px) saturate(${SATURATE})`;
-  blur.style.backdropFilter = filter;
-  blur.style.webkitBackdropFilter = filter;
   const mask = `linear-gradient(to bottom, ${maskStops.join(', ')})`;
   blur.style.maskImage = mask;
   blur.style.webkitMaskImage = mask;

@@ -1,6 +1,6 @@
 {# Shared <head> contents for all layouts. #}
 {%- set metaDescription = description if description else "Ralph Hawkins is a service designer working in the public sector with NHS England, helping people stay healthy." -%}
-{%- if not description and content -%}{%- set metaDescription = content | striptags | truncate(155) -%}{%- endif -%}
+{%- if not description and content -%}{%- set metaDescription = content | excerpt -%}{%- endif -%}
 {%- set pageTitle = title if title else "Ralph Hawkins" -%}
 {%- set ogType = "article" if (tags and 'weeknotes' in tags) else "website" -%}
 {#- Explicit image front matter wins; otherwise week notes and the homepage
@@ -28,6 +28,8 @@
 {%- endif %}
 <meta name="description" content="{{ metaDescription }}">
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+{#- Feed autodiscovery: how a reader finds the week notes from any page. #}
+<link rel="alternate" type="application/atom+xml" title="Ralph Hawkins – week notes" href="{{ site.url }}/feed.xml">
 
 <!-- Open Graph / Twitter -->
 <meta property="og:type" content="{{ ogType }}">

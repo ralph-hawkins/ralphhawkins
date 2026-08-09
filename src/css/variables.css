@@ -38,10 +38,19 @@
   --font-size-h3: clamp(2.22rem, 1.97rem + 1.01vw, 2.62rem);
   --font-size-h4: clamp(1.56rem, 1.38rem + 0.73vw, 1.85rem);
 
+  /* The translucent "glass" surface shared by the header's bottom step, main
+     and the footer. Declared here rather than pushed from header-bars.js so
+     pages that drop the hero — and so never run it — still get the same
+     surface. Expressing the blur against 100vw in CSS also keeps it correct
+     on rotation, which a value measured once at load could not be.
+     15 steps × max(10px, viewport/125): 172.80px at 1440px wide. */
+  --glass-opacity: 75%;
+  --glass-blur: calc(max(10px, 100vw / 125) * 15);
+  --glass-saturate: 1.3;
+
   /* Layout */
   --content-width: 65ch;
   --side-padding: 1rem;
-  --header-height: 50vh;
   /* Where a post pins on scroll AND where a direct visit loads to (auto-scroll.js
      reads this), so the load position and the pinned position are identical. */
   --post-pin-offset: 40px;

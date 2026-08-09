@@ -43,23 +43,26 @@
     const scrollY = window.scrollY;
     const vh = window.innerHeight || 1;
     const offset = (scrollY / vh) * HUE_SHIFT_PER_VIEWPORT;
-    root.style.setProperty('--blob-hue-1', ((baseHue1 + offset) % 360 + 360) % 360);
-    root.style.setProperty('--blob-hue-2', ((baseHue2 + offset) % 360 + 360) % 360);
+    root.style.setProperty('--blob-hue-1', (((baseHue1 + offset) % 360 + 360) % 360).toFixed(2));
+    root.style.setProperty('--blob-hue-2', (((baseHue2 + offset) % 360 + 360) % 360).toFixed(2));
 
     const dist = scrollY * SCROLL_FACTOR;
     const hoverX = reduceMotion ? 0 : Math.sin((time / HOVER_PERIOD_X) * Math.PI * 2 + HOVER_PHASE) * HOVER_AMPLITUDE;
     const hoverY = reduceMotion ? 0 : Math.cos((time / HOVER_PERIOD_Y) * Math.PI * 2 + HOVER_PHASE) * HOVER_AMPLITUDE;
-    root.style.setProperty('--blob-x', `${INITIAL_OFFSET_X + dir.x * dist + hoverX}px`);
-    root.style.setProperty('--blob-y', `${INITIAL_OFFSET_Y + dir.y * dist + hoverY}px`);
+    root.style.setProperty('--blob-x', `${(INITIAL_OFFSET_X + dir.x * dist + hoverX).toFixed(2)}px`);
+    root.style.setProperty('--blob-y', `${(INITIAL_OFFSET_Y + dir.y * dist + hoverY).toFixed(2)}px`);
 
     for (let i = 0; i < 3; i++) {
       const scale = reduceMotion ? 1 : 1 + Math.sin((time / SCALE_PERIODS[i]) * Math.PI * 2 + SCALE_PHASES[i]) * SCALE_AMPLITUDE;
-      root.style.setProperty(`--blob-scale-${i + 1}`, scale);
+      // 4dp, where everything else here rounds to 2: this one is a multiplier,
+      // not a length. It scales a radius of up to 2100px, so 2dp would
+      // quantise the blob's size into visible 21px steps.
+      root.style.setProperty(`--blob-scale-${i + 1}`, scale.toFixed(4));
     }
 
     const max = (document.documentElement.scrollHeight - vh) || 1;
     const progress = Math.min(1, Math.max(0, scrollY / max));
-    root.style.setProperty('--blob-opacity', 1 - progress);
+    root.style.setProperty('--blob-opacity', (1 - progress).toFixed(2));
   }
 
   // Set the custom properties synchronously so the very first paint has the

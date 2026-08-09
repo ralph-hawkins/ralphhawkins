@@ -60,6 +60,12 @@ body {
   color: var(--color-text);
   background: var(--color-background);
   font-family: var(--font-family);
+  /* Safety net for unbroken content (e.g. a long URL in a post): break the
+     word rather than push the page sideways. Inherited, so one declaration
+     reaches every text node — and unlike overflow-x: hidden on the scroll
+     container, it neither breaks position: sticky nor silently clips
+     anything that legitimately hangs into the container's padding. */
+  overflow-wrap: anywhere;
   scroll-padding-bottom: 5rem;
   min-height: 100vh;
   position: relative;

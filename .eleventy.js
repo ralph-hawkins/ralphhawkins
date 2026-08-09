@@ -14,6 +14,17 @@ module.exports = function(eleventyConfig) {
   // layout space and avoid CLS.
   eleventyConfig.addFilter("imageSize", imageSize);
 
+  // Fallback meta description for pages without one in front matter: the
+  // post body as plain text, skipping the layout's own header furniture.
+  eleventyConfig.addFilter("excerpt", require("./src/_11ty/filters/excerpt.js").excerpt);
+
+  // Atom feed (src/feed.njk): resolve a post's relative URLs against the site
+  // so they still work in a reader, and escape values for XML.
+  const feedFilters = require("./src/_11ty/filters/feed.js");
+  eleventyConfig.addFilter("absoluteUrls", feedFilters.absoluteUrls);
+  eleventyConfig.addFilter("xmlEscape", feedFilters.xmlEscape);
+  eleventyConfig.addFilter("latestUpdate", feedFilters.latestUpdate);
+
   // Same slug→hue seed the OG images use, so a post's live blob colours match
   // its share card (random-gradients.js reads this off <html data-blob-hue>).
   eleventyConfig.addFilter("blobHue", require("./src/_11ty/og-images.js").hueFromSlug);

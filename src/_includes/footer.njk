@@ -7,8 +7,11 @@
     <h2>Week notes</h2>
     {% set latestPost = collections.publicWeeknotes | reverse | first %}
     {% if latestPost %}
-      <p><a href="{{ latestPost.url }}">Latest week note – {{ latestPost.data.title }}</a></p>
-      <a href="/notes-list/">All week notes</a>
+      <ul>
+        <li><a href="{{ latestPost.url }}">Latest week note – {{ latestPost.data.title }}</a></li>
+        <li><a href="/notes-list/">All week notes</a></li>
+        <li><a href="/feed.xml">Subscribe by RSS</a></li>
+      </ul>
     {% endif %}
   {% else %}
     {# Week note pages - show prev/next navigation #}
@@ -34,7 +37,10 @@
   {% endif %}
   {% if not isGalleryPage %}
     <h2>Other</h2>
-    <a href="/graphic-design/">Graphic design</a>
+    <ul>
+      <li><a href="/graphic-design/">Graphic design</a></li>
+      <li><a href="/feed.xml">Subscribe by RSS</a></li>
+    </ul>
   {% endif %}
   </div>
 

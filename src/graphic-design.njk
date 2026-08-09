@@ -1,5 +1,7 @@
 ---
 layout: base
+title: Graphic design
+description: "Illustration, stickers and book design by Ralph Hawkins, a service designer who also studied graphic design."
 permalink: /graphic-design/
 ---
 
@@ -8,13 +10,11 @@ permalink: /graphic-design/
   {% for item in collections.gallery %}
     <article class="gallery-item">
       <h2>{{ item.data.title }}</h2>
+      {#- The item's body is rendered markdown, i.e. its own <p>s — so the
+         date gets a sibling paragraph, never a wrapping one. -#}
       <div>
-        <p>
-          {{ item.date | dateFormat }}<br>
-          {% if item.content %}
-              {{ item.content | safe }}
-          {% endif %}
-        </p>
+        <p>{{ item.date | dateFormat }}</p>
+        {% if item.content %}{{ item.content | safe }}{% endif %}
       </div>
       {% if item.data.images %}
         <div class="gallery-images {% if item.data.images.length > 1 %}gallery-images-group{% endif %}">
