@@ -29,9 +29,9 @@ layout: base
   </div>
   <hr>
   {% if postVersion %}
-    <details class="post-colophon">
-      <summary>Colophon</summary>
-      <dl>
+    <div class="post-colophon">
+      <h2 class="post-colophon-label">Colophon</h2>
+      <dl class="colophon-list">
       <dt>Version</dt>
       <dd>{{ postVersion.version }}{% if postVersion.draft %} (draft){% endif %}</dd>
       {% if postVersion.published %}
@@ -42,7 +42,15 @@ layout: base
         <dt>Last updated</dt>
         <dd><time datetime="{{ postVersion.updated | isoDate }}">{{ postVersion.updated | dateTimeFormat }}</time></dd>
       {% endif %}
+      {#- Substituted after the build by src/_11ty/page-weight.js, which can
+         only weigh this document once it has been written. -#}
+      <dt>Weight</dt>
+      <dd>@@PAGE_WEIGHT_KB@@ kB</dd>
+      <dt>Words</dt>
+      <dd>{{ content | wordCount }}</dd>
+      <dt>Colour</dt>
+      <dd>{{ page.fileSlug | blobThemeColor }}</dd>
       </dl>
-    </details>
+    </div>
   {% endif %}
 </article>

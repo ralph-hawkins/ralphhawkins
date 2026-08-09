@@ -76,76 +76,30 @@ footer ul {
 }
 
 /* Version + publish-time colophon at the foot of a post, fed from git
-   history (see src/_11ty/post-versions.js). A details disclosure: link-styled
-   summary with a ► hanging in the left margin (like the post-nav arrows) that
-   rotates open, revealing a key/value grid (dt left column, dd right). */
+   history (see src/_11ty/post-versions.js): a label above a key/value grid
+   (dt left column, dd right). Static — the facts are always on show. */
 .post-colophon {
   margin: 0 0 2lh;
-  /* Lets ::details-content transition block-size from 0 to auto. */
-  interpolate-size: allow-keywords;
 }
 
-/* Open/close animation: block-size 0 → auto on the built-in content wrapper,
-   with content-visibility flipping discretely at the transition's end so the
-   close animates too. Browsers without ::details-content support just snap. */
-.post-colophon::details-content {
-  block-size: 0;
-  overflow-y: clip;
-  transition:
-    block-size 0.2s ease,
-    content-visibility 0.2s allow-discrete;
+/* An h2 in the outline, set at body size — the same split the rest of the
+   site makes (see .page-title, footer h2, .post-content h2). The colophon is
+   a section of the article, peer to the body's h2s and the footer's, so it
+   takes that level; h3 would file it under whatever section happens to run
+   last. Only the display sizing is undone; the 600 weight is left to the
+   shared h1–h6 rule, so the label carries the same weight as every other
+   title. The grid below has its own top margin, so the label adds none. */
+.post-colophon-label {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  padding-top: 0;
+  margin-bottom: 0;
 }
 
-.post-colophon[open]::details-content {
-  block-size: auto;
-}
-
-.post-colophon summary {
-  /* Suppress the native marker — we draw our own ►. */
-  list-style: none;
-  /* Shrink-wrap so the hover highlight covers the word, not the full line. */
-  width: fit-content;
-  position: relative;
-  cursor: pointer;
-  color: var(--color-link);
-  /* Match the link underline and hover fade in base.css. */
-  text-decoration: underline;
-  text-decoration-thickness: var(--hairline-width);
-  text-underline-offset: 0.1em;
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0.4, 1);
-}
-
-.post-colophon summary::-webkit-details-marker {
-  display: none;
-}
-
-.post-colophon summary:hover {
-  background-color: var(--color-focus);
-}
-
-.post-colophon summary::before {
-  content: "\25BA";
-  /* Hangs in the left margin like the post-nav arrows; being out of flow
-     also keeps the summary's underline off it. */
-  position: absolute;
-  left: -1.5em;
-  color: var(--color-link);
-  transition: transform 0.2s ease;
-}
-
-.post-colophon[open] summary::before {
-  transform: rotate(90deg);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .post-colophon::details-content,
-  .post-colophon summary,
-  .post-colophon summary::before {
-    transition: none;
-  }
-}
-
-.post-colophon dl {
+/* The label/value table itself, shared by the post colophon and the site
+   colophon page (/colophon/) so both read as the same kind of record.
+   Tabular figures keep version numbers, weights and word counts in column. */
+.colophon-list {
   display: grid;
   grid-template-columns: max-content 1fr;
   column-gap: var(--spacing-m);
@@ -154,7 +108,7 @@ footer ul {
   font-variant-numeric: tabular-nums;
 }
 
-.post-colophon dd {
+.colophon-list dd {
   margin: 0;
 }
 

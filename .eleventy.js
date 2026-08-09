@@ -18,6 +18,9 @@ module.exports = function(eleventyConfig) {
   // post body as plain text, skipping the layout's own header furniture.
   eleventyConfig.addFilter("excerpt", require("./src/_11ty/filters/excerpt.js").excerpt);
 
+  // Words in a post body, for the colophon.
+  eleventyConfig.addFilter("wordCount", require("./src/_11ty/filters/excerpt.js").wordCount);
+
   // Atom feed (src/feed.njk): resolve a post's relative URLs against the site
   // so they still work in a reader, and escape values for XML.
   const feedFilters = require("./src/_11ty/filters/feed.js");
@@ -149,6 +152,24 @@ module.exports = function(eleventyConfig) {
     const { generateOgImages } = require("./src/_11ty/og-images.js");
     const count = await generateOgImages(path.join(dir.output, "images", "og"));
     if (count > 0) console.log(`[og-images] rendered ${count} image(s)`);
+  });
+
+  // Fill in each post colophon's Weight, once every file that counts towards
+  // it exists on disk. Runs after the OG pass, which writes images no page
+  // requests, so ordering between the two doesn't matter.
+  eleventyConfig.on("eleventy.after", ({ dir }) => {
+    const { weighPages } = require("./src/_11ty/page-weight.js");
+    const weighed = weighPages(dir.output);
+    if (weighed.length === 0) return;
+    const dropped = weighed.filter(page => page.dropped);
+    const unsettled = weighed.filter(page => !page.dropped && !page.settled);
+    console.log(`[page-weight] measured ${weighed.length - dropped.length} page(s)`);
+    for (const page of dropped) {
+      console.warn(`[page-weight] no weight for ${page.htmlPath}: missing ${page.missing.join(", ")}`);
+    }
+    for (const page of unsettled) {
+      console.warn(`[page-weight] ${page.htmlPath} did not settle; using ${page.kb} kB`);
+    }
   });
 
   // Add assets

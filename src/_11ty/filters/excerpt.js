@@ -1,4 +1,5 @@
-// Build a meta description from a page's rendered HTML.
+// Plain text derived from rendered HTML: the meta-description excerpt, and
+// the colophon's word count.
 //
 // A naive striptags of `content` starts from the top of the layout, so every
 // generated description opened with the post header's own furniture —
@@ -35,6 +36,22 @@ function decodeEntities(text) {
   });
 }
 
+// Rendered HTML down to the words a reader would actually read.
+function htmlToText(html) {
+  return decodeEntities(String(html).replace(/<[^>]*>/g, " "))
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// Words in a post body. Tokens carrying no letter or digit don't count — the
+// site sets its dashes loose ("a – b"), and a bare en dash is punctuation,
+// not a word.
+function wordCount(content) {
+  if (!content) return 0;
+  const tokens = htmlToText(content).split(/\s+/);
+  return tokens.filter((token) => /[\p{L}\p{N}]/u.test(token)).length;
+}
+
 function excerpt(content, length = 155) {
   if (!content) return "";
 
@@ -42,9 +59,7 @@ function excerpt(content, length = 155) {
   const marker = html.indexOf(BODY_MARKER);
   const body = marker === -1 ? html : html.slice(marker + BODY_MARKER.length);
 
-  const text = decodeEntities(body.replace(/<[^>]*>/g, " "))
-    .replace(/\s+/g, " ")
-    .trim();
+  const text = htmlToText(body);
 
   if (text.length <= length) return text;
 
@@ -56,4 +71,4 @@ function excerpt(content, length = 155) {
   return trimmed.replace(/[\s,;:.–—-]+$/, "") + "…";
 }
 
-module.exports = { excerpt };
+module.exports = { excerpt, wordCount, htmlToText };
