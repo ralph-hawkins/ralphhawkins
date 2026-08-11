@@ -47,34 +47,6 @@ footer ul {
   margin: 0;
 }
 
-/* Date + week note count grid (mirrors .post-nav columns) */
-.post-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  column-gap: var(--spacing-m);
-  row-gap: var(--spacing-m);
-  margin-bottom: 2lh;
-}
-
-.post-meta p {
-  flex: 0 1 auto;
-  margin: 0;
-}
-
-.post-meta-count {
-  text-align: left;
-}
-
-.post-meta .post-meta-date {
-  text-align: right;
-  /* Never break mid-date ("20 February / 2026"): the column is content-sized
-     and pushed right, and on the narrowest screens the whole date drops to
-     its own right-aligned line instead. */
-  white-space: nowrap;
-  margin-left: auto;
-}
-
 /* Version + publish-time colophon at the foot of a post, fed from git
    history (see src/_11ty/post-versions.js): a label above a key/value grid
    (dt left column, dd right). Static — the facts are always on show. */

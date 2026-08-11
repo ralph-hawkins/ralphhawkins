@@ -38,20 +38,124 @@
   --font-size-h3: clamp(2.22rem, 1.97rem + 1.01vw, 2.62rem);
   --font-size-h4: clamp(1.56rem, 1.38rem + 0.73vw, 1.85rem);
 
-  /* The translucent "glass" surface shared by the header's bottom step, main
-     and the footer. Declared here rather than pushed from header-bars.js so
-     pages that drop the hero — and so never run it — still get the same
-     surface. Expressing the blur against 100vw in CSS also keeps it correct
-     on rotation, which a value measured once at load could not be.
-     15 steps × max(10px, viewport/125): 172.80px at 1440px wide. */
-  --glass-opacity: 75%;
-  --glass-blur: calc(max(10px, 100vw / 125) * 15);
+  /* How much of the page background the surface lays over the blob — so
+     100% − this is how much of the blob's colour actually reaches the eye.
+     It is the real lever on how intense the blob looks: the gradient itself
+     is already within a whisker of the most chroma sRGB can hold at every
+     hue, so there is far more to be had here than in the colour definition.
+     At 60% the surface carries 1.8× the chroma it did at 75%, and stays
+     light enough (oklab L 0.86) to keep near-black text at ~13:1. */
+  --glass-opacity: 60%;
+
+  /* The blur belongs to the post panel alone (main), not to the page: the
+     header and the supergraphic are both unfiltered tint over the blob, which
+     is the only way the two can match — the letters have to be painted, and a
+     painted gradient cannot reproduce a blurred one. Expressed against the
+     viewport so it stays right on rotation, which a value measured once at
+     load could not be: 172.8px at 1440 wide, holding at 150px once the screen
+     is narrow enough that a proportional blur would stop reading as one. */
+  --glass-blur: max(150px, 12vw);
   --glass-saturate: 1.3;
+  /* The tint alone, named because it is laid twice: once by the sheet itself
+     and once inside the supergraphic's glyphs, which have to arrive at the
+     same colour by painting rather than by filtering. */
+  --glass-tint: color-mix(in srgb, var(--color-background) var(--glass-opacity), transparent);
+
+  /* The post body's own surface: this tone at this opacity, over the blur it
+     also carries.
+
+     A tone of its own, not more of --color-background, and that is the whole
+     point of it. Every other surface here is a tint of the page colour laid
+     over the page colour, so where the blob isn't underneath they all resolve
+     to exactly the same pixel — measured, the header, the panel and the page
+     were all 235,237,240 with the disc pushed out of view. The panel stopped
+     reading as a separate sheet, and the supergraphic, which is a hole in that
+     sheet, stopped reading at all. A lighter tone gives the post a surface it
+     keeps whether or not the disc is behind it. */
+  --panel-tone: #F9FBFE;
+  --panel-opacity: 65%;
+
+  /* The gradient blob, as one value so it can be painted twice from a single
+     recipe: body::before lays it behind the page, and the post supergraphic
+     re-paints it inside its glyphs to read as a hole cut through everything
+     above it. The --blob-* inputs are set on :root every frame by
+     random-gradients.js, and resolve where the value is *used*, so both
+     copies inherit the same numbers and stay in step as the blob drifts.
+     Kept here rather than inline so the two can't drift apart — the Open
+     Graph card already carries its own copy of this recipe, which is exactly
+     how that one fell out of date. */
+  /* Set in oklch, not hsl, because the hue rotates as the page scrolls
+     (HUE_SHIFT_PER_VIEWPORT in random-gradients.js) and hsl rotates unevenly:
+     at a fixed 90% saturation and 72% lightness the perceived lightness swings
+     between oklch L 0.635 and 0.954 around the wheel, which made a
+     constant-rate rotation look like it surged and stalled. Fixed L and C make
+     equal hue steps look equal.
+
+     Each layer's chroma is at the most sRGB holds at that layer's lightness
+     for *every* hue, measured across all 360°: nothing at L 0.99, 0.100 at
+     0.80, 0.124 at 0.74. Above those caps some hues clip, which brings the
+     unevenness straight back — so more colour has to come from
+     --glass-opacity rather than from here.
+
+     Same numbers in src/_11ty/og-images.js, which draws this disc into the
+     share card, the favicon and theme-color. */
+  /* The disc's base radius. Everything below is expressed as a fraction of
+     it — including the vertical offsets — so the shape holds its proportions
+     at any aspect ratio, where percentages of the viewport would stretch it.
+
+     vmin, not vw: the disc has to fit the *smaller* dimension to read as a
+     contained shape rather than a wash. */
+  --blob-radius: clamp(120px, 32vmin, 460px);
+
+  --blob-gradient:
+    /* One disc, and only the bottom layer is allowed an edge.
+       Earlier this was three lobes of equal weight, and each one drew its own
+       rim inside the shape — you could see the circles. Now the base carries
+       the silhouette and the two layers over it fade to nothing well before
+       their own edges, so they melt into it and the disc reads as a single
+       object with the colour travelling down it.
+       First layer listed paints on top. */
+
+    /* Highlight: a white bloom at the head, and deliberately achromatic —
+       white is in gamut at every hue, where a tinted near-white is not (L 0.94
+       caps at 0.028 chroma and L 0.96 at nothing at all). The tint comes from
+       the wash underneath; this layer only brings light. Eases to nothing over
+       its full radius so it leaves no rim. */
+    radial-gradient(
+      ellipse calc(var(--blob-radius) * 0.72 * var(--blob-scale, 1)) calc(var(--blob-radius) * 0.56 * var(--blob-scale, 1))
+        at calc(50% + var(--blob-x, 0px)) calc(50% + var(--blob-y, 0px) - var(--blob-radius) * 0.46),
+      oklch(0.99 0 0),
+      oklch(0.99 0 0 / 0.72) 40%,
+      oklch(0.99 0 0 / 0) 100%
+    ),
+    /* Wash: the first hue, sitting between the bloom and the base so the disc
+       runs white → hue one → hue two down its height. Lower and more
+       chromatic than the bloom (L 0.80 holds 0.100), because at the bloom's
+       lightness there is almost no colour to be had, and without this band
+       the white simply washes the first hue out. Edgeless, like the bloom. */
+    radial-gradient(
+      ellipse calc(var(--blob-radius) * var(--blob-scale, 1)) calc(var(--blob-radius) * 0.85 * var(--blob-scale, 1))
+        at calc(50% + var(--blob-x, 0px)) calc(50% + var(--blob-y, 0px) - var(--blob-radius) * 0.2),
+      oklch(0.8 0.095 var(--blob-hue-1, 70) / 0.95),
+      oklch(0.8 0.095 var(--blob-hue-1, 70) / 0.55) 45%,
+      oklch(0.8 0.095 var(--blob-hue-1, 70) / 0) 100%
+    ),
+    /* Base: the second hue at full strength — this one carries the silhouette,
+       holding flat and then feathering over the last quarter of its radius */
+    radial-gradient(
+      ellipse calc(var(--blob-radius) * 1.15 * var(--blob-scale, 1)) calc(var(--blob-radius) * var(--blob-scale, 1))
+        at calc(50% + var(--blob-x, 0px)) calc(50% + var(--blob-y, 0px) + var(--blob-radius) * 0.08),
+      oklch(0.74 0.118 var(--blob-hue-2, 135)),
+      oklch(0.74 0.118 var(--blob-hue-2, 135) / 0.85) 68%,
+      oklch(0.74 0.118 var(--blob-hue-2, 135) / 0) 92%
+    );
 
   /* Layout */
   --content-width: 65ch;
   --side-padding: 1rem;
-  /* Where a post pins on scroll AND where a direct visit loads to (auto-scroll.js
-     reads this), so the load position and the pinned position are identical. */
-  --post-pin-offset: 40px;
+  /* How much of the hero is left showing when a post opens (auto-scroll.js
+     reads this). Zero puts the hero's bottom edge exactly on the top of the
+     viewport, which is where a post link should land you; raise it to leave a
+     sliver of the hero in view instead. */
+  --post-pin-offset: 0px;
 }

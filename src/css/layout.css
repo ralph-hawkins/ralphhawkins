@@ -6,19 +6,8 @@
   width: 100%;
 }
 
-/* Shared translucent "glass" surface that main and footer lay over the
-   gradient blob — the same values the header's bottom step reaches, so the
-   two meet without a seam. See --glass-* in variables.css. */
-main,
-footer {
-  background: color-mix(in srgb, var(--color-background) var(--glass-opacity), transparent);
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-}
-
-.date p {
-  line-height: 1rem;
-}
+/* The glass is one page-wide sheet now (body::after in base.css), not a
+   surface each of header, main and footer carries for itself. */
 
 .post-content {
   padding-bottom: var(--spacing-xl);
@@ -35,51 +24,45 @@ footer {
 }
 
 header {
-  /* svh (with a vh fallback) so the hero doesn't grow/shrink as the mobile URL
-     bar shows/hides. */
-  min-height: 70vh;
-  min-height: 70svh;
+  /* Five eighths of the viewport — 50% taken up by a quarter. svh (with a vh
+     fallback) so the hero doesn't grow or shrink as the mobile URL bar shows
+     and hides.
+
+     Set as a height rather than a max-height, which on its own would never
+     apply: the hero's content is only 311px, so a cap leaves the header
+     content-sized on every desktop and the declaration does nothing. Pinning
+     it is what makes the number mean something — and since the content is
+     always shorter, this is the floor in practice.
+
+     The min-content floor underneath keeps that from becoming a clip:
+     min-height beats height, so the hero grows rather than spilling its own
+     text below itself. It now only bites on the smallest phones — at 320×568
+     the content runs to 475px against a 355px five-eighths, while 390×844
+     clears it at 527px. */
+  height: 62.5vh;
+  height: 62.5svh;
+  min-height: min-content;
   display: flex;
   align-items: center;
   position: relative;
   z-index: 0;
 }
 
-/* Full-width hairline on the header's bottom edge, like the footer's rules.
-   Absolutely positioned so it doesn't join the header's flex row or open a
-   gap in the glass between header and main. */
-header > hr {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  margin: 0;
-}
+main {
+  /* The post's own panel, and the only filtered surface on the page: the body
+     of the post is frosted, the header is not. That is the whole separation —
+     the header and the supergraphic are both plain tint over the blob and so
+     are identical, while the post body is the same thing blurred, which reads
+     as a distinct sheet laid over it.
 
-.header-glass {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  /* Entirely static — the layers never scale or move. */
-  pointer-events: none;
-}
-
-.header-glass-blur,
-.header-glass-tint {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-/* One full-height blur at the surface's full strength; header-bars.js masks
-   it into the 15 steps. Same --glass-* values as main and footer, so the
-   bottom step and the content below it are the same surface. */
-.header-glass-blur {
+     The supergraphic is a negative-z child of main, so it paints after this
+     background and after the filter, and is touched by neither: the letters
+     stay the header's surface while everything around them is frosted, which
+     is what makes them read as cut out of the panel. It is clipped to this
+     box's top edge as well, so none of it reaches the header. */
+  background: color-mix(in srgb, var(--panel-tone) var(--panel-opacity), transparent);
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-}
-
-main {
   min-height: 100vh;
   position: relative;
   z-index: 2;

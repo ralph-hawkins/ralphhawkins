@@ -35,6 +35,10 @@ module.exports = function(eleventyConfig) {
   // Per-post SVG favicon in the same seeded colours, as a data URI.
   eleventyConfig.addFilter("blobFavicon", require("./src/_11ty/og-images.js").faviconDataUri);
 
+  // The post's own colour, undiluted — what the colophon reports. The 20%
+  // chrome tint below is too washed to tell one post from another.
+  eleventyConfig.addFilter("postColor", require("./src/_11ty/og-images.js").postColor);
+
   // Browser-chrome theme colour: 20% tint of the post's blob hue.
   eleventyConfig.addFilter("blobThemeColor", require("./src/_11ty/og-images.js").themeColor);
 

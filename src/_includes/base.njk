@@ -1,8 +1,8 @@
 {#- Set `hero: false` in front matter to drop the hero header and its scripts
    (pages like the notes list supply their own h1). The scripts are tied to
-   the hero on purpose: header-bars.js needs the <header>, and auto-scroll.js
-   would scroll to the first .date element it finds — on a listing page
-   that's a list item's date, not a post date. -#}
+   the hero on purpose: auto-scroll.js would otherwise scroll to the first
+   .date element it finds — on a listing page that's a list item's date, not
+   a post date. -#}
 <!DOCTYPE html>
 {#- --color-overscroll matches the theme-color meta (see head-common.njk), so
    the iOS rubber-band area and browser chrome read as one surface. -#}
@@ -10,7 +10,6 @@
 <head>
     {% include "head-common.njk" %}
     {%- if hero !== false %}
-    <script src="/js/header-bars.js" defer></script>
     <script src="/js/post-nav-arrow.js" defer></script>
     <script src="/js/auto-scroll.js" defer></script>
     {%- endif %}
@@ -38,7 +37,6 @@
       </p>
       {% endif %}
     </div>
-    <hr>
   </header>
   {%- endif %}
   <main id="main">

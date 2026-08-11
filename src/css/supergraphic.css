@@ -1,0 +1,236 @@
+/* The post supergraphic: the week number over the date, set as large as the
+   page allows in the heaviest Volksans face on the site, cropped by the left
+   edge of the viewport and stopping dead at its centre. It is out of flow and
+   behind the column, so the post reads at exactly the position it would
+   without it and the type runs under the words.
+
+   One number, --supergraphic-crop, does the cropping on both axes: that
+   fraction of the date line is taken by the left edge of the screen, and the
+   same fraction of the block's height is taken by the edge where the post
+   begins. Nothing of it reaches the header. The week-note line is the longer of
+   the two and so crops deeper — the size is held to the date's 5% rather than
+   re-solved for whichever line happens to run longest, which is what keeps the
+   graphic the same size as the words above it change.
+
+   Every value that sizes or places it is a custom property below. They live
+   on :root, not on .supergraphic, so a post can override one from front
+   matter by way of an inline style on <html>; declared on .supergraphic they
+   would beat the inherited value and the override would silently do nothing. */
+:root {
+  /* Cropped off the left edge of the screen, and off the top by the edge
+     where the post begins. */
+  --supergraphic-crop: 0.05;
+
+  /* Display leading. Two lines, so this also sizes the block's height, which
+     is what the vertical placement and the clip are fractions of — both
+     follow it without adjustment.
+
+     The floor is about 0.715, where the lines' ink meets: measured, they clear
+     by 12px at 0.76 and 1px at 0.72, and merge at 0.70. That floor holds for
+     every post rather than just this one, because neither line can grow a
+     descender — the week line is "Week note NN" and the date is all lining
+     tabular figures, so the tallest thing on either is the "k". */
+  --supergraphic-leading: 0.76;
+
+  /* Advance width of the date line, in multiples of the font size, measured
+     in Volksans Bold. The size is solved from this rather than guessed, which
+     is what holds that line's crop at exactly 5% at every viewport width.
+
+     The date is the line to solve from because it is the shorter of the two:
+     hold it at 5% and the other simply crops deeper. Tabular figures are what
+     make one number do for all 53 posts — ten fixed-width glyphs whatever the
+     date — and the same figures, with the week number zero-padded in post.njk,
+     fix the week-note line at 6.08 whatever the week. Being the longer line it
+     always crops deeper than the date: 16% where the solved size governs, and
+     more as the screen narrows and the size floor takes over. Remeasure if the
+     strings, the figures or the face change — this went from 4.16 to 5.36 when
+     the date grew from dd.mm.yy to dd.mm.yyyy, and every threshold below moved
+     with it. */
+  --supergraphic-line-ratio: 5.36;
+
+  /* Never smaller than this many times the hero masthead, so the graphic
+     reads as the bigger type on the page — except where the ceiling below
+     overrules it, which is the whole point of having one. */
+  --supergraphic-min-multiple: 4;
+
+  /* And never so large that the date line runs wider than this many screens.
+     Since the anchor has slid to the screen's edge by the time this binds,
+     it is the same as saying at least 1/n of the line is always on screen —
+     a size expressed relative to the screen rather than in absolute pixels,
+     which is what keeps it proportionate on a phone. */
+  --supergraphic-max-screens: 2;
+
+  /* Ceiling, floor, and the solved size, in that order of precedence.
+
+     The solved size is the innermost: the widest line ends on the viewport's
+     centre, so the visible part is half the viewport, and the line itself has
+     to be 1/(1 − crop) of that for the surplus to hang off the left edge.
+     That term is what puts the crop at exactly --supergraphic-crop, and it
+     only wins on very wide screens (past about 2930px).
+
+     The floor takes over from there down, sizing the graphic against the
+     masthead instead and letting the left crop run deeper than 5%.
+
+     The ceiling takes over again below about 770px, where a flat floor of
+     4 × the masthead would be most of a phone's width. The two genuinely
+     conflict there and the ceiling wins — on a 390px screen the graphic ends
+     up nearer 2.6 × the masthead than 4 ×, which is the trade for keeping it
+     in proportion to the screen. */
+  --supergraphic-size: min(
+    calc(var(--supergraphic-max-screens) * 100vw / var(--supergraphic-line-ratio)),
+    max(
+      calc(var(--supergraphic-min-multiple) * var(--font-size-h1)),
+      calc(50vw / var(--supergraphic-line-ratio) / (1 - var(--supergraphic-crop)))
+    )
+  );
+
+  /* Two lines at the display leading. */
+  --supergraphic-height: calc(2 * var(--supergraphic-leading) * var(--supergraphic-size));
+
+  /* Grey for now. */
+  --supergraphic-color: #a2a8af;
+
+  /* Where the type's right edge sits, measured in from the content column's
+     right edge — 50% of that column is the viewport's centre, because the
+     column is centred on it.
+
+     Held at the centre while there is room, then allowed to slide right as
+     the screen narrows. It has to: the size floor makes the type far wider
+     than a phone screen, and anchoring it to the centre buries almost all of
+     it off the left edge. Sliding right trades left crop for visible type.
+
+     0% is the stop, and it is a hard one rather than a taste one — that puts
+     the right edge on the column's edge, and anything beyond it would push
+     the type off the right of the screen, which is the one direction that
+     opens a horizontal scrollbar. Reached at 30rem, the same width
+     media-queries.css treats as the small-screen breakpoint; back to the
+     centre by about 820px, where the difference exceeds half the column's
+     width. rem rather than em, because this value is substituted into
+     .supergraphic, where an em would resolve against the graphic's own
+     enormous font size. */
+  --supergraphic-right: clamp(0%, calc(100vw - 30rem), 50%);
+}
+
+.supergraphic {
+  /* Out of flow, so the post below it sits exactly where it sat before the
+     graphic existed, and behind it, so the type runs under the words.
+
+     .container is the containing block (it's position: relative), and an
+     absolutely positioned box measures its percentages against that box's
+     *padding* box — which is centred on the viewport whatever the padding
+     inside it does. So right: 50% is the viewport's centre exactly, without
+     a viewport unit, and without having to correct for the asymmetric column
+     padding media-queries.css applies below 30em.
+
+     Sized to its own longest line and anchored by its right edge, so both
+     lines end on the centre and whatever each one runs to beyond that hangs
+     off the left of the screen. Overflow to the left can't open a horizontal
+     scrollbar; overflow to the right would. */
+  position: absolute;
+  right: var(--supergraphic-right);
+  width: max-content;
+
+  /* .container's top edge is main's content edge, so main's top padding is
+     all that stands between this and the top of the post: clearing it lands
+     the block's top on that edge, and the crop lifts it the rest. */
+  top: calc(-1 * (var(--spacing-xl) + var(--supergraphic-crop) * var(--supergraphic-height)));
+
+  /* Then cut that lifted part straight off again, so the type is cropped on
+     two sides by the page itself — the left edge of the screen takes
+     --supergraphic-crop of its width, the top of the post takes the same
+     fraction of its height, and nothing of it reaches the header. The inset
+     is the rise above, so the cut lands exactly on main's top edge and the
+     letters stop dead where the post begins. Clipping rather than simply
+     sitting lower keeps the letters sliced, which is what reads as a crop
+     rather than as a gap. */
+  clip-path: inset(calc(var(--supergraphic-crop) * var(--supergraphic-height)) 0 0 0);
+
+  /* Behind the words. .container is positioned but has no z-index, so it
+     creates no stacking context and this hoists into main's — where negative
+     z-index paints above main's own background but below everything in the
+     column. main is z-index 2 over the header, so the part that overhangs the
+     rule still covers the hero rather than sliding under it. */
+  z-index: -1;
+
+  font-size: var(--supergraphic-size);
+  /* Bold is the heaviest face the site carries — see src/css/fonts.css. */
+  font-weight: bold;
+  line-height: var(--supergraphic-leading);
+  font-variant-numeric: tabular-nums;
+  color: var(--supergraphic-color);
+  /* The shorter line ends on the centre too, not just the widest one. */
+  text-align: right;
+
+  /* Both are needed, not one: body's inherited overflow-wrap: anywhere would
+     otherwise break "08.10.26" mid-number, and max-content sizing takes the
+     widest *allowed* break, so a breakable string would size the box wrong
+     as well as set it wrong. */
+  white-space: nowrap;
+  overflow-wrap: normal;
+
+  /* Not selectable, though it is now the only place the week number appears:
+     the small meta line that used to carry it has gone, so this stays in the
+     accessibility tree (see post.njk) but still shouldn't land in a copy —
+     what a sighted reader sees here is cropped type, and dragging a selection
+     across it would produce nonsense. */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.supergraphic span {
+  display: block;
+}
+
+/* The type as a hole rather than a shape: no colour of its own, showing what
+   would be there if everything above the blob were cut away.
+
+   It is painted, not actually cut — CSS has no operator that subtracts a
+   descendant from an ancestor's backdrop-filter. Repainting is exact anyway,
+   because what a hole would expose is a known quantity: the background body
+   paints, with the blob over it. So the glyphs get both, in that order, both
+   clipped to the glyphs, and the same :root variables feed this copy and
+   body::before, so the letters keep step as the blob drifts and rehues.
+
+   Register comes from sizing the gradient to the viewport and then shifting
+   it by this element's own offset within it, which random-gradients.js
+   publishes as --supergraphic-blob-x/y. background-attachment: fixed is the
+   declaration meant to do this unaided, and it very nearly does — measured
+   against a screenshot of the page with its glass surfaces stripped away, it
+   agreed to about one RGB level per channel through the middle of the scroll
+   range but never once at the top of the document, where the letters came out
+   blank. Doing the arithmetic here instead is exact by construction rather
+   than by browser behaviour, which is why it stayed.
+
+   Without the script the offsets fall back to 0 and the gradient anchors to
+   this element instead — still type filled with blob, just not aligned with
+   the one behind the page.
+
+   Not faded by --blob-opacity, which body::before uses to wash the blob out
+   on scroll: opacity here would take the page background with it and leave
+   the letters translucent over the glass — grey ghosts rather than a hole.
+   The graphic only ever appears at the top of the document, where that fade
+   has barely started.
+
+   --supergraphic-color stays the fallback: where background-clip: text isn't
+   supported, transparent type would be no type at all. */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .supergraphic {
+    color: transparent;
+    /* body's background, not html's: body makes a stacking context so its
+       own background paints beneath the negative-z blob layer, and that is
+       what the blob is actually composited over. html's --color-overscroll
+       is behind body and never shows through here. */
+    background-color: var(--color-background);
+    /* Glass tint over blob over page background — the stack the header is
+       showing, rebuilt in the glyphs. The tint layer takes the same viewport
+       sizing as the blob layers below it; the only part of the box it then
+       fails to reach is the part hanging off the left of the screen, which
+       nobody sees. */
+    background-image: linear-gradient(var(--glass-tint), var(--glass-tint)), var(--blob-gradient);
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    background-position: var(--supergraphic-blob-x, 0px) var(--supergraphic-blob-y, 0px);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}

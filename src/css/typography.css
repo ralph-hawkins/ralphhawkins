@@ -14,6 +14,20 @@ header p {
   text-wrap: balance;
 }
 
+/* Give the display sizes somewhere legitimate to break. body sets
+   overflow-wrap: anywhere as a safety net for unbreakable strings like a long
+   URL, and at these sizes that net catches ordinary words too: on a phone the
+   column is around 300px while a word like "communication" sets over 350px, so
+   it was being cut mid-word — "communicati / on". Hyphenation gives the
+   browser a proper break first, and only falls back to the net when there
+   isn't one. <html lang="en"> is already set, which is what supplies the
+   dictionary; without it this does nothing. */
+.page-title,
+h2, h3 {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
 h1,
 .hero-title {
   font-size: var(--font-size-h1);
@@ -31,6 +45,16 @@ h2 {
   padding-top: var(--spacing-xl);
 }
 
+/* The post title opens the post, and a reader arriving from a post link lands
+   exactly on the hero's bottom edge (auto-scroll.js), so this padding is the
+   first thing they see — it sets how much air the writing starts with. It
+   stacks on main's own --spacing-xl, so the gap from the hero's edge to the
+   title is twice this value. Scoped to the post header so 404.njk, which also
+   uses .page-title, keeps its own spacing. */
+.post-header .page-title {
+  padding-top: var(--spacing-xl);
+}
+
 /* Post/page titles: h1 in the outline, h2 optics — the hero masthead stays
    the biggest thing on the page on purpose. */
 .page-title {
@@ -41,14 +65,6 @@ h2 {
      to beat the h1 element rule's --spacing-xl on specificity. */
   margin-bottom: var(--spacing-m);
   font-weight: 600;
-}
-
-.date + :is(h1, h2) {
-  padding-top: 0;
-}
-
-.date:has(+ :is(h1, h2)) p {
-  margin-bottom: 0.5lh;
 }
 
 h3 {

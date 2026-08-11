@@ -5,19 +5,33 @@ layout: base
 <article>
   {% set postNumber = collections.publicWeeknotes | getPostNumber(page) %}
   {% set postVersion = page.inputPath | postVersion %}
+  {# Publish date from git history, like the colophon; front-matter date is
+     the fallback for drafts and uncommitted files. Set before the
+     supergraphic, which shows the same date in its own format. #}
+  {% set headerDate = date %}
+  {% if postVersion and postVersion.published %}
+    {% set headerDate = postVersion.published %}
+  {% endif %}
+  {#- Supergraphic: the week number over the date, set huge, cropped by the
+     left edge of the viewport and stopping at its centre. It used to be a
+     pure flourish, hidden from the accessibility tree because a small meta
+     line below carried the same two facts as real text. That line is gone, so
+     this is now the only place the week number appears at all — it stays in
+     the tree and reads before the title, which is the order it would have had.
+     Still not selectable: what a sighted reader sees is cropped type, and a
+     selection over it would be nonsense.
+
+     Only week notes have a number, and without one there is nothing to set. -#}
+  {% if postNumber %}
+  <p class="supergraphic">
+    {#- Zero-padded, which with tabular figures makes this line measure the
+       same on every post, so the left crop lands on the same letter
+       throughout instead of drifting between one- and two-digit weeks. -#}
+    <span>Week note {% if postNumber < 10 %}0{% endif %}{{ postNumber }}</span>
+    <span>{{ headerDate | dateNumeric }}</span>
+  </p>
+  {% endif %}
   <div class="post-header">
-    <div class="date post-meta">
-      {% if postNumber %}
-        <p class="post-meta-count">Week note {{ postNumber }}</p>
-      {% endif %}
-      {# Publish date from git history, like the colophon; front-matter date
-         is the fallback for drafts and uncommitted files. #}
-      {% set headerDate = date %}
-      {% if postVersion and postVersion.published %}
-        {% set headerDate = postVersion.published %}
-      {% endif %}
-      <p class="post-meta-date">{{ headerDate | dateFormat }}</p>
-    </div>
     <h1 class="page-title">{{ title }}</h1>
     {% if description %}
       <p class="post-description">{{ description }}</p>
@@ -49,7 +63,7 @@ layout: base
       <dt>Words</dt>
       <dd>{{ content | wordCount }}</dd>
       <dt>Colour</dt>
-      <dd>{{ page.fileSlug | blobThemeColor }}</dd>
+      <dd>{{ page.fileSlug | postColor }}</dd>
       </dl>
     </div>
   {% endif %}
