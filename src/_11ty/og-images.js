@@ -5,12 +5,14 @@
 const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
+const { fontMetrics } = require("./font-metrics.js");
 
 const WIDTH = 1200;
 const HEIGHT = 630;
 const SRC_DIR = path.join(__dirname, "..");
 const POSTS_DIR = path.join(SRC_DIR, "posts", "weeknotes");
 const FONT_PATH = path.join(SRC_DIR, "fonts", "volksans", "volksans-SemiBold.woff");
+const metrics = fontMetrics(FONT_PATH);
 
 // djb2 hash → base hue. The site picks hues at random on each visit; here the
 // slug stands in for the dice roll so the card matches itself forever.
@@ -77,26 +79,141 @@ function blobColor(lobe, hue, alpha = 1) {
 }
 
 // Same disc as body::before (see --blob-gradient in src/css/variables.css),
-// sized off the canvas rather than the viewport and pushed toward the
-// top-right so the title sits on plain ground.
-const DISC_R = 200;
-const DISC_X = 940;
-const DISC_Y = 260;
-const disc = (rx, ry, dy) =>
-  `ellipse ${Math.round(DISC_R * rx)}px ${Math.round(DISC_R * ry)}px` +
-  ` at ${DISC_X}px ${Math.round(DISC_Y + DISC_R * dy)}px`;
+// sized and placed per card rather than pinned to one spot.
+//
+// Seeded from the slug, not Math.random: a card has to come out identical on
+// every build, which is the same reason the hues are seeded.
+//
+// The disc reaches 1.15 radii to each side and from 1.05 above its centre to
+// 1.08 below, so those extents are what the placement has to keep on the
+// canvas. Requiring at least 1/sqrt(2) of each axis on it puts at least half
+// the disc's area on the card — conservative, since it treats the two axes as
+// worst-case independent.
+const DISC_R_MIN = 200;
+const DISC_R_MAX = 340;
+const DISC_HALF_W = 1.15;
+const DISC_UP = 1.05;
+const DISC_DOWN = 1.08;
+const ON_CARD = Math.SQRT1_2;
 
-function blobBackground(hue1, hue2) {
+// The same djb2 as hueFromSlug, salted so one slug yields several independent
+// but stable numbers.
+function seeded(slug, salt) {
+  let hash = 5381;
+  for (const char of `${slug}/${salt}`) hash = ((hash * 33) ^ char.charCodeAt(0)) >>> 0;
+  return hash / 0x100000000;
+}
+
+function discFor(slug) {
+  const r = DISC_R_MIN + seeded(slug, "size") * (DISC_R_MAX - DISC_R_MIN);
+  const slackX = (1 - ON_CARD) * (DISC_HALF_W * 2 * r);
+  const slackY = (1 - ON_CARD) * ((DISC_UP + DISC_DOWN) * r);
+  const minX = DISC_HALF_W * r - slackX;
+  const maxX = WIDTH - DISC_HALF_W * r + slackX;
+  const minY = DISC_UP * r - slackY;
+  const maxY = HEIGHT - DISC_DOWN * r + slackY;
+  return {
+    r,
+    x: minX + seeded(slug, "x") * Math.max(0, maxX - minX),
+    y: minY + seeded(slug, "y") * Math.max(0, maxY - minY),
+  };
+}
+
+const disc = (d, rx, ry, dy) =>
+  `ellipse ${Math.round(d.r * rx)}px ${Math.round(d.r * ry)}px` +
+  ` at ${Math.round(d.x)}px ${Math.round(d.y + d.r * dy)}px`;
+
+function blobBackground(hue1, hue2, d) {
   return [
-    `radial-gradient(${disc(0.72, 0.56, -0.46)}, ${blobColor(0, hue1)}, ${blobColor(0, hue1, 0.72)} 40%, ${blobColor(0, hue1, 0)} 100%)`,
-    `radial-gradient(${disc(1, 0.85, -0.2)}, ${blobColor(1, hue1, 0.95)}, ${blobColor(1, hue1, 0.55)} 45%, ${blobColor(1, hue1, 0)} 100%)`,
-    `radial-gradient(${disc(1.15, 1, 0.08)}, ${blobColor(2, hue2)}, ${blobColor(2, hue2, 0.85)} 68%, ${blobColor(2, hue2, 0)} 92%)`
+    `radial-gradient(${disc(d, 0.72, 0.56, -0.46)}, ${blobColor(0, hue1)}, ${blobColor(0, hue1, 0.72)} 40%, ${blobColor(0, hue1, 0)} 100%)`,
+    `radial-gradient(${disc(d, 1, 0.85, -0.2)}, ${blobColor(1, hue1, 0.95)}, ${blobColor(1, hue1, 0.55)} 45%, ${blobColor(1, hue1, 0)} 100%)`,
+    `radial-gradient(${disc(d, DISC_HALF_W, 1, 0.08)}, ${blobColor(2, hue2)}, ${blobColor(2, hue2, 0.85)} 68%, ${blobColor(2, hue2, 0)} 92%)`
   ].join(", ");
+}
+
+// Satori draws with the one font it is given and no fallback, so anything
+// Volksans can't draw arrives as a tofu box. Three cards had one.
+//
+// Two characters need different treatment. The non-breaking hyphen is in the
+// cmap but maps to .notdef, and it earns its place in a title — it stops
+// "Self-aware" breaking across lines — so on the card, which is one fixed
+// image and has no lines to break across, a plain hyphen says the same thing.
+// Anything else the font can't draw is dropped: better a missing character
+// than a box announcing one.
+const SUBSTITUTES = new Map([
+  [0x2011, "-"],  // non-breaking hyphen
+  [0x2012, "-"],  // figure dash
+  [0x2212, "-"],  // minus sign
+  [0x00a0, " "],  // non-breaking space
+]);
+
+function drawable(text) {
+  let out = "";
+  for (const char of text) {
+    const swapped = SUBSTITUTES.get(char.codePointAt(0)) ?? char;
+    for (const c of swapped) {
+      if (metrics.supports(c.codePointAt(0))) out += c;
+    }
+  }
+  return out.replace(/\s+/g, " ").trim();
 }
 
 function titleFontSize(title) {
   if (title.length <= 22) return 112;
   return 96;
+}
+
+// Where a line is allowed to break, as CSS sees it: between words at a space,
+// and after a hyphen inside a word. The second one is not a nicety —
+// "Self-aware" is one word to a space-split but two pieces to a line breaker,
+// and a piece wider than the box can't be broken any further.
+function segments(text) {
+  const pieces = [];
+  for (const word of text.split(" ")) {
+    // the hyphen stays on the piece it ends; the piece after it opens a line
+    // with no space in front of it
+    word.split(/(?<=-)/).forEach((piece, i) => {
+      pieces.push({ text: piece, space: i === 0 && pieces.length > 0 });
+    });
+  }
+  return pieces;
+}
+
+// Greedy wrap, the same one Satori will perform, counted rather than guessed.
+function lineCount(text, fontSize, width) {
+  const space = metrics.width(" ", fontSize);
+  let lines = 1;
+  let used = 0;
+  for (const piece of segments(text)) {
+    const gap = piece.space ? space : 0;
+    const w = metrics.width(piece.text, fontSize);
+    if (used > 0 && used + gap + w > width) { lines++; used = w; }
+    else used += gap + w;
+  }
+  return lines;
+}
+
+// Balanced wrapping, since Satori has no text-wrap: balance. Greedy wrapping
+// fills each line to the brim and leaves whatever is left on the last one,
+// which is how titles ended up with a single orphaned word under a full line.
+// Narrowing the box until one more pixel off would cost an extra line gives
+// the same number of lines with the text spread evenly across them.
+function balancedWidth(text, fontSize, maxWidth) {
+  const target = lineCount(text, fontSize, maxWidth);
+  if (target < 2) return maxWidth;
+  // The box can never usefully go below the widest piece that has nowhere to
+  // break: past that the text overflows instead of wrapping, and the search
+  // would read the unchanged line count as room to keep narrowing.
+  const floor = Math.max(...segments(text).map((p) => metrics.width(p.text, fontSize)));
+  if (lineCount(text, fontSize, floor) <= target) return Math.ceil(floor);
+  let tooNarrow = floor;
+  let fits = maxWidth;
+  while (fits - tooNarrow > 1) {
+    const mid = (tooNarrow + fits) / 2;
+    if (lineCount(text, fontSize, mid) <= target) fits = mid;
+    else tooNarrow = mid;
+  }
+  return Math.ceil(fits);
 }
 
 const PADDING = 72;
@@ -105,10 +222,12 @@ const TITLE_LINE_HEIGHT = 1.08;
 
 // The title's first line sits at the vertical mid-point of the card. Long
 // titles that would run past the bottom padding get nudged up just enough to
-// fit; line count is estimated from average glyph width (~0.5em for volksans).
+// fit. The line count is measured from the font's own advance widths, where it
+// used to be estimated at ~0.5em a character — an estimate that ran 9% short
+// on one title and 12% long on another, so the nudge was applied to the wrong
+// titles.
 function titleTop(title, fontSize) {
-  const charsPerLine = TITLE_MAX_WIDTH / (fontSize * 0.5);
-  const lines = Math.max(1, Math.ceil(title.length / charsPerLine));
+  const lines = lineCount(title, fontSize, balancedWidth(title, fontSize, TITLE_MAX_WIDTH));
   const height = lines * fontSize * TITLE_LINE_HEIGHT;
   return Math.round(Math.min(HEIGHT / 2, HEIGHT - PADDING - height));
 }
@@ -140,28 +259,29 @@ function glassTint() {
   };
 }
 
-function card({ kicker, title, footer, hue1, hue2 }) {
+function card({ kicker, title, footer, hue1, hue2, disc: d }) {
   const text = (value, style) => ({ type: "div", props: { style, children: value } });
   const children = [glassTint()];
 
   if (kicker) {
-    children.push(text(kicker, { fontSize: 60, color: "#0b0c0c" }));
+    children.push(text(drawable(kicker), { fontSize: 60, color: "#0b0c0c" }));
   }
 
-  const fontSize = titleFontSize(title);
-  children.push(text(title, {
+  const heading = drawable(title);
+  const fontSize = titleFontSize(heading);
+  children.push(text(heading, {
     position: "absolute",
-    top: titleTop(title, fontSize),
+    top: titleTop(heading, fontSize),
     left: PADDING,
     fontSize,
     color: "#0b0c0c",
     lineHeight: TITLE_LINE_HEIGHT,
     letterSpacing: "-0.01em",
-    maxWidth: TITLE_MAX_WIDTH
+    maxWidth: balancedWidth(heading, fontSize, TITLE_MAX_WIDTH)
   }));
 
   if (footer) {
-    children.push(text(footer, {
+    children.push(text(drawable(footer), {
       position: "absolute",
       bottom: PADDING,
       left: PADDING,
@@ -181,7 +301,7 @@ function card({ kicker, title, footer, hue1, hue2 }) {
         position: "relative",
         padding: PADDING,
         backgroundColor: "#EBEDF0",
-        backgroundImage: blobBackground(hue1, hue2),
+        backgroundImage: blobBackground(hue1, hue2, d),
         fontFamily: "volksans"
       },
       children
@@ -235,7 +355,8 @@ async function generateOgImages(outputDir) {
       kicker: data.date ? formatDate(data.date) : null,
       title: data.title || slug,
       hue1,
-      hue2: (hue1 + HUE_OFFSET) % 360
+      hue2: (hue1 + HUE_OFFSET) % 360,
+      disc: discFor(slug)
     }), outputPath));
   }
 
@@ -247,7 +368,8 @@ async function generateOgImages(outputDir) {
       title: "Ralph Hawkins",
       footer: "ralphhawkins.co.uk",
       hue1: HUE_FALLBACK,
-      hue2: (HUE_FALLBACK + HUE_OFFSET) % 360
+      hue2: (HUE_FALLBACK + HUE_OFFSET) % 360,
+      disc: discFor("home")
     }), homePath));
   }
 
