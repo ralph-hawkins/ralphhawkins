@@ -26,6 +26,31 @@ header p {
 h2, h3 {
   hyphens: auto;
   -webkit-hyphens: auto;
+
+  /* Only hyphenate words of 9 characters or more.
+     Left to itself, `auto` breaks a word to fill the current line even when
+     that word would have wrapped whole quite happily — "wa-ter", "hu-man",
+     "join-er's" — which reads as a typographic tic rather than a rescue.
+
+     9 is measured, not chosen. Across all 182 headings the two populations
+     separate cleanly by length: at 320px the shortest word that genuinely
+     overflows the column is 9 ("Alignment", "Welcoming", "Measuring",
+     "Scrimshaw") and the longest hyphenated needlessly is 8 ("joiner's"); at
+     390px it is 11 ("Provocagram") against 10 ("experience"). 9 keeps every
+     rescue at both widths. 11 would be perfect at 390px but would hand the
+     9- and 10-character words at 320px back to overflow-wrap, and a hard cut
+     mid-character is a worse outcome than a hyphen nobody asked for.
+
+     One value on purpose: the second and third control how many characters
+     may sit either side of the break, and constraining those removes real
+     hyphenation points — "Welcoming" only breaks as "wel-coming", which a
+     minimum of 4 before would forbid, sending it back to a hard cut.
+
+     Chrome and Firefox honour this. Safari has no equivalent — its
+     -webkit-hyphenate-limit-* properties set the before/after minima, not a
+     word length — so Safari keeps hyphenating short words. That is the
+     current behaviour rather than a regression, so it is left alone. */
+  hyphenate-limit-chars: 9;
 }
 
 h1,
