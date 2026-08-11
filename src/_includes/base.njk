@@ -4,9 +4,10 @@
    .date element it finds — on a listing page that's a list item's date, not
    a post date. -#}
 <!DOCTYPE html>
-{#- --color-overscroll matches the theme-color meta (see head-common.njk), so
-   the iOS rubber-band area and browser chrome read as one surface. -#}
-<html lang="en"{% if tags and 'weeknotes' in tags %} data-blob-hue="{{ page.fileSlug | blobHue }}" style="--color-overscroll: {{ page.fileSlug | blobThemeColor }}"{% endif %}>
+{#- --color-overscroll tints the iOS rubber-band area with the post's colour,
+   the same 20% mix the theme-color meta used to carry before the browser
+   chrome was left to itself. -#}
+<html lang="en"{% if tags and 'weeknotes' in tags %} data-blob-hue="{{ page.fileSlug | blobHue }}" style="--color-overscroll: {{ page.fileSlug | blobOverscroll }}"{% endif %}>
 <head>
     {% include "head-common.njk" %}
     {%- if hero !== false %}

@@ -20,12 +20,9 @@
 <link rel="icon" type="image/svg+xml" href="{{ page.fileSlug | blobFavicon }}">
 {%- endif %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-{%- if tags and 'weeknotes' in tags %}
-{#- Browser chrome gets a 20% tint of the post's blob colour. #}
-<meta name="theme-color" content="{{ page.fileSlug | blobThemeColor }}">
-{%- else %}
-<meta name="theme-color" content="#EBEDF0">
-{%- endif %}
+{#- No theme-color: the browser's own chrome is left alone. The page still
+    tints its overscroll area per post (--color-overscroll in base.njk), which
+    is inside the document rather than around it. #}
 <meta name="description" content="{{ metaDescription }}">
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 {#- Feed autodiscovery: how a reader finds the week notes from any page. #}

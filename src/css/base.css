@@ -49,7 +49,7 @@ footer {
   }
 }
 
-/* Overscroll: the canvas behind the page matches the theme-color meta — the
+/* Overscroll: the canvas behind the page carries the post's colour — the
    post's 20% blob tint (inlined on <html> in base.njk), or the plain site
    background elsewhere — so iOS chrome, rubber-band area and page read as
    one surface. */

@@ -53,7 +53,7 @@ const BLOB_C = [0, 0.095, 0.118];
 
 // oklch → sRGB, clamped to 0–255. Done here rather than left to CSS because
 // Satori parses the card's colours itself and can't be relied on for oklch(),
-// and <meta name="theme-color"> takes a plain hex.
+// and the favicon's SVG and the inline overscroll colour both take plain hex.
 function oklchToRgb(lightness, chroma, hue) {
   const a = chroma * Math.cos((hue * Math.PI) / 180);
   const b = chroma * Math.sin((hue * Math.PI) / 180);
@@ -377,40 +377,22 @@ async function generateOgImages(outputDir) {
   return jobs.length;
 }
 
-// Per-post favicon: the same three-layer disc on a rounded tile, with the
-// site's "R" mark (favicon.png) over it, as an inline data URI (no extra file
-// or request).
+// Per-post favicon: the site's "R" mark over a flat tile of the post's colour,
+// as an inline data URI (no extra file or request).
+//
+// The tile used to be the whole three-layer disc. None of that survived the
+// size a favicon is actually seen at — 16px, where three overlapping gradients
+// average into one patch — so the disc went and the colour it was carrying
+// stayed. The mark is src/images/favicon.png, the same one every other page
+// links to, embedded rather than linked so the icon stays a single resource.
 let rMarkBase64;
 function faviconDataUri(slug) {
-  const hue1 = hueFromSlug(slug);
-  const hue2 = (hue1 + HUE_OFFSET) % 360;
   if (!rMarkBase64) {
     rMarkBase64 = fs.readFileSync(path.join(SRC_DIR, "images", "favicon.png")).toString("base64");
   }
-  // Sized so the disc nearly fills the tile — at the 16px this usually renders
-  // at, the colour has to reach the edges to register at all.
-  const R = 26, CX = 32, CY = 30;
-  const el = (rx, ry, dy, id) =>
-    `<ellipse cx="${CX}" cy="${Math.round(CY + R * dy)}"` +
-    ` rx="${Math.round(R * rx)}" ry="${Math.round(R * ry)}" fill="url(#${id})"/>`;
-  const grad = (id, lobe, hue, a0, a1, off1, off2) =>
-    `<radialGradient id="${id}">` +
-    `<stop offset="0" stop-color="${blobColor(lobe, hue)}" stop-opacity="${a0}"/>` +
-    `<stop offset="${off1}" stop-color="${blobColor(lobe, hue)}" stop-opacity="${a1}"/>` +
-    `<stop offset="${off2}" stop-color="${blobColor(lobe, hue)}" stop-opacity="0"/>` +
-    `</radialGradient>`;
   const svg =
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">` +
-    `<defs>` +
-    grad("a", 0, hue1, "1", "0.72", "0.4", "1") +
-    grad("b", 1, hue1, "0.95", "0.55", "0.45", "1") +
-    grad("c", 2, hue2, "1", "0.85", "0.68", "0.92") +
-    `<clipPath id="k"><rect width="64" height="64" rx="14"/></clipPath>` +
-    `</defs>` +
-    `<rect fill="#EBEDF0" width="64" height="64" rx="14"/>` +
-    `<g clip-path="url(#k)">` +
-    el(1.15, 1, 0.08, "c") + el(1, 0.85, -0.2, "b") + el(0.72, 0.56, -0.46, "a") +
-    `</g>` +
+    `<rect width="64" height="64" rx="14" fill="${postColor(slug)}"/>` +
     `<image href="data:image/png;base64,${rMarkBase64}" x="7" y="7" width="50" height="50"/>` +
     `</svg>`;
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
@@ -421,8 +403,8 @@ function faviconDataUri(slug) {
 // is a near-white bloom carrying no chroma at all, so it would identify
 // nothing.
 //
-// Distinct from themeColor below, which is the same colour mixed 20/80 with
-// the background for browser chrome. That mix is why the two read so
+// Distinct from overscrollColor below, which is the same colour mixed 20/80
+// with the background. That mix is why the two read so
 // differently: across the 53 posts, consecutive pairs sit a median ΔE 0.181
 // apart undiluted but only 0.036 apart at 20%, and a third of them land under
 // the ~0.02 it takes to tell two large flat areas apart at all. Anything
@@ -440,11 +422,15 @@ function postColor(slug) {
   return "#" + [r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("");
 }
 
-// Browser-chrome theme colour: the same foot colour mixed 20/80 with the site
-// background, precomputed to hex because <meta name="theme-color"> can't use
-// color-mix(). Reads the same layer the page does, so the chrome and the
-// rubber-band area still match the disc.
-function themeColor(slug) {
+// Overscroll colour: the same foot colour mixed 20/80 with the site
+// background, precomputed to hex because it is set in an inline style on
+// <html> rather than in the stylesheet. Reads the same layer the page does, so
+// the iOS rubber-band area still matches the disc.
+//
+// This fed <meta name="theme-color"> too until the browser chrome was left
+// alone; the 20% mix is the strength that tinting chrome wanted, and it stays
+// because the rubber-band area sits directly against the page.
+function overscrollColor(slug) {
   const hue = (hueFromSlug(slug) + HUE_OFFSET) % 360;
   const [r, g, b] = oklchToRgb(BLOB_L[2], BLOB_C[2], hue);
   // 20% colour over the #EBEDF0 background
@@ -454,4 +440,4 @@ function themeColor(slug) {
     .join("");
 }
 
-module.exports = { generateOgImages, hueFromSlug, faviconDataUri, postColor, themeColor };
+module.exports = { generateOgImages, hueFromSlug, faviconDataUri, postColor, overscrollColor };

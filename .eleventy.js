@@ -40,7 +40,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("postColor", require("./src/_11ty/og-images.js").postColor);
 
   // Browser-chrome theme colour: 20% tint of the post's blob hue.
-  eleventyConfig.addFilter("blobThemeColor", require("./src/_11ty/og-images.js").themeColor);
+  eleventyConfig.addFilter("blobOverscroll", require("./src/_11ty/og-images.js").overscrollColor);
 
   // Version + publish metadata derived from git history: the first commit
   // where a post exists without preview: true is v1.0 and sets the publish

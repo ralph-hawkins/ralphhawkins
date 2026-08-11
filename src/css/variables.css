@@ -108,14 +108,20 @@
      --glass-opacity rather than from here.
 
      Same numbers in src/_11ty/og-images.js, which draws this disc into the
-     share card, the favicon and theme-color. */
+     share card and mixes its foot into the overscroll colour. The favicon no
+     longer draws the disc — it is the "R" mark on a flat tile of that same
+     foot colour. */
   /* The disc's base radius. Everything below is expressed as a fraction of
      it — including the vertical offsets — so the shape holds its proportions
      at any aspect ratio, where percentages of the viewport would stretch it.
 
      vmin, not vw: the disc has to fit the *smaller* dimension to read as a
-     contained shape rather than a wash. */
-  --blob-radius: clamp(120px, 32vmin, 460px);
+     contained shape rather than a wash.
+
+     The floor is what a narrow phone gets — 32vmin of a 320px screen is only
+     102px — and it was raised 30% from 120px, so the disc stays a presence
+     there rather than a dot. It binds below 488px of viewport. */
+  --blob-radius: clamp(156px, 32vmin, 460px);
 
   --blob-gradient:
     /* One disc, and only the bottom layer is allowed an edge.
