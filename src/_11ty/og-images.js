@@ -218,7 +218,19 @@ function balancedWidth(text, fontSize, maxWidth) {
 
 const PADDING = 72;
 const TITLE_MAX_WIDTH = 950;
-const TITLE_LINE_HEIGHT = 1.08;
+// The same leading .page-title carries in src/css/typography.css, so a title
+// sets the same way on the card as it does on the page it links to.
+//
+// Measured floor is 0.906, where the tightest pair of lines across the 53
+// titles touches — "You don't always need to go from left to right", whose
+// "y" descender lands over a "d" ascender. 0.975 clears it by 6.6px at the
+// card's 96px type. Remeasure if the titles or the face change.
+//
+// Measuring this needs care: grouping the rendered rows into ink bands and
+// taking the smallest gap gives 7px at every leading, because the dot of an
+// "i" is its own band a fixed distance above its letters. Bands have to be
+// grouped into lines first.
+const TITLE_LINE_HEIGHT = 0.975;
 
 // The title's first line sits at the vertical mid-point of the card. Long
 // titles that would run past the bottom padding get nudged up just enough to
@@ -238,10 +250,15 @@ function titleTop(title, fontSize) {
 // the top to a 75% tint at the bottom, which is what the header used to do
 // and no longer does; the card drew them long after the site had dropped them.
 //
-// The page also blurs, but only under the post body, which the card has no
-// equivalent of — and over a gradient this smooth the tint alone reads the
-// same, which is why Satori's lack of backdrop-filter costs nothing here.
-const GLASS_OPACITY = 0.6;
+// **Deliberately not --glass-opacity's 60%.** The card is one flat surface
+// where the page is two, and it is looked at once, small, in a timeline —
+// so it is allowed to be the louder of the two. At 25% the disc carries
+// 1.9× the chroma it did at 60%.
+//
+// The blur is the page's, applied in render() rather than here: Satori has no
+// backdrop-filter, so the backdrop is rendered, blurred and composited under
+// the type in two passes.
+const GLASS_OPACITY = 0.25;
 
 function glassTint() {
   return {
@@ -259,9 +276,29 @@ function glassTint() {
   };
 }
 
-function card({ kicker, title, footer, hue1, hue2, disc: d }) {
+// The card is drawn in two passes rather than one, because the blur has to
+// reach the blob without reaching the type. Satori has no backdrop-filter and
+// no filter worth relying on, so the backdrop is rendered on its own, blurred
+// with Sharp, and the text composited over it afterwards.
+function backdrop({ hue1, hue2, disc: d }) {
+  return {
+    type: "div",
+    props: {
+      style: {
+        width: WIDTH,
+        height: HEIGHT,
+        display: "flex",
+        backgroundColor: "#EBEDF0",
+        backgroundImage: blobBackground(hue1, hue2, d)
+      },
+      children: [glassTint()]
+    }
+  };
+}
+
+function foreground({ kicker, title, footer }) {
   const text = (value, style) => ({ type: "div", props: { style, children: value } });
-  const children = [glassTint()];
+  const children = [];
 
   if (kicker) {
     children.push(text(drawable(kicker), { fontSize: 60, color: "#0b0c0c" }));
@@ -300,13 +337,29 @@ function card({ kicker, title, footer, hue1, hue2, disc: d }) {
         flexDirection: "column",
         position: "relative",
         padding: PADDING,
-        backgroundColor: "#EBEDF0",
-        backgroundImage: blobBackground(hue1, hue2, d),
         fontFamily: "volksans"
       },
       children
     }
   };
+}
+
+// CSS blur(Npx) is a Gaussian whose standard deviation is N/2, which is the
+// number Sharp wants — so the card can use the page's own figure without
+// inventing a second one.
+//
+// The page derives its blur from the disc it is blurring (--glass-blur in
+// src/css/variables.css: a fourteenth of the widest lobe), and the card's
+// discs are seeded per slug rather than one fixed size, so the same ratio is
+// applied to each card's own disc. A blur only means anything relative to
+// what it blurs; hard-coding a pixel count here is exactly how the page's own
+// blur came to be six times too strong for the disc it was softening.
+function blurSigma(d) {
+  return (DISC_HALF_W * d.r / 14) / 2;
+}
+
+function card(parts) {
+  return { backdrop: backdrop(parts), foreground: foreground(parts), disc: parts.disc };
 }
 
 function formatDate(date) {
@@ -330,13 +383,39 @@ async function generateOgImages(outputDir) {
 
   fs.mkdirSync(outputDir, { recursive: true });
 
-  async function render(element, outputPath) {
+  async function rasterise(element) {
     const svg = await satori(element, {
       width: WIDTH,
       height: HEIGHT,
       fonts: [{ name: "volksans", data: fontData, weight: 600, style: "normal" }]
     });
-    await sharp(Buffer.from(svg)).png().toFile(outputPath);
+    return sharp(Buffer.from(svg)).png().toBuffer();
+  }
+
+  async function render({ backdrop, foreground, disc }, outputPath) {
+    // Blur the backdrop before the type lands on it, and extend the edges
+    // first: a Gaussian samples past the canvas, so blurring in place drags
+    // transparent nothing inwards and leaves a pale border all the way round.
+    // Mirroring the edge out by 3σ and cutting it back off afterwards gives
+    // the same result the page gets, where the backdrop continues past the
+    // element being filtered.
+    const sigma = blurSigma(disc);
+    const pad = Math.ceil(sigma * 3);
+    // Two pipelines, not one: Sharp resolves extend and extract in a fixed
+    // order within a single chain, so asking for both at once crops the wrong
+    // rectangle ("bad extract area").
+    const padded = await sharp(await rasterise(backdrop))
+      .extend({ top: pad, bottom: pad, left: pad, right: pad, extendWith: "mirror" })
+      .blur(sigma)
+      .toBuffer();
+    const behind = await sharp(padded)
+      .extract({ left: pad, top: pad, width: WIDTH, height: HEIGHT })
+      .toBuffer();
+
+    await sharp(behind)
+      .composite([{ input: await rasterise(foreground) }])
+      .png()
+      .toFile(outputPath);
   }
 
   const jobs = [];
