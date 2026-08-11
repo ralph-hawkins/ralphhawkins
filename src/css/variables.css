@@ -50,29 +50,39 @@
   /* The blur belongs to the post panel alone (main), not to the page: the
      header and the supergraphic are both unfiltered tint over the blob, which
      is the only way the two can match — the letters have to be painted, and a
-     painted gradient cannot reproduce a blurred one. Expressed against the
-     viewport so it stays right on rotation, which a value measured once at
-     load could not be: 172.8px at 1440 wide, holding at 150px once the screen
-     is narrow enough that a proportional blur would stop reading as one. */
-  --glass-blur: max(150px, 12vw);
+     painted gradient cannot reproduce a blurred one.
+
+     Measured against the blob rather than the viewport, because a blur only
+     means anything relative to what it is blurring. It used to be 150px, set
+     when the blob's widest lobe was 2100px across; the disc that replaced it
+     is 1.15 × --blob-radius, around six times smaller, and 150px erased it —
+     measured, only 61% of the blob's colour reached the eye through the panel
+     against 83% with no blur at all, and the boundary showed as a hard step
+     where the colour stopped.
+
+     So: a fourteenth of the widest lobe, which is exactly the ratio the old
+     blob had (150/2100). That lands at 23.65px on a desktop and 10.25px on a
+     phone, where the disc is smaller and a desktop blur would swamp it. It is
+     also where the measurement plateaus — 83% gets through, the same as no
+     blur at all, so the frost costs nothing it doesn't have to. */
+  --glass-blur: calc(var(--blob-radius) * 1.15 / 14);
   --glass-saturate: 1.3;
   /* The tint alone, named because it is laid twice: once by the sheet itself
      and once inside the supergraphic's glyphs, which have to arrive at the
      same colour by painting rather than by filtering. */
   --glass-tint: color-mix(in srgb, var(--color-background) var(--glass-opacity), transparent);
 
-  /* The post body's own surface: this tone at this opacity, over the blur it
-     also carries.
+  /* The post body's own tint, over the blur it also carries. Both together
+     are what separate it from the header; the supergraphic is the hole in it,
+     skipping both to show the plain surface the header is showing. Carrying
+     most of the separation, because blur alone barely distinguishes the two
+     where the blob is locally flat — which is most of the page.
 
-     A tone of its own, not more of --color-background, and that is the whole
-     point of it. Every other surface here is a tint of the page colour laid
-     over the page colour, so where the blob isn't underneath they all resolve
-     to exactly the same pixel — measured, the header, the panel and the page
-     were all 235,237,240 with the disc pushed out of view. The panel stopped
-     reading as a separate sheet, and the supergraphic, which is a hole in that
-     sheet, stopped reading at all. A lighter tone gives the post a surface it
-     keeps whether or not the disc is behind it. */
-  --panel-tone: #F9FBFE;
+     A tint of --color-background, not a tone of its own. A lighter tone was
+     tried, to give the panel a surface it kept where the blob isn't behind it,
+     and it does do that — but it reads as a light wash rather than something
+     transparent, which is the wrong trade. The panel is meant to look like
+     glass over the blob, so it takes the blob's absence with it. */
   --panel-opacity: 65%;
 
   /* The gradient blob, as one value so it can be painted twice from a single

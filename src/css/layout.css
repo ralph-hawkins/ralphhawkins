@@ -60,7 +60,7 @@ main {
      stay the header's surface while everything around them is frosted, which
      is what makes them read as cut out of the panel. It is clipped to this
      box's top edge as well, so none of it reaches the header. */
-  background: color-mix(in srgb, var(--panel-tone) var(--panel-opacity), transparent);
+  background: color-mix(in srgb, var(--color-background) var(--panel-opacity), transparent);
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   min-height: 100vh;
