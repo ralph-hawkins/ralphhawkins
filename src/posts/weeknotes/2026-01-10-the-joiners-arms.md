@@ -10,7 +10,7 @@ I started working in a different team this week. A team that sits across Digital
 
 I've spoken to a few people this week about how this work came about. I think there's more to the story than I know, but roughly:
 
-About a year ago, we created a vision for personalised prevention – to help people understand their health risks and connect them to the right support, in an ongoing cycle. Over time the vision was adopted as the direction for all of Digital Prevention Services Portfolio (DPSP).
+About a year ago, we created a vision for personalised prevention – to help people understand their health risks and connect them to the right support, in an ongoing cycle. Over time the vision was adopted as the direction for all of Digital Prevention Services Portfolio (DPSP).
 
 In Personalised Prevention Services we explicitly told teams to not think too much about working with the NHS app while in discovery and alpha phases of work. We wanted to test the core hypothesis before engaging with a team that has an incredibly long backlog and an understandably high threshold of quality.
 

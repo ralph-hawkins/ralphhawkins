@@ -1,7 +1,7 @@
 const path = require("path");
 const dateFilters = require("./src/_11ty/filters/date-filters.js");
 const { imageSize } = require("./src/_11ty/filters/image-size.js");
-const { inlineImports } = require("./src/_11ty/css-bundle.js");
+const { bundle } = require("./src/_11ty/css-bundle.js");
 const { postVersion, resetCacheIfNewCommits } = require("./src/_11ty/post-versions.js");
 
 module.exports = function(eleventyConfig) {
@@ -145,7 +145,7 @@ module.exports = function(eleventyConfig) {
     outputFileExtension: "css",
     compile: function (inputContent, inputPath) {
       if (path.basename(inputPath) !== "main.css") return;
-      return () => inlineImports(inputPath);
+      return () => bundle(inputPath);
     }
   });
 
