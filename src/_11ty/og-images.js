@@ -44,12 +44,46 @@ function hueFromSlug(slug) {
 // tinted near-white is not (L 0.94 caps at 0.028 chroma, L 0.96 at nothing).
 // The colour comes from the wash below it. The wash in turn sits lower and
 // more chromatic than the bloom, because without that band the white simply
-// washes the first hue out. Each pair is at the most chroma sRGB holds at that
-// lightness for every hue, measured across 360°.
+// washes the first hue out.
 //
-// These must stay in step with the oklch() values in src/css/variables.css.
+// Chroma is not a constant: each chromatic layer takes the most sRGB holds at
+// its lightness *for the hue being drawn*. One number for all 360° meant every
+// hue was held down to the tightest one's ceiling — 0.118 at the base, against
+// a mean of 0.166 and 0.20+ for greens and magentas. The page does the same
+// arithmetic at runtime in src/js/random-gradients.js, because its hues rotate
+// on scroll; here the hue is fixed per card and it is done once.
+//
+// These must stay in step with src/css/variables.css and random-gradients.js:
+// the lightnesses, the margin, and the fact that the bloom carries no chroma.
 const BLOB_L = [0.99, 0.8, 0.74];
-const BLOB_C = [0, 0.095, 0.118];
+// A whisker inside the boundary, matching GAMUT_MARGIN in random-gradients.js.
+const GAMUT_MARGIN = 0.98;
+
+function inGamut(lightness, chroma, hue) {
+  const a = chroma * Math.cos((hue * Math.PI) / 180);
+  const b = chroma * Math.sin((hue * Math.PI) / 180);
+  const l = (lightness + 0.3963377774 * a + 0.2158037573 * b) ** 3;
+  const m = (lightness - 0.1055613458 * a - 0.0638541728 * b) ** 3;
+  const s = (lightness - 0.0894841775 * a - 1.2914855480 * b) ** 3;
+  const r = 4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s;
+  const g = -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s;
+  const bl = -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s;
+  return r >= 0 && r <= 1 && g >= 0 && g <= 1 && bl >= 0 && bl <= 1;
+}
+
+// Binary search rather than a table: the gamut boundary has corners where a
+// channel saturates, and interpolating across one overshoots and clips, which
+// distorts the hue the oklch definition exists to keep honest.
+function blobChroma(lobe, hue) {
+  if (BLOB_L[lobe] > 0.95) return 0; // the bloom is achromatic by design
+  let lo = 0;
+  let hi = 0.4;
+  for (let i = 0; i < 16; i++) {
+    const mid = (lo + hi) / 2;
+    if (inGamut(BLOB_L[lobe], mid, hue)) lo = mid; else hi = mid;
+  }
+  return lo * GAMUT_MARGIN;
+}
 
 // oklch → sRGB, clamped to 0–255. Done here rather than left to CSS because
 // Satori parses the card's colours itself and can't be relied on for oklch(),
@@ -74,7 +108,7 @@ function oklchToRgb(lightness, chroma, hue) {
 
 // One lobe's colour as CSS rgb()/rgba() — understood by both Satori and SVG.
 function blobColor(lobe, hue, alpha = 1) {
-  const [r, g, b] = oklchToRgb(BLOB_L[lobe], BLOB_C[lobe], hue);
+  const [r, g, b] = oklchToRgb(BLOB_L[lobe], blobChroma(lobe, hue), hue);
   return alpha === 1 ? `rgb(${r}, ${g}, ${b})` : `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
@@ -497,7 +531,7 @@ function faviconDataUri(slug) {
 // stay in gamut across the range, giving back a fifth of the blob's intensity.
 function postColor(slug) {
   const hue = (hueFromSlug(slug) + HUE_OFFSET) % 360;
-  const [r, g, b] = oklchToRgb(BLOB_L[2], BLOB_C[2], hue);
+  const [r, g, b] = oklchToRgb(BLOB_L[2], blobChroma(2, hue), hue);
   return "#" + [r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("");
 }
 
@@ -511,7 +545,7 @@ function postColor(slug) {
 // because the rubber-band area sits directly against the page.
 function overscrollColor(slug) {
   const hue = (hueFromSlug(slug) + HUE_OFFSET) % 360;
-  const [r, g, b] = oklchToRgb(BLOB_L[2], BLOB_C[2], hue);
+  const [r, g, b] = oklchToRgb(BLOB_L[2], blobChroma(2, hue), hue);
   // 20% colour over the #EBEDF0 background
   const background = [235, 237, 240];
   return "#" + [r, g, b]

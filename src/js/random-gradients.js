@@ -79,6 +79,55 @@
   // this governed nothing. Stated straight, it does what it says.
   const START_FLOOR = 0.6;
 
+  // Lightnesses of the two chromatic layers. Must match the oklch() values in
+  // variables.css: the stylesheet holds the lightness, this file solves the
+  // chroma that goes with it.
+  const WASH_L = 0.8;
+  const BASE_L = 0.74;
+
+  // The disc takes the most chroma sRGB holds at each layer's lightness for
+  // the hue actually being drawn, rather than one number for all 360° — which
+  // was the tightest hue's ceiling (0.118 at the base) imposed on every other.
+  // Worth 61% more chroma at the eye on average, double at 150°. Binary search
+  // rather than a table: the boundary has corners where a channel saturates,
+  // and interpolating across one overshoots and clips, which distorts hue.
+  // Tested in linear light — the 0-1 check there is the same answer the
+  // transfer function gives, more cheaply.
+  const GAMUT_STEPS = 16;
+  const GAMUT_MARGIN = 0.98; // a whisker inside, so 4dp rounding can't clip
+
+  const chromaCache = new Map();
+
+  function inGamut(L, C, hue) {
+    const a = C * Math.cos((hue * Math.PI) / 180);
+    const b = C * Math.sin((hue * Math.PI) / 180);
+    const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3;
+    const m = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3;
+    const s = (L - 0.0894841775 * a - 1.2914855480 * b) ** 3;
+    const r = 4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s;
+    const g = -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s;
+    const bl = -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s;
+    return r >= 0 && r <= 1 && g >= 0 && g <= 1 && bl >= 0 && bl <= 1;
+  }
+
+  // Cached per whole degree: the hue moves continuously as the page scrolls,
+  // so this would otherwise run twice a frame, and a degree is far finer than
+  // the eye reads here.
+  function maxChroma(L, hue) {
+    const key = L + '|' + Math.round(hue);
+    const cached = chromaCache.get(key);
+    if (cached !== undefined) return cached;
+    let lo = 0;
+    let hi = 0.4;
+    for (let i = 0; i < GAMUT_STEPS; i++) {
+      const mid = (lo + hi) / 2;
+      if (inGamut(L, mid, hue)) lo = mid; else hi = mid;
+    }
+    const chroma = lo * GAMUT_MARGIN;
+    chromaCache.set(key, chroma);
+    return chroma;
+  }
+
   // The scroll position the disc is actually drawn from: an eased follow of
   // the real one, advanced once per frame by ease() below. Seeded with the
   // current scroll rather than 0, so a reload part-way down the page — or a
@@ -106,8 +155,16 @@
     const scrollY = window.scrollY;
     const vh = window.innerHeight || 1;
     const offset = (scrollY / vh) * HUE_SHIFT_PER_VIEWPORT;
-    root.style.setProperty('--blob-hue-1', (((baseHue1 + offset) % 360 + 360) % 360).toFixed(2));
-    root.style.setProperty('--blob-hue-2', (((baseHue2 + offset) % 360 + 360) % 360).toFixed(2));
+    const hue1 = ((baseHue1 + offset) % 360 + 360) % 360;
+    const hue2 = ((baseHue2 + offset) % 360 + 360) % 360;
+    root.style.setProperty('--blob-hue-1', hue1.toFixed(2));
+    root.style.setProperty('--blob-hue-2', hue2.toFixed(2));
+
+    // 4dp for the same reason --blob-scale takes it: 2dp is a 6% step here,
+    // which bands the colour as the hue rotates. Without the script the
+    // stylesheet's fallbacks hold and the disc looks as it did before.
+    root.style.setProperty('--blob-chroma-1', maxChroma(WASH_L, hue1).toFixed(4));
+    root.style.setProperty('--blob-chroma-2', maxChroma(BASE_L, hue2).toFixed(4));
 
     // Travel comes from the eased scroll, so the disc trails the page and
     // keeps going for a moment after it stops. Under reduced motion there is
