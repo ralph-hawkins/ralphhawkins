@@ -2,7 +2,10 @@
   position: relative;
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 0 calc(var(--side-padding) + 1.5em);
+  /* Left from a variable, right still spelt out here: the supergraphic aligns
+     itself to the left inset and nothing reads the right one. See
+     --container-padding-left in variables.css for why it is in rem. */
+  padding: 0 calc(var(--side-padding) + 1.5em) 0 var(--container-padding-left);
   width: 100%;
 }
 
@@ -63,6 +66,25 @@ main {
   background: color-mix(in srgb, var(--color-background) var(--panel-opacity), transparent);
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  /* The supergraphic sits left of the column and is sized to its own longest
+     line, so it hangs off the screen on both sides: off the left by
+     --supergraphic-nudge on small screens, deliberately, and off the right
+     whenever its longest line outruns the viewport. Only the right one can
+     scroll the page sideways, and only that one is currently zero — which
+     follows from two tunables in supergraphic.css and the length of four
+     strings, not from anything structural. It was a thousand pixels at
+     desktop widths a few edits ago.
+
+     clip, not hidden: hidden makes main a scroll container, which would give
+     it its own vertical scrollbar (it is min-height: 100vh) and break
+     position: sticky inside it, the exact trade base.css declines when it
+     reaches for overflow-wrap instead. clip is the one overflow value that
+     leaves the other axis genuinely visible, so nothing vertical changes.
+
+     It clips to main's padding box, which is the full width of the viewport,
+     so the arrows and footnote numbers that hang into the column's padding
+     are untouched — they sit a whole rem clear of the edge. */
+  overflow-x: clip;
   min-height: 100vh;
   position: relative;
   z-index: 2;

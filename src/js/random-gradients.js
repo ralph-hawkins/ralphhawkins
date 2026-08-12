@@ -44,25 +44,19 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // How far below the hero's bottom edge the disc may *start*, as a fraction of
-  // the viewport. Only the start: the scroll drift below is left alone, so the
-  // blob still travels as the page moves.
+  // The lowest the disc's centre may *start*, as a fraction of the viewport
+  // from the top. Only the start: the scroll drift below is left alone, so the
+  // blob still travels as the page moves, and the page's own auto-scroll
+  // (auto-scroll.js) then moves it further. This is the number before any of
+  // that — where the disc is placed, not where it ends up.
   //
-  // A rail rather than a correction — measured over 20 loads at 1440×900 the
-  // centre lands between 36% above the edge and 11% below it, so at today's
-  // hero height it never binds. It exists because that is a coincidence of the
-  // hero being 62.5svh: the offset is up to a quarter of the viewport either
-  // way from the middle, so a shorter hero would put the disc under the post
-  // panel, where the panel's tint and blur all but erase it.
-  const START_BELOW_HERO = 0.25;
-
-  // Measured lazily — this script runs in <head>, before the header exists —
-  // and cached, because reading it per frame would force a layout.
-  let heroHeight = null;
-  function measureHero() {
-    const hero = document.querySelector('header');
-    heroHeight = hero ? hero.getBoundingClientRect().height : null;
-  }
+  // It used to be expressed as a distance below the hero's bottom edge, which
+  // made it depend on the hero being 62.5svh — and at that height it never
+  // bound at all: measured over 80 loads at 1440×900, the centre landed
+  // between 25% and 75% of the viewport while the rail permitted 87.5%, so it
+  // was slack on every single load and the constant that appeared to govern
+  // this governed nothing. Stated straight, it does what it says.
+  const START_FLOOR = 0.6;
 
   // The post supergraphic fills its glyphs with this same gradient so the type
   // reads as a hole cut through everything above the blob (see
@@ -89,7 +83,6 @@
   function findSupergraphic() {
     supergraphic = document.querySelector('.supergraphic');
     measureSupergraphic();
-    measureHero();
     apply(0);
   }
 
@@ -105,11 +98,15 @@
     const hoverY = reduceMotion ? 0 : Math.cos((time / HOVER_PERIOD_Y) * Math.PI * 2 + HOVER_PHASE) * HOVER_AMPLITUDE;
 
     // The disc's centre sits at half the viewport plus this offset, so the
-    // lowest permitted centre converts straight into a ceiling on the offset.
-    let startY = INITIAL_OFFSET_Y;
-    if (heroHeight !== null) {
-      startY = Math.min(startY, heroHeight + START_BELOW_HERO * vh - 0.5 * vh);
-    }
+    // floor converts straight into a ceiling on the offset.
+    //
+    // Applied here against the live vh rather than folded into
+    // INITIAL_OFFSET_Y once, because that offset is a fixed number of pixels
+    // rolled at load: capping it at load would hold 60vh for the window it
+    // was rolled in and no other. Shrink the window afterwards and the same
+    // pixels are a larger fraction of it, and the disc would sink back below
+    // the floor.
+    const startY = Math.min(INITIAL_OFFSET_Y, (START_FLOOR - 0.5) * vh);
 
     root.style.setProperty('--blob-x', `${(INITIAL_OFFSET_X + dir.x * dist + hoverX).toFixed(2)}px`);
     root.style.setProperty('--blob-y', `${(startY + dir.y * dist + hoverY).toFixed(2)}px`);
@@ -143,15 +140,18 @@
     findSupergraphic();
   }
   // The graphic is sized in vw, so a resize moves its box as well as the blob.
-  window.addEventListener('resize', () => { measureSupergraphic(); measureHero(); apply(0); });
+  window.addEventListener('resize', () => { measureSupergraphic(); apply(0); });
 
-  // And again once the webfont lands. The box is anchored by its right edge
-  // and sized to max-content, so its *left* edge depends on how wide the type
-  // sets — which changes when Volksans replaces the fallback. Measuring only
-  // at DOMContentLoaded leaves a stale left edge and throws the cut-out out of
+  // And again once the webfont lands. The box is anchored by its left edge
+  // now rather than its right, so it no longer depends on how wide its own
+  // type sets — but it still moves, because that edge is measured from
+  // .container, and .container is 65ch wide. ch is a font-relative unit, so
+  // the column narrows or widens the moment Volksans replaces the fallback
+  // and the centred box shifts sideways with it. Measuring only at
+  // DOMContentLoaded leaves a stale left edge and throws the cut-out out of
   // register horizontally for the rest of the page's life.
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => { measureSupergraphic(); measureHero(); apply(0); });
+    document.fonts.ready.then(() => { measureSupergraphic(); apply(0); });
   }
 
   if (reduceMotion) {

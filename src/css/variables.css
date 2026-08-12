@@ -167,8 +167,31 @@
     );
 
   /* Layout */
-  --content-width: 65ch;
+  /* 65 characters, spelt out rather than written 65ch, because the
+     supergraphic reads this too and ch cannot survive the trip: a custom
+     property is substituted as tokens and its units resolve at the element
+     that *uses* it, so 65ch inside .supergraphic would measure 65 zeroes of
+     its own 86px type — over three thousand pixels.
+
+     0.54 is Volksans' "0" advance, and it is what ch means here: measured off
+     the face at 1000px it is exactly 540/1000, and the column this computes
+     comes out 730.08px against the 730.078px that 65ch actually rendered —
+     two thousandths of a pixel, which is Chrome rounding the glyph advance to
+     its subpixel grid. Remeasure if the face or --font-size-base changes,
+     the same way --supergraphic-line-ratio has to be. */
+  --content-width: calc(65 * 0.54 * var(--font-size-base));
   --side-padding: 1rem;
+  /* The column's left inset — where every line of text on the site starts,
+     measured from the edge of .container's box. Named because the post
+     supergraphic aligns to it as well, and the two silently drifting apart
+     is exactly the failure this prevents.
+
+     In rem, not the em .container's own declaration used to carry, because
+     the value is now read somewhere else too: an em resolves against the
+     element that uses it, and .supergraphic's em is its own 86px-ish font
+     size. 1.5 × the body size is what the em spelt out, so this computes to
+     the same 2.95rem it always did. */
+  --container-padding-left: calc(var(--side-padding) + 1.5 * var(--font-size-base));
   /* How much of the hero is left showing when a post opens (auto-scroll.js
      reads this). Zero puts the hero's bottom edge exactly on the top of the
      viewport, which is where a post link should land you; raise it to leave a

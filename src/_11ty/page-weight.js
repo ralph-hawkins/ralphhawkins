@@ -21,12 +21,24 @@ const GZIP_LEVEL = 5;
 // compressed formats and ship as-is.
 const TEXT_EXTENSIONS = new Set([".html", ".css", ".js", ".svg", ".xml", ".json", ".txt"]);
 
-// Rendered into the colophon by post.njk and substituted here.
+// Rendered by post.njk twice — once into the colophon and once into the
+// supergraphic, which sets the same value as one of its lines — and
+// substituted here. solve() replaces every occurrence, and the fixed point it
+// settles on counts them all.
 const TOKEN = "@@PAGE_WEIGHT_KB@@";
 
 // Dropped from the page when a weight can't be worked out, so a failed
-// measurement loses the row rather than shipping a placeholder.
-const ROW = /\n?\s*<dt>Weight<\/dt>\s*<dd>@@PAGE_WEIGHT_KB@@[^<]*<\/dd>/;
+// measurement loses the row rather than shipping a placeholder. Both carriers
+// have to be listed: leaving either behind ships the raw token, and the
+// supergraphic's copy would ship it at 288px.
+const CARRIERS = [
+  /\n?\s*<dt>Weight<\/dt>\s*<dd>@@PAGE_WEIGHT_KB@@[^<]*<\/dd>/,
+  /\n?\s*<span>@@PAGE_WEIGHT_KB@@[^<]*<\/span>/,
+];
+
+function dropCarriers(html) {
+  return CARRIERS.reduce((text, pattern) => text.replace(pattern, ""), html);
+}
 
 function transferSize(filePath) {
   const bytes = fs.readFileSync(filePath);
@@ -132,7 +144,7 @@ function weighPage(htmlPath, outputDir, inputDir) {
   }
 
   if (missing.length > 0) {
-    fs.writeFileSync(htmlPath, template.replace(ROW, ""));
+    fs.writeFileSync(htmlPath, dropCarriers(template));
     return { htmlPath, missing, dropped: true };
   }
 

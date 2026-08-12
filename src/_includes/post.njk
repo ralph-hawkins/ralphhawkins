@@ -12,23 +12,51 @@ layout: base
   {% if postVersion and postVersion.published %}
     {% set headerDate = postVersion.published %}
   {% endif %}
-  {#- Supergraphic: the week number over the date, set huge, cropped by the
-     left edge of the viewport and stopping at its centre. It used to be a
-     pure flourish, hidden from the accessibility tree because a small meta
-     line below carried the same two facts as real text. That line is gone, so
-     this is now the only place the week number appears at all — it stays in
-     the tree and reads before the title, which is the order it would have had.
-     Still not selectable: what a sighted reader sees is cropped type, and a
-     selection over it would be nonsense.
+  {#- Supergraphic: the post's own facts set huge, set against the column's
+     left edge. Four lines — the week number, the date, the version and the
+     weight.
+
+     It briefly carried the whole colophon. Everything cut since has been cut
+     for the same reason, so the order is worth keeping straight: the two
+     timestamps went first, being the two longest lines by half again and the
+     only two that ever overhung the screen, and the word count and the colour
+     followed. Read at this size they were a hex string and a bare number with
+     nothing to say what either was — a colophon's values without a colophon's
+     labels. What stayed is what a reader can place unaided.
+
+     Every line is tabular figures or fixed text, which is what lets
+     supergraphic.css size the whole graphic from one measured advance width.
+     The colophon at the foot of the post still carries all six values with
+     their labels, and is the record.
+
+     Accessibility: the first two lines stay in the tree, because the
+     supergraphic is the only place the week number appears at all and it
+     reads before the title, which is the order it would have had. The
+     colophon values do not — they are already on this page as real text with
+     labels, and read here they would be bare numbers between the week note
+     and the title. So the graphic says what it alone can say and the colophon
+     says the rest.
+
+     Not selectable either way: what a sighted reader sees is cropped type,
+     and a selection over it would be nonsense.
 
      Only week notes have a number, and without one there is nothing to set. -#}
   {% if postNumber %}
   <p class="supergraphic">
     {#- Zero-padded, which with tabular figures makes this line measure the
-       same on every post, so the left crop lands on the same letter
-       throughout instead of drifting between one- and two-digit weeks. -#}
+       same on every post — and it is now the longest line in the stack, so it
+       is the one that decides whether anything overhangs the screen at all. -#}
     <span>Week note {% if postNumber < 10 %}0{% endif %}{{ postNumber }}</span>
     <span>{{ headerDate | dateNumeric }}</span>
+    {%- if postVersion %}
+    <span aria-hidden="true">
+      <span>{{ postVersion.version }}{% if postVersion.draft %} (draft){% endif %}</span>
+      {#- Substituted after the build by src/_11ty/page-weight.js, the same
+         token the colophon carries — it replaces every occurrence, and the
+         fixed point it solves for counts both. -#}
+      <span>@@PAGE_WEIGHT_KB@@ kB</span>
+    </span>
+    {%- endif %}
   </p>
   {% endif %}
   <div class="post-header">
