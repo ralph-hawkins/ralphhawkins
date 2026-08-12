@@ -22,6 +22,27 @@
   const dir = { x: Math.cos(angle), y: Math.sin(angle) };
 
   const SCROLL_FACTOR = 0.2;
+
+  // How heavily the disc's travel lags the scroll, as the time constant of an
+  // exponential follow in milliseconds: it covers 63% of the distance to where
+  // the scroll says it should be in one tau, 95% in three. At 600ms the blob
+  // is unmistakably behind the page rather than pinned to it, and still comes
+  // to rest inside two seconds of the scroll stopping.
+  //
+  // Only the *travel* is eased. The hue rotation and the fade to the footer
+  // stay keyed to the real scroll position: they say how far through the
+  // document the reader is, which is a fact about the page rather than a
+  // movement, and lagging them would mean the disc arrived at the footer still
+  // faintly visible.
+  //
+  // Framed as a time constant rather than a per-frame fraction because a
+  // fraction is silently frame-rate dependent — the same 0.05 eases twice as
+  // fast on a 120Hz display as on a 60Hz one, so the feel of the page would
+  // depend on the machine. With exp(-dt/tau) the curve is the same everywhere,
+  // and it stays correct across an arbitrary gap: after a long stall the
+  // exponential is ~0 and the disc is simply where it should have settled,
+  // which is why dt is not clamped.
+  const SCROLL_EASE_TAU = 600;
   const HUE_SHIFT_PER_VIEWPORT = 40;
   const HOVER_AMPLITUDE = 40;
   const HOVER_PERIOD_X = 11000;
@@ -58,6 +79,29 @@
   // this governed nothing. Stated straight, it does what it says.
   const START_FLOOR = 0.6;
 
+  // The scroll position the disc is actually drawn from: an eased follow of
+  // the real one, advanced once per frame by ease() below. Seeded with the
+  // current scroll rather than 0, so a reload part-way down the page — or a
+  // post opening under auto-scroll.js — starts the disc where it belongs
+  // instead of gliding in from the top over the first two seconds.
+  let easedScroll = window.scrollY;
+  let lastFrame = null;
+
+  function ease(time) {
+    const target = window.scrollY;
+    // First frame of a run — page load, or the tab coming back to the front.
+    // Nothing to ease from, and after a spell hidden the reader may have
+    // scrolled, so take the position as it is.
+    if (lastFrame === null) {
+      easedScroll = target;
+      lastFrame = time;
+      return;
+    }
+    const dt = Math.max(0, time - lastFrame);
+    lastFrame = time;
+    easedScroll = target + (easedScroll - target) * Math.exp(-dt / SCROLL_EASE_TAU);
+  }
+
   function apply(time) {
     const scrollY = window.scrollY;
     const vh = window.innerHeight || 1;
@@ -65,7 +109,12 @@
     root.style.setProperty('--blob-hue-1', (((baseHue1 + offset) % 360 + 360) % 360).toFixed(2));
     root.style.setProperty('--blob-hue-2', (((baseHue2 + offset) % 360 + 360) % 360).toFixed(2));
 
-    const dist = scrollY * SCROLL_FACTOR;
+    // Travel comes from the eased scroll, so the disc trails the page and
+    // keeps going for a moment after it stops. Under reduced motion there is
+    // no loop to advance the easing, and motion that continues after the
+    // reader has stopped is exactly what that preference asks not to see — so
+    // the disc tracks the real scroll, one for one, as it always did.
+    const dist = (reduceMotion ? scrollY : easedScroll) * SCROLL_FACTOR;
     const hoverX = reduceMotion ? 0 : Math.sin((time / HOVER_PERIOD_X) * Math.PI * 2 + HOVER_PHASE) * HOVER_AMPLITUDE;
     const hoverY = reduceMotion ? 0 : Math.cos((time / HOVER_PERIOD_Y) * Math.PI * 2 + HOVER_PHASE) * HOVER_AMPLITUDE;
 
@@ -113,11 +162,17 @@
     // blur layered over it) instead of burning CPU/battery.
     let rafId = null;
     function loop(time) {
+      ease(time);
       apply(time);
       rafId = requestAnimationFrame(loop);
     }
     function start() { if (rafId === null) rafId = requestAnimationFrame(loop); }
-    function stop() { if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; } }
+    // lastFrame goes with the loop: the next run starts fresh rather than
+    // easing across however long the tab was hidden.
+    function stop() {
+      if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+      lastFrame = null;
+    }
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) stop(); else start();
     });
