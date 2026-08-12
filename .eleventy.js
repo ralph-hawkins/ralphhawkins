@@ -129,7 +129,11 @@ module.exports = function(eleventyConfig) {
     return index >= 0 && index < collection.length - 1 ? collection[index + 1] : null;
   });
 
-  // Sequential number of a post within a collection (oldest = 1)
+  // Sequential number of a post within a collection (oldest = 1). Read against
+  // publicWeeknotes, so it is the week note's number — the colophon's Version
+  // row sets it where a version's major part would go. Preview drafts aren't
+  // in that collection and come back null, which is what the row falls back
+  // on.
   eleventyConfig.addFilter("getPostNumber", function(collection, page) {
     const index = collection.findIndex(post => post.url === page.url);
     return index >= 0 ? index + 1 : null;

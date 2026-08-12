@@ -86,8 +86,8 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  /* The recipe lives in variables.css, because the post supergraphic paints
-     it a second time to cut a hole through to it. */
+  /* The recipe lives in variables.css — see there for why it is named rather
+     than spelt out here. */
   background-image: var(--blob-gradient);
   opacity: var(--blob-opacity, 1);
   z-index: -1;
@@ -96,15 +96,12 @@ body::before {
 /* The base surface: a flat tint over the blob for the whole page, and
    deliberately no filter.
 
-   The blur lives on the post panel instead (main, in layout.css). That is
-   what lets the supergraphic match the header exactly: the letters have to
-   be painted rather than filtered — nothing in CSS subtracts a descendant
-   from an ancestor's backdrop — and a painted gradient cannot reproduce a
-   240px-blurred one. Measured against the header beside it, the painted fill
-   ran up to 27 levels of RGB adrift, lighter where the blob is flat and
-   darker where it peaks, which is blur redistributing colour spatially. With
-   no filter on this surface there is nothing to reproduce: header and glyphs
-   are the same tint over the same gradient, and agree by construction.
+   The blur lives on the post panel instead (main, in layout.css), so this
+   sheet is what the header shows and the panel is the same thing blurred.
+   Keeping the page-wide surface unfiltered is also what made the
+   supergraphic's painted glyphs match the header exactly, up to 2026-08-12 —
+   a painted gradient cannot reproduce a blurred one, and against a filtered
+   surface the fill ran up to 27 RGB levels adrift.
 
    Fixed, because the blob beneath it is fixed: the pair stay registered as
    the page scrolls and the content slides over both. Same z-index as the

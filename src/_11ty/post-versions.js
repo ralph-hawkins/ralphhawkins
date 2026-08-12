@@ -27,6 +27,11 @@ function git(...args) {
 
 // Minor versions read as two digits minimum (1.00, 1.05, 1.15, 1.100) so
 // numbers stay column-stable in the tabular-nums colophon.
+//
+// Returned as `iteration` as well as inside `version`, because the colophon
+// sets the week note's number where the major part would be — "Week note
+// 53.05" — and pulling the minor back out of a formatted version string is
+// exactly how this padding would eventually be lost.
 function minor(n) {
   return String(n).padStart(2, "0");
 }
@@ -97,6 +102,7 @@ function computeVersion(relPath) {
     // Never been live: preview drafts count 0.1, 0.2, …
     return {
       version: `0.${minor(commits.length)}`,
+      iteration: minor(commits.length),
       draft: true,
       published: null,
       updated: new Date(commits[commits.length - 1].date),
@@ -111,6 +117,7 @@ function computeVersion(relPath) {
 
   return {
     version: `1.${minor(counted.length - 1)}`,
+    iteration: minor(counted.length - 1),
     draft: false,
     published: new Date(commits[liveIndex].date),
     updated: counted.length > 1 ? new Date(counted[counted.length - 1].date) : null,

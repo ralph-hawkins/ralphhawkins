@@ -21,19 +21,18 @@ const GZIP_LEVEL = 5;
 // compressed formats and ship as-is.
 const TEXT_EXTENSIONS = new Set([".html", ".css", ".js", ".svg", ".xml", ".json", ".txt"]);
 
-// Rendered by post.njk twice — once into the colophon and once into the
-// supergraphic, which sets the same value as one of its lines — and
-// substituted here. solve() replaces every occurrence, and the fixed point it
-// settles on counts them all.
+// Rendered by post.njk into the colophon's Weight row and substituted here.
+// solve() replaces every occurrence, so a second carrier could be added
+// without changing anything below — the post supergraphic was one until
+// 2026-08-12, and the fixed point counted both.
 const TOKEN = "@@PAGE_WEIGHT_KB@@";
 
 // Dropped from the page when a weight can't be worked out, so a failed
-// measurement loses the row rather than shipping a placeholder. Both carriers
-// have to be listed: leaving either behind ships the raw token, and the
-// supergraphic's copy would ship it at 288px.
+// measurement loses the row rather than shipping a placeholder. Every carrier
+// of the token has to be listed: one left behind ships the raw token to the
+// reader.
 const CARRIERS = [
   /\n?\s*<dt>Weight<\/dt>\s*<dd>@@PAGE_WEIGHT_KB@@[^<]*<\/dd>/,
-  /\n?\s*<span>@@PAGE_WEIGHT_KB@@[^<]*<\/span>/,
 ];
 
 function dropCarriers(html) {

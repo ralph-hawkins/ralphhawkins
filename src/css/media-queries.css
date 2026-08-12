@@ -4,8 +4,8 @@
 /* Additional mobile adjustments for small screens */
 @media (max-width: 30em) {
   /* For very small screens, adjust the spacing slightly. Set on the variable
-     rather than on .container, so the supergraphic — which aligns to the same
-     inset — moves with it instead of staying behind at the wider value. */
+     rather than on .container, so anything else that aligns to the column's
+     inset moves with it instead of staying behind at the wider value. */
   :root {
     --container-padding-left: calc(var(--side-padding) + 1.2 * var(--font-size-base));
   }

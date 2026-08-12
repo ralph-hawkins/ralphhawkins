@@ -3,62 +3,8 @@ layout: base
 ---
 
 <article>
-  {% set postNumber = collections.publicWeeknotes | getPostNumber(page) %}
   {% set postVersion = page.inputPath | postVersion %}
-  {# Publish date from git history, like the colophon; front-matter date is
-     the fallback for drafts and uncommitted files. Set before the
-     supergraphic, which shows the same date in its own format. #}
-  {% set headerDate = date %}
-  {% if postVersion and postVersion.published %}
-    {% set headerDate = postVersion.published %}
-  {% endif %}
-  {#- Supergraphic: the post's own facts set huge, set against the column's
-     left edge. Four lines — the week number, the date, the version and the
-     weight.
-
-     It briefly carried the whole colophon. Everything cut since has been cut
-     for the same reason, so the order is worth keeping straight: the two
-     timestamps went first, being the two longest lines by half again and the
-     only two that ever overhung the screen, and the word count and the colour
-     followed. Read at this size they were a hex string and a bare number with
-     nothing to say what either was — a colophon's values without a colophon's
-     labels. What stayed is what a reader can place unaided.
-
-     Every line is tabular figures or fixed text, which is what lets
-     supergraphic.css size the whole graphic from one measured advance width.
-     The colophon at the foot of the post still carries all six values with
-     their labels, and is the record.
-
-     Accessibility: the first two lines stay in the tree, because the
-     supergraphic is the only place the week number appears at all and it
-     reads before the title, which is the order it would have had. The
-     colophon values do not — they are already on this page as real text with
-     labels, and read here they would be bare numbers between the week note
-     and the title. So the graphic says what it alone can say and the colophon
-     says the rest.
-
-     Not selectable either way: what a sighted reader sees is cropped type,
-     and a selection over it would be nonsense.
-
-     Only week notes have a number, and without one there is nothing to set. -#}
-  {% if postNumber %}
-  <p class="supergraphic">
-    {#- Zero-padded, which with tabular figures makes this line measure the
-       same on every post — and it is now the longest line in the stack, so it
-       is the one that decides whether anything overhangs the screen at all. -#}
-    <span>Week note {% if postNumber < 10 %}0{% endif %}{{ postNumber }}</span>
-    <span>{{ headerDate | dateNumeric }}</span>
-    {%- if postVersion %}
-    <span aria-hidden="true">
-      <span>{{ postVersion.version }}{% if postVersion.draft %} (draft){% endif %}</span>
-      {#- Substituted after the build by src/_11ty/page-weight.js, the same
-         token the colophon carries — it replaces every occurrence, and the
-         fixed point it solves for counts both. -#}
-      <span>@@PAGE_WEIGHT_KB@@ kB</span>
-    </span>
-    {%- endif %}
-  </p>
-  {% endif %}
+  {% set postNumber = collections.publicWeeknotes | getPostNumber(page) %}
   <div class="post-header">
     <h1 class="page-title">{{ title }}</h1>
     {% if description %}
@@ -74,8 +20,31 @@ layout: base
     <div class="post-colophon">
       <h2 class="post-colophon-label">Colophon</h2>
       <dl class="colophon-list">
+      {#- "Week note" is the label, and the value is the note's own number with
+         the iteration after it: "Week note | 53.05" is the 53rd, revised five
+         times since it was published. It replaced the Version row, whose major
+         part carried nothing — 1 for every post that had ever been live — and
+         which repeated the label inside its own value.
+
+         The label changes with it rather than staying "Version", because
+         "53.05" under "Version" would read as a version number that had
+         jumped 52 majors.
+
+         Preview drafts are excluded from publicWeeknotes and so have no number
+         to set: a draft has no place in the sequence until it is published, so
+         the row falls back to the label and value it had before.
+
+         The draft marker is on both branches, not just the fallback. They part
+         on the *current* front matter and postVersion.draft reads git history,
+         so a post whose preview flag has been removed but not yet committed is
+         numbered and still a draft. -#}
+      {% if postNumber %}
+      <dt>Week note</dt>
+      <dd>{{ postNumber }}.{{ postVersion.iteration }}{% if postVersion.draft %} (draft){% endif %}</dd>
+      {% else %}
       <dt>Version</dt>
       <dd>{{ postVersion.version }}{% if postVersion.draft %} (draft){% endif %}</dd>
+      {% endif %}
       {% if postVersion.published %}
         <dt>Published</dt>
         <dd><time datetime="{{ postVersion.published | isoDate }}">{{ postVersion.published | dateTimeFormat }}</time></dd>

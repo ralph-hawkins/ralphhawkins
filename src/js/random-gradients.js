@@ -58,34 +58,6 @@
   // this governed nothing. Stated straight, it does what it says.
   const START_FLOOR = 0.6;
 
-  // The post supergraphic fills its glyphs with this same gradient so the type
-  // reads as a hole cut through everything above the blob (see
-  // supergraphic.css). Its box scrolls with the document while the blob is
-  // fixed to the viewport, so it needs the offset between the two to line them
-  // up. background-attachment: fixed is meant to do exactly this unaided, but
-  // Chrome mispaints it near the top of the document — the letters come out
-  // blank there — so the offset is published as a custom property instead.
-  // Measured, not read per frame: the box only moves when layout does, and a
-  // getBoundingClientRect() inside the rAF loop would force a layout on every
-  // frame.
-  let supergraphic = null;
-  let supergraphicLeft = 0;
-  let supergraphicTop = 0;
-
-  function measureSupergraphic() {
-    if (!supergraphic) return;
-    const box = supergraphic.getBoundingClientRect();
-    supergraphicLeft = box.left + window.scrollX;
-    supergraphicTop = box.top + window.scrollY;
-  }
-
-  // This script runs in <head>, before the element exists.
-  function findSupergraphic() {
-    supergraphic = document.querySelector('.supergraphic');
-    measureSupergraphic();
-    apply(0);
-  }
-
   function apply(time) {
     const scrollY = window.scrollY;
     const vh = window.innerHeight || 1;
@@ -116,13 +88,6 @@
     const scale = reduceMotion ? 1 : 1 + Math.sin((time / SCALE_PERIOD) * Math.PI * 2 + SCALE_PHASE) * SCALE_AMPLITUDE;
     root.style.setProperty('--blob-scale', scale.toFixed(4));
 
-    // Where the viewport's top-left sits in the supergraphic's own box, which
-    // is where its copy of the gradient has to start for the two to coincide.
-    if (supergraphic) {
-      root.style.setProperty('--supergraphic-blob-x', `${(window.scrollX - supergraphicLeft).toFixed(2)}px`);
-      root.style.setProperty('--supergraphic-blob-y', `${(scrollY - supergraphicTop).toFixed(2)}px`);
-    }
-
     const max = (document.documentElement.scrollHeight - vh) || 1;
     const progress = Math.min(1, Math.max(0, scrollY / max));
     root.style.setProperty('--blob-opacity', (1 - progress).toFixed(2));
@@ -134,25 +99,11 @@
   // flashed yellow-green for a frame when navigating between posts.
   apply(0);
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', findSupergraphic);
-  } else {
-    findSupergraphic();
-  }
-  // The graphic is sized in vw, so a resize moves its box as well as the blob.
-  window.addEventListener('resize', () => { measureSupergraphic(); apply(0); });
-
-  // And again once the webfont lands. The box is anchored by its left edge
-  // now rather than its right, so it no longer depends on how wide its own
-  // type sets — but it still moves, because that edge is measured from
-  // .container, and .container is 65ch wide. ch is a font-relative unit, so
-  // the column narrows or widens the moment Volksans replaces the fallback
-  // and the centred box shifts sideways with it. Measuring only at
-  // DOMContentLoaded leaves a stale left edge and throws the cut-out out of
-  // register horizontally for the rest of the page's life.
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => { measureSupergraphic(); apply(0); });
-  }
+  // START_FLOOR is applied against the live viewport height rather than folded
+  // into the offset at load, so a resize has to re-run it. The rAF loop below
+  // would do that anyway; under reduced motion there is no loop, and scroll
+  // alone would leave a resized window holding the old placement.
+  window.addEventListener('resize', () => apply(0));
 
   if (reduceMotion) {
     window.addEventListener('scroll', () => apply(0), { passive: true });

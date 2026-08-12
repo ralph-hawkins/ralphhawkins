@@ -48,9 +48,8 @@
   --glass-opacity: 60%;
 
   /* The blur belongs to the post panel alone (main), not to the page: the
-     header and the supergraphic are both unfiltered tint over the blob, which
-     is the only way the two can match — the letters have to be painted, and a
-     painted gradient cannot reproduce a blurred one.
+     header is unfiltered tint over the blob, and the panel laid over it is
+     the same tint blurred, which is what separates the two.
 
      Measured against the blob rather than the viewport, because a blur only
      means anything relative to what it is blurring. It used to be 150px, set
@@ -67,16 +66,15 @@
      blur at all, so the frost costs nothing it doesn't have to. */
   --glass-blur: calc(var(--blob-radius) * 1.15 / 14);
   --glass-saturate: 1.3;
-  /* The tint alone, named because it is laid twice: once by the sheet itself
-     and once inside the supergraphic's glyphs, which have to arrive at the
-     same colour by painting rather than by filtering. */
+  /* The tint alone, named rather than spelt out at the one place it is used
+     (body::after): it was laid a second time inside the supergraphic's glyphs
+     until 2026-08-12, and the name is what kept the two copies in step. */
   --glass-tint: color-mix(in srgb, var(--color-background) var(--glass-opacity), transparent);
 
   /* The post body's own tint, over the blur it also carries. Both together
-     are what separate it from the header; the supergraphic is the hole in it,
-     skipping both to show the plain surface the header is showing. Carrying
-     most of the separation, because blur alone barely distinguishes the two
-     where the blob is locally flat — which is most of the page.
+     are what separate it from the header, and this carries most of the
+     separation, because blur alone barely distinguishes the two where the
+     blob is locally flat — which is most of the page.
 
      A tint of --color-background, not a tone of its own. A lighter tone was
      tried, to give the panel a surface it kept where the blob isn't behind it,
@@ -85,15 +83,13 @@
      glass over the blob, so it takes the blob's absence with it. */
   --panel-opacity: 65%;
 
-  /* The gradient blob, as one value so it can be painted twice from a single
-     recipe: body::before lays it behind the page, and the post supergraphic
-     re-paints it inside its glyphs to read as a hole cut through everything
-     above it. The --blob-* inputs are set on :root every frame by
-     random-gradients.js, and resolve where the value is *used*, so both
-     copies inherit the same numbers and stay in step as the blob drifts.
-     Kept here rather than inline so the two can't drift apart — the Open
-     Graph card already carries its own copy of this recipe, which is exactly
-     how that one fell out of date. */
+  /* The gradient blob, as one value rather than inline on body::before, which
+     is now the only thing that paints it — the post supergraphic re-painted
+     it inside its glyphs until 2026-08-12. Kept named anyway: the Open Graph
+     card carries its own copy of this recipe in JS, and a named value is
+     where a second painter belongs if there is ever one again. The --blob-*
+     inputs are set on :root every frame by random-gradients.js and resolve
+     where the value is *used*. */
   /* Set in oklch, not hsl, because the hue rotates as the page scrolls
      (HUE_SHIFT_PER_VIEWPORT in random-gradients.js) and hsl rotates unevenly:
      at a fixed 90% saturation and 72% lightness the perceived lightness swings
@@ -167,30 +163,31 @@
     );
 
   /* Layout */
-  /* 65 characters, spelt out rather than written 65ch, because the
-     supergraphic reads this too and ch cannot survive the trip: a custom
-     property is substituted as tokens and its units resolve at the element
-     that *uses* it, so 65ch inside .supergraphic would measure 65 zeroes of
-     its own 86px type — over three thousand pixels.
+  /* 65 characters, spelt out rather than written 65ch. It was spelt out
+     because the supergraphic read this value too and ch could not survive the
+     trip — a custom property is substituted as tokens and its units resolve
+     at the element that *uses* it — and it stays spelt out now the graphic is
+     gone, because the arithmetic is a length that does not depend on which
+     face is loaded: 65ch narrows and widens as Volksans replaces the fallback,
+     and this does not.
 
      0.54 is Volksans' "0" advance, and it is what ch means here: measured off
      the face at 1000px it is exactly 540/1000, and the column this computes
      comes out 730.08px against the 730.078px that 65ch actually rendered —
      two thousandths of a pixel, which is Chrome rounding the glyph advance to
-     its subpixel grid. Remeasure if the face or --font-size-base changes,
-     the same way --supergraphic-line-ratio has to be. */
+     its subpixel grid. Remeasure if the face or --font-size-base changes. */
   --content-width: calc(65 * 0.54 * var(--font-size-base));
   --side-padding: 1rem;
   /* The column's left inset — where every line of text on the site starts,
-     measured from the edge of .container's box. Named because the post
-     supergraphic aligns to it as well, and the two silently drifting apart
-     is exactly the failure this prevents.
+     measured from the edge of .container's box. Named because
+     media-queries.css narrows it below 30em by setting it here, so the change
+     reaches .container's padding without a second declaration of the padding
+     itself.
 
-     In rem, not the em .container's own declaration used to carry, because
-     the value is now read somewhere else too: an em resolves against the
-     element that uses it, and .supergraphic's em is its own 86px-ish font
-     size. 1.5 × the body size is what the em spelt out, so this computes to
-     the same 2.95rem it always did. */
+     In rem, not the em .container's own declaration used to carry: an em
+     would resolve against whatever element read the value, which was the
+     trap when the supergraphic read it too. 1.5 × the body size is what the
+     em spelt out, so this computes to the same 2.95rem it always did. */
   --container-padding-left: calc(var(--side-padding) + 1.5 * var(--font-size-base));
   /* How much of the hero is left showing when a post opens (auto-scroll.js
      reads this). Zero puts the hero's bottom edge exactly on the top of the
