@@ -64,8 +64,12 @@ main {
      clear — so the clip went with the graphic rather than staying on as a
      silent crop of anything that overflows in future. */
   background: color-mix(in srgb, var(--color-background) var(--panel-opacity), transparent);
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  /* Blur, saturate and turn: the panel is a colour filter over the blob, not
+     only a frosted sheet. Order matters — hue-rotate last, so it turns the
+     saturated colour rather than being stretched by the saturate after it.
+     See --glass-hue-rotate in variables.css for the angle and why. */
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) hue-rotate(var(--glass-hue-rotate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) hue-rotate(var(--glass-hue-rotate));
   min-height: 100vh;
   position: relative;
   z-index: 2;

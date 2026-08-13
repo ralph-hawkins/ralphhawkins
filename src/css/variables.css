@@ -67,6 +67,31 @@
      blur at all, so the frost costs nothing it doesn't have to. */
   --glass-blur: calc(var(--blob-radius) * 1.15 / 14);
   --glass-saturate: 1.3;
+
+  /* And the panel turns the blob's colour as well as blurring it: the same
+     disc is one hue in the header and its complement under the post, with the
+     panel's top edge as the line where it turns. The header is deliberately
+     unfiltered (see above), so that edge is the only place the change can
+     happen and it happens exactly there.
+
+     180deg because it is a true complement and because it is the angle that
+     survives the trip best. CSS hue-rotate is a matrix approximation in sRGB,
+     not a rotation in oklch, and it sheds chroma in the middle of its range:
+     measured on the built page, the disc inside the panel comes out at 0.0364
+     chroma unrotated, 0.0254 at 65deg, 0.0236 at 90deg — and 0.0330 at 180deg,
+     nearly all of it kept. It is also not a rotation you can read off the
+     number: 30deg of it moves the perceived hue 17°, 90deg moves it 82°, and
+     only at 180deg do the two agree.
+
+     That approximation is why this is a filter and not a second hue published
+     from random-gradients.js. A JS-side offset would rotate in oklch and hold
+     its chroma exactly — but it would change the blob everywhere, and the
+     point here is the line across the disc where the post begins.
+
+     The Open Graph card does not do this: Satori has no backdrop-filter and
+     the card is one flat surface. Cards and pages were already a deliberate
+     near-miss; this widens it. */
+  --glass-hue-rotate: 180deg;
   /* The tint alone, named rather than spelt out at the one place it is used
      (body::after): it was laid a second time inside the supergraphic's glyphs
      until 2026-08-12, and the name is what kept the two copies in step. */
