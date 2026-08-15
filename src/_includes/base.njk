@@ -41,6 +41,14 @@
   </header>
   {%- endif %}
   <main id="main">
+    {#- The rule between the hero and the post title, full width because it is
+       main's own child rather than the container's — the post's other hrs stop
+       at the column. Weeknotes only: 404.njk opens with a container-width hr
+       of its own and /graphic-design/ opens on the gallery, so neither wants a
+       second line above it. See main > hr in layout.css for the spacing. -#}
+    {%- if tags and 'weeknotes' in tags %}
+    <hr>
+    {%- endif %}
     <div class="container">
       {{ content | safe }}
     </div>

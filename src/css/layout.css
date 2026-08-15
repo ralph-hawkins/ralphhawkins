@@ -79,6 +79,22 @@ main {
   padding: var(--spacing-xl) 0;
 }
 
+/* The rule between the hero and the post title (base.njk). It is main's only
+   unwrapped child, so it spans the viewport without any 100vw arithmetic —
+   which would have added the scrollbar's width and, since main no longer
+   clips, shown as a horizontal scrollbar.
+
+   It sits on the panel's top edge — the line where the tint and the
+   backdrop-filter begin, and where the blob turns hue — so the rule draws
+   that boundary rather than floating below it. The negative top margin is
+   what puts it there: it cancels main's own top padding exactly, since a
+   parent's padding stops the two margins collapsing. The matching positive
+   bottom margin hands the padding back to the container underneath, so the
+   title stays where it was. */
+main > hr {
+  margin: calc(-1 * var(--spacing-xl)) 0 var(--spacing-xl);
+}
+
 .figure {
   margin: 1.5rem 0;
 }
