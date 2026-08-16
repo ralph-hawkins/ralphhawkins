@@ -343,20 +343,46 @@ function titleTop(title, fontSize) {
 }
 
 // The page's surface: one flat tint of the background laid over the whole
-// blob, at the same strength as --glass-opacity in src/css/variables.css —
-// keep the two in step. It replaced a stack of 15 bars easing from clear at
-// the top to a 75% tint at the bottom, which is what the header used to do
-// and no longer does; the card drew them long after the site had dropped them.
+// blob. It replaced a stack of 15 bars easing from clear at the top to a 75%
+// tint at the bottom, which is what the header used to do and no longer does;
+// the card drew them long after the site had dropped them.
 //
-// **Deliberately not --glass-opacity's 60%.** The card is one flat surface
-// where the page is two, and it is looked at once, small, in a timeline —
-// so it is allowed to be the louder of the two. At 25% the disc carries
-// 1.9× the chroma it did at 60%.
+// **Its strength is derived from the page's, not chosen.** The card is the
+// post's poster, and on the page the poster sits on main's panel — so the
+// blob has to read there as strongly as it does under the post, and one
+// number cannot be picked by eye for that. The panel puts the disc through
+// four things in order, and the card has to arrive at the product of them:
 //
+//   --glass-opacity   60%    body::after, one tint over the whole blob
+//   --panel-opacity   65%    main's own background, over the filtered result
+//   --glass-saturate  1.3    backdrop-filter, which puts chroma back
+//   hue-rotate(180)   ×0.907 sheds a little, being an sRGB matrix rather
+//                            than a rotation in oklch (0.0330 from 0.0364)
+//
+// 0.40 × 0.35 × 1.3 × 0.907 = 0.165 of the disc's own chroma, so the card
+// tints away the other 83.5%. Confirmed by rendering both and sampling: the
+// page's panel measures p99 chroma 0.0313 against a bare disc's 0.1905, which
+// is 0.164 — the model and the browser agree to within a percent.
+//
+// Only the strength is matched. The card does **not** take the hue rotation,
+// because that would turn every card off the hue postColor and the favicon
+// identify the post by; and it does not need the blur term, because it
+// already applies the page's own blur to its own disc, which is why the two
+// blurs cancel in the measurement above.
+//
+// It was 0.25 until 2026-08-16 — deliberately louder, on the argument that a
+// card is seen once at thumbnail size in a timeline. That measured 3.95× the
+// panel and 1.62× the header, and Ralph asked for the two to agree.
+const PAGE_GLASS_OPACITY = 0.6;
+const PAGE_PANEL_OPACITY = 0.65;
+const PAGE_SATURATE = 1.3;
+const PAGE_HUE_ROTATE_CHROMA = 0.907;
+const GLASS_OPACITY = 1 - (1 - PAGE_GLASS_OPACITY) * (1 - PAGE_PANEL_OPACITY)
+  * PAGE_SATURATE * PAGE_HUE_ROTATE_CHROMA;
+
 // The blur is the page's, applied in render() rather than here: Satori has no
 // backdrop-filter, so the backdrop is rendered, blurred and composited under
 // the type in two passes.
-const GLASS_OPACITY = 0.25;
 
 function glassTint() {
   return {
@@ -542,11 +568,11 @@ function foreground({ title, weekNote, published, description, footer, slug }) {
 //
 // The ratio is a fourteenth of the widest lobe, and the card's discs are
 // seeded per slug rather than one fixed size, so it is applied to each card's
-// own disc. The page used the same figure in --glass-blur until 2026-08-16,
-// when main went opaque and stopped being a filtered surface; the card is now
-// the only place it survives. A blur only means anything relative to what it
-// blurs — hard-coding a pixel count is exactly how the page's own blur came to
-// be six times too strong for the disc it was softening.
+// own disc — the same ratio --glass-blur uses on the page. A blur only means
+// anything relative to what it blurs: hard-coding a pixel count is exactly how
+// the page's own blur came to be six times too strong for the disc it was
+// softening. Both being the same ratio is also why the two blurs drop out of
+// the chroma match above rather than having to be modelled.
 function blurSigma(d) {
   return (DISC_HALF_W * d.r / 14) / 2;
 }
