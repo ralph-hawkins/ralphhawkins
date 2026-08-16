@@ -85,8 +85,38 @@ function tidy(css) {
     .trim() + "\n";
 }
 
-function bundle(filePath) {
-  return tidy(stripComments(inlineImports(filePath)));
+// Values the stylesheet cannot work out for itself.
+//
+// A media query condition cannot read a custom property — var() is not
+// resolved when conditions are evaluated — so the one breakpoint the post
+// poster needs would have to be a literal, and a literal would silently fall
+// out of step with the geometry the moment --font-size-base moved. It is
+// computed in poster-grid.js from the same four constants the geometry uses
+// and substituted here, the same way page-weight.js fills in the colophon's
+// Weight row.
+//
+// Unsubstituted tokens are a build error rather than something a reader finds
+// in a stylesheet: a leftover @@NAME@@ makes the whole rule invalid, which
+// would quietly drop the arrangement it guards.
+function substitute(css) {
+  // Throws if any layout falls outside the overlap band — a description sat
+  // on, a fact buried whole, two items sharing a layer. Called here because
+  // this is the one place the layouts are read on every build.
+  require("./poster-layouts.js").validate();
+  const tokens = {
+    ...require("./poster-grid.js").tokens,
+    ...require("./poster-layouts.js").tokens,
+  };
+  for (const [token, value] of Object.entries(tokens)) {
+    css = css.split(token).join(value);
+  }
+  const leftover = css.match(/@@[A-Z0-9_]+@@/);
+  if (leftover) throw new Error(`css-bundle: no value for ${leftover[0]}`);
+  return css;
 }
 
-module.exports = { inlineImports, stripComments, bundle };
+function bundle(filePath) {
+  return substitute(tidy(stripComments(inlineImports(filePath))));
+}
+
+module.exports = { inlineImports, stripComments, substitute, bundle };

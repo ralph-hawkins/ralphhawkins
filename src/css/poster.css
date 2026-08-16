@@ -1,0 +1,641 @@
+/* The post poster — the composition a week note opens on.
+   ------------------------------------------------------------------------
+   A sheet of display type, a week number and a date, on a grid derived
+   entirely from the body column underneath it. The reader lands here:
+   --post-pin-offset is 0px, so auto-scroll.js puts main's top edge on the top
+   of the viewport, and main's top edge is the rule this sits under. */
+
+/* THE GRID
+   ------------------------------------------------------------------------
+   One module is a third of the body's text measure. The sheet is the body
+   plus whole modules either side — never a fraction of one — so its column
+   lines always fall on the body's own edges and its internal divisions.
+
+   The count is never worked out. round(down, ..., --poster-pair) floors the
+   space outside the body to a whole *pair* of modules, so the sheet is
+   always MEASURE + 2j x MODULE: 3, 5, 7 or 9 modules. The three body columns
+   are declared explicitly and the two wings are 1fr, which therefore resolve
+   to exactly j modules each. There is no track count to get wrong, no
+   auto-fill to drop a track on a rounding error, and nothing that drifts if
+   --font-size-base ever moves.
+
+   Measured: 3 columns to 1091px, 5 to 1515px, 7 to 1939px, 9 above.
+
+   cqw, not 100% and not 100vw.
+
+   Not 100vw, because .container is centred in main's content box, which
+   excludes the scrollbar, and 100vw includes it — mixing the two is what put
+   a horizontal scrollbar on the page the last time something broke out of the
+   column (see "The rule under the hero" in CLAUDE.md).
+
+   Not 100% either, and this is the trap the 65ch note in variables.css
+   describes in a different costume: a custom property is substituted as
+   tokens and its units resolve at the element that *uses* it. A --poster-*
+   value holding 100% means main's width inside `width`, the parent's font
+   size inside `font-size` (which set the title to 0px), the grid area inside
+   `max-width`, and the sheet itself inside `grid-template-columns`. Four
+   different lengths from one declaration.
+
+   Container query units do not do that: cqw resolves against the query
+   container — <article>, which is main's full width — no matter which
+   property reads it. One length, everywhere. */
+/* The query container every cqw above is measured against. The article is
+   main's own child and main carries no horizontal padding, so its inline size
+   is the viewport less the scrollbar — exactly the box .container is centred
+   in, which is what the sheet has to line up with.
+
+   inline-size, not size: the article's width is set by the block layout and
+   owes nothing to its contents, so there is no cycle, and its height is still
+   free to grow with the post. */
+.post-article {
+  container-type: inline-size;
+}
+
+.poster {
+  /* .container's right padding spelt out in rem. Its own declaration uses
+     1.5em, which resolves against .container at body size and so comes to the
+     same length above 30em — but an em here would resolve against the poster,
+     whose type is very much not body size. */
+  --poster-pad-right: calc(var(--side-padding) + 1.5 * var(--font-size-base));
+  --poster-measure: calc(
+    min(100cqw, var(--content-width)) - var(--container-padding-left) - var(--poster-pad-right)
+  );
+  --poster-module: calc(var(--poster-measure) / 3);
+  --poster-pair: calc(2 * var(--poster-module));
+  --poster-margin: var(--side-padding);
+  --poster-avail: calc(100cqw - 2 * var(--poster-margin));
+  /* Where the body's first glyph sits, measured from main's content edge.
+     The sheet is positioned from this rather than centred with auto margins,
+     because below 30em the column's left inset narrows and its right one does
+     not — so the measure is not centred in the viewport and neither is the
+     sheet that has to line up with it. */
+  --poster-measure-left: calc(
+    max(0px, (100cqw - var(--content-width)) / 2) + var(--container-padding-left)
+  );
+
+  /* Without round() the sheet is the body measure and the poster is a
+     three-column composition. Everything else still works. */
+  --poster-sheet-w: var(--poster-measure);
+
+  /* One wing, which is 0, 1, 2 or 3 whole modules. Named because three things
+     need it: the title's box, and both of the grid overlay's body edges. */
+  --poster-wing: calc((var(--poster-sheet-w) - var(--poster-measure)) / 2);
+
+  --poster-leading: 0.9;
+  --poster-size-max: 16rem;
+
+  /* Narrow sheet by default — a phone gets the body measure and no wings, so
+     it takes the tighter of the two fits: shorter lines, more of them, and a
+     composition that fills a tall screen instead of sitting in a band. */
+  --poster-fit: var(--poster-fit-narrow);
+  --poster-line: var(--poster-line-narrow);
+  --poster-lines: var(--poster-lines-narrow);
+  /* The title's size budget is its row span — see the font-size below. The
+     hand-swept --poster-field-h it replaced was four svh constants and a
+     :has() rule to switch between them. */
+
+  width: var(--poster-sheet-w);
+  margin-left: calc(
+    var(--poster-measure-left) - (var(--poster-sheet-w) - var(--poster-measure)) / 2
+  );
+
+  display: grid;
+  /* The body's three columns are named individually rather than written
+     repeat(3, ...), which creates no lines to place against. */
+  /* minmax(0, 1fr), not 1fr. A flexible track has an automatic minimum, so an
+     item in the wing that is wider than a module — a shrink-wrapped, nowrap
+     date at the large step — pushes the track out to fit it. Measured after
+     layering went in: wings of 224.7px and 319.9px against a 211.9px module,
+     which silently broke the one invariant the whole column derivation rests
+     on, that a wing is a whole number of modules. A zero minimum lets the date
+     overflow the wing instead, which is what a layer should do anyway. */
+  grid-template-columns:
+    [sheet-start] minmax(0, 1fr)
+    [body-start] var(--poster-module)
+    [body-2] var(--poster-module)
+    [body-3] var(--poster-module)
+    [body-end] minmax(0, 1fr) [sheet-end];
+  /* THE FOUR ROWS
+     The horizontal counterpart of the column module: the sheet divided into
+     four equal bands, and every item anchored to one of the five lines they
+     make. Rows used to be named tracks sized by their own contents, so where
+     the title sat was a consequence of how tall the blocks above it happened
+     to be rather than a decision.
+
+     The row is rounded to a whole number of baselines and the sheet is then
+     derived from the row, not the other way round. That is what makes the two
+     grids compatible: every row line is a baseline multiple, so anything
+     anchored to a row line is on the baseline grid for free.
+
+     The last track is minmax(), not a fixed height: on a 320px phone a
+     67-character description on a 231px measure is five lines — 195px against
+     a 105px row — and 15 posts hit that. Rows 1-3 stay exact and only the last
+     one grows, so the grid holds for everything above it.
+
+     Named individually rather than repeat(4, ...), which creates no lines to
+     place against — the same reason the body columns are spelt out. */
+  grid-template-rows:
+    [r1] var(--poster-row-h)
+    [r2] var(--poster-row-h)
+    [r3] var(--poster-row-h)
+    [r4] minmax(var(--poster-row-h), auto) [r5];
+  /* No column gap, and that is the point: the module is a third of the
+     measure exactly, with nothing between, so the body's own thirds and the
+     sheet's columns are the same lines. Space inside items instead. */
+  column-gap: 0;
+
+  /* THE BASELINE GRID
+     An eighth of the page's own line — 1.3rem x 1.5 / 8 = 3.9px — so body
+     copy sits on every eighth line of it and the poster shares the page's
+     rhythm rather than inventing a second one. Every leading below is rounded
+     to a multiple of this, so every baseline on the sheet lands on it.
+
+     An eighth and not a half, which is where this started. The standfirst's
+     natural leading is 1.325em, and at 29.6px that is 39.22px — 2.51 units of
+     a 15.6px baseline. Multi-line blocks rounded up, so it landed on 3 units:
+     46.8px, a leading of 1.581, visibly loose on the page for the sake of
+     missing 2.5 by a hundredth.
+
+     Measured across the real size range, with nearest rounding:
+
+       unit          title leading      standfirst
+       1/2  15.6px   0.867 - 1.068      46.8px = 1.581
+       1/4   7.8px   0.780 - 0.945      39.0px = 1.318
+       1/8   3.9px   0.886 - 0.910      39.0px = 1.318
+
+     Natural is 0.900 and 1.325. A quarter is not enough: at 30px the title
+     falls to 0.780, which is 5px inside the ink stack (cap 0.70em + descent
+     0.25em = 0.95em, both read from the WOFF) and would show as lines
+     touching. An eighth holds every block within about 1.5% of its natural
+     leading, which is the whole point — the grid should align the type, not
+     redesign it. */
+  --poster-baseline: calc(var(--font-size-base) * var(--line-height-base) / 8);
+
+  /* The page's own line — 1.3rem x 1.5 = 31.2px, and eight baselines exactly.
+     Body copy sits on every one of these; the poster's rows and gutters are
+     whole numbers of them, which is what puts the row lines on the body's
+     rhythm rather than merely on the eighth-line grid underneath it. Being
+     multiples of the page line makes them multiples of the baseline for
+     free. */
+  --poster-page-line: calc(var(--font-size-base) * var(--line-height-base));
+
+  /* Volksans' own vertical metrics, read straight out of the WOFF: hhea,
+     OS/2 typo and OS/2 win all agree on 900 and -250 per 1000 em.
+     NOT the 93.34% / 25.93% in fonts.css, which is the trap here. Those are
+     ascent-override and descent-override for the *Arial fallback*, and they
+     are these numbers divided by that face's size-adjust of 96.42% — right
+     for Arial standing in, wrong for Volksans itself. Used here they left
+     every baseline about a pixel low.
+     They are needed because rounding the leading to the grid is only half the
+     job: within a line box the baseline sits at half-leading plus the ascent,
+     so line boxes can be exact multiples while no baseline in them is. */
+  --vf-ascent: 0.9;
+  --vf-descent: 0.25;
+
+  /* Rounded to whole pixels, because that is what the browser does with them.
+     Measured across seven sizes from 14.72px to 256px, Chrome's ascent is
+     round(0.9em) and its descent round(0.25em) every time — 13/4, 27/7,
+     39/11, 59/17, 105/29, 156/43, 230/64. Modelling them continuously left
+     the baselines up to 0.6px out; rounding the same way lands them exactly.
+     Declared here rather than per block because they hold no var() but 1em,
+     which stays a token until it is used and so resolves per element.
+
+     The half-leading is floored to a whole pixel for the same reason — that
+     is what the browser does with it. Measured: a -0.7px half-leading renders
+     as -1, 1.6 as 1, 6.4 as 6, -12.4 as -13. Every baseline landed exactly
+     once the shift floored it too. */
+  --poster-asc: round(calc(var(--vf-ascent) * 1em), 1px);
+  --poster-desc: round(calc(var(--vf-descent) * 1em), 1px);
+
+  /* How far a block has to move for its first baseline to land on a line.
+     Applied as a negative on the top margin and the same amount back on the
+     bottom, so the block's own start moves and everything after it does not —
+     which is what keeps the correction from costing a baseline of height per
+     block. Without mod() the shift is zero and the line boxes are still on
+     the grid; only the baselines within them are not. */
+  --poster-shift: 0px;
+
+  /* A gutter between the rows, in whole baselines.
+     It is not decoration: a row line is shared by the block that ends on it
+     and the block that starts on it, and line boxes are taller than ink, so
+     at zero the title's descender space and the standfirst's ascender space
+     met and the two read as one block. Proportional to the screen, like the
+     old band was, but snapped to the baseline so both grids survive it.
+     A row gap is right here where a column gap was wrong: the columns have to
+     coincide with the body's own thirds, and the rows answer to nothing but
+     each other. */
+  row-gap: var(--poster-gutter);
+
+  /* Four rows of the sheet's target height. Three quarters of the screen in
+     portrait: the poster is the arrival view but does not have to be the whole
+     of it, and the quarter left showing is white space the composition sits
+     above. A min-height rather than a max, because the last row may grow. */
+  --poster-sheet-h: 75svh;
+
+  /* How many rows the title may use for its size. Three by default, because
+     with nothing in the last row the title owns rows 2-4; two when a
+     standfirst is there to occupy it. "The title takes every row nothing else
+     occupies" is the whole placement rule, and it is what keeps the grid from
+     shrinking titles rather than growing them. */
+  --poster-span: 3;
+  /* One page line. Without round() the rows below are a plain quarter of what
+     is left, so only the leadings sit on the grid; the layout still works. */
+  --poster-gutter: var(--poster-page-line);
+  --poster-row-h: calc((var(--poster-sheet-h) - 3 * var(--poster-gutter)) / 4);
+  min-height: calc(4 * var(--poster-row-h) + 3 * var(--poster-gutter));
+  margin-bottom: var(--spacing-xl);
+
+  /* The crop. clip rather than hidden: hidden on one axis computes to auto on
+     the other and would make this a scroll container, which would both show a
+     scrollbar and break position: sticky anywhere inside it. */
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+@supports (width: round(down, 3px, 2px)) {
+  .poster {
+    /* A quarter of the sheet, snapped to a whole number of baselines. 105.3px
+       at 320x568, 159.9 at 390x844, 191.1 at 768, 128.7 at 1440x900, 156 at
+       1920x1080. */
+    /* DOWN, not nearest. Nearest lets the sheet exceed its target — at
+       320x568 it rounds 2.66 page lines up to 3 and the sheet becomes 82svh,
+       which put eight posters past the fold once the last row grew. Down
+       never exceeds the target, and the floor keeps a row from vanishing on a
+       very short window. */
+    --poster-row-h: max(
+      var(--poster-page-line),
+      round(down, calc((var(--poster-sheet-h) - 3 * var(--poster-gutter)) / 4), var(--poster-page-line))
+    );
+    --poster-sheet-w: min(
+      calc(
+        var(--poster-measure) +
+        max(0px, round(down, var(--poster-avail) - var(--poster-measure), var(--poster-pair)))
+      ),
+      calc(9 * var(--poster-module))
+    );
+  }
+}
+
+/* Layering was here on 2026-08-16 and lasted a day. Every item carried a
+   z-index and an opaque mask, so a layer knocked out the one beneath it. It is
+   gone, and so is the opaque panel it needed — main is glass again. Nothing on
+   the sheet overlaps now, and poster-layouts.js fails the build if two cells
+   meet.
+
+   One thing it left behind, and it stays: the wing tracks are minmax(0, 1fr)
+   rather than 1fr. Layering exposed that rather than causing it — any item
+   wider than a wing inflates a plain 1fr track. See the columns above. */
+
+/* THE TITLE
+   ------------------------------------------------------------------------
+   Set at a size solved per title in src/_11ty/title-fit.js and delivered as
+   --poster-fit-*, a fraction of the width the title has to fill — so the
+   poster is one shape at every viewport, scaled, rather than a different
+   composition at each.
+
+   Breaking is at spaces only. hyphens stays manual, and overflow-wrap and
+   word-break are reset because body sets overflow-wrap: anywhere, which would
+   hard-cut a long word mid-character instead of letting it run off the edge
+   and crop. The fitter models the same greedy break off the same widths —
+   advances and GPOS kerning both — so what it measured is what the browser
+   draws, to about a fiftieth of a pixel over a 368px string. */
+.poster__title {
+  --poster-title-w: calc(var(--poster-measure) + var(--poster-wing));
+
+  /* Placed by the layout table (poster-layouts.js, substituted below), not
+     here: which rows and columns it takes, and what it sits in front of, are
+     what a layout decides. --poster-span is how many rows it may use for its
+     size and comes from the same table. */
+  /* end, never center: block heights are whole numbers of baselines and row
+     lines are baseline multiples, so start and end both keep every baseline
+     on the grid. Centring is the one alignment that cannot — it lands the
+     block at half a baseline. */
+
+  /* The box is set in em, so it scales with whatever size the type settles
+     at. That is what makes the two things below safe to impose:
+
+       - the crop lands on the same glyph boundary at any size, because the
+         clip edge is a fixed number of em from the start of the line. Before
+         this it was the sheet's edge doing the clipping, at a fixed number of
+         *pixels*, so the moment anything but the fit decided the size the
+         edge slid — measured, it went through the middle of a "g".
+       - the line count is invariant too, so the height term below is exact
+         rather than a guess that has to be conservative.
+
+     The title's own clip, not the sheet's. Same reasoning as the sheet's:
+     clip rather than hidden, so no scroll container is created. */
+  width: calc(var(--poster-line) * 1em);
+  overflow-x: clip;
+  overflow-y: visible;
+
+  /* Three terms, smallest wins.
+       the fit     the title fills its box, which is the design
+       the ceiling so a four-character title stays a title rather than a mural
+       the field   lines x leading, so a six-line title on a short window is
+                   not left 400px below the fold with its last lines unread.
+                   A baseline a line comes off the budget first, because the
+                   leading is rounded UP to the grid and can take that much
+                   more than 0.9em. Without it five posters ran past the
+                   fold, one of them by 88px. */
+  font-size: min(
+    calc(var(--poster-fit) * var(--poster-title-w)),
+    var(--poster-size-max),
+    calc(
+      (var(--poster-span) * var(--poster-row-h)
+        + (var(--poster-span) - 1) * var(--poster-gutter)
+        - var(--poster-lines) * var(--poster-baseline))
+      / (var(--poster-lines) * var(--poster-leading))
+    )
+  );
+  line-height: var(--poster-leading);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+
+  hyphens: manual;
+  -webkit-hyphens: manual;
+  overflow-wrap: normal;
+  word-break: normal;
+
+  /* h1's element rule carries the hero's padding and margins. The margin now
+     carries nothing but the baseline shift — negative on top, the same amount
+     back on the bottom, so the block lands on its row line and its first
+     baseline lands on the grid, and nothing after it moves. The band it used
+     to add is the row's job. */
+  padding-top: 0;
+  margin: calc(-1 * var(--poster-shift)) 0 var(--poster-shift);
+}
+
+/* THE STANDFIRST
+   ------------------------------------------------------------------------
+   Content, not metadata: it belongs with the title, never grouped with the
+   date and the number. Only the 22 posts from 2026-01-10 on have one, and its
+   absence is not a hole to patch — it is one of the two facts the arrangement
+   is chosen from. */
+.poster__standfirst {
+  /* The whole measure on a portrait sheet, two thirds of it on a landscape
+     one. Two modules of a 231px phone sheet is 154px, which wrapped a
+     45-character description onto four lines and took a third of the poster;
+     the same two modules of a 1059px sheet is a sensible column. */
+  /* One step up the ladder from the body, which is exactly what
+     --font-size-large is (1.3rem x 1.42), and fixed like the body size rather
+     than fluid. It was h4's clamp for a while, which is the same length from
+     1024px up but shrinks below that; a standfirst that is only a step above
+     the body on a desktop and level with it on a phone is not a step at all. */
+  font-size: var(--font-size-large);
+  line-height: 1.325;
+  font-weight: 400;
+  margin: calc(-1 * var(--poster-shift)) 0 var(--poster-shift);
+  text-wrap: pretty;
+}
+
+/* THE METADATA
+   ------------------------------------------------------------------------
+   Two facts, and only two. The week number already carries the revision count
+   in its own value — 53.05 is the fifty-third note, revised five times — so
+   there is no third row for it. */
+.poster__meta {
+  /* Shrink-wrapped and started at its column's left line rather than stretched
+     across its span. Two reasons, and both are about the mask: a stretched box
+     wraps its own text, which broke a date across "17.05.202 / 6"; and a mask
+     is the item's own box, so a box wider than its ink would knock out empty
+     sheet either side of the number. max-content makes box and ink the same
+     thing, and lets a large number run past its span into the next column,
+     which is what a layer is for. */
+  justify-self: start;
+  width: max-content;
+  margin: 0;
+  font-size: var(--font-size-small);
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  /* A date is one shape, not a sentence: it may run off the sheet and be
+     cropped, but it may never break across lines. */
+  white-space: nowrap;
+}
+
+.poster__label {
+  display: block;
+  font-weight: 600;
+  /* Net zero: the line moves onto its baseline and the block's height does
+     not change, so the row under it still starts on the grid. */
+  margin-top: calc(-1 * var(--poster-shift));
+  margin-bottom: var(--poster-shift);
+}
+
+/* One size for both values, as for both labels: the week number and the date
+   are two facts of the same kind and are set as a pair.
+
+   h4 rather than h3, and that is measured, not taste. The date is ten
+   characters where the week number is five, and at h3's 41.9px ceiling it
+   sets 211.3px against the 191.09px a one-module wing leaves after its
+   gutter — 20px over. h4 lands it at 149.2px, and still fits the two-module
+   span the head and foot get on a 320px sheet. */
+.poster__value {
+  display: block;
+  font-size: var(--font-size-h4);
+  line-height: 1.05;
+  font-weight: 600;
+  margin-top: calc(-1 * var(--poster-shift));
+  margin-bottom: var(--poster-shift);
+}
+
+
+/* Two units before the date, one everywhere else: the date closes the
+   composition, so the grid gives it the wider band. */
+
+/* THE LAYOUTS
+   ------------------------------------------------------------------------
+   Generated from src/_11ty/poster-layouts.js and substituted by
+   css-bundle.js, which throws if either token survives — a leftover @@TOKEN@@
+   makes the whole rule invalid and would silently drop a layout.
+
+   Shared by every post, which is the point of a class rather than inline
+   custom properties: twelve layouts cost one block of CSS once, where two
+   dozen inline properties would cost bytes on every page. */
+@@POSTER_LAYOUTS_NARROW@@
+
+/* WIDE SHEETS
+   ------------------------------------------------------------------------
+   Everything below here waits for the wings to exist. The threshold is
+   computed in src/_11ty/poster-grid.js from the same four constants the
+   geometry uses and substituted into the built stylesheet, because a media
+   condition cannot read a custom property — @media (min-width: var(--x)) is
+   invalid, so the alternative was a hand-written literal that would fall out
+   of step the first time --font-size-base moved.
+
+   It is biased a little late on purpose: the wings appear at 1091px and this
+   fires at 1115px, so anything placed in a wing is certainly standing on one.
+   A wing that exists unused is invisible; content in a wing that does not is
+   not. */
+@media (min-width: @@POSTER_WING_EM@@em) {
+  .poster {
+    --poster-fit: var(--poster-fit-wide);
+    --poster-line: var(--poster-line-wide);
+    --poster-lines: var(--poster-lines-wide);
+    /* The same four rows; only the sheet they divide is shorter. The title
+       used to centre in a flexible field row here, which is what a wide short
+       sheet wants — but centring lands a block at half a baseline, and with
+       the title anchored to a row line instead the whole sheet is exact. */
+    --poster-sheet-h: calc(62.5svh - var(--spacing-xl) - var(--hairline-width));
+  }
+
+  /* The wide placements, generated from the same layout table as the narrow
+     ones above. Everything an item needs to move for a wider sheet — its
+     columns most of all, since the wings only exist here — is in the table. */
+@@POSTER_LAYOUTS_WIDE@@
+}
+
+
+/* THE GRID OVERLAY
+   ------------------------------------------------------------------------
+   Ctrl+Alt+G, from src/js/grid.js, which only sets the attribute. Every line
+   here is drawn from the same custom properties the layout is built from —
+   an overlay with its own numbers would agree with itself and prove nothing.
+
+   Three things it shows:
+     every module line, and because the sheet is an exact multiple of the
+       module a plain repeating gradient hits all of them
+     the body column's own two edges, heavier, since the whole grid is
+       derived from those and they are what has to land on a module line
+     the horizontal unit, so the 1:1:2 banding can be read off the sheet
+
+   Nothing in the layout moves when it is on: the overlay is an ::after laid
+   over the sheet, and position: relative on a grid container with z-index
+   auto changes neither the tracks nor the stacking. */
+[data-poster-grid] .poster {
+  position: relative;
+}
+
+[data-poster-grid] .poster::after {
+  /* The module lines are the fainter set and the body column's own edges are
+     solid, because the body column is what the whole grid is derived from —
+     the thing to check is that its edges land on a module line, and that only
+     reads if the two can be told apart. */
+  --grid-line: color-mix(in srgb, #e5007d 28%, transparent);
+  --grid-edge: #e5007d;
+  --grid-body: color-mix(in srgb, #e5007d 5%, transparent);
+  --grid-row: color-mix(in srgb, #0072b8 70%, transparent);
+  --grid-band: color-mix(in srgb, #0072b8 30%, transparent);
+  --grid-band-fine: color-mix(in srgb, #0072b8 9%, transparent);
+
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background-image:
+    /* the body column's left and right edges */
+    linear-gradient(var(--grid-edge) 0 100%),
+    linear-gradient(var(--grid-edge) 0 100%),
+    /* the sheet's own right edge, which the repeat below lands just past */
+    linear-gradient(var(--grid-line) 0 100%),
+    /* the body column itself, so the wings are legible as wings */
+    linear-gradient(var(--grid-body) 0 100%),
+    /* every module line */
+    repeating-linear-gradient(to right, var(--grid-line) 0 1px, transparent 1px var(--poster-module)),
+    /* the four row lines, solid, because they are the structure items are
+       placed on — the horizontal counterpart of the body column's own edges */
+    repeating-linear-gradient(to bottom, var(--grid-row) 0 1px, transparent 1px var(--poster-row-h)),
+    /* the baseline grid under them, in two weights. Every leading on the sheet
+       is rounded to a multiple of the fine one, so these are lines the type
+       actually sits on rather than a ruler showing a unit nothing snapped to —
+       but at 3.9px a single weight reads as a wash, so the page's own line
+       (every eighth) is drawn over the top and the rhythm stays legible. */
+    repeating-linear-gradient(to bottom, var(--grid-band) 0 1px, transparent 1px calc(8 * var(--poster-baseline))),
+    repeating-linear-gradient(to bottom, var(--grid-band-fine) 0 1px, transparent 1px var(--poster-baseline));
+  background-size:
+    1px 100%, 1px 100%, 1px 100%,
+    var(--poster-measure) 100%,
+    100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-position:
+    var(--poster-wing) 0,
+    calc(var(--poster-wing) + var(--poster-measure) - 1px) 0,
+    right 0,
+    var(--poster-wing) 0,
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat, repeat, repeat;
+}
+
+/* SNAPPING THE TYPE TO THE BASELINE GRID
+   ------------------------------------------------------------------------
+   Two steps, and both are needed. Rounding the leading puts the line *boxes*
+   on the grid; it does not put the baselines there, because within a line box
+   the baseline sits at half-leading plus the ascent. Measured before the
+   second step: leadings were exact multiples while baselines fell at 0.754
+   and 2.603 of a baseline.
+
+   So each block also moves by --poster-shift, taken off its top margin and
+   given back on its bottom. The net is zero, which is the point: the block's
+   own start moves onto the grid and nothing after it is pushed down, where a
+   padding-based correction would cost a baseline of height per block — 62px
+   of a 426px phone sheet across the four of them.
+
+   --poster-shift is declared once and resolves per element: an unregistered
+   custom property keeps its 1em as tokens and only resolves it where it is
+   used, so the same formula reads each block's own font-size and leading.
+
+   Everything here is behind mod(); without it the shift stays 0px, the line
+   boxes are still on the grid, and only the baselines within them are not. */
+@supports (width: mod(3px, 2px)) {
+  /* The formula is repeated per block rather than declared once on .poster,
+     and that is not an oversight: var() inside a custom property is
+     substituted at the element where the property is *declared*, so a shared
+     --poster-shift would read .poster's --poster-lh — which does not exist —
+     and come out invalid for every child. 1em is different: it stays a token
+     until the value is used in a real property, so it does resolve per block. */
+
+  /* Nearest, with no strategy keyword, for every block on the sheet. There
+     used to be a split here — multi-line blocks rounded UP so a tight leading
+     could not pull one line's descenders into the next line's caps — and an
+     eighth-line unit retires it: the worst downward move is 1.95px, 1.6% of
+     the tightest title's leading, well inside the clearance the design
+     already runs at.
+     The font-size is left exactly as fitted throughout, so no line break and
+     no crop moves — only the space between the lines. */
+  .poster__title {
+    --poster-lh: round(calc(var(--poster-leading) * 1em), var(--poster-baseline));
+    --poster-shift: mod(
+      calc(round(down, calc((var(--poster-lh) - var(--poster-asc) - var(--poster-desc)) / 2), 1px) + var(--poster-asc)),
+      var(--poster-baseline)
+    );
+    line-height: var(--poster-lh);
+  }
+
+  /* 1.325em is 10.06 eighths, so this lands on 10: 39.0px against a natural
+     39.22. It was 46.8px while the unit was a half-line. */
+  .poster__standfirst {
+    --poster-lh: round(1.325em, var(--poster-baseline));
+    --poster-shift: mod(
+      calc(round(down, calc((var(--poster-lh) - var(--poster-asc) - var(--poster-desc)) / 2), 1px) + var(--poster-asc)),
+      var(--poster-baseline)
+    );
+    line-height: var(--poster-lh);
+  }
+
+  /* The shift comes from the label, because the label is the block's first
+     line and it is the first baseline that has to land. */
+  .poster__meta {
+    --poster-lh: round(1.25em, var(--poster-baseline));
+    --poster-shift: mod(
+      calc(round(down, calc((var(--poster-lh) - var(--poster-asc) - var(--poster-desc)) / 2), 1px) + var(--poster-asc)),
+      var(--poster-baseline)
+    );
+    line-height: var(--poster-lh);
+  }
+
+  /* 1.05em of 29.6px is 31.1px — two baselines to a tenth of a pixel. The
+     value is the block's *second* line, so the parent's shift does not reach
+     it: measured, it sat 4.99px off. It gets its own. */
+  .poster__value {
+    --poster-lh: round(1.05em, var(--poster-baseline));
+    --poster-shift: mod(
+      calc(round(down, calc((var(--poster-lh) - var(--poster-asc) - var(--poster-desc)) / 2), 1px) + var(--poster-asc)),
+      var(--poster-baseline)
+    );
+    line-height: var(--poster-lh);
+  }
+}

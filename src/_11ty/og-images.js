@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 const { fontMetrics } = require("./font-metrics.js");
+const { slugHash } = require("./slug-hash.js");
 
 const WIDTH = 1200;
 const HEIGHT = 630;
@@ -23,9 +24,7 @@ const HUE_OFFSET = 65;
 const HUE_FALLBACK = 70;
 
 function hueFromSlug(slug) {
-  let hash = 5381;
-  for (const char of slug) hash = ((hash * 33) ^ char.charCodeAt(0)) >>> 0;
-  return hash % 360;
+  return slugHash(slug) % 360;
 }
 
 // The blob's colours are defined in oklch rather than hsl, because the hue
@@ -251,6 +250,71 @@ function balancedWidth(text, fontSize, maxWidth) {
 }
 
 const PADDING = 72;
+
+// THE POSTER GRID, ON THE CARD
+// ---------------------------------------------------------------------------
+// The card is the page's own poster at five columns. Not a lookalike: it takes
+// the module straight from poster-grid.js, the layout from poster-layouts.js
+// and the fitted type size from title-fit.js, so a card is the composition its
+// post opens on rather than a second design that has to be kept in step.
+//
+// Five columns because that is what 1200px asks for. The site's module is
+// 211.89px, five of them is 1059.47, and the margin either side comes to 70.3
+// — within two pixels of the 72 this card already used. The row works out at
+// 93.6px, three page lines, which is exactly what the site gives a 1440px
+// window.
+//
+// Satori has no CSS grid, so every item is placed absolutely from these
+// numbers. That is the reason the grid lives in a table of line names rather
+// than in the stylesheet: the same table can be read by something that cannot
+// run CSS at all.
+const { moduleWidth } = require("./poster-grid.js");
+const { posterFit } = require("./title-fit.js");
+const posterLayouts = require("./poster-layouts.js");
+
+const CARD_COLS = 5;
+const CARD_MODULE = moduleWidth;
+const PAGE_LINE = 1.3 * 16 * 1.5;          // --font-size-base x --line-height-base
+const BASELINE = PAGE_LINE / 8;            // the poster's baseline grid
+const CARD_GUTTER = PAGE_LINE;
+
+const SHEET_W = CARD_COLS * CARD_MODULE;
+const SHEET_X = (WIDTH - SHEET_W) / 2;
+const CARD_ROW = Math.max(
+  PAGE_LINE,
+  Math.floor(((HEIGHT - 2 * PADDING) - 3 * CARD_GUTTER) / 4 / PAGE_LINE) * PAGE_LINE
+);
+const SHEET_H = 4 * CARD_ROW + 3 * CARD_GUTTER;
+const SHEET_Y = (HEIGHT - SHEET_H) / 2;
+
+// Column line names to x, row line names to y — the same names the layout
+// table uses, so a placement reads identically here and in poster.css.
+const COL_X = {
+  "sheet-start": 0, "body-start": 1, "body-2": 2, "body-3": 3,
+  "body-end": 4, "sheet-end": 5,
+};
+const colX = (name) => SHEET_X + COL_X[name] * CARD_MODULE;
+const rowY = (name) => SHEET_Y + (Number(name.slice(1)) - 1) * (CARD_ROW + CARD_GUTTER);
+// A grid area stops at the start of its end line, not past the gutter before it.
+const areaBottom = (name) => rowY(name) - CARD_GUTTER;
+
+// Leadings are rounded to the baseline exactly as poster.css rounds them, so
+// the card's type sits on the same rhythm.
+const snap = (v) => Math.round(v / BASELINE) * BASELINE;
+
+const TYPE = {
+  label: { size: 0.92 * 16, leading: snap(1.25 * 0.92 * 16) },
+  value: { size: 1.85 * 16, leading: snap(1.05 * 1.85 * 16) },
+  standfirst: { size: 1.85 * 16, leading: snap(1.325 * 1.85 * 16) },
+};
+
+// Where an item's box sits and how tall it is, from its layout spec.
+function place(spec, height) {
+  const [c0, c1] = spec.wide;
+  const top = spec.align === "end" ? areaBottom(spec.rows[1]) - height : rowY(spec.rows[0]);
+  return { left: colX(c0), top, width: colX(c1) - colX(c0) };
+}
+
 const TITLE_MAX_WIDTH = 950;
 // The same leading .page-title carries in src/css/typography.css, so a title
 // sets the same way on the card as it does on the page it links to.
@@ -330,34 +394,130 @@ function backdrop({ hue1, hue2, disc: d }) {
   };
 }
 
-function foreground({ kicker, title, footer }) {
+// The card's type, laid out on the poster's grid.
+//
+// Every measurement comes from the same places the page uses: the size from
+// title-fit.js, the placement from poster-layouts.js, the leadings snapped to
+// the same baseline. Nothing here is a card-specific number except the five
+// columns, and that follows from 1200px.
+//
+// No crop. On a wide sheet no title crops — measured across all 54 — and the
+// card is always a wide sheet, so the one part of the poster that needs the
+// title clipped to an em box has nothing to do here.
+function foreground({ title, weekNote, published, description, footer, slug }) {
   const text = (value, style) => ({ type: "div", props: { style, children: value } });
   const children = [];
+  const heading = drawable(title);
 
-  if (kicker) {
-    children.push(text(drawable(kicker), { fontSize: 60, color: "#0b0c0c" }));
+  const fit = posterFit(heading);
+  const titleWidth = 4 * CARD_MODULE;            // body-start to sheet-end
+  // The line count is decided by the fit, not by the size, because the page
+  // sets the title in a box measured in em — so the layout can be chosen
+  // before the size is, and the size can then be capped without moving a
+  // single break.
+  const lines = fit ? fit.lines : lineCount(heading, titleFontSize(heading), titleWidth);
+  const layout = posterLayouts.pick(slug || "home", lines, Boolean(description));
+  const specs = { ...layout.items, standfirst: posterLayouts.STANDFIRST };
+
+  // The same three terms poster.css takes the smallest of: the fit, the 16rem
+  // ceiling, and the rows the layout gave it. The third one is easy to forget
+  // and its absence is not subtle — without it a three-line title overflowed
+  // its rows upward and started 3px from the top of the card.
+  const span = posterLayouts.rowSpan(specs.title);
+  const budget = span * CARD_ROW + (span - 1) * CARD_GUTTER - lines * BASELINE;
+  let size = Math.min(
+    fit ? fit.fitWide * titleWidth : titleFontSize(heading),
+    16 * 16,
+    budget / (lines * 0.9)
+  );
+
+  // And then shrink until the card's own measurement agrees with the fitter's
+  // line count. The fit models letter-spacing of -0.015em, which is 26px over
+  // the thirteen characters of "Ralph Hawkins" — and Satori does not apply
+  // letter-spacing in either em or px, so the line came out 874px in an 848px
+  // box, wrapped to two, and a block anchored to its bottom ran off the card.
+  // Rather than trust a property that is quietly ignored, the size is checked
+  // against lineCount(), which measures advance widths the same way Satori
+  // lays them out. If Satori ever does honour it the line only gets shorter,
+  // which this still allows.
+  while (size > 12 && lineCount(heading, size, titleWidth) > lines) size -= 1;
+  const leading = snap(0.9 * size);
+
+  const block = (spec, height, style, value) => {
+    const at = place(spec, height);
+    children.push(text(value, {
+      position: "absolute",
+      left: at.left,
+      top: at.top,
+      width: at.width,
+      color: "#0b0c0c",
+      ...style,
+    }));
+  };
+
+  // A metadata pair is a label over a value, both 600, the value tabular.
+  const meta = (spec, label, value) => {
+    if (!value) return;
+    const height = TYPE.label.leading + TYPE.value.leading;
+    const at = place(spec, height);
+    children.push({
+      type: "div",
+      props: {
+        style: {
+          position: "absolute", left: at.left, top: at.top,
+          display: "flex", flexDirection: "column", color: "#0b0c0c",
+        },
+        children: [
+          text(label, { fontSize: TYPE.label.size, lineHeight: TYPE.label.leading / TYPE.label.size }),
+          text(value, { fontSize: TYPE.value.size, lineHeight: TYPE.value.leading / TYPE.value.size }),
+        ],
+      },
+    });
+  };
+
+  // The title sits on the bottom line of its rows, as it does on the page.
+  block(
+    specs.title,
+    lines * leading,
+    {
+      fontSize: size,
+      lineHeight: leading / size,
+      // In px, not em. title-fit.js models -0.015em and the fit depends on it
+      // — over the thirteen characters of "Ralph Hawkins" it is 26px at this
+      // size, the difference between one line and two. Satori did not apply
+      // the em form, so the title overflowed its box, wrapped, and a block
+      // anchored to its bottom ran off the card.
+      letterSpacing: -0.015 * size,
+      width: titleWidth,
+    },
+    heading
+  );
+
+  if (description) {
+    const at = place(specs.standfirst, 0);
+    const sfLines = lineCount(drawable(description), TYPE.standfirst.size, at.width);
+    block(
+      specs.standfirst,
+      sfLines * TYPE.standfirst.leading,
+      {
+        fontSize: TYPE.standfirst.size,
+        lineHeight: TYPE.standfirst.leading / TYPE.standfirst.size,
+      },
+      drawable(description)
+    );
   }
 
-  const heading = drawable(title);
-  const fontSize = titleFontSize(heading);
-  children.push(text(heading, {
-    position: "absolute",
-    top: titleTop(heading, fontSize),
-    left: PADDING,
-    fontSize,
-    color: "#0b0c0c",
-    lineHeight: TITLE_LINE_HEIGHT,
-    letterSpacing: "-0.01em",
-    maxWidth: balancedWidth(heading, fontSize, TITLE_MAX_WIDTH)
-  }));
+  meta(specs.index, "Week note", weekNote);
+  meta(specs.date, "Published", published);
 
+  // The home card has no facts to place, only a wordmark and a URL.
   if (footer) {
     children.push(text(drawable(footer), {
       position: "absolute",
       bottom: PADDING,
-      left: PADDING,
-      fontSize: 30,
-      color: "#0b0c0c"
+      left: SHEET_X,
+      fontSize: TYPE.value.size,
+      color: "#0b0c0c",
     }));
   }
 
@@ -368,13 +528,11 @@ function foreground({ kicker, title, footer }) {
         width: WIDTH,
         height: HEIGHT,
         display: "flex",
-        flexDirection: "column",
         position: "relative",
-        padding: PADDING,
-        fontFamily: "volksans"
+        fontFamily: "volksans",
       },
-      children
-    }
+      children,
+    },
   };
 }
 
@@ -382,12 +540,13 @@ function foreground({ kicker, title, footer }) {
 // number Sharp wants — so the card can use the page's own figure without
 // inventing a second one.
 //
-// The page derives its blur from the disc it is blurring (--glass-blur in
-// src/css/variables.css: a fourteenth of the widest lobe), and the card's
-// discs are seeded per slug rather than one fixed size, so the same ratio is
-// applied to each card's own disc. A blur only means anything relative to
-// what it blurs; hard-coding a pixel count here is exactly how the page's own
-// blur came to be six times too strong for the disc it was softening.
+// The ratio is a fourteenth of the widest lobe, and the card's discs are
+// seeded per slug rather than one fixed size, so it is applied to each card's
+// own disc. The page used the same figure in --glass-blur until 2026-08-16,
+// when main went opaque and stopped being a filtered surface; the card is now
+// the only place it survives. A blur only means anything relative to what it
+// blurs — hard-coding a pixel count is exactly how the page's own blur came to
+// be six times too strong for the disc it was softening.
 function blurSigma(d) {
   return (DISC_HALF_W * d.r / 14) / 2;
 }
@@ -396,10 +555,28 @@ function card(parts) {
   return { backdrop: backdrop(parts), foreground: foreground(parts), disc: parts.disc };
 }
 
+// dd.MM.yyyy, the same shape the poster sets — a date there is a block on the
+// grid rather than a sentence, which is why it is numeric and tabular.
 function formatDate(date) {
   return new Intl.DateTimeFormat("en-GB", {
-    day: "numeric", month: "long", year: "numeric", timeZone: "UTC"
-  }).format(date);
+    day: "2-digit", month: "2-digit", year: "numeric", timeZone: "Europe/London"
+  }).format(date).replace(/\//g, ".");
+}
+
+// The week note's own number, the way collections.publicWeeknotes gets it:
+// every non-preview post in date order, oldest first. Front matter is enough —
+// that collection is date-sorted too — so the card does not need Eleventy.
+function weekNumbers() {
+  const posts = [];
+  for (const file of fs.readdirSync(POSTS_DIR)) {
+    if (!file.endsWith(".md")) continue;
+    const inputPath = path.join(POSTS_DIR, file);
+    const { data } = matter.read(inputPath);
+    if (data.preview) continue;
+    posts.push({ file, date: new Date(data.date) });
+  }
+  posts.sort((a, b) => a.date - b.date);
+  return new Map(posts.map((p, i) => [p.file, i + 1]));
 }
 
 // Skip a render when the PNG is already newer than both the post and this
@@ -453,6 +630,16 @@ async function generateOgImages(outputDir) {
   }
 
   const jobs = [];
+  const numbers = weekNumbers();
+  // The revision count and the publish time both come from git, the same
+  // source the colophon and the poster read, so a card says what the page
+  // says. Guarded: a post that git has never seen still gets a card, just
+  // without the fraction.
+  let versionOf = () => null;
+  try {
+    const { postVersion } = require("./post-versions.js");
+    versionOf = postVersion;
+  } catch {}
 
   for (const file of fs.readdirSync(POSTS_DIR)) {
     if (!file.endsWith(".md")) continue;
@@ -464,9 +651,15 @@ async function generateOgImages(outputDir) {
 
     const { data } = matter.read(inputPath);
     const hue1 = hueFromSlug(slug);
+    const version = versionOf(inputPath);
+    const number = numbers.get(file);
+    const when = (version && version.published) || data.date;
     jobs.push(render(card({
-      kicker: data.date ? formatDate(data.date) : null,
+      slug,
       title: data.title || slug,
+      description: data.description || null,
+      weekNote: number ? `${number}${version ? "." + version.iteration : ""}` : null,
+      published: when ? formatDate(new Date(when)) : null,
       hue1,
       hue2: (hue1 + HUE_OFFSET) % 360,
       disc: discFor(slug)
@@ -478,6 +671,7 @@ async function generateOgImages(outputDir) {
     // The CSS fallback hue, and the same +65 the rest of the site uses, so the
     // card matches the face the page wears before random-gradients.js runs.
     jobs.push(render(card({
+      slug: "home",
       title: "Ralph Hawkins",
       footer: "ralphhawkins.co.uk",
       hue1: HUE_FALLBACK,
@@ -553,4 +747,4 @@ function overscrollColor(slug) {
     .join("");
 }
 
-module.exports = { generateOgImages, hueFromSlug, faviconDataUri, postColor, overscrollColor };
+module.exports = { generateOgImages, slugHash, hueFromSlug, faviconDataUri, postColor, overscrollColor };

@@ -1,0 +1,55 @@
+{#- The post poster: the composition a week note opens on.
+
+   Included from base.njk rather than post.njk because it has to be main's own
+   child to reach full width — main carries no horizontal padding, which is
+   the same reason the rule above it spans the viewport without any 100vw
+   arithmetic. The <article> wrapper moved up with it so the h1 still sits
+   inside the article it titles.
+
+   Two facts and one piece of content:
+     the title, set at a size solved from its own words (src/_11ty/title-fit.js)
+     the week number, whose value already carries the revision count
+     the published date, numeric, because it is set as a shape not a sentence
+   The description, where a post has one, is a standfirst — content that
+   belongs with the title, never grouped with the two facts.
+
+   The layout is not authored: the family comes from two facts about the post
+   — how many lines the title takes and whether it has a standfirst — and the
+   variant from the slug, using the same hash that picks the post's colour, so
+   two posts the family cannot tell apart still differ. Front matter overrides
+   it — `poster: c2`, or `poster: {layout: c2}`. -#}
+{%- set posterVersion = page.inputPath | postVersion %}
+{%- set posterNumber = collections.publicWeeknotes | getPostNumber(page) %}
+{%- set fit = title | posterFit %}
+{%- set published = posterVersion.published if posterVersion and posterVersion.published else page.date %}
+{%- if fit %}
+{#- Inside the guard: posterFit returns null for a title it cannot set, and the
+   layout is chosen from its line count. -#}
+{%- set layout = page.fileSlug | posterLayout(fit.lines, description, poster) %}
+<div class="poster poster--{{ layout.name }}" style="--poster-fit-wide:{{ fit.fitWide }};--poster-fit-narrow:{{ fit.fitNarrow }};--poster-line-wide:{{ fit.lineWide }};--poster-line-narrow:{{ fit.lineNarrow }};--poster-lines-wide:{{ fit.lines }};--poster-lines-narrow:{{ fit.linesNarrow }}">
+  <h1 class="poster__title">{{ title }}</h1>
+  {%- if description %}
+  <p class="poster__standfirst">{{ description }}</p>
+  {%- endif %}
+  {#- Same split the colophon makes: a preview draft is not in publicWeeknotes
+     and so has no number, because a draft has no place in the sequence until
+     it is published. -#}
+  {%- if posterVersion %}
+  <p class="poster__meta poster__index">
+    {%- if posterNumber %}
+    <span class="poster__label">Week note</span>
+    <span class="poster__value">{{ posterNumber }}.{{ posterVersion.iteration }}{% if posterVersion.draft %} (draft){% endif %}</span>
+    {%- else %}
+    <span class="poster__label">Version</span>
+    <span class="poster__value">{{ posterVersion.version }}{% if posterVersion.draft %} (draft){% endif %}</span>
+    {%- endif %}
+  </p>
+  {%- endif %}
+  {%- if published %}
+  <p class="poster__meta poster__date">
+    <span class="poster__label">Published</span>
+    <time class="poster__value" datetime="{{ published | isoDate }}">{{ published | dateNumeric }}</time>
+  </p>
+  {%- endif %}
+</div>
+{%- endif %}

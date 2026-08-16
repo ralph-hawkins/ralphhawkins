@@ -2,16 +2,14 @@
 layout: base
 ---
 
-<article>
+{#- The title, the standfirst and the post's two facts are set by the poster
+   (src/_includes/post-poster.njk), which base.njk renders above this as main's
+   own child so it can reach full width. This file opens on the body copy.
+
+   <article> is opened by base.njk for the same reason — it has to wrap the
+   poster as well as this. -#}
   {% set postVersion = page.inputPath | postVersion %}
   {% set postNumber = collections.publicWeeknotes | getPostNumber(page) %}
-  <div class="post-header">
-    <h1 class="page-title">{{ title }}</h1>
-    {% if description %}
-      <p class="post-description">{{ description }}</p>
-    {% endif %}
-  </div>
-  <hr>
   <div class="post-content">
     {{ content | safe }}
   </div>
@@ -64,4 +62,3 @@ layout: base
       </dl>
     </div>
   {% endif %}
-</article>

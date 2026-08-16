@@ -70,15 +70,9 @@ h2 {
   padding-top: var(--spacing-xl);
 }
 
-/* The post title opens the post, and a reader arriving from a post link lands
-   exactly on the hero's bottom edge (auto-scroll.js), so this padding is the
-   first thing they see — it sets how much air the writing starts with. It
-   stacks on main's own --spacing-xl, so the gap from the hero's edge to the
-   title is twice this value. Scoped to the post header so 404.njk, which also
-   uses .page-title, keeps its own spacing. */
-.post-header .page-title {
-  padding-top: var(--spacing-xl);
-}
+/* A post's own title is now set by the poster (.poster__title in poster.css),
+   which is where the reader lands. .page-title below is what 404.njk and the
+   notes list still use. */
 
 /* Post/page titles: h1 in the outline, h2 optics — the hero masthead stays
    the biggest thing on the page on purpose. */

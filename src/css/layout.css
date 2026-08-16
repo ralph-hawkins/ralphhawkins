@@ -16,15 +16,9 @@
   padding-bottom: var(--spacing-xl);
 }
 
-/* Standfirst under the post title: one ladder step up (h4-sized) with h4's
-   leading — the body's 1.5 reads too airy at this size. Scoped to the post
-   header so the compact notes-list descriptions stay body-sized. */
-.post-header .post-description {
-  margin-top: 2lh;
-  margin-bottom: 2lh;
-  font-size: var(--font-size-large);
-  line-height: 1.325;
-}
+/* The post's standfirst moved into the poster on 2026-08-16 and is set by
+   .poster__standfirst in poster.css — it is part of the composition with the
+   title now, rather than a paragraph under it. .post-header went with it. */
 
 header {
   /* Five eighths of the viewport — 50% taken up by a quarter. svh (with a vh

@@ -28,6 +28,24 @@ module.exports = {
   },
 
   /**
+   * Format a date as dd.MM.yyyy (e.g. 18.07.2026) for the post poster, where
+   * the date is set as a compositional element rather than read as a
+   * sentence. Zero-padded so every post's date is the same ten characters
+   * wide — with tabular-nums that makes it one fixed block, which is what
+   * lets it sit on a grid line.
+   *
+   * This filter existed once before, for the supergraphic, and went with it
+   * on 2026-08-12 (git show a3e24ad). Restored rather than reinvented.
+   * @param {Date} date - The date to format
+   * @return {string} The formatted date string
+   */
+  dateNumeric: function(date) {
+    return DateTime.fromJSDate(date)
+      .setZone("Europe/London")
+      .toFormat("dd.MM.yyyy");
+  },
+
+  /**
    * Format a date as ISO 8601 for structured data
    * @param {Date} date - The date to format
    * @return {string} The ISO formatted date string

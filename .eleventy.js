@@ -50,6 +50,18 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("postVersion", postVersion);
   eleventyConfig.on("eleventy.before", resetCacheIfNewCommits);
 
+  // The post poster's display size, solved per title off the real face — the
+  // 54 titles run 4 to 50 characters and no single size serves that. Returns
+  // the size as a fraction of the sheet width (so the poster is one shape at
+  // every viewport), the line count, how far the longest word crops, and the
+  // arrangement that line count implies. See src/_11ty/title-fit.js.
+  eleventyConfig.addFilter("posterFit", require("./src/_11ty/title-fit.js").posterFit);
+
+  // Which of the twelve layered layouts a poster gets: family from the post's
+  // own two facts, variant seeded from the slug, front matter overriding
+  // either. See src/_11ty/poster-layouts.js.
+  eleventyConfig.addFilter("posterLayout", require("./src/_11ty/poster-layouts.js").posterLayout);
+
   // Markdown footnotes ([^1] syntax). The caption override drops the default
   // [n] brackets so the reference is a bare superscript digit — see footnote
   // styles in components.css.

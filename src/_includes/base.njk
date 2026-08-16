@@ -14,6 +14,11 @@
     <script src="/js/post-nav-arrow.js" defer></script>
     <script src="/js/auto-scroll.js" defer></script>
     {%- endif %}
+    {#- Ctrl+Alt+G draws the poster's grid over it. Weeknotes only, because
+       the poster is: nothing else on the site has a grid to show. -#}
+    {%- if tags and 'weeknotes' in tags %}
+    <script src="/js/grid.js" defer></script>
+    {%- endif %}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -48,10 +53,20 @@
        second line above it. See main > hr in layout.css for the spacing. -#}
     {%- if tags and 'weeknotes' in tags %}
     <hr>
-    {%- endif %}
+    {#- The article opens here rather than in post.njk because the poster has
+       to be main's own child to reach full width, and the h1 it carries has to
+       stay inside the article it titles. The body copy keeps its column. -#}
+    <article class="post-article">
+      {% include "post-poster.njk" %}
+      <div class="container">
+        {{ content | safe }}
+      </div>
+    </article>
+    {%- else %}
     <div class="container">
       {{ content | safe }}
     </div>
+    {%- endif %}
   </main>
     {% include "footer.njk" %}
 </body>

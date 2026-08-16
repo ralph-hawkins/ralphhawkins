@@ -93,6 +93,118 @@ function glyphMap(cmap) {
   return map;
 }
 
+// Kerning, out of GPOS.
+//
+// Advance widths alone are not what the browser draws. Volksans has no `kern`
+// table — the pairs live in GPOS, 42kB of it — and ignoring them makes a
+// string measure wider here than it renders: "Tangentland" came out 2.3% over,
+// nearly all of it in the "Ta" pair. That was tolerable while these widths
+// only counted lines for the share cards, and stopped being tolerable when
+// the post poster started deciding, to the glyph, where a title is allowed to
+// be cropped: a third of a glyph's error is the difference between cutting
+// after a letter and cutting through one.
+//
+// Only what is needed: the pair-adjustment lookups (LookupType 2) reachable
+// from a feature tagged 'kern', and only the x-advance applied to the first
+// glyph of the pair. Everything else GPOS can do — marks, cursive attachment,
+// contextual positioning — a browser applies and this deliberately does not,
+// because none of it moves a run of Latin text measurably.
+function coverageIndex(buf, offset, gid) {
+  const format = buf.readUInt16BE(offset);
+  if (format === 1) {
+    const count = buf.readUInt16BE(offset + 2);
+    for (let i = 0; i < count; i++) {
+      if (buf.readUInt16BE(offset + 4 + i * 2) === gid) return i;
+    }
+    return -1;
+  }
+  if (format === 2) {
+    const count = buf.readUInt16BE(offset + 2);
+    for (let i = 0; i < count; i++) {
+      const at = offset + 4 + i * 6;
+      const start = buf.readUInt16BE(at);
+      const end = buf.readUInt16BE(at + 2);
+      if (gid >= start && gid <= end) return buf.readUInt16BE(at + 4) + (gid - start);
+    }
+  }
+  return -1;
+}
+
+function classOf(buf, offset, gid) {
+  if (offset === 0) return 0;
+  const format = buf.readUInt16BE(offset);
+  if (format === 1) {
+    const start = buf.readUInt16BE(offset + 2);
+    const count = buf.readUInt16BE(offset + 4);
+    if (gid < start || gid >= start + count) return 0;
+    return buf.readUInt16BE(offset + 6 + (gid - start) * 2);
+  }
+  if (format === 2) {
+    const count = buf.readUInt16BE(offset + 2);
+    for (let i = 0; i < count; i++) {
+      const at = offset + 4 + i * 6;
+      if (gid >= buf.readUInt16BE(at) && gid <= buf.readUInt16BE(at + 2)) {
+        return buf.readUInt16BE(at + 4);
+      }
+    }
+  }
+  return 0;
+}
+
+// A ValueRecord is a packed struct whose fields are present per the format's
+// bits; XAdvance is bit 0x0004, after XPlacement and YPlacement.
+const valueSize = (format) => {
+  let n = 0;
+  for (let bit = 1; bit <= 0x80; bit <<= 1) if (format & bit) n += 2;
+  return n * 1;
+};
+function xAdvance(buf, offset, format) {
+  if (!(format & 0x0004)) return 0;
+  let at = offset;
+  if (format & 0x0001) at += 2;
+  if (format & 0x0002) at += 2;
+  return buf.readInt16BE(at);
+}
+
+function kernPairs(gpos) {
+  const subtables = [];
+  if (!gpos || gpos.length < 10) return subtables;
+
+  const featureListOffset = gpos.readUInt16BE(6);
+  const lookupListOffset = gpos.readUInt16BE(8);
+
+  // Which lookups does a 'kern' feature point at?
+  const wanted = new Set();
+  const featureCount = gpos.readUInt16BE(featureListOffset);
+  for (let i = 0; i < featureCount; i++) {
+    const rec = featureListOffset + 2 + i * 6;
+    if (gpos.toString("ascii", rec, rec + 4) !== "kern") continue;
+    const table = featureListOffset + gpos.readUInt16BE(rec + 4);
+    const count = gpos.readUInt16BE(table + 2);
+    for (let j = 0; j < count; j++) wanted.add(gpos.readUInt16BE(table + 4 + j * 2));
+  }
+
+  const lookupCount = gpos.readUInt16BE(lookupListOffset);
+  for (let i = 0; i < lookupCount; i++) {
+    if (wanted.size > 0 && !wanted.has(i)) continue;
+    const lookup = lookupListOffset + gpos.readUInt16BE(lookupListOffset + 2 + i * 2);
+    const type = gpos.readUInt16BE(lookup);
+    const subCount = gpos.readUInt16BE(lookup + 4);
+    for (let j = 0; j < subCount; j++) {
+      // The offsets sit at lookup + 6 but are measured from `lookup` itself.
+      let at = lookup + gpos.readUInt16BE(lookup + 6 + j * 2);
+      let effective = type;
+      // Type 9 wraps another lookup so it can sit past a 16-bit offset.
+      if (type === 9) {
+        effective = gpos.readUInt16BE(at + 2);
+        at = at + gpos.readUInt32BE(at + 4);
+      }
+      if (effective === 2) subtables.push(at);
+    }
+  }
+  return subtables;
+}
+
 // glyph id -> advance width, in font units. hmtx holds full metrics for the
 // first numberOfHMetrics glyphs and the last of those applies to every glyph
 // after it, which is how monospaced tails are stored compactly.
@@ -118,21 +230,82 @@ function fontMetrics(path) {
   const glyphs = glyphMap(tables.cmap);
   const widths = advances(tables.hmtx, numberOfHMetrics, numGlyphs);
 
+  const gpos = tables.GPOS;
+  const pairSubtables = gpos ? kernPairs(gpos) : [];
+  const kernCache = new Map();
+
+  // The adjustment GPOS makes to the first glyph's advance, in font units.
+  // Looked up on demand and memoised per pair: class-based kerning is a
+  // class1Count x class2Count matrix, which is far cheaper to index into than
+  // to expand into every pair it implies.
+  function kern(left, right) {
+    const key = (left << 16) | right;
+    const hit = kernCache.get(key);
+    if (hit !== undefined) return hit;
+
+    let delta = 0;
+    for (const at of pairSubtables) {
+      const format = gpos.readUInt16BE(at);
+      const covered = coverageIndex(gpos, at + gpos.readUInt16BE(at + 2), left);
+      if (covered < 0) continue;
+      const fmt1 = gpos.readUInt16BE(at + 4);
+      const fmt2 = gpos.readUInt16BE(at + 6);
+
+      if (format === 1) {
+        const set = at + gpos.readUInt16BE(at + 10 + covered * 2);
+        const count = gpos.readUInt16BE(set);
+        const stride = 2 + valueSize(fmt1) + valueSize(fmt2);
+        for (let i = 0; i < count; i++) {
+          const rec = set + 2 + i * stride;
+          if (gpos.readUInt16BE(rec) !== right) continue;
+          delta += xAdvance(gpos, rec + 2, fmt1);
+          break;
+        }
+      } else if (format === 2) {
+        const class1 = classOf(gpos, at + gpos.readUInt16BE(at + 8), left);
+        const class2 = classOf(gpos, at + gpos.readUInt16BE(at + 10), right);
+        const count1 = gpos.readUInt16BE(at + 12);
+        const count2 = gpos.readUInt16BE(at + 14);
+        if (class1 >= count1 || class2 >= count2) continue;
+        const stride = valueSize(fmt1) + valueSize(fmt2);
+        const rec = at + 16 + (class1 * count2 + class2) * stride;
+        delta += xAdvance(gpos, rec, fmt1);
+      }
+    }
+
+    kernCache.set(key, delta);
+    return delta;
+  }
+
   const metrics = {
     // Can the font draw this character at all?
     supports(codePoint) {
       return glyphs.has(codePoint);
     },
-    // Rendered width of a string, in px at the given size. Advance widths
-    // only: no kerning, which the GPOS table holds and Satori applies. Kerning
-    // moves this by well under a percent, and every use here has slack.
+    // Rendered width of a string, in px at the given size — advance widths
+    // plus the GPOS kerning a browser and Satori both apply. It used to be
+    // advances alone, on the grounds that kerning moved the answer by well
+    // under a percent; measured against Chrome, "Tangentland" was 2.3% out,
+    // and the post poster crops to the glyph.
     width(text, fontSize) {
       let units = 0;
+      let previous;
       for (const char of text) {
         const gid = glyphs.get(char.codePointAt(0));
-        if (gid !== undefined) units += widths[gid] || 0;
+        if (gid === undefined) { previous = undefined; continue; }
+        if (previous !== undefined) units += kern(previous, gid);
+        units += widths[gid] || 0;
+        previous = gid;
       }
       return (units / unitsPerEm) * fontSize;
+    },
+    // The kern between two characters, in px — so a caller measuring a string
+    // one glyph at a time can put back what it loses by splitting.
+    kernBetween(a, b, fontSize) {
+      const left = glyphs.get(a.codePointAt(0));
+      const right = glyphs.get(b.codePointAt(0));
+      if (left === undefined || right === undefined) return 0;
+      return (kern(left, right) / unitsPerEm) * fontSize;
     },
   };
 
