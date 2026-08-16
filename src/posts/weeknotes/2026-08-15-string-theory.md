@@ -8,7 +8,7 @@ date: 2026-08-15
 
 For screening services, a result leaves the lab as structured data. Then it duplicates and splits. One copy goes into the screening programme’s own system – structured, readable, never intended for anything directly user‑facing. The other copy goes to the GP record – also never designed for users – but eventually reaches them in the NHS App. By the time it arrives it has been translated, truncated and reformatted by each of the many systems it passed through. What the user sees is a bundle of strings, and the strings are unpredictable. Sometimes they’re readable. Sometimes a result arrives titled “Hum papill vir DNA dtctn assay”.
 
-For our services, we want to help users get test results in a way that gives them the best chance of being confident they know what it means – and if they need to do something, how to do that thing. If we can consistently and safely match the two copies, the readable version tells us what the messy version means. Then we can enhance what reaches the user – clear, well‑structured information and what to do next. But it might mean hooking into reporting systems that were never built for this, to decode strings that were never meant to be read.
+We want to help users of prevention services get test results in a way that gives them the best chance of being confident they know what it means – and if they need to do something, how to do that thing. If we can consistently and safely match the two copies, the readable version tells us what the messy version means. Then we can enhance what reaches the user – clear, well‑structured information and what to do next. But it might mean hooking into reporting systems that weren’t built for this purpose.
 
 Anything we build works across other people’s software. We won’t know what this changes for other teams until we’re deeper into the detail.
 
@@ -20,4 +20,4 @@ This is us making things better in the short term. Trying to untangle knots, or 
 
 ---
 
-[Jeannie](https://www.linkedin.com/in/jeannie-foulsham/) had the idea to collect real examples and [Alistair](https://www.linkedin.com/feed/update/urn:li:activity:7493303502299967489/) wrote up [how prevention results appear in the NHS App](https://design-history.prevention-services.nhs.uk/managing-my-health/2026/08/examples-of-results/).
+[Jeannie](https://www.linkedin.com/in/jeannie-foulsham/) had the idea to gather real examples and [Alistair](https://www.linkedin.com/feed/update/urn:li:activity:7493303502299967489/) wrote up [how prevention results appear in the NHS App](https://design-history.prevention-services.nhs.uk/managing-my-health/2026/08/examples-of-results/).
