@@ -1,5 +1,5 @@
 ---
-title: Self‑aware crustaceans
+title: Self‐aware crustaceans
 description: Working with the social boundaries of the NHS.
 date: 2026-07-05
 ---

@@ -1,7 +1,7 @@
 ---
 title: Exchanging long protein strings
 date: 2026-02-07
-description: Does cross‑cutting mean distracting people?
+description: Does cross‐cutting mean distracting people?
 ---
 
 We decided on the first experiment for Managing my Health and started prototyping. We’re exploring whether joining up existing work that’s previously been separate will make sense for users. There’s potential to use it as a jumping off point for a few other things we’ve been thinking about. I don’t want to say more before we talk to the teams involved.
