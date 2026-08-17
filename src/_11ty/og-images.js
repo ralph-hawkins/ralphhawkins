@@ -191,11 +191,6 @@ function drawable(text) {
   return out.replace(/\s+/g, " ").trim();
 }
 
-function titleFontSize(title) {
-  if (title.length <= 22) return 112;
-  return 96;
-}
-
 // Where a line is allowed to break, as CSS sees it: between words at a space,
 // and after a hyphen inside a word. The second one is not a nicety —
 // "Self-aware" is one word to a space-split but two pieces to a line breaker,
@@ -253,10 +248,13 @@ const PADDING = 72;
 
 // THE POSTER GRID, ON THE CARD
 // ---------------------------------------------------------------------------
-// The card is the page's own poster at five columns. Not a lookalike: it takes
-// the module straight from poster-grid.js, the layout from poster-layouts.js
-// and the fitted type size from title-fit.js, so a card is the composition its
-// post opens on rather than a second design that has to be kept in step.
+// The card carries the title and nothing else — no week note, no date, no
+// standfirst — set as large as the sheet will hold it. It still takes its
+// module straight from poster-grid.js, so the sheet it fills is the page's
+// own, but with one item on it the layout table has nothing left to place and
+// the per-title fit has no other block to be sized against. Both requires went
+// with them on 2026-08-17; what the card shares with the poster now is the
+// grid it sits on and the face it is set in, not the arrangement.
 //
 // Five columns because that is what 1200px asks for. The site's module is
 // 211.89px, five of them is 1059.47, and the margin either side comes to 70.3
@@ -264,13 +262,9 @@ const PADDING = 72;
 // 93.6px, three page lines, which is exactly what the site gives a 1440px
 // window.
 //
-// Satori has no CSS grid, so every item is placed absolutely from these
-// numbers. That is the reason the grid lives in a table of line names rather
-// than in the stylesheet: the same table can be read by something that cannot
-// run CSS at all.
+// Satori has no CSS grid, so the title is placed absolutely from these
+// numbers.
 const { moduleWidth } = require("./poster-grid.js");
-const { posterFit } = require("./title-fit.js");
-const posterLayouts = require("./poster-layouts.js");
 
 const CARD_COLS = 5;
 const CARD_MODULE = moduleWidth;
@@ -287,59 +281,62 @@ const CARD_ROW = Math.max(
 const SHEET_H = 4 * CARD_ROW + 3 * CARD_GUTTER;
 const SHEET_Y = (HEIGHT - SHEET_H) / 2;
 
-// Column line names to x, row line names to y — the same names the layout
-// table uses, so a placement reads identically here and in poster.css.
-const COL_X = {
-  "sheet-start": 0, "body-start": 1, "body-2": 2, "body-3": 3,
-  "body-end": 4, "sheet-end": 5,
-};
-const colX = (name) => SHEET_X + COL_X[name] * CARD_MODULE;
-const rowY = (name) => SHEET_Y + (Number(name.slice(1)) - 1) * (CARD_ROW + CARD_GUTTER);
-// A grid area stops at the start of its end line, not past the gutter before it.
-const areaBottom = (name) => rowY(name) - CARD_GUTTER;
+// The sheet's own edges. The column and row line names went with the layout
+// table: one item spanning the whole sheet has no use for the lines in
+// between, and naming them here when nothing reads them would suggest a
+// placement grid the card no longer has.
+const SHEET_BOTTOM = SHEET_Y + SHEET_H;
 
 // Leadings are rounded to the baseline exactly as poster.css rounds them, so
 // the card's type sits on the same rhythm.
 const snap = (v) => Math.round(v / BASELINE) * BASELINE;
 
-const TYPE = {
-  label: { size: 0.92 * 16, leading: snap(1.25 * 0.92 * 16) },
-  value: { size: 1.85 * 16, leading: snap(1.05 * 1.85 * 16) },
-  standfirst: { size: 1.85 * 16, leading: snap(1.325 * 1.85 * 16) },
-};
-
-// Where an item's box sits and how tall it is, from its layout spec.
-function place(spec, height) {
-  const [c0, c1] = spec.wide;
-  const top = spec.align === "end" ? areaBottom(spec.rows[1]) - height : rowY(spec.rows[0]);
-  return { left: colX(c0), top, width: colX(c1) - colX(c0) };
-}
-
-const TITLE_MAX_WIDTH = 950;
-// The same leading .page-title carries in src/css/typography.css, so a title
-// sets the same way on the card as it does on the page it links to.
+// The leading .page-title carries in src/css/typography.css, so a title sets
+// the same way on the card as it does on the page it links to.
 //
 // Measured floor is 0.906, where the tightest pair of lines across the 53
 // titles touches — "You don't always need to go from left to right", whose
-// "y" descender lands over a "d" ascender. 0.975 clears it by 6.6px at the
-// card's 96px type. Remeasure if the titles or the face change.
+// "y" descender lands over a "d" ascender. 0.9 is under that floor and is what
+// the poster uses, so the card takes the poster's rather than the page body's:
+// at this size the two lines would touch, and the sizes here are large enough
+// that a clash is unmistakable. Remeasure if the titles or the face change.
 //
 // Measuring this needs care: grouping the rendered rows into ink bands and
 // taking the smallest gap gives 7px at every leading, because the dot of an
 // "i" is its own band a fixed distance above its letters. Bands have to be
 // grouped into lines first.
-const TITLE_LINE_HEIGHT = 0.975;
+const TITLE_LINE_HEIGHT = 0.95;
 
-// The title's first line sits at the vertical mid-point of the card. Long
-// titles that would run past the bottom padding get nudged up just enough to
-// fit. The line count is measured from the font's own advance widths, where it
-// used to be estimated at ~0.5em a character — an estimate that ran 9% short
-// on one title and 12% long on another, so the nudge was applied to the wrong
-// titles.
-function titleTop(title, fontSize) {
-  const lines = lineCount(title, fontSize, balancedWidth(title, fontSize, TITLE_MAX_WIDTH));
-  const height = lines * fontSize * TITLE_LINE_HEIGHT;
-  return Math.round(Math.min(HEIGHT / 2, HEIGHT - PADDING - height));
+// The largest size at which no unbreakable piece overruns the sheet. Advance
+// widths scale linearly with size — kerning included, since GPOS values are in
+// font units — so this is one division rather than a search.
+function sizeByWidth(text, width) {
+  const widest = Math.max(...segments(text).map((p) => metrics.width(p.text, 1000))) / 1000;
+  return width / widest;
+}
+
+// The biggest the title can be set and still fit the sheet.
+//
+// Scanning down from the ceiling and taking the first size that fits is what
+// picks the line count, rather than the count being decided first and the size
+// fitted to it. It has to be that way round: a long title set over three lines
+// takes far larger type than the same title on one, because each line is a
+// third as wide, so choosing the count first would cap the size at whatever
+// that count allowed. The height a title needs is not monotonic in its size —
+// it drops every time a line is saved — so the first fit from the top is the
+// largest fit, and scanning is the honest way to find it.
+function fillSheet(text) {
+  const ceiling = Math.floor(Math.min(
+    sizeByWidth(text, SHEET_W),        // no single piece may overrun
+    SHEET_H / TITLE_LINE_HEIGHT        // one line can be no taller than the sheet
+  ));
+  for (let size = ceiling; size > 12; size--) {
+    const lines = lineCount(text, size, SHEET_W);
+    const leading = snap(TITLE_LINE_HEIGHT * size);
+    if (lines * leading <= SHEET_H) return { size, lines, leading };
+  }
+  const size = 12;
+  return { size, lines: lineCount(text, size, SHEET_W), leading: snap(TITLE_LINE_HEIGHT * size) };
 }
 
 // The page's surface: one flat tint of the background laid over the whole
@@ -420,132 +417,29 @@ function backdrop({ hue1, hue2, disc: d }) {
   };
 }
 
-// The card's type, laid out on the poster's grid.
+// The card's type: the title, alone, as large as the sheet will hold it.
 //
-// Every measurement comes from the same places the page uses: the size from
-// title-fit.js, the placement from poster-layouts.js, the leadings snapped to
-// the same baseline. Nothing here is a card-specific number except the five
-// columns, and that follows from 1200px.
+// It carried the week note, the published date and the standfirst until
+// 2026-08-17, placed from the poster's layout table. Ralph asked for the title
+// on its own and set bigger, which is what a card is read as at the size one
+// is actually seen — a thumbnail in a timeline, where five separate blocks of
+// type were four more than survived the scaling down. The facts are all still
+// on the page the card links to, in the poster and again in the colophon.
 //
-// No crop. On a wide sheet no title crops — measured across all 54 — and the
-// card is always a wide sheet, so the one part of the poster that needs the
-// title clipped to an em box has nothing to do here.
-function foreground({ title, weekNote, published, description, footer, slug }) {
-  const text = (value, style) => ({ type: "div", props: { style, children: value } });
-  const children = [];
+// The sheet is the same one, and so is the face and the baseline the leading
+// snaps to. What went is the arrangement.
+//
+// No crop. Nothing is clipped to an em box here: the size is solved so the
+// words fit, rather than fitted to a target and then cut.
+function foreground({ title }) {
   const heading = drawable(title);
+  const { size, lines, leading } = fillSheet(heading);
 
-  const fit = posterFit(heading);
-  const titleWidth = 4 * CARD_MODULE;            // body-start to sheet-end
-  // The line count is decided by the fit, not by the size, because the page
-  // sets the title in a box measured in em — so the layout can be chosen
-  // before the size is, and the size can then be capped without moving a
-  // single break.
-  const lines = fit ? fit.lines : lineCount(heading, titleFontSize(heading), titleWidth);
-  const layout = posterLayouts.pick(slug || "home", lines, Boolean(description));
-  const specs = { ...layout.items, standfirst: posterLayouts.STANDFIRST };
-
-  // The same three terms poster.css takes the smallest of: the fit, the 16rem
-  // ceiling, and the rows the layout gave it. The third one is easy to forget
-  // and its absence is not subtle — without it a three-line title overflowed
-  // its rows upward and started 3px from the top of the card.
-  const span = posterLayouts.rowSpan(specs.title);
-  const budget = span * CARD_ROW + (span - 1) * CARD_GUTTER - lines * BASELINE;
-  let size = Math.min(
-    fit ? fit.fitWide * titleWidth : titleFontSize(heading),
-    16 * 16,
-    budget / (lines * 0.9)
-  );
-
-  // And then shrink until the card's own measurement agrees with the fitter's
-  // line count. The fit models letter-spacing of -0.015em, which is 26px over
-  // the thirteen characters of "Ralph Hawkins" — and Satori does not apply
-  // letter-spacing in either em or px, so the line came out 874px in an 848px
-  // box, wrapped to two, and a block anchored to its bottom ran off the card.
-  // Rather than trust a property that is quietly ignored, the size is checked
-  // against lineCount(), which measures advance widths the same way Satori
-  // lays them out. If Satori ever does honour it the line only gets shorter,
-  // which this still allows.
-  while (size > 12 && lineCount(heading, size, titleWidth) > lines) size -= 1;
-  const leading = snap(0.9 * size);
-
-  const block = (spec, height, style, value) => {
-    const at = place(spec, height);
-    children.push(text(value, {
-      position: "absolute",
-      left: at.left,
-      top: at.top,
-      width: at.width,
-      color: "#0b0c0c",
-      ...style,
-    }));
-  };
-
-  // A metadata pair is a label over a value, both 600, the value tabular.
-  const meta = (spec, label, value) => {
-    if (!value) return;
-    const height = TYPE.label.leading + TYPE.value.leading;
-    const at = place(spec, height);
-    children.push({
-      type: "div",
-      props: {
-        style: {
-          position: "absolute", left: at.left, top: at.top,
-          display: "flex", flexDirection: "column", color: "#0b0c0c",
-        },
-        children: [
-          text(label, { fontSize: TYPE.label.size, lineHeight: TYPE.label.leading / TYPE.label.size }),
-          text(value, { fontSize: TYPE.value.size, lineHeight: TYPE.value.leading / TYPE.value.size }),
-        ],
-      },
-    });
-  };
-
-  // The title sits on the bottom line of its rows, as it does on the page.
-  block(
-    specs.title,
-    lines * leading,
-    {
-      fontSize: size,
-      lineHeight: leading / size,
-      // In px, not em. title-fit.js models -0.015em and the fit depends on it
-      // — over the thirteen characters of "Ralph Hawkins" it is 26px at this
-      // size, the difference between one line and two. Satori did not apply
-      // the em form, so the title overflowed its box, wrapped, and a block
-      // anchored to its bottom ran off the card.
-      letterSpacing: -0.015 * size,
-      width: titleWidth,
-    },
-    heading
-  );
-
-  if (description) {
-    const at = place(specs.standfirst, 0);
-    const sfLines = lineCount(drawable(description), TYPE.standfirst.size, at.width);
-    block(
-      specs.standfirst,
-      sfLines * TYPE.standfirst.leading,
-      {
-        fontSize: TYPE.standfirst.size,
-        lineHeight: TYPE.standfirst.leading / TYPE.standfirst.size,
-      },
-      drawable(description)
-    );
-  }
-
-  meta(specs.index, "Week note", weekNote);
-  meta(specs.date, "Published", published);
-
-  // The home card has no facts to place, only a wordmark and a URL.
-  if (footer) {
-    children.push(text(drawable(footer), {
-      position: "absolute",
-      bottom: PADDING,
-      left: SHEET_X,
-      fontSize: TYPE.value.size,
-      color: "#0b0c0c",
-    }));
-  }
+  // Even out the lines. Satori has no text-wrap: balance, and greedy wrapping
+  // fills each line to the brim and leaves the remainder on the last one — at
+  // this size a single orphaned word is the whole bottom third of the card.
+  // Narrowing the box cannot change the count, only where the breaks fall.
+  const width = lines > 1 ? balancedWidth(heading, size, SHEET_W) : SHEET_W;
 
   return {
     type: "div",
@@ -557,7 +451,32 @@ function foreground({ title, weekNote, published, description, footer, slug }) {
         position: "relative",
         fontFamily: "volksans",
       },
-      children,
+      children: [{
+        type: "div",
+        props: {
+          style: {
+            position: "absolute",
+            left: SHEET_X,
+            // On the sheet's bottom line, as the title is on the page — the
+            // poster anchors it to the end of its rows, and with the rest of
+            // the sheet empty its rows are the whole of it. Never centred:
+            // that is the one alignment that cannot keep a baseline on the
+            // grid.
+            top: SHEET_BOTTOM - lines * leading,
+            width,
+            color: "#0b0c0c",
+            fontSize: size,
+            lineHeight: leading / size,
+            // In px, not em, because Satori ignores the em form. It ignores
+            // this one too — measured, in both units — so lineCount() rather
+            // than this declaration is what the size is solved against. Left
+            // in for parity with the page: if Satori ever honours it the lines
+            // only get shorter, which cannot overflow the box.
+            letterSpacing: -0.015 * size,
+          },
+          children: heading,
+        },
+      }],
     },
   };
 }
@@ -579,30 +498,6 @@ function blurSigma(d) {
 
 function card(parts) {
   return { backdrop: backdrop(parts), foreground: foreground(parts), disc: parts.disc };
-}
-
-// dd.MM.yyyy, the same shape the poster sets — a date there is a block on the
-// grid rather than a sentence, which is why it is numeric and tabular.
-function formatDate(date) {
-  return new Intl.DateTimeFormat("en-GB", {
-    day: "2-digit", month: "2-digit", year: "numeric", timeZone: "Europe/London"
-  }).format(date).replace(/\//g, ".");
-}
-
-// The week note's own number, the way collections.publicWeeknotes gets it:
-// every non-preview post in date order, oldest first. Front matter is enough —
-// that collection is date-sorted too — so the card does not need Eleventy.
-function weekNumbers() {
-  const posts = [];
-  for (const file of fs.readdirSync(POSTS_DIR)) {
-    if (!file.endsWith(".md")) continue;
-    const inputPath = path.join(POSTS_DIR, file);
-    const { data } = matter.read(inputPath);
-    if (data.preview) continue;
-    posts.push({ file, date: new Date(data.date) });
-  }
-  posts.sort((a, b) => a.date - b.date);
-  return new Map(posts.map((p, i) => [p.file, i + 1]));
 }
 
 // Skip a render when the PNG is already newer than both the post and this
@@ -656,17 +551,6 @@ async function generateOgImages(outputDir) {
   }
 
   const jobs = [];
-  const numbers = weekNumbers();
-  // The revision count and the publish time both come from git, the same
-  // source the colophon and the poster read, so a card says what the page
-  // says. Guarded: a post that git has never seen still gets a card, just
-  // without the fraction.
-  let versionOf = () => null;
-  try {
-    const { postVersion } = require("./post-versions.js");
-    versionOf = postVersion;
-  } catch {}
-
   for (const file of fs.readdirSync(POSTS_DIR)) {
     if (!file.endsWith(".md")) continue;
     const inputPath = path.join(POSTS_DIR, file);
@@ -677,15 +561,9 @@ async function generateOgImages(outputDir) {
 
     const { data } = matter.read(inputPath);
     const hue1 = hueFromSlug(slug);
-    const version = versionOf(inputPath);
-    const number = numbers.get(file);
-    const when = (version && version.published) || data.date;
     jobs.push(render(card({
       slug,
       title: data.title || slug,
-      description: data.description || null,
-      weekNote: number ? `${number}${version ? "." + version.iteration : ""}` : null,
-      published: when ? formatDate(new Date(when)) : null,
       hue1,
       hue2: (hue1 + HUE_OFFSET) % 360,
       disc: discFor(slug)
@@ -699,7 +577,6 @@ async function generateOgImages(outputDir) {
     jobs.push(render(card({
       slug: "home",
       title: "Ralph Hawkins",
-      footer: "ralphhawkins.co.uk",
       hue1: HUE_FALLBACK,
       hue2: (HUE_FALLBACK + HUE_OFFSET) % 360,
       disc: discFor("home")
