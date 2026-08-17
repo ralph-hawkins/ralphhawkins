@@ -1,7 +1,7 @@
 ---
 
 title: String theory
-description: Do the hard work to add more complexity.
+description: Do the hard work to add complexity.
 date: 2026-08-15
 
 ---
