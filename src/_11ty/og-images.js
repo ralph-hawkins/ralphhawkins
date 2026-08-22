@@ -305,8 +305,20 @@ const snap = (v) => Math.round(v / BASELINE) * BASELINE;
 // The card sets one thing, the title, at the size the fitter gives it. This is
 // the only fixed size left: the home card's URL, which is not a title and so
 // has nothing to be fitted against.
+//
+// 3.73rem is the top rung of the site's own ×1.42 ladder off the 1.3rem body
+// size — 0.92 / 1.3 / 1.85 / 2.62 / 3.73, the same ladder --font-size-h2 sits
+// on in variables.css. Not a size invented for the card.
+//
+// It used to be 1.85rem, which was never chosen for a URL: it was the size the
+// poster's metadata values took, inherited when this block still set four
+// things. What a URL on a share card actually has to do is survive the
+// thumbnail a timeline renders it at. Downscaled to a 500px-wide thumbnail,
+// 1.85rem arrives at about 12px and is not read; 3.73rem arrives at about 25px
+// and is. The title still sets around 150px here, so the URL stays the
+// subordinate mark by a factor of two and a half.
 const TYPE = {
-  value: { size: 1.85 * 16, leading: snap(1.05 * 1.85 * 16) },
+  url: { size: 3.73 * 16, leading: snap(1.05 * 3.73 * 16) },
 };
 
 // The home card's URL, in the same four-field shape poster-layouts.js gives
@@ -318,8 +330,8 @@ const TYPE = {
 // It lives here rather than in the table because it is not a poster item: no
 // post has it, and the table is what the page's own posters are built from.
 const HOME_FOOTER = {
-  wide: ["sheet-start", "body-2"],
-  narrow: ["body-start", "body-3"],
+  wide: ["sheet-start", "body-3"],
+  narrow: ["body-start", "body-end"],
   rows: ["r1", "r2"],
   align: "start",
 };
@@ -542,15 +554,16 @@ function foreground({ title, description, footer, slug }) {
   // straight into the "R" of "Ralph Hawkins".
   //
   // The head band is where it goes instead. A one-line title bottom-aligned to
-  // r5 leaves r1–r2 empty — it is exactly where a post card used to set its
-  // week number — and sheet-start to body-2 is 424px, wide enough for the URL
-  // with 165px to spare, so the box holds the text rather than the text
-  // overrunning the box.
+  // r5 leaves r1–r2 empty right across the sheet — it is where a post card used
+  // to set its week number — so the box can take the three modules the URL
+  // needs at 3.73rem. That is 636px against 522px of text: the box holds the
+  // text, rather than the text overrunning the box, which is what put the URL
+  // through the title in the first place.
   if (footer) {
     block(
       HOME_FOOTER,
-      TYPE.value.leading,
-      { fontSize: TYPE.value.size, lineHeight: TYPE.value.leading / TYPE.value.size },
+      TYPE.url.leading,
+      { fontSize: TYPE.url.size, lineHeight: TYPE.url.leading / TYPE.url.size },
       drawable(footer)
     );
   }
