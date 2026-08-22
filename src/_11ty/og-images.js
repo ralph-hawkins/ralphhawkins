@@ -302,10 +302,38 @@ const areaBottom = (name) => rowY(name) - CARD_GUTTER;
 // the card's type sits on the same rhythm.
 const snap = (v) => Math.round(v / BASELINE) * BASELINE;
 
+// The card sets one thing, the title, at the size the fitter gives it. This is
+// the only fixed size left: the home card's URL, which is not a title and so
+// has nothing to be fitted against.
+//
+// 3.73rem is the top rung of the site's own ×1.42 ladder off the 1.3rem body
+// size — 0.92 / 1.3 / 1.85 / 2.62 / 3.73, the same ladder --font-size-h2 sits
+// on in variables.css. Not a size invented for the card.
+//
+// It used to be 1.85rem, which was never chosen for a URL: it was the size the
+// poster's metadata values took, inherited when this block still set four
+// things. What a URL on a share card actually has to do is survive the
+// thumbnail a timeline renders it at. Downscaled to a 500px-wide thumbnail,
+// 1.85rem arrives at about 12px and is not read; 3.73rem arrives at about 25px
+// and is. The title still sets around 150px here, so the URL stays the
+// subordinate mark by a factor of two and a half.
 const TYPE = {
-  label: { size: 0.92 * 16, leading: snap(1.25 * 0.92 * 16) },
-  value: { size: 1.85 * 16, leading: snap(1.05 * 1.85 * 16) },
-  standfirst: { size: 1.85 * 16, leading: snap(1.325 * 1.85 * 16) },
+  url: { size: 3.73 * 16, leading: snap(1.05 * 3.73 * 16) },
+};
+
+// The home card's URL, in the same four-field shape poster-layouts.js gives
+// every other placed item: the columns it takes, the rows, and which end of
+// those rows it hangs from. Only line names, no arithmetic — so like the
+// layout table, the worst a mistake here can do is put the URL in the wrong
+// cell rather than off the grid entirely.
+//
+// It lives here rather than in the table because it is not a poster item: no
+// post has it, and the table is what the page's own posters are built from.
+const HOME_FOOTER = {
+  wide: ["sheet-start", "body-3"],
+  narrow: ["body-start", "body-end"],
+  rows: ["r1", "r2"],
+  align: "start",
 };
 
 // Where an item's box sits and how tall it is, from its layout spec.
@@ -430,7 +458,7 @@ function backdrop({ hue1, hue2, disc: d }) {
 // No crop. On a wide sheet no title crops — measured across all 54 — and the
 // card is always a wide sheet, so the one part of the poster that needs the
 // title clipped to an em box has nothing to do here.
-function foreground({ title, weekNote, published, description, footer, slug }) {
+function foreground({ title, description, footer, slug }) {
   const text = (value, style) => ({ type: "div", props: { style, children: value } });
   const children = [];
   const heading = drawable(title);
@@ -442,8 +470,12 @@ function foreground({ title, weekNote, published, description, footer, slug }) {
   // before the size is, and the size can then be capped without moving a
   // single break.
   const lines = fit ? fit.lines : lineCount(heading, titleFontSize(heading), titleWidth);
+  // The description still chooses the layout even though it is never drawn:
+  // picking the same family the page picks is what keeps the title in the rows
+  // it opens the post on. A card that chose its own layout would be a second
+  // composition again, which is the thing this file exists not to be.
   const layout = posterLayouts.pick(slug || "home", lines, Boolean(description));
-  const specs = { ...layout.items, standfirst: posterLayouts.STANDFIRST };
+  const specs = layout.items;
 
   // The same three terms poster.css takes the smallest of: the fit, the 16rem
   // ceiling, and the rows the layout gave it. The third one is easy to forget
@@ -481,26 +513,6 @@ function foreground({ title, weekNote, published, description, footer, slug }) {
     }));
   };
 
-  // A metadata pair is a label over a value, both 600, the value tabular.
-  const meta = (spec, label, value) => {
-    if (!value) return;
-    const height = TYPE.label.leading + TYPE.value.leading;
-    const at = place(spec, height);
-    children.push({
-      type: "div",
-      props: {
-        style: {
-          position: "absolute", left: at.left, top: at.top,
-          display: "flex", flexDirection: "column", color: "#0b0c0c",
-        },
-        children: [
-          text(label, { fontSize: TYPE.label.size, lineHeight: TYPE.label.leading / TYPE.label.size }),
-          text(value, { fontSize: TYPE.value.size, lineHeight: TYPE.value.leading / TYPE.value.size }),
-        ],
-      },
-    });
-  };
-
   // The title sits on the bottom line of its rows, as it does on the page.
   block(
     specs.title,
@@ -519,32 +531,41 @@ function foreground({ title, weekNote, published, description, footer, slug }) {
     heading
   );
 
-  if (description) {
-    const at = place(specs.standfirst, 0);
-    const sfLines = lineCount(drawable(description), TYPE.standfirst.size, at.width);
-    block(
-      specs.standfirst,
-      sfLines * TYPE.standfirst.leading,
-      {
-        fontSize: TYPE.standfirst.size,
-        lineHeight: TYPE.standfirst.leading / TYPE.standfirst.size,
-      },
-      drawable(description)
-    );
-  }
+  // And that is the whole card. The standfirst, the week note's number and the
+  // publish date all used to set here, on the grid lines the poster gives
+  // them. They are on the page a click away, and a share card is read at
+  // thumbnail size in a timeline, where four blocks of type competing across
+  // 1200px arrive as texture rather than as facts. One title over the blob is
+  // what actually survives that size, so it is all the card sets.
+  //
+  // The layout table still hands over specs.index and specs.date. Nothing
+  // reads them here — they stay because poster-layouts.js is the page's, and
+  // the page still sets both.
 
-  meta(specs.index, "Week note", weekNote);
-  meta(specs.date, "Published", published);
-
-  // The home card has no facts to place, only a wordmark and a URL.
+  // The home card is not a post and has no title carrying the address, so it
+  // keeps its wordmark and URL.
+  //
+  // On the grid, like everything else. This was the one item in the file
+  // placed by raw offset — bottom: PADDING, left: SHEET_X — and so the one
+  // item outside the invariant poster-layouts.js asserts and tests, that
+  // nothing overlaps. It duly overlapped: the home card picks layout a1, whose
+  // title takes rows r2–r5 aligned to the bottom, and 259px of
+  // "ralphhawkins.co.uk" set from sheet-start ran 47px past body-start and
+  // straight into the "R" of "Ralph Hawkins".
+  //
+  // The head band is where it goes instead. A one-line title bottom-aligned to
+  // r5 leaves r1–r2 empty right across the sheet — it is where a post card used
+  // to set its week number — so the box can take the three modules the URL
+  // needs at 3.73rem. That is 636px against 522px of text: the box holds the
+  // text, rather than the text overrunning the box, which is what put the URL
+  // through the title in the first place.
   if (footer) {
-    children.push(text(drawable(footer), {
-      position: "absolute",
-      bottom: PADDING,
-      left: SHEET_X,
-      fontSize: TYPE.value.size,
-      color: "#0b0c0c",
-    }));
+    block(
+      HOME_FOOTER,
+      TYPE.url.leading,
+      { fontSize: TYPE.url.size, lineHeight: TYPE.url.leading / TYPE.url.size },
+      drawable(footer)
+    );
   }
 
   return {
@@ -579,30 +600,6 @@ function blurSigma(d) {
 
 function card(parts) {
   return { backdrop: backdrop(parts), foreground: foreground(parts), disc: parts.disc };
-}
-
-// dd.MM.yyyy, the same shape the poster sets — a date there is a block on the
-// grid rather than a sentence, which is why it is numeric and tabular.
-function formatDate(date) {
-  return new Intl.DateTimeFormat("en-GB", {
-    day: "2-digit", month: "2-digit", year: "numeric", timeZone: "Europe/London"
-  }).format(date).replace(/\//g, ".");
-}
-
-// The week note's own number, the way collections.publicWeeknotes gets it:
-// every non-preview post in date order, oldest first. Front matter is enough —
-// that collection is date-sorted too — so the card does not need Eleventy.
-function weekNumbers() {
-  const posts = [];
-  for (const file of fs.readdirSync(POSTS_DIR)) {
-    if (!file.endsWith(".md")) continue;
-    const inputPath = path.join(POSTS_DIR, file);
-    const { data } = matter.read(inputPath);
-    if (data.preview) continue;
-    posts.push({ file, date: new Date(data.date) });
-  }
-  posts.sort((a, b) => a.date - b.date);
-  return new Map(posts.map((p, i) => [p.file, i + 1]));
 }
 
 // Skip a render when the PNG is already newer than both the post and this
@@ -656,16 +653,9 @@ async function generateOgImages(outputDir) {
   }
 
   const jobs = [];
-  const numbers = weekNumbers();
-  // The revision count and the publish time both come from git, the same
-  // source the colophon and the poster read, so a card says what the page
-  // says. Guarded: a post that git has never seen still gets a card, just
-  // without the fraction.
-  let versionOf = () => null;
-  try {
-    const { postVersion } = require("./post-versions.js");
-    versionOf = postVersion;
-  } catch {}
+  // No git lookup any more. The revision count and the publish time were read
+  // here to set the card's two metadata pairs; with the card down to its
+  // title, front matter is the whole of what a card needs.
 
   for (const file of fs.readdirSync(POSTS_DIR)) {
     if (!file.endsWith(".md")) continue;
@@ -677,15 +667,11 @@ async function generateOgImages(outputDir) {
 
     const { data } = matter.read(inputPath);
     const hue1 = hueFromSlug(slug);
-    const version = versionOf(inputPath);
-    const number = numbers.get(file);
-    const when = (version && version.published) || data.date;
     jobs.push(render(card({
       slug,
       title: data.title || slug,
+      // Passed for the layout it picks, not for anything it draws.
       description: data.description || null,
-      weekNote: number ? `${number}${version ? "." + version.iteration : ""}` : null,
-      published: when ? formatDate(new Date(when)) : null,
       hue1,
       hue2: (hue1 + HUE_OFFSET) % 360,
       disc: discFor(slug)
