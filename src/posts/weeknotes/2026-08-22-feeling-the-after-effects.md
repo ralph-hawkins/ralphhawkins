@@ -9,7 +9,7 @@ The first version was a series of screen recordings, mostly of prototypes or thi
 
 I wanted to break the edges of the screens to show this. So version 2 uses After Effects to animate the connections and relationships between things.
 
-The probl is I’m the only person with access to After Effects, and I’ve barely used it in 20 years. After Effects is stuck in the same software paradigms it had back then, which is a blessing and a curse. It’s the same as last time I used it, but it’s scarily brittle. Things you’d expect to just work – setting colours globally – can only be done as a workaround, using scripts. Thankfully AI takes much of the pain out of what would otherwise be frantic, endless googling.
+The problem is I’m the only person with access to After Effects, and I’ve barely used it in 20 years. After Effects is stuck in the same software paradigms it had back then, which is a blessing and a curse. It’s the same as last time I used it, but it’s scarily brittle. Things you’d expect to just work – setting colours globally – can only be done as a workaround, using scripts. Thankfully AI takes much of the pain out of what would otherwise be frantic, endless googling.
 
 The thing about animation is that it’s labour. None of the individual parts are hard or time‑consuming, but the bits add up quickly. It’s hard to resist a little tweak here, an extra bit of overshoot on something appearing to give it more charm or feel more like a phone interface. A hundred small tweaks later, I’d spent a day on 10 seconds of footage.
 
