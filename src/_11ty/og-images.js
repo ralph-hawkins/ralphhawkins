@@ -306,7 +306,22 @@ const snap = (v) => Math.round(v / BASELINE) * BASELINE;
 // the only fixed size left: the home card's URL, which is not a title and so
 // has nothing to be fitted against.
 const TYPE = {
-  value: { size: 1.85 * 16 },
+  value: { size: 1.85 * 16, leading: snap(1.05 * 1.85 * 16) },
+};
+
+// The home card's URL, in the same four-field shape poster-layouts.js gives
+// every other placed item: the columns it takes, the rows, and which end of
+// those rows it hangs from. Only line names, no arithmetic — so like the
+// layout table, the worst a mistake here can do is put the URL in the wrong
+// cell rather than off the grid entirely.
+//
+// It lives here rather than in the table because it is not a poster item: no
+// post has it, and the table is what the page's own posters are built from.
+const HOME_FOOTER = {
+  wide: ["sheet-start", "body-2"],
+  narrow: ["body-start", "body-3"],
+  rows: ["r1", "r2"],
+  align: "start",
 };
 
 // Where an item's box sits and how tall it is, from its layout spec.
@@ -515,16 +530,29 @@ function foreground({ title, description, footer, slug }) {
   // reads them here — they stay because poster-layouts.js is the page's, and
   // the page still sets both.
 
-  // The home card is not a post and has no title to carry the address, so it
+  // The home card is not a post and has no title carrying the address, so it
   // keeps its wordmark and URL.
+  //
+  // On the grid, like everything else. This was the one item in the file
+  // placed by raw offset — bottom: PADDING, left: SHEET_X — and so the one
+  // item outside the invariant poster-layouts.js asserts and tests, that
+  // nothing overlaps. It duly overlapped: the home card picks layout a1, whose
+  // title takes rows r2–r5 aligned to the bottom, and 259px of
+  // "ralphhawkins.co.uk" set from sheet-start ran 47px past body-start and
+  // straight into the "R" of "Ralph Hawkins".
+  //
+  // The head band is where it goes instead. A one-line title bottom-aligned to
+  // r5 leaves r1–r2 empty — it is exactly where a post card used to set its
+  // week number — and sheet-start to body-2 is 424px, wide enough for the URL
+  // with 165px to spare, so the box holds the text rather than the text
+  // overrunning the box.
   if (footer) {
-    children.push(text(drawable(footer), {
-      position: "absolute",
-      bottom: PADDING,
-      left: SHEET_X,
-      fontSize: TYPE.value.size,
-      color: "#0b0c0c",
-    }));
+    block(
+      HOME_FOOTER,
+      TYPE.value.leading,
+      { fontSize: TYPE.value.size, lineHeight: TYPE.value.leading / TYPE.value.size },
+      drawable(footer)
+    );
   }
 
   return {
