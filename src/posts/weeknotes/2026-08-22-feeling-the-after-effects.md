@@ -1,6 +1,6 @@
 ---
 title: Feeling the After Effects
-description: The opportunity is what happens between the screens.
+description: Done is better than perfect, but making something perfect would be cool.
 date: 2026-08-22
 ---
 I’ve locked myself away this week to build a presentation. It’s a continuation of work on the future of the NHS – how we could use digital to make the whole system work harder for users and staff.
