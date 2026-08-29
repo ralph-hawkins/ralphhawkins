@@ -11,4 +11,4 @@ Mike started experimenting with using AI to build scripts to create some of the 
 
 ---
 
-[Steve](https://www.linkedin.com/in/stevenjmesser) and [Matt](https://www.linkedin.com/in/mattdooner) from the Managing my health team wrote a great design history post on the work they’ve been doing to give teams more control of results.
+[Steve](https://www.linkedin.com/in/stevenjmesser) and [Matt](https://www.linkedin.com/in/mattdooner) from the Managing my health team wrote a great design history post on the work they’ve been doing to [give teams more control of results](https://design-history.prevention-services.nhs.uk/managing-my-health/2026/08/how-might-we-give-teams-more-control-of-a-result/).
