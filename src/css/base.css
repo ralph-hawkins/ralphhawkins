@@ -1,9 +1,14 @@
 /* Cross-document view transition. The page chrome (header, main, footer) is
    pulled into its own snapshot groups and swaps instantly — cross-fading two
-   scrolled documents ghosts their text through each other. All that's left
-   in the root snapshot is the gradient blob and the glass over it, so
-   navigating reads as the colours gliding from one post's seed to the next
-   under a stable page.
+   scrolled documents ghosts their text through each other. What's left in the
+   root snapshot is the gradient blob and the tint over it, so navigating reads
+   as the colours gliding from one post's seed to the next under a stable page.
+
+   Since 2026-08-30 main carries the post's colour as a fill, and a background
+   is part of its element's snapshot — so the panel's colour swaps on the cut
+   while the root cross-fades under it. Measured on a screencast that is a
+   77-level step in one frame, against almost nothing before. Fading it instead
+   was tried and is worse; see the rule below for why.
    Progressive enhancement — unsupported browsers just navigate. */
 @view-transition {
   navigation: auto;
@@ -29,6 +34,21 @@ footer {
 ::view-transition-new(site-footer) {
   animation: none;
 }
+
+/* main's panel cuts from one post's colour to the next rather than fading, and
+   that is the better of the two after measuring both.
+
+   Since the panel became a fill of the post's own hue (layout.css) its
+   background is part of its own snapshot, so the cut is now a real step: 77
+   RGB levels in one frame on the largest flat area on the page, where it used
+   to be a near-neutral tint and barely showed.
+
+   Fading the incoming panel in was tried and is worse, not better. The *old*
+   snapshot has to be display: none or the text double-exposes (see below), so
+   a fade leaves nothing painting the panel while it runs — measured on a
+   screencast, the sampled pixel goes straight to 235,237,240, the bare page
+   background, and stays there for the duration. A cut reads as a cut; half a
+   second of unpainted background reads as a fault. */
 
 /* The old chrome must vanish, not fade — main's glass is translucent, so a
    lingering old snapshot would double-expose the text. */
@@ -96,8 +116,12 @@ body::before {
 /* The base surface: a flat tint over the blob for the whole page, and
    deliberately no filter.
 
-   The blur lives on the post panel instead (main, in layout.css), so this
-   sheet is what the header shows and the panel is the same thing blurred.
+   This sheet is what the header and the post both show; nothing on the site
+   filters any more. What separates the two is that main floods the post's own
+   colour underneath this tint, ramping in from nothing at the seam — see the
+   panel in layout.css. Because that fill is the same 40% of the same colour
+   this sheet lets through, the two agree exactly where the disc is solid, and
+   the line is a change of coverage rather than of colour.
    Keeping the page-wide surface unfiltered is also what made the
    supergraphic's painted glyphs match the header exactly, up to 2026-08-12 —
    a painted gradient cannot reproduce a blurred one, and against a filtered

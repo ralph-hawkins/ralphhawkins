@@ -283,7 +283,7 @@ function balancedWidth(text, fontSize, maxWidth) {
 //
 // Satori has no CSS grid, so the title is placed absolutely from these
 // numbers.
-const PAGE_LINE = 1.3 * 16 * 1.5;          // --font-size-base x --line-height-base
+const PAGE_LINE = 1.43 * 16 * 1.5;         // --font-size-base x --line-height-base
 const BASELINE = PAGE_LINE / 8;            // the poster's baseline grid
 
 const CARD_MARGIN = 60;
@@ -379,47 +379,65 @@ function fillSheet(text) {
   return { size, leading, ...linesAt(text, size) };
 }
 
-// The page's surface: one flat tint of the background laid over the whole
-// blob. It replaced a stack of 15 bars easing from clear at the top to a 75%
-// tint at the bottom, which is what the header used to do and no longer does;
-// the card drew them long after the site had dropped them.
+// The page's surface, and the card's. **Its strength is still derived from the
+// page's rather than chosen**, but the chain it is derived from is one link
+// long now instead of four.
 //
-// **Its strength is derived from the page's, not chosen.** The card is the
-// post's poster, and on the page the poster sits on main's panel — so the
-// blob has to read there as strongly as it does under the post, and one
-// number cannot be picked by eye for that. The panel puts the disc through
-// four things in order, and the card has to arrive at the product of them:
+// The panel used to put the disc through a 60% page tint, its own 65% tint, a
+// 1.3 saturate and a 180° hue-rotate, and the card had to arrive at the
+// product of them — 0.165 of the disc's chroma, the other 83.5% tinted away.
+// Since 2026-08-30 the panel is a paint and not a filter: main lays the disc's
+// own foot colour flat under the same one sheet the header carries, and the
+// 65% tint, the saturate and the turn all went with the backdrop-filter. What
+// reaches the eye under the post is
 //
-//   --glass-opacity   60%    body::after, one tint over the whole blob
-//   --panel-opacity   65%    main's own background, over the filtered result
-//   --glass-saturate  1.3    backdrop-filter, which puts chroma back
-//   hue-rotate(180)   ×0.907 sheds a little, being an sRGB matrix rather
-//                            than a rotation in oklch (0.0330 from 0.0364)
+//   1 − --glass-opacity  =  0.40 of the blob, and nothing else.
 //
-// 0.40 × 0.35 × 1.3 × 0.907 = 0.165 of the disc's own chroma, so the card
-// tints away the other 83.5%. Confirmed by rendering both and sampling: the
-// page's panel measures p99 chroma 0.0313 against a bare disc's 0.1905, which
-// is 0.164 — the model and the browser agree to within a percent.
+// Worked through, so the three-layer shape below is checkable rather than
+// asserted. main's fill is the foot at 40% over the background, laid at
+// --blob-fill-opacity over the page's already-tinted disc:
 //
-// Only the strength is matched. The card does **not** take the hue rotation,
-// because that would turn every card off the hue postColor and the favicon
-// identify the post by; and it does not need the blur term, because it
-// already applies the page's own blur to its own disc, which is why the two
-// blurs cancel in the measurement above.
+//   panel = a·(0.6·bg + 0.4·foot) + (1−a)·(0.6·bg + 0.4·disc)
+//         = 0.6·bg + 0.4·( a·foot + (1−a)·disc )
 //
-// It was 0.25 until 2026-08-16 — deliberately louder, on the argument that a
-// card is seen once at thumbnail size in a timeline. That measured 3.95× the
-// panel and 1.62× the header, and Ralph asked for the two to agree.
+// — the same 60% sheet, over the foot at alpha a, over the disc. Which is
+// exactly the three layers this card now draws, in that order.
+//
+// The card still does **not** take a hue rotation, and now neither does the
+// page: the fill is the post's own colour, the one postColor and the favicon
+// identify it by. That last deliberate near-miss between card and page is
+// closed rather than widened.
 const PAGE_GLASS_OPACITY = 0.6;
-const PAGE_PANEL_OPACITY = 0.65;
-const PAGE_SATURATE = 1.3;
-const PAGE_HUE_ROTATE_CHROMA = 0.907;
-const GLASS_OPACITY = 1 - (1 - PAGE_GLASS_OPACITY) * (1 - PAGE_PANEL_OPACITY)
-  * PAGE_SATURATE * PAGE_HUE_ROTATE_CHROMA;
+// --blob-fill-opacity in src/css/variables.css. Keep the two in step: this is
+// how much of the disc the page's fill covers, and the card draws the same.
+const PAGE_FILL_OPACITY = 0.85;
+const GLASS_OPACITY = PAGE_GLASS_OPACITY;
 
 // The blur is the page's, applied in render() rather than here: Satori has no
 // backdrop-filter, so the backdrop is rendered, blurred and composited under
 // the type in two passes.
+
+// The fill: the post's own foot colour, flat, at the strength main lays it.
+// It is what turned the panel from a disc on a neutral ground into a field of
+// the post's colour, and the disc still modulates through the 15% it leaves.
+//
+// Under the tint rather than over it, because that is where it sits on the
+// page — see the composite worked through above.
+function fillLayer(hue2) {
+  return {
+    type: "div",
+    props: {
+      style: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: WIDTH,
+        height: HEIGHT,
+        backgroundColor: blobColor(2, hue2, PAGE_FILL_OPACITY)
+      }
+    }
+  };
+}
 
 function glassTint() {
   return {
@@ -452,7 +470,7 @@ function backdrop({ hue1, hue2, disc: d }) {
         backgroundColor: "#EBEDF0",
         backgroundImage: blobBackground(hue1, hue2, d)
       },
-      children: [glassTint()]
+      children: [fillLayer(hue2), glassTint()]
     }
   };
 }
@@ -681,21 +699,40 @@ function postColor(slug) {
   return "#" + [r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("");
 }
 
-// Overscroll colour: the same foot colour mixed 20/80 with the site
-// background, precomputed to hex because it is set in an inline style on
-// <html> rather than in the stylesheet. Reads the same layer the page does, so
-// the iOS rubber-band area still matches the disc.
+// The post's ground: the colour the body of the post actually is, away from
+// the disc. Precomputed to hex because both the things that read it — the
+// inline --color-overscroll on <html> and <meta name="theme-color"> — sit
+// outside the stylesheet and cannot resolve a color-mix().
 //
-// This fed <meta name="theme-color"> too until the browser chrome was left
-// alone; the 20% mix is the strength that tinting chrome wanted, and it stays
-// because the rubber-band area sits directly against the page.
+// **Derived from the fill, not picked.** main lays the foot at
+// 1 − --glass-opacity over the background, at --blob-fill-opacity:
+//
+//   0.85 × 0.40 = 0.34 of the foot, and 0.66 of #EBEDF0
+//
+// so this is the same expression the panel composites to away from the disc,
+// which is verified against the browser to 1 RGB level. On the disc's core it
+// reaches the full 0.40 — the header's own surface — but 0.34 is the field,
+// and the field is what a phone's chrome is sitting against.
+//
+// It was a flat 20% until 2026-08-30, chosen when the panel was neutral and
+// the rubber-band area was the only thing reading it. Once main became a fill
+// of this same colour, 20% made the gutter visibly paler than the page it
+// abuts — half its strength — so it now follows the fill instead of being a
+// second number that has to be remembered.
+//
+// The 20% mix was also poor at telling posts apart: across the 53, consecutive
+// pairs sat a median ΔE 0.036 at 20% against 0.181 undiluted, and a third
+// landed under the ~0.02 it takes to tell two flat areas apart at all. 0.34
+// is not the undiluted foot either — use postColor for anything meant to
+// identify a post — but it is a good deal further from its neighbours.
+const GROUND_FOOT = PAGE_FILL_OPACITY * (1 - PAGE_GLASS_OPACITY);
 function overscrollColor(slug) {
   const hue = (hueFromSlug(slug) + HUE_OFFSET) % 360;
   const [r, g, b] = oklchToRgb(BLOB_L[2], blobChroma(2, hue), hue);
-  // 20% colour over the #EBEDF0 background
   const background = [235, 237, 240];
   return "#" + [r, g, b]
-    .map((v, i) => Math.round(0.2 * v + 0.8 * background[i]).toString(16).padStart(2, "0"))
+    .map((v, i) => Math.round(GROUND_FOOT * v + (1 - GROUND_FOOT) * background[i])
+      .toString(16).padStart(2, "0"))
     .join("");
 }
 

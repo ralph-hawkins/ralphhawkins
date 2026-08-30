@@ -41,6 +41,20 @@ h2, h3 {
      9- and 10-character words at 320px back to overflow-wrap, and a hard cut
      mid-character is a worse outcome than a hyphen nobody asked for.
 
+     **It moved from 9 to 8 on 2026-08-30, when the body size grew 10%.** The
+     limit is a measurement of where two populations separate, not a constant,
+     and the type it was measured against changed underneath it. Re-measured
+     the same way, across all 56 posts at 320px: the shortest word too wide for
+     its column went from 10 characters ("prevention") to 8 ("Managing"), while
+     the longest that still fits stayed at 13. So 8 is where the boundary is
+     now, and leaving it at 9 would hand "Managing" to overflow-wrap for a hard
+     cut — the outcome the paragraph above rejects.
+
+     Note the column *narrows* as the body grows: the container's inset is
+     1.5em of body text, so 320px went from a 232px column to 226px. That, not
+     the heading sizes, is what moved the boundary — the floors of the heading
+     clamps did not change.
+
      One value on purpose: the second and third control how many characters
      may sit either side of the break, and constraining those removes real
      hyphenation points — "Welcoming" only breaks as "wel-coming", which a
@@ -50,7 +64,7 @@ h2, h3 {
      -webkit-hyphenate-limit-* properties set the before/after minima, not a
      word length — so Safari keeps hyphenating short words. That is the
      current behaviour rather than a regression, so it is left alone. */
-  hyphenate-limit-chars: 9;
+  hyphenate-limit-chars: 8;
 }
 
 h1,

@@ -9,8 +9,10 @@
   width: 100%;
 }
 
-/* The glass is one page-wide sheet now (body::after in base.css), not a
-   surface each of header, main and footer carries for itself. */
+/* The tint is one page-wide sheet (body::after in base.css), not a surface
+   each of header, main and footer carries for itself. main carries the fill
+   under it — see the panel below — and that is the only surface any of the
+   three has of its own. */
 
 .post-content {
   padding-bottom: var(--spacing-xl);
@@ -46,10 +48,39 @@ header {
 }
 
 main {
-  /* The post's own panel, and the only filtered surface on the page: the body
-     of the post is frosted, the header is not. That is the whole separation —
-     the header is plain tint over the blob, while the post body is the same
-     thing blurred, which reads as a distinct sheet laid over it.
+  /* The post's own panel. It was a flat 65% tint of the page background over a
+     backdrop-filter — blur, saturate and a 180deg turn — until 2026-08-30, and
+     it is a paint now: the blob's own colour flooded across the body of the
+     post, arriving from nothing at the seam.
+
+     Nothing filters any more, and that is not incidental. A filter is uniform
+     over its element, so any filter on main is a step at main's top edge — a
+     step of sharpness from the blur, of chroma from the saturate — landing
+     exactly where the fill is at zero and the two sides of the line are
+     supposed to agree. The blur cannot be ramped in; it is all-or-nothing on
+     the element, so it is nothing. The saturate went with it, having no tint
+     left to put chroma back into, and the turn went because the fill is the
+     post's own colour rather than its complement.
+
+     A background-image rather than a background-color, because the fill has to
+     arrive rather than start — see --blob-fill-fade in variables.css. The
+     stops are lengths and not percentages: a percentage in a gradient resolves
+     against the gradient line, which here is main's own height, so the ramp
+     would be ten times longer on a post ten times longer. transparent at both
+     ends is safe, because gradients interpolate premultiplied and so
+     transparent -> colour does not travel through grey.
+
+     The top stop is main's top edge, which is where main > hr sits; the bottom
+     stop is main's bottom edge, where the footer begins. The fill comes in on
+     one line and goes out on the other.
+
+     Worth recording, because it is the kind of thing that bites later:
+     dropping backdrop-filter stops main being a containing block for
+     fixed-position descendants (Filter Effects 2 — a non-none backdrop-filter
+     establishes one for absolute *and* fixed). Nothing in main is fixed today
+     — body::before and body::after are the only fixed boxes on the site and
+     both sit outside it — but anything put in here in future now resolves
+     against the viewport, where before it would have resolved against the post.
 
      It carried overflow-x: clip until 2026-08-12, to take the supergraphic's
      overhang. Nothing in main reaches the viewport edge without it — no post
@@ -57,13 +88,13 @@ main {
      and footnote numbers that hang into the column's padding sit a whole rem
      clear — so the clip went with the graphic rather than staying on as a
      silent crop of anything that overflows in future. */
-  background: color-mix(in srgb, var(--color-background) var(--panel-opacity), transparent);
-  /* Blur, saturate and turn: the panel is a colour filter over the blob, not
-     only a frosted sheet. Order matters — hue-rotate last, so it turns the
-     saturated colour rather than being stretched by the saturate after it.
-     See --glass-hue-rotate in variables.css for the angle and why. */
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) hue-rotate(var(--glass-hue-rotate));
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) hue-rotate(var(--glass-hue-rotate));
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    var(--blob-fill) var(--blob-fill-fade),
+    var(--blob-fill) calc(100% - var(--blob-fill-fade)),
+    transparent 100%
+  );
   min-height: 100vh;
   position: relative;
   z-index: 2;
@@ -78,9 +109,10 @@ main {
    which would have added the scrollbar's width and, since main no longer
    clips, shown as a horizontal scrollbar.
 
-   It sits on the panel's top edge — the line where the tint and the
-   backdrop-filter begin, and where the blob turns hue — so the rule draws
-   that boundary rather than floating below it. The negative top margin is
+   It sits on the panel's top edge — the line where the fill begins, which is
+   the top of main's own background gradient. The fill is at nothing there, so
+   the blob reads across the line exactly as it does in the header and comes in
+   below it; the rule draws that boundary rather than floating below it. The negative top margin is
    what puts it there: it cancels main's own top padding exactly, since a
    parent's padding stops the two margins collapsing. The matching positive
    bottom margin hands the padding back to the container underneath, so the

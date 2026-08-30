@@ -20,9 +20,28 @@
 <link rel="icon" type="image/svg+xml" href="{{ page.fileSlug | blobFavicon }}">
 {%- endif %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-{#- No theme-color: the browser's own chrome is left alone. The page still
-    tints its overscroll area per post (--color-overscroll in base.njk), which
-    is inside the document rather than around it. #}
+{#- The phone's browser chrome, tinted to the post's own ground — the same
+    colour the body of the post is away from the disc, and the same value
+    --color-overscroll carries on <html> in base.njk. One number for the page,
+    the gutter above and below it, and the bar around them.
+
+    It is the *ground* and not the foot colour (postColor) on purpose: the
+    chrome sits against the field, not against the disc. And it matters that
+    auto-scroll.js lands a reader with main's top edge on the top of the
+    viewport — on a phone the header is already scrolled off, so what the bar
+    actually abuts is the post's fill.
+
+    There was no theme-color between 2026-08-11 and 2026-08-30: the chrome was
+    deliberately left alone, and it is back because Ralph asked for it once the
+    post had a colour of its own to match. Weeknotes only, gated like
+    data-blob-hue — the listing pages and the 404 have no post colour to carry,
+    and a hue rolled at random is not a thing to paint a browser with.
+
+    iOS caches this aggressively, so a stale tint in an already-open tab is not
+    evidence of a bug. #}
+{%- if tags and 'weeknotes' in tags %}
+<meta name="theme-color" content="{{ page.fileSlug | blobOverscroll }}">
+{%- endif %}
 <meta name="description" content="{{ metaDescription }}">
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 {#- Feed autodiscovery: how a reader finds the week notes from any page. #}

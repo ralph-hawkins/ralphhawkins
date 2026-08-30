@@ -3,7 +3,22 @@
   --color-text: #0b0c0c;
   --color-link: #0b0c0c;
   --color-link-hover: #003078;
-  --color-link-visited: #505a5f;
+  /* #505a5f (GOV.UK's secondary text colour) until 2026-08-30, when the fill
+     went in and the sweep caught something that was already wrong.
+
+     Measured over all 360 hues at the disc's foot (L 0.74, the gamut search
+     random-gradients.js uses), #505a5f sits at 4.18:1 on the header's own
+     surface at hue 328 — *below the 4.5:1 AA floor*, and shipping. It went
+     unnoticed because there is no link in the masthead, so no one ever saw the
+     pair. The fill puts the whole post body on that same surface, where there
+     are many links, so it turns a hidden failure into a visible one.
+
+     This is the same colour scaled 0.83 on every channel — same hue, darker.
+     It measures 5.28:1 under the full fill, which is parity with the panel it
+     replaces (5.30:1), and 7.62:1 on the bare background against 6.03:1
+     before. Weakening the fill instead was the alternative and it is worse:
+     holding #505a5f at AA caps the fill at 31%, which is barely a fill. */
+  --color-link-visited: #424b4f;
   --color-focus: #ffdd00;
   --color-background: #EBEDF0;
 
@@ -12,34 +27,68 @@
   --hairline-width: 1px;
   --hairline: var(--hairline-width) solid var(--color-text);
 
-  /* Spacing — multiples of the base line (1.3rem × 1.5 = 1.95rem), so block
-     spacing shares one vertical rhythm: ⅙, ½, ⅔, 1 and 1½ lines. */
-  --spacing-xs: 0.33rem;
-  --spacing-s: 0.98rem;
-  --spacing-m: 1.3rem;
-  --spacing-l: 1.95rem;
-  --spacing-xl: 2.93rem;
+  /* Spacing — multiples of the base line (1.43rem × 1.5 = 2.145rem), so block
+     spacing shares one vertical rhythm: ⅙, ½, ⅔, 1 and 1½ lines. Rounded to
+     2dp, so --spacing-l is 0.08px off the line it stands for. */
+  --spacing-xs: 0.36rem;
+  --spacing-s: 1.07rem;
+  --spacing-m: 1.43rem;
+  --spacing-l: 2.15rem;
+  --spacing-xl: 3.22rem;
 
   /* Typography */
   --font-family: "volksans", "volksans-fallback", helvetica, arial, sans-serif;
-  --font-size-base: 1.3rem;
+  --font-size-base: 1.43rem;
   --line-height-base: 1.5;
 
-  /* Type scale — one ×1.42 ladder, fluid between a 390px floor (the old
-     mobile sizes) and a 1024px ceiling that runs ×1.42 from the body size
-     (1.85 / 2.62 / 3.73rem). The h1 additionally shrinks below 390px so
-     "Hawkins" clears the side padding on the narrowest phones. */
-  /* One step down and one step up the ladder from the body size (1.3 ÷ 1.42
-     and 1.3 × 1.42), fixed like the body size — only the headings are fluid. */
-  --font-size-small: 0.92rem;
-  --font-size-large: 1.85rem;
-  --font-size-h1: clamp(3.6rem, 18.5vw, 4.5rem);
+  /* Type scale — one ladder, fluid between a 390px floor and a 1024px ceiling.
+     The body grew 10% on 2026-08-30 (1.3 → 1.43rem) and **the ladder was
+     compressed rather than scaled with it**, because the top of it could not
+     move: the ratio is now ×1.3765, not ×1.42.
+
+     Two things pinned the top. The h1 is capped so "Hawkins" clears the side
+     padding on the narrowest phones, and the h2's ceiling sits under it — so
+     with the body 10% larger the ladder has to reach the same 3.73rem from
+     further up, and 3.73/1.43 over three steps is 1.3765. The rungs are
+     1.04 / 1.43 / 1.97 / 2.71 / 3.73.
+
+     **The floors did not move at all**, and that is the other half of the
+     compression. Below 390px the column gets *narrower* as the body grows,
+     because the container's inset is 1.5em of body text — measured, 232px at
+     320px before and 226px after — so a phone has less room for headings, not
+     more. Scaling the floors put an 8-character word past the column; holding
+     them keeps every heading exactly where it was on a phone and lets the
+     ceilings do the growing.
+
+     The h1 is the one size that comes *down*: 3.6→3.5rem and 18.5→18vw, for
+     that same 6px of lost column. Its 4.5rem cap is unchanged, so nothing
+     above 428px moves. Verified across all 56 posts at 320px.
+     See "Heading hyphenation" in CLAUDE.md — the limit moved with this. */
+  /* One step down and one step up the ladder from the body size (1.43 ÷ 1.3765
+     and 1.43 × 1.3765), fixed like the body size — only the headings are
+     fluid. */
+  --font-size-small: 1.04rem;
+  --font-size-large: 1.97rem;
+  --font-size-h1: clamp(3.5rem, 18vw, 4.5rem);
   --font-size-h2: clamp(3.16rem, 2.81rem + 1.44vw, 3.73rem);
-  --font-size-h3: clamp(2.22rem, 1.97rem + 1.01vw, 2.62rem);
-  --font-size-h4: clamp(1.56rem, 1.38rem + 0.73vw, 1.85rem);
+  --font-size-h3: clamp(2.22rem, 1.92rem + 1.24vw, 2.71rem);
+  --font-size-h4: clamp(1.56rem, 1.31rem + 1.03vw, 1.97rem);
 
   /* How much of the page background the surface lays over the blob — so
      100% − this is how much of the blob's colour actually reaches the eye.
+
+     It sets that in two places now rather than one: the sheet over the disc
+     (--glass-tint, on body::after) and the strength of the fill under the post
+     (--blob-fill-color, below). One number for how loud the blob is anywhere
+     on the page — and because the fill is the same 40% of the same colour laid
+     flat, the two agree exactly at the seam.
+
+     The blur, saturate and 180deg turn the panel used to carry came off on
+     2026-08-30 when it stopped being a filter and became a paint. Their
+     measurements are kept in CLAUDE.md rather than here: the blur plateauing
+     at 83% of the blob's colour, and 180deg holding 0.0330 chroma of 0.0364
+     where 90deg held 0.0236. They were expensive to establish and why they no
+     longer apply is itself worth knowing.
      One of the two levers on how intense the blob looks; the other is the
      chroma the gradient is drawn at, which used to be pinned to what the
      tightest hue on the wheel allows and is now solved per hue (see
@@ -48,66 +97,10 @@
      ~13:1 — 11.5:1 at the worst hue now the disc beneath it is stronger. */
   --glass-opacity: 60%;
 
-  /* The blur belongs to the post panel alone (main), not to the page: the
-     header is unfiltered tint over the blob, and the panel laid over it is
-     the same tint blurred, which is what separates the two.
-
-     Measured against the blob rather than the viewport, because a blur only
-     means anything relative to what it is blurring. It used to be 150px, set
-     when the blob's widest lobe was 2100px across; the disc that replaced it
-     is 1.15 × --blob-radius, around six times smaller, and 150px erased it —
-     measured, only 61% of the blob's colour reached the eye through the panel
-     against 83% with no blur at all, and the boundary showed as a hard step
-     where the colour stopped.
-
-     So: a fourteenth of the widest lobe, which is exactly the ratio the old
-     blob had (150/2100). That lands at 23.65px on a desktop and 10.25px on a
-     phone, where the disc is smaller and a desktop blur would swamp it. It is
-     also where the measurement plateaus — 83% gets through, the same as no
-     blur at all, so the frost costs nothing it doesn't have to. */
-  --glass-blur: calc(var(--blob-radius) * 1.15 / 14);
-  --glass-saturate: 1.3;
-
-  /* And the panel turns the blob's colour as well as blurring it: the same
-     disc is one hue in the header and its complement under the post, with the
-     panel's top edge as the line where it turns. The header is deliberately
-     unfiltered (see above), so that edge is the only place the change can
-     happen and it happens exactly there.
-
-     180deg because it is a true complement and because it is the angle that
-     survives the trip best. CSS hue-rotate is a matrix approximation in sRGB,
-     not a rotation in oklch, and it sheds chroma in the middle of its range:
-     measured on the built page, the disc inside the panel comes out at 0.0364
-     chroma unrotated, 0.0254 at 65deg, 0.0236 at 90deg — and 0.0330 at 180deg,
-     nearly all of it kept. It is also not a rotation you can read off the
-     number: 30deg of it moves the perceived hue 17°, 90deg moves it 82°, and
-     only at 180deg do the two agree.
-
-     That approximation is why this is a filter and not a second hue published
-     from random-gradients.js. A JS-side offset would rotate in oklch and hold
-     its chroma exactly — but it would change the blob everywhere, and the
-     point here is the line across the disc where the post begins.
-
-     The Open Graph card does not do this: Satori has no backdrop-filter and
-     the card is one flat surface. Cards and pages were already a deliberate
-     near-miss; this widens it. */
-  --glass-hue-rotate: 180deg;
   /* The tint alone, named rather than spelt out at the one place it is used
      (body::after): it was laid a second time inside the supergraphic's glyphs
      until 2026-08-12, and the name is what kept the two copies in step. */
   --glass-tint: color-mix(in srgb, var(--color-background) var(--glass-opacity), transparent);
-
-  /* The post body's own tint, over the blur it also carries. Both together
-     are what separate it from the header, and this carries most of the
-     separation, because blur alone barely distinguishes the two where the
-     blob is locally flat — which is most of the page.
-
-     A tint of --color-background, not a tone of its own. A lighter tone was
-     tried, to give the panel a surface it kept where the blob isn't behind it,
-     and it does do that — but it reads as a light wash rather than something
-     transparent, which is the wrong trade. The panel is meant to look like
-     glass over the blob, so it takes the blob's absence with it. */
-  --panel-opacity: 65%;
 
   /* The gradient blob, as one value rather than inline on body::before, which
      is now the only thing that paints it — the post supergraphic re-painted
@@ -196,6 +189,91 @@
       oklch(0.74 var(--blob-chroma-2, 0.118) var(--blob-hue-2, 135) / 0.85) 68%,
       oklch(0.74 var(--blob-chroma-2, 0.118) var(--blob-hue-2, 135) / 0) 92%
     );
+
+  /* THE FILL UNDER THE POST
+     ---------------------------------------------------------------------
+     The foot of the disc — the post's own colour, the one postColor, the
+     favicon and the colophon's Colour row all identify it by — laid flat
+     under the same sheet the header lays over the disc.
+
+     Not the 180deg complement main used to turn it to. That hue belonged to
+     the panel and to nothing else on the site, and a colour that covers the
+     body of a post is the post's colour or it is nothing.
+
+     The mix is exact rather than approximate, and that is the whole mechanism
+     for a seam you cannot see. --glass-tint is --color-background at 60% alpha
+     composited over the disc, which is 0.6*background + 0.4*disc in
+     gamma-encoded sRGB; color-mix(in srgb, ...) interpolates in that same
+     space, not in linear light. So 40% of the foot over the background is the
+     identical colour the header already shows wherever the disc's foot is
+     solid — nothing steps across the line at the disc, and off the disc the
+     fill simply lifts the panel up to meet it.
+
+     Contrast would have allowed more: swept over all 360 hues, the fill can go
+     to about 57% before visited links reach the 4.5:1 floor. 40% is chosen
+     over that because it is the number that makes the seam continuous. Above
+     it the panel out-saturates the header and the disc steps at the line,
+     which is the one thing this change is meant not to do.
+
+     L 0.74 and --blob-chroma-2 are the base layer's own, so nothing new has to
+     be published from random-gradients.js and the no-JS literal fallback is
+     the one already standing in --blob-gradient above. */
+  --blob-fill-color: color-mix(in srgb,
+    oklch(0.74 var(--blob-chroma-2, 0.118) var(--blob-hue-2, 135))
+      calc(100% - var(--glass-opacity)),
+    var(--color-background));
+
+  /* How completely the fill covers, and the one number here set by eye. At
+     100% the panel is a single flat field and the disc is gone from under the
+     post entirely; at 85% a sixth of the disc's own modulation still shows, so
+     it drifts and breathes under the writing rather than reading as a shape on
+     a ground — which is the thing the fill exists to stop.
+
+     Worth knowing before touching it: it cannot move the contrast floor. Off
+     the disc the panel is weaker than the full 40%; on the disc's core the
+     ground already *is* --blob-fill-color, so a*S + (1-a)*S = S whatever a is.
+     The darkest the panel can get is --blob-fill-color itself, at every value
+     of this and at every hue — which is the header's own worst case, so this
+     change introduces no pair the site does not already ship. */
+  --blob-fill-opacity: 85%;
+
+  /* The fill, with both of the page's scroll-driven terms folded into its
+     alpha. --blob-opacity and --blob-fill-progress are what random-gradients.js
+     drives; they are an opacity and a fraction there, and both have to be an
+     alpha here, because main carries the post's text and cannot be faded as a
+     whole.
+
+       --blob-opacity        the fade to the footer, so the fill goes out with
+                             the disc rather than stopping dead at main's edge
+       --blob-fill-progress  how far the disc has passed below the line at the
+                             top of the post, 0 to 1 — this is what makes the
+                             blob *become* the background as it crosses the
+                             rule, rather than the ground simply being coloured
+
+     Both fall back to 1, so with no JS the fill is present and static, which
+     is what it was before the progress term. */
+  --blob-fill: color-mix(in srgb,
+    var(--blob-fill-color)
+      calc(var(--blob-fill-opacity) * var(--blob-opacity, 1) * var(--blob-fill-progress, 1)),
+    transparent);
+
+  /* How far below the seam the fill takes to arrive, and how far above main's
+     bottom edge it takes to go.
+
+     Half a viewport, and derived rather than picked: main's floor is
+     min-height 100vh, so at 50svh in and 50svh out a panel with nothing in it
+     reaches full strength at exactly its own midpoint and no further. The
+     shortest possible post still gets the whole curve instead of a clipped
+     one, and every real post gets a plateau in the middle. Where svh < vh the
+     plateau only grows; if the two stops ever did cross, CSS clamps each stop
+     to at least the one before it, so the degenerate case is a triangle rather
+     than a hard edge.
+
+     vh first and svh second, the way the hero declares its height in
+     layout.css: svh so the ramp does not slide as a mobile URL bar shows and
+     hides. */
+  --blob-fill-fade: 50vh;
+  --blob-fill-fade: 50svh;
 
   /* Layout */
   /* 65 characters, spelt out rather than written 65ch. It was spelt out

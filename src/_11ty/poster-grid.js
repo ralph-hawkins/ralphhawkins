@@ -17,7 +17,7 @@
 //
 // Mirrors src/css/variables.css. These four are the only inputs.
 const ROOT_PX = 16;
-const FONT_SIZE_BASE_REM = 1.3;
+const FONT_SIZE_BASE_REM = 1.43;
 const SIDE_PADDING_REM = 1;
 // --content-width: calc(65 * 0.54 * var(--font-size-base))
 const CONTENT_WIDTH_REM = 65 * 0.54 * FONT_SIZE_BASE_REM;
