@@ -109,6 +109,9 @@ body::before {
   /* The recipe lives in variables.css — see there for why it is named rather
      than spelt out here. */
   background-image: var(--blob-gradient);
+  /* Softened here rather than by a backdrop-filter on main — see --blob-blur in
+     variables.css for why the difference matters at the seam. */
+  filter: blur(var(--blob-blur));
   opacity: var(--blob-opacity, 1);
   z-index: -1;
 }

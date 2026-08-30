@@ -18,7 +18,13 @@
      replaces (5.30:1), and 7.62:1 on the bare background against 6.03:1
      before. Weakening the fill instead was the alternative and it is worse:
      holding #505a5f at AA caps the fill at 31%, which is barely a fill. */
-  --color-link-visited: #424b4f;
+  /* Moved a second time on 2026-08-30, when --glass-opacity went 60% → 20% and
+     four fifths of the disc started reaching the eye instead of two fifths.
+     Swept over all 360 hues at the disc's foot: #424b4f measures 4.20:1 on the
+     post's ground at hue 328, below the 4.5 AA floor. This is the original
+     #505a5f scaled 0.70 — same hue, darker again — and measures 5.04:1 there.
+     Body text is not the constraint at either strength: 9.22:1 worst case. */
+  --color-link-visited: #383f43;
   --color-focus: #ffdd00;
   --color-background: #EBEDF0;
 
@@ -76,6 +82,12 @@
 
   /* How much of the page background the surface lays over the blob — so
      100% − this is how much of the blob's colour actually reaches the eye.
+     It was 60% until 2026-08-30 and is 20% now, so four fifths of the disc
+     reaches the eye where two fifths used to. Everything below still holds —
+     the fill is still 100% − this, so the panel and the header still agree
+     exactly where the disc is solid — but the contrast figures quoted further
+     down were taken at 60% and are now the wrong way round: see the link
+     colour above, which had to move a second time to keep AA at this strength.
 
      It sets that in two places now rather than one: the sheet over the disc
      (--glass-tint, on body::after) and the strength of the fill under the post
@@ -95,7 +107,24 @@
      --blob-gradient). At 60% the surface carries 1.8× the chroma it did at
      75%, and stays light enough (oklab L 0.86) to keep near-black text at
      ~13:1 — 11.5:1 at the worst hue now the disc beneath it is stronger. */
-  --glass-opacity: 60%;
+  --glass-opacity: 20%;
+
+  /* The disc's own blur. A fourteenth of its widest lobe — the site's own
+     ratio, not a new one: it is what --glass-blur used on the panel until
+     2026-08-30, and what blurSigma() still applies to the card's disc in
+     og-images.js. Restoring it here puts the page and the card back in step,
+     which they had not been since the panel stopped filtering.
+
+     On the disc rather than on main, and that is the whole point. A filter is
+     uniform over its element, so a backdrop-filter on main is a hard step at
+     main's top edge — landing exactly where the fill ramps from zero and the
+     two sides of the rule are supposed to agree. Blurring the disc itself is
+     uniform over the disc, so there is no edge anywhere and the seam holds.
+
+     A blur only means anything relative to what it is blurring: this is
+     measured against --blob-radius rather than the viewport, which is why it
+     followed on its own when the disc was resized. */
+  --blob-blur: calc(var(--blob-radius) * 1.15 / 14);
 
   /* The tint alone, named rather than spelt out at the one place it is used
      (body::after): it was laid a second time inside the supergraphic's glyphs
