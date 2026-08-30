@@ -100,46 +100,6 @@
     var(--poster-measure-left) - (var(--poster-sheet-w) - var(--poster-measure)) / 2
   );
 
-  display: grid;
-  /* The body's three columns are named individually rather than written
-     repeat(3, ...), which creates no lines to place against. */
-  /* minmax(0, 1fr), not 1fr. A flexible track has an automatic minimum, so an
-     item in the wing that is wider than a module — a shrink-wrapped, nowrap
-     date at the large step — pushes the track out to fit it. Measured after
-     layering went in: wings of 224.7px and 319.9px against a 211.9px module,
-     which silently broke the one invariant the whole column derivation rests
-     on, that a wing is a whole number of modules. A zero minimum lets the date
-     overflow the wing instead, which is what a layer should do anyway. */
-  grid-template-columns:
-    [sheet-start] minmax(0, 1fr)
-    [body-start] var(--poster-module)
-    [body-2] var(--poster-module)
-    [body-3] var(--poster-module)
-    [body-end] minmax(0, 1fr) [sheet-end];
-  /* THE FOUR ROWS
-     The horizontal counterpart of the column module: the sheet divided into
-     four equal bands, and every item anchored to one of the five lines they
-     make. Rows used to be named tracks sized by their own contents, so where
-     the title sat was a consequence of how tall the blocks above it happened
-     to be rather than a decision.
-
-     The row is rounded to a whole number of baselines and the sheet is then
-     derived from the row, not the other way round. That is what makes the two
-     grids compatible: every row line is a baseline multiple, so anything
-     anchored to a row line is on the baseline grid for free.
-
-     The last track is minmax(), not a fixed height: on a 320px phone a
-     67-character description on a 231px measure is five lines — 195px against
-     a 105px row — and 15 posts hit that. Rows 1-3 stay exact and only the last
-     one grows, so the grid holds for everything above it.
-
-     Named individually rather than repeat(4, ...), which creates no lines to
-     place against — the same reason the body columns are spelt out. */
-  grid-template-rows:
-    [r1] var(--poster-row-h)
-    [r2] var(--poster-row-h)
-    [r3] var(--poster-row-h)
-    [r4] minmax(var(--poster-row-h), auto) [r5];
   /* No column gap, and that is the point: the module is a third of the
      measure exactly, with nothing between, so the body's own thirds and the
      sheet's columns are the same lines. Space inside items instead. */
@@ -216,34 +176,29 @@
      the grid; only the baselines within them are not. */
   --poster-shift: 0px;
 
-  /* A gutter between the rows, in whole baselines.
-     It is not decoration: a row line is shared by the block that ends on it
-     and the block that starts on it, and line boxes are taller than ink, so
-     at zero the title's descender space and the standfirst's ascender space
-     met and the two read as one block. Proportional to the screen, like the
-     old band was, but snapped to the baseline so both grids survive it.
-     A row gap is right here where a column gap was wrong: the columns have to
-     coincide with the body's own thirds, and the rows answer to nothing but
-     each other. */
-  row-gap: var(--poster-gutter);
 
-  /* Four rows of the sheet's target height. Three quarters of the screen in
-     portrait: the poster is the arrival view but does not have to be the whole
-     of it, and the quarter left showing is white space the composition sits
-     above. A min-height rather than a max, because the last row may grow. */
+  /* The sheet's target height, and now the title's whole budget. Three
+     quarters of the screen in portrait: the poster is the arrival view but does
+     not have to be the whole of it, and the quarter left showing is white space
+     the composition sits above. It divided into four rows until 2026-08-30. */
   --poster-sheet-h: 75svh;
 
-  /* How many rows the title may use for its size. Three by default, because
-     with nothing in the last row the title owns rows 2-4; two when a
-     standfirst is there to occupy it. "The title takes every row nothing else
-     occupies" is the whole placement rule, and it is what keeps the grid from
-     shrinking titles rather than growing them. */
-  --poster-span: 3;
-  /* One page line. Without round() the rows below are a plain quarter of what
-     is left, so only the leadings sit on the grid; the layout still works. */
-  --poster-gutter: var(--poster-page-line);
-  --poster-row-h: calc((var(--poster-sheet-h) - 3 * var(--poster-gutter)) / 4);
-  min-height: calc(4 * var(--poster-row-h) + 3 * var(--poster-gutter));
+  /* WHAT BOUNDS THE TITLE
+     The sheet was four equal rows and the title took the two or three of them
+     nothing else occupied, which is what stopped it growing past the fold. The
+     rows went on 2026-08-30 with the two facts they were carrying, so the
+     budget is the sheet's own height instead — one number rather than four
+     rows and a span, and the same svh target the rows were divided out of.
+
+     A standfirst takes its share off the top. Eight page lines, and that is
+     measured rather than picked: across the 24 posts that have one, at 320px
+     where the measure is narrowest and they run longest, the worst sets six
+     lines — 257px, or 7.49 page lines. Eight is that rounded up to a whole
+     line of the page's own rhythm. The distribution behind it is smooth, not
+     an outlier: 6 posts at two lines, 7 at three, 7 at four, 2 at five, 2 at
+     six. Remeasure if the descriptions or the body size change. */
+  --poster-standfirst-reserve: calc(8 * var(--poster-page-line));
+  --poster-title-budget: var(--poster-sheet-h);
   margin-bottom: var(--spacing-xl);
 
   /* The crop. clip rather than hidden: hidden on one axis computes to auto on
@@ -253,22 +208,6 @@
   overflow-y: visible;
 }
 
-@supports (width: round(down, 3px, 2px)) {
-  .poster {
-    /* A quarter of the sheet, snapped to a whole number of baselines. 105.3px
-       at 320x568, 159.9 at 390x844, 191.1 at 768, 128.7 at 1440x900, 156 at
-       1920x1080. */
-    /* DOWN, not nearest. Nearest lets the sheet exceed its target — at
-       320x568 it rounds 2.66 page lines up to 3 and the sheet becomes 82svh,
-       which put eight posters past the fold once the last row grew. Down
-       never exceeds the target, and the floor keeps a row from vanishing on a
-       very short window. */
-    --poster-row-h: max(
-      var(--poster-page-line),
-      round(down, calc((var(--poster-sheet-h) - 3 * var(--poster-gutter)) / 4), var(--poster-page-line))
-    );
-  }
-}
 
 /* Layering was here on 2026-08-16 and lasted a day. Every item carried a
    z-index and an opaque mask, so a layer knocked out the one beneath it. It is
@@ -296,14 +235,6 @@
 .poster__title {
   --poster-title-w: calc(var(--poster-measure) + var(--poster-wing));
 
-  /* Placed by the layout table (poster-layouts.js, substituted below), not
-     here: which rows and columns it takes, and what it sits in front of, are
-     what a layout decides. --poster-span is how many rows it may use for its
-     size and comes from the same table. */
-  /* end, never center: block heights are whole numbers of baselines and row
-     lines are baseline multiples, so start and end both keep every baseline
-     on the grid. Centring is the one alignment that cannot — it lands the
-     block at half a baseline. */
 
   /* The box is set in em, so it scales with whatever size the type settles
      at. That is what makes the two things below safe to impose:
@@ -325,7 +256,7 @@
   /* Three terms, smallest wins.
        the fit     the title fills its box, which is the design
        the ceiling so a four-character title stays a title rather than a mural
-       the field   lines x leading, so a six-line title on a short window is
+       the budget  lines x leading, so a six-line title on a short window is
                    not left 400px below the fold with its last lines unread.
                    A baseline a line comes off the budget first, because the
                    leading is rounded UP to the grid and can take that much
@@ -335,9 +266,7 @@
     calc(var(--poster-fit) * var(--poster-title-w)),
     var(--poster-size-max),
     calc(
-      (var(--poster-span) * var(--poster-row-h)
-        + (var(--poster-span) - 1) * var(--poster-gutter)
-        - var(--poster-lines) * var(--poster-baseline))
+      (var(--poster-title-budget) - var(--poster-lines) * var(--poster-baseline))
       / (var(--poster-lines) * var(--poster-leading))
     )
   );
@@ -365,6 +294,10 @@
    date and the number. Only the 22 posts from 2026-01-10 on have one, and its
    absence is not a hole to patch — it is one of the two facts the arrangement
    is chosen from. */
+.poster:has(.poster__standfirst) {
+  --poster-title-budget: calc(var(--poster-sheet-h) - var(--poster-standfirst-reserve));
+}
+
 .poster__standfirst {
   /* The whole measure on a portrait sheet, two thirds of it on a landscape
      one. Two modules of a 231px phone sheet is 154px, which wrapped a
@@ -378,7 +311,12 @@
   font-size: var(--font-size-large);
   line-height: 1.325;
   font-weight: 400;
-  margin: calc(-1 * var(--poster-shift)) 0 var(--poster-shift);
+  /* One page line clear of the title. The row gutter did this until the rows
+     went — same length, since the gutter *was* one page line, and for the same
+     reason: line boxes are taller than ink, so at zero the title's descender
+     space and the standfirst's ascender space meet and the two read as one
+     block. The negative top is the baseline shift, unchanged. */
+  margin: calc(var(--poster-page-line) - var(--poster-shift)) 0 var(--poster-shift);
   text-wrap: pretty;
 }
 
@@ -530,9 +468,6 @@
     linear-gradient(var(--grid-body) 0 100%),
     /* every module line */
     repeating-linear-gradient(to right, var(--grid-line) 0 1px, transparent 1px var(--poster-module)),
-    /* the four row lines, solid, because they are the structure items are
-       placed on — the horizontal counterpart of the body column's own edges */
-    repeating-linear-gradient(to bottom, var(--grid-row) 0 1px, transparent 1px var(--poster-row-h)),
     /* the baseline grid under them, in two weights. Every leading on the sheet
        is rounded to a multiple of the fine one, so these are lines the type
        actually sits on rather than a ruler showing a unit nothing snapped to —
@@ -543,7 +478,7 @@
   background-size:
     1px 100%, 1px 100%, 1px 100%,
     var(--poster-measure) 100%,
-    100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    100% 100%, 100% 100%, 100% 100%;
   background-position:
     var(--poster-wing) 0,
     calc(var(--poster-wing) + var(--poster-measure) - 1px) 0,
@@ -551,9 +486,8 @@
     var(--poster-wing) 0,
     0 0,
     0 0,
-    0 0,
     0 0;
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat, repeat, repeat;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat, repeat;
 }
 
 /* SNAPPING THE TYPE TO THE BASELINE GRID
