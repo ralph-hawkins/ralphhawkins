@@ -1,0 +1,41 @@
+{#- GoatCounter, as a beacon rather than a script.
+
+   No cookies, nothing stored on the reader's machine, no personal data and so
+   no consent banner to put in front of the writing. That is the whole reason
+   it is GoatCounter and not something that follows people around.
+
+   THE PIXEL, NOT count.js
+   -----------------------
+   GoatCounter's documented default is a <script> from gc.zgo.at. Measured on
+   2026-08-30 that file is 9,213 bytes raw and 3,358 gzipped — more than this
+   site's entire stylesheet costs (3,059), and more than half of what all four
+   of its own scripts cost together. On a site whose colophon prints its own
+   page weight, and whose largest outstanding saving is 3.6 kB of comments in
+   the JS, spending 3.4 kB a page on counting the page is the wrong trade.
+
+   The beacon is the same endpoint without the script: the request the script
+   would have made, made by the document instead. It costs the tag below and a
+   1x1 GIF in reply, so it does not move the Weight row at all — where count.js
+   would have put every post up by 3 kB and would not even have been counted,
+   since subresources() in page-weight.js only matches root-relative src.
+
+   What it gives up, and it is worth knowing before switching back:
+
+     - no screen size, and no way to tell whether JS ran
+     - more crawler noise. GoatCounter filters known bots server-side by user
+       agent, but an image prefetcher looks more like a reader than a script
+       that never ran does.
+
+   Both are page views, referrers and unique-ish visitors, which is what was
+   asked for. To go back to the script, this file is the only thing to change
+   — and page-weight.js would then need to account for it, or the colophon
+   starts under-reporting by 3 kB.
+
+   Off until site.goatcounter is set: the account has to exist first, and a
+   beacon pointing at a site code that does not resolve is a 404 on every page
+   load. -#}
+{%- if site.goatcounter %}
+{%- set beaconTitle = title if title else "Ralph Hawkins" %}
+<img src="https://{{ site.goatcounter }}.goatcounter.com/count?p={{ page.url | urlencode }}&amp;t={{ beaconTitle | urlencode }}"
+     alt="" width="1" height="1" style="position:absolute;pointer-events:none">
+{%- endif %}

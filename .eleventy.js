@@ -202,7 +202,13 @@ module.exports = function(eleventyConfig) {
 
   // Add site data
   eleventyConfig.addGlobalData("site", {
-    url: "https://ralphhawkins.co.uk"
+    url: "https://ralphhawkins.co.uk",
+    // GoatCounter site code — the "x" in x.goatcounter.com. Not cosmetic: a
+    // code that does not resolve returns 400 on every page load, where the
+    // right one returns a 43-byte 1x1 GIF. Empty emits no beacon at all, which
+    // is how this sat in the repo before the account existed.
+    // See src/_includes/analytics.njk for why it is a beacon and not count.js.
+    goatcounter: "ralphhawkins"
   });
 
   // Config
