@@ -208,17 +208,25 @@ function segments(text) {
 }
 
 // Greedy wrap, the same one Satori will perform, counted rather than guessed.
-function lineCount(text, fontSize, width) {
+//
+// It hands back the lines and not just how many there are, because the height
+// budget is now measured in ink: what the first line rises to and what the
+// last one falls to depend on which words ended up on them.
+function wrapLines(text, fontSize, width) {
   const space = metrics.width(" ", fontSize);
-  let lines = 1;
+  const lines = [[]];
   let used = 0;
   for (const piece of segments(text)) {
     const gap = piece.space ? space : 0;
     const w = metrics.width(piece.text, fontSize);
-    if (used > 0 && used + gap + w > width) { lines++; used = w; }
-    else used += gap + w;
+    if (used > 0 && used + gap + w > width) { lines.push([piece.text]); used = w; }
+    else { lines[lines.length - 1].push(piece.text); used += gap + w; }
   }
-  return lines;
+  return lines.map((pieces) => pieces.join(" "));
+}
+
+function lineCount(text, fontSize, width) {
+  return wrapLines(text, fontSize, width).length;
 }
 
 // Balanced wrapping, since Satori has no text-wrap: balance. Greedy wrapping
@@ -244,48 +252,54 @@ function balancedWidth(text, fontSize, maxWidth) {
   return Math.ceil(fits);
 }
 
-const PADDING = 72;
-
-// THE POSTER GRID, ON THE CARD
+// THE SHEET, AND THE MARGIN ROUND IT
 // ---------------------------------------------------------------------------
 // The card carries the title and nothing else — no week note, no date, no
-// standfirst — set as large as the sheet will hold it. It still takes its
-// module straight from poster-grid.js, so the sheet it fills is the page's
-// own, but with one item on it the layout table has nothing left to place and
-// the per-title fit has no other block to be sized against. Both requires went
-// with them on 2026-08-17; what the card shares with the poster now is the
-// grid it sits on and the face it is set in, not the arrangement.
+// standfirst — set as large as the sheet will hold it. With one item on it the
+// layout table has nothing left to place and the per-title fit has no other
+// block to be sized against, so both requires went on 2026-08-17.
 //
-// Five columns because that is what 1200px asks for. The site's module is
-// 211.89px, five of them is 1059.47, and the margin either side comes to 70.3
-// — within two pixels of the 72 this card already used. The row works out at
-// 93.6px, three page lines, which is exactly what the site gives a 1440px
-// window.
+// The sheet is now the margin, and nothing else: 60px inside every edge, so
+// 1080 x 510 of a 1200 x 630 card. It used to be five of the site's own
+// 211.89px modules across — 1059.47, which is a 70.26px margin either side —
+// by four rows of three page lines down.
+//
+// Both of those came off, and for the same reason: they were the page's terms
+// on a sheet that no longer has the page's job.
+//
+//   - The four rows placed nothing here. Being whole page lines they also
+//     floored the height budget to 468px of the 490 that margin allowed, and
+//     could not have used the rest at any margin.
+//   - The five modules capped 32 of the 57 titles. Those are the ones whose
+//     longest word already fills the sheet on its own, so no change to the
+//     height could move them, and the module tie was buying less than the type
+//     it cost. Measured across the set, widening the sheet with the margin is
+//     what takes the median gain off zero.
+//
+// What the card still shares with the page is the face it is set in and the
+// baseline its leading snaps to, which is the tie that was doing the work.
+// 60 rather than 70.26 is Ralph's call, taken on the numbers: it is the point
+// where every card gains and the margin is still unmistakably a margin.
 //
 // Satori has no CSS grid, so the title is placed absolutely from these
 // numbers.
-const { moduleWidth } = require("./poster-grid.js");
-
-const CARD_COLS = 5;
-const CARD_MODULE = moduleWidth;
 const PAGE_LINE = 1.3 * 16 * 1.5;          // --font-size-base x --line-height-base
 const BASELINE = PAGE_LINE / 8;            // the poster's baseline grid
-const CARD_GUTTER = PAGE_LINE;
 
-const SHEET_W = CARD_COLS * CARD_MODULE;
-const SHEET_X = (WIDTH - SHEET_W) / 2;
-const CARD_ROW = Math.max(
-  PAGE_LINE,
-  Math.floor(((HEIGHT - 2 * PADDING) - 3 * CARD_GUTTER) / 4 / PAGE_LINE) * PAGE_LINE
-);
-const SHEET_H = 4 * CARD_ROW + 3 * CARD_GUTTER;
-const SHEET_Y = (HEIGHT - SHEET_H) / 2;
+const CARD_MARGIN = 60;
+const SHEET_W = WIDTH - 2 * CARD_MARGIN;
+const SHEET_X = CARD_MARGIN;
+const SAFE_H = HEIGHT - 2 * CARD_MARGIN;
+const INK_BOTTOM = HEIGHT - CARD_MARGIN;
 
-// The sheet's own edges. The column and row line names went with the layout
-// table: one item spanning the whole sheet has no use for the lines in
-// between, and naming them here when nothing reads them would suggest a
-// placement grid the card no longer has.
-const SHEET_BOTTOM = SHEET_Y + SHEET_H;
+// Where Satori puts the bottom of a line box relative to that line's own
+// baseline, in em. With advance widths, kerning and every glyph's ink box now
+// read out of the font, this is the one term in the model that the font does
+// not answer for — it is the shaper's, not the face's — so it was solved off
+// the 57 finished cards instead of assumed: 0.1545, spread 0.019 across the
+// set, which is the half-pixel the ink measurement can resolve. It is what
+// turns a baseline the fit has chosen into the `top` Satori wants.
+const BOX_BELOW_BASELINE = 0.1545;
 
 // Leadings are rounded to the baseline exactly as poster.css rounds them, so
 // the card's type sits on the same rhythm.
@@ -315,28 +329,54 @@ function sizeByWidth(text, width) {
   return width / widest;
 }
 
-// The biggest the title can be set and still fit the sheet.
+// The lines the title will actually be drawn in at this size, in the box it
+// will actually be drawn in. Balancing moves words between lines, and the ink
+// budget depends on which words end up first and last, so the balance has to
+// be applied before the extents are read rather than after the size is fixed.
+function linesAt(text, fontSize) {
+  const greedy = lineCount(text, fontSize, SHEET_W);
+  const width = greedy > 1 ? balancedWidth(text, fontSize, SHEET_W) : SHEET_W;
+  return { lines: wrapLines(text, fontSize, width), width };
+}
+
+// The height of the ink a title puts on the card: the first line's rise above
+// its baseline, the leading between the baselines, and the last line's fall
+// below the last one.
+//
+// A line box is not ink, and on this card the difference is most of a
+// descender — 0.21em, which at 400px type is 84px. Measuring the boxes
+// instead gave every title the deepest descender in the face whether it set
+// one or not, and left the space above the capitals unusable as well.
+function inkHeight(lines, leading, fontSize) {
+  return metrics.inkExtents(lines[0]).above * fontSize
+    + (lines.length - 1) * leading
+    + metrics.inkExtents(lines[lines.length - 1]).below * fontSize;
+}
+
+// The biggest the title can be set with its ink inside the margin.
 //
 // Scanning down from the ceiling and taking the first size that fits is what
-// picks the line count, rather than the count being decided first and the size
-// fitted to it. It has to be that way round: a long title set over three lines
-// takes far larger type than the same title on one, because each line is a
-// third as wide, so choosing the count first would cap the size at whatever
-// that count allowed. The height a title needs is not monotonic in its size —
-// it drops every time a line is saved — so the first fit from the top is the
-// largest fit, and scanning is the honest way to find it.
+// picks the line count, rather than the count being decided first and the
+// size fitted to it. It has to be that way round: a long title set over three
+// lines takes far larger type than the same title on one, because each line
+// is a third as wide, so choosing the count first would cap the size at
+// whatever that count allowed. The height a title needs is not monotonic in
+// its size — it drops every time a line is saved — so the first fit from the
+// top is the largest fit, and scanning is the honest way to find it.
 function fillSheet(text) {
+  const oneLine = metrics.inkExtents(text);
   const ceiling = Math.floor(Math.min(
-    sizeByWidth(text, SHEET_W),        // no single piece may overrun
-    SHEET_H / TITLE_LINE_HEIGHT        // one line can be no taller than the sheet
+    sizeByWidth(text, SHEET_W),               // no single piece may overrun
+    SAFE_H / (oneLine.above + oneLine.below)  // nor may one line of it
   ));
   for (let size = ceiling; size > 12; size--) {
-    const lines = lineCount(text, size, SHEET_W);
     const leading = snap(TITLE_LINE_HEIGHT * size);
-    if (lines * leading <= SHEET_H) return { size, lines, leading };
+    const { lines, width } = linesAt(text, size);
+    if (inkHeight(lines, leading, size) <= SAFE_H) return { size, lines, leading, width };
   }
   const size = 12;
-  return { size, lines: lineCount(text, size, SHEET_W), leading: snap(TITLE_LINE_HEIGHT * size) };
+  const leading = snap(TITLE_LINE_HEIGHT * size);
+  return { size, leading, ...linesAt(text, size) };
 }
 
 // The page's surface: one flat tint of the background laid over the whole
@@ -433,13 +473,17 @@ function backdrop({ hue1, hue2, disc: d }) {
 // words fit, rather than fitted to a target and then cut.
 function foreground({ title }) {
   const heading = drawable(title);
-  const { size, lines, leading } = fillSheet(heading);
+  // The lines come back balanced. Satori has no text-wrap: balance, and greedy
+  // wrapping fills each line to the brim and leaves the remainder on the last
+  // one — at this size a single orphaned word is the whole bottom third of the
+  // card. Narrowing the box cannot change the count, only where the breaks
+  // fall, which is why the fit can balance before it measures.
+  const { size, lines, leading, width } = fillSheet(heading);
 
-  // Even out the lines. Satori has no text-wrap: balance, and greedy wrapping
-  // fills each line to the brim and leaves the remainder on the last one — at
-  // this size a single orphaned word is the whole bottom third of the card.
-  // Narrowing the box cannot change the count, only where the breaks fall.
-  const width = lines > 1 ? balancedWidth(heading, size, SHEET_W) : SHEET_W;
+  // The last line's baseline, put where its own deepest glyph lands on the
+  // bottom margin, and then the box Satori wants around it.
+  const lastBaseline = INK_BOTTOM - metrics.inkExtents(lines[lines.length - 1]).below * size;
+  const boxTop = lastBaseline + BOX_BELOW_BASELINE * size - lines.length * leading;
 
   return {
     type: "div",
@@ -457,12 +501,17 @@ function foreground({ title }) {
           style: {
             position: "absolute",
             left: SHEET_X,
-            // On the sheet's bottom line, as the title is on the page — the
-            // poster anchors it to the end of its rows, and with the rest of
-            // the sheet empty its rows are the whole of it. Never centred:
-            // that is the one alignment that cannot keep a baseline on the
-            // grid.
-            top: SHEET_BOTTOM - lines * leading,
+            // Bottom-anchored, as the title is on the page — the poster
+            // anchors it to the end of its rows, and with the rest of the
+            // sheet empty its rows are the whole of it. Never centred: that
+            // is the one alignment that cannot keep a baseline on the grid.
+            //
+            // What it is anchored to is the margin, and by its ink rather
+            // than by its line box: a title ending in a descender and one
+            // ending in an "n" now come down to the same line on the card,
+            // where before they differed by a fifth of an em — 84px at the
+            // sizes the longest titles are set at.
+            top: boxTop,
             width,
             color: "#0b0c0c",
             fontSize: size,

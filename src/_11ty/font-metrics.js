@@ -218,6 +218,22 @@ function advances(hmtx, numberOfHMetrics, numGlyphs) {
   return widths;
 }
 
+// glyph id -> ink box in font units, or null for a glyph that draws nothing.
+// loca gives the extent of each glyph's entry in glyf and a zero-length entry
+// is an empty glyph, which is what a space is. The box sits at the head of a
+// non-empty entry, and it is there for composite glyphs as well as simple
+// ones, so an accented capital needs no recursion into its components.
+function glyphBoxes(loca, glyf, numGlyphs, longLoca) {
+  const at = (i) => (longLoca ? loca.readUInt32BE(i * 4) : loca.readUInt16BE(i * 2) * 2);
+  const boxes = new Array(numGlyphs).fill(null);
+  for (let g = 0; g < numGlyphs; g++) {
+    const start = at(g);
+    if (at(g + 1) === start) continue;
+    boxes[g] = { yMin: glyf.readInt16BE(start + 4), yMax: glyf.readInt16BE(start + 8) };
+  }
+  return boxes;
+}
+
 const cache = new Map();
 
 function fontMetrics(path) {
@@ -229,6 +245,7 @@ function fontMetrics(path) {
   const numberOfHMetrics = tables.hhea.readUInt16BE(34);
   const glyphs = glyphMap(tables.cmap);
   const widths = advances(tables.hmtx, numberOfHMetrics, numGlyphs);
+  const boxes = glyphBoxes(tables.loca, tables.glyf, numGlyphs, tables.head.readInt16BE(50) === 1);
 
   const gpos = tables.GPOS;
   const pairSubtables = gpos ? kernPairs(gpos) : [];
@@ -298,6 +315,22 @@ function fontMetrics(path) {
         previous = gid;
       }
       return (units / unitsPerEm) * fontSize;
+    },
+    // How far a string's ink rises above the baseline and falls below it, in
+    // em. The share card fits type to a margin and a line box is not ink: the
+    // difference is most of a descender, and at 400px type that is tens of
+    // pixels of margin either given away or overrun.
+    inkExtents(text) {
+      let above = 0;
+      let below = 0;
+      for (const char of text) {
+        const gid = glyphs.get(char.codePointAt(0));
+        const box = gid === undefined ? null : boxes[gid];
+        if (!box) continue;
+        if (box.yMax > above) above = box.yMax;
+        if (-box.yMin > below) below = -box.yMin;
+      }
+      return { above: above / unitsPerEm, below: below / unitsPerEm };
     },
     // The kern between two characters, in px — so a caller measuring a string
     // one glyph at a time can put back what it loses by splitting.
