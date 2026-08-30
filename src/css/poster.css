@@ -7,19 +7,18 @@
 
 /* THE GRID
    ------------------------------------------------------------------------
-   One module is a third of the body's text measure. The sheet is the body
-   plus whole modules either side — never a fraction of one — so its column
-   lines always fall on the body's own edges and its internal divisions.
+   One module is a third of the body's text measure, and the sheet is the body
+   measure — the same width as the writing underneath it, at every viewport.
 
-   The count is never worked out. round(down, ..., --poster-pair) floors the
-   space outside the body to a whole *pair* of modules, so the sheet is
-   always MEASURE + 2j x MODULE: 3, 5, 7 or 9 modules. The three body columns
-   are declared explicitly and the two wings are 1fr, which therefore resolve
-   to exactly j modules each. There is no track count to get wrong, no
-   auto-fill to drop a track on a rounding error, and nothing that drifts if
-   --font-size-base ever moves.
+   It used to be the measure plus whole modules either side, floored to a pair
+   so the sheet came out 3, 5, 7 or 9 modules wide: 3 columns to 1091px, 5 to
+   1515px, 7 to 1939px, 9 above. That went on 2026-08-30 along with the two
+   facts the wings were carrying. With no wings the two 1fr tracks resolve to
+   zero, so sheet-start *is* body-start and the composition is the body's own
+   three columns — which is what the sheet was derived from in the first place.
 
-   Measured: 3 columns to 1091px, 5 to 1515px, 7 to 1939px, 9 above.
+   The module survives the wings: the overlay still draws it, and the title's
+   box is still measured in it.
 
    cqw, not 100% and not 100vw.
 
@@ -73,8 +72,10 @@
     max(0px, (100cqw - var(--content-width)) / 2) + var(--container-padding-left)
   );
 
-  /* Without round() the sheet is the body measure and the poster is a
-     three-column composition. Everything else still works. */
+  /* The sheet is the body measure. It was widened to whole module pairs inside
+     the @supports below until 2026-08-30; now there is nothing to widen it, so
+     this one declaration is the whole of it and the @supports carries only the
+     row rounding. */
   --poster-sheet-w: var(--poster-measure);
 
   /* One wing, which is 0, 1, 2 or 3 whole modules. Named because three things
@@ -265,13 +266,6 @@
     --poster-row-h: max(
       var(--poster-page-line),
       round(down, calc((var(--poster-sheet-h) - 3 * var(--poster-gutter)) / 4), var(--poster-page-line))
-    );
-    --poster-sheet-w: min(
-      calc(
-        var(--poster-measure) +
-        max(0px, round(down, var(--poster-avail) - var(--poster-measure), var(--poster-pair)))
-      ),
-      calc(9 * var(--poster-module))
     );
   }
 }
@@ -479,10 +473,12 @@
     --poster-sheet-h: calc(62.5svh - var(--spacing-xl) - var(--hairline-width));
   }
 
-  /* The wide placements, generated from the same layout table as the narrow
-     ones above. Everything an item needs to move for a wider sheet — its
-     columns most of all, since the wings only exist here — is in the table. */
-@@POSTER_LAYOUTS_WIDE@@
+  /* The wide placements went with the wings on 2026-08-30. They cannot survive
+     without them: the standfirst's wide column pair is sheet-start / body-2,
+     which reads as the wing plus one body column — and with no wing that is one
+     module, so a description on a 1440 screen would have set in 234px. The
+     narrow placements above now apply at every width, and they give both the
+     title and the standfirst the whole measure, flush left. */
 }
 
 
