@@ -99,13 +99,11 @@ function tidy(css) {
 // in a stylesheet: a leftover @@NAME@@ makes the whole rule invalid, which
 // would quietly drop the arrangement it guards.
 function substitute(css) {
-  // Throws if any layout falls outside the overlap band — a description sat
-  // on, a fact buried whole, two items sharing a layer. Called here because
-  // this is the one place the layouts are read on every build.
-  require("./poster-layouts.js").validate();
+  // poster-layouts.js used to be validated here — it threw if any two cells on
+  // the sheet met, since an overlap with no masks is an overprint. Both the
+  // table and the check went on 2026-08-31 with the grid they described.
   const tokens = {
     ...require("./poster-grid.js").tokens,
-    ...require("./poster-layouts.js").tokens,
   };
   for (const [token, value] of Object.entries(tokens)) {
     css = css.split(token).join(value);

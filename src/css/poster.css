@@ -212,8 +212,8 @@
 /* Layering was here on 2026-08-16 and lasted a day. Every item carried a
    z-index and an opaque mask, so a layer knocked out the one beneath it. It is
    gone, and so is the opaque panel it needed — main is glass again. Nothing on
-   the sheet overlaps now, and poster-layouts.js fails the build if two cells
-   meet.
+   the sheet overlaps now — there are only two things on it, in normal flow, so
+   nothing can.
 
    One thing it left behind, and it stays: the wing tracks are minmax(0, 1fr)
    rather than 1fr. Layering exposed that rather than causing it — any item
@@ -377,14 +377,12 @@
 
 /* THE LAYOUTS
    ------------------------------------------------------------------------
-   Generated from src/_11ty/poster-layouts.js and substituted by
-   css-bundle.js, which throws if either token survives — a leftover @@TOKEN@@
-   makes the whole rule invalid and would silently drop a layout.
-
-   Shared by every post, which is the point of a class rather than inline
-   custom properties: twelve layouts cost one block of CSS once, where two
-   dozen inline properties would cost bytes on every page. */
-@@POSTER_LAYOUTS_NARROW@@
+   There is nothing to place. The twelve layouts across six families went on
+   2026-08-31 with the grid they placed into: with the two facts gone and the
+   sheet reduced to the body's own column, what is left is a title and, where a
+   post has one, a standfirst — both flush left on the measure, in normal flow.
+   src/_11ty/poster-layouts.js went with them; see CLAUDE.md for what the table
+   knew, which is worth keeping even though it no longer applies. */
 
 /* WIDE SHEETS
    ------------------------------------------------------------------------

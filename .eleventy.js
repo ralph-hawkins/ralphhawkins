@@ -57,11 +57,6 @@ module.exports = function(eleventyConfig) {
   // arrangement that line count implies. See src/_11ty/title-fit.js.
   eleventyConfig.addFilter("posterFit", require("./src/_11ty/title-fit.js").posterFit);
 
-  // Which of the twelve layered layouts a poster gets: family from the post's
-  // own two facts, variant seeded from the slug, front matter overriding
-  // either. See src/_11ty/poster-layouts.js.
-  eleventyConfig.addFilter("posterLayout", require("./src/_11ty/poster-layouts.js").posterLayout);
-
   // Markdown footnotes ([^1] syntax). The caption override drops the default
   // [n] brackets so the reference is a bare superscript digit — see footnote
   // styles in components.css.

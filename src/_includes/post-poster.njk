@@ -15,17 +15,13 @@
    poster was repeating the colophon and that this is where to look if the
    colophon were ever trimmed.
 
-   The layout is not authored: the family comes from two facts about the post
-   — how many lines the title takes and whether it has a standfirst — and the
-   variant from the slug, using the same hash that picks the post's colour, so
-   two posts the family cannot tell apart still differ. Front matter overrides
-   it — `poster: c2`, or `poster: {layout: c2}`. -#}
+   There is no layout to choose any more. Twelve arrangements across six
+   families went on 2026-08-31 with the grid they were placed into, and the
+   `poster:` front-matter override went with them. -#}
 {%- set fit = title | posterFit %}
 {%- if fit %}
-{#- Inside the guard: posterFit returns null for a title it cannot set, and the
-   layout is chosen from its line count. -#}
-{%- set layout = page.fileSlug | posterLayout(fit.lines, description, poster) %}
-<div class="poster poster--{{ layout.name }}" style="--poster-fit-wide:{{ fit.fitWide }};--poster-fit-narrow:{{ fit.fitNarrow }};--poster-line-wide:{{ fit.lineWide }};--poster-line-narrow:{{ fit.lineNarrow }};--poster-lines-wide:{{ fit.lines }};--poster-lines-narrow:{{ fit.linesNarrow }}">
+{#- Inside the guard: posterFit returns null for a title it cannot set. -#}
+<div class="poster" style="--poster-fit-wide:{{ fit.fitWide }};--poster-fit-narrow:{{ fit.fitNarrow }};--poster-line-wide:{{ fit.lineWide }};--poster-line-narrow:{{ fit.lineNarrow }};--poster-lines-wide:{{ fit.lines }};--poster-lines-narrow:{{ fit.linesNarrow }}">
   <h1 class="poster__title">{{ title }}</h1>
   {%- if description %}
   <p class="poster__standfirst">{{ description }}</p>
