@@ -10,9 +10,9 @@
 }
 
 /* The tint is one page-wide sheet (body::after in base.css), not a surface
-   each of header, main and footer carries for itself. main carries the fill
-   under it — see the panel below — and that is the only surface any of the
-   three has of its own. */
+   each of header, main and footer carries for itself. main lays its own glass
+   over the top of that sheet — see the panel below — and that is the only
+   surface any of the three has of its own. */
 
 .post-content {
   padding-bottom: var(--spacing-xl);
@@ -47,40 +47,62 @@ header {
   z-index: 0;
 }
 
+/* The masthead's type is a fraction of the measure, resolved in cqw — see
+   .hero-title in typography.css for why it cannot be a percentage. This is the
+   query container that makes 100cqw mean the text column: .container carries
+   the horizontal padding, and an inline-size container's query units resolve
+   against its content box, so the two are the same length by construction.
+
+   Scoped to the header's container rather than put on .container generally, so
+   the containment it implies — layout, style and inline-size — reaches nothing
+   but the three paragraphs in the masthead. */
+header > .container {
+  container-type: inline-size;
+}
+
 main {
-  /* The post's own panel. It was a flat 65% tint of the page background over a
-     backdrop-filter — blur, saturate and a 180deg turn — until 2026-08-30, and
-     it is a paint now: the blob's own colour flooded across the body of the
-     post, arriving from nothing at the seam.
+  /* The post's own panel, and the only filtered surface on the page: the body
+     of the post is frosted, the header is not. That is the whole separation —
+     the header is plain tint over the blob, and the post is the same thing
+     blurred and tinted again, which reads as a distinct sheet laid over it.
 
-     Nothing filters any more, and that is not incidental. A filter is uniform
-     over its element, so any filter on main is a step at main's top edge — a
-     step of sharpness from the blur, of chroma from the saturate — landing
-     exactly where the fill is at zero and the two sides of the line are
-     supposed to agree. The blur cannot be ramped in; it is all-or-nothing on
-     the element, so it is nothing. The saturate went with it, having no tint
-     left to put chroma back into, and the turn went because the fill is the
-     post's own colour rather than its complement.
+     **The step at main's top edge is the point, and this is the fourth time
+     that has changed.** A backdrop-filter is uniform over its element, so it
+     cannot be ramped in; it starts, at full strength, exactly at this edge.
+     Every previous version of this panel treated that as the problem to be
+     solved — the 2026-08-30 paint existed because a filter could not be made
+     continuous with the header, and the note that stood here yesterday argued
+     the filter must never come back for that reason. It has come back because
+     Ralph wants the two surfaces to differ, so the one thing a filter cannot
+     help doing is now the thing it is here to do. main > hr draws the line it
+     happens on; see below.
 
-     A background-image rather than a background-color, because the fill has to
-     arrive rather than start — see --blob-fill-fade in variables.css. The
-     stops are lengths and not percentages: a percentage in a gradient resolves
-     against the gradient line, which here is main's own height, so the ramp
-     would be ten times longer on a post ten times longer. transparent at both
-     ends is safe, because gradients interpolate premultiplied and so
-     transparent -> colour does not travel through grey.
+     Which of the two does the obscuring is worth knowing before either is
+     touched: --panel-opacity, not the blur. The blur at this ratio measured
+     83% of the blob's colour still getting through, the same as no blur at
+     all, and blur alone barely separates two surfaces wherever the blob is
+     locally flat — which is most of the page. See THE POST'S GLASS in
+     variables.css.
 
-     The top stop is main's top edge, which is where main > hr sits; the bottom
-     stop is main's bottom edge, where the footer begins. The fill comes in on
-     one line and goes out on the other.
+     The blob is blurred twice under the post and once behind the header:
+     body::before carries --blob-blur everywhere, and this adds --glass-blur
+     on top of it. Same sigma, so the post sees sqrt(2) of it.
+
+     Three things this panel deliberately does not do, all of which a previous
+     one did. It does not saturate (--glass-saturate, 1.3, put chroma back
+     after the blur; this tint is light enough not to need rescuing). It does
+     not turn the hue 180deg (--glass-hue-rotate; that belonged to a design
+     where the panel was the disc's complement, and the site has settled on the
+     post's own colour). And it does not paint the post's colour as a ground —
+     the fill of 2026-08-30, which took the panel over completely.
 
      Worth recording, because it is the kind of thing that bites later:
-     dropping backdrop-filter stops main being a containing block for
-     fixed-position descendants (Filter Effects 2 — a non-none backdrop-filter
-     establishes one for absolute *and* fixed). Nothing in main is fixed today
-     — body::before and body::after are the only fixed boxes on the site and
-     both sit outside it — but anything put in here in future now resolves
-     against the viewport, where before it would have resolved against the post.
+     a non-none backdrop-filter makes main a containing block for
+     fixed-position descendants as well as absolute ones (Filter Effects 2).
+     Nothing in main is fixed or sticky today — body::before and body::after
+     are the only fixed boxes on the site and both sit outside it, and
+     post-nav-arrow.js positions with margins — but anything fixed put in here
+     resolves against the post rather than against the viewport.
 
      It carried overflow-x: clip until 2026-08-12, to take the supergraphic's
      overhang. Nothing in main reaches the viewport edge without it — no post
@@ -88,13 +110,12 @@ main {
      and footnote numbers that hang into the column's padding sit a whole rem
      clear — so the clip went with the graphic rather than staying on as a
      silent crop of anything that overflows in future. */
-  background-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    var(--blob-fill) var(--blob-fill-fade),
-    var(--blob-fill) calc(100% - var(--blob-fill-fade)),
-    transparent 100%
-  );
+  background: color-mix(in srgb, var(--color-background) var(--panel-opacity), transparent);
+  backdrop-filter: blur(var(--glass-blur));
+  /* Not decoration: every version of this rule in the repo's history carried
+     the prefix alongside the standard property, from May 2026 until the whole
+     thing came off on 2026-08-30. */
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   min-height: 100vh;
   position: relative;
   z-index: 2;
@@ -109,16 +130,23 @@ main {
    which would have added the scrollbar's width and, since main no longer
    clips, shown as a horizontal scrollbar.
 
-   It sits on the panel's top edge — the line where the fill begins, which is
-   the top of main's own background gradient. The fill is at nothing there, so
-   the blob reads across the line exactly as it does in the header and comes in
-   below it; the rule draws that boundary rather than floating below it. The negative top margin is
-   what puts it there: it cancels main's own top padding exactly, since a
-   parent's padding stops the two margins collapsing. The matching positive
-   bottom margin hands the padding back to the container underneath, so the
-   title stays where it was. */
+   It sits on the panel's top edge — the line where the tint and the
+   backdrop-filter begin — so the rule draws that boundary rather than floating
+   below it. That is not a near-enough alignment: the negative top margin
+   cancels main's own top padding exactly, since a parent's padding stops the
+   two margins collapsing, which puts the hr on main's border edge, which is
+   precisely where the backdrop-filter region starts. The step and the line are
+   the same line. The matching positive bottom margin hands the padding back to
+   the container underneath, so the title stays where it was.
+
+   The two are no longer the same length. The negative top still cancels main's
+   own padding exactly — it has to, or the rule leaves the panel's edge — but
+   the bottom margin is --poster-space-above since 2026-09-04, which is the gap
+   between the top of the post and its title and is set with the poster's other
+   two in variables.css. It was --spacing-xl, which is 1.5 page lines; it is 3
+   now. */
 main > hr {
-  margin: calc(-1 * var(--spacing-xl)) 0 var(--spacing-xl);
+  margin: calc(-1 * var(--spacing-xl)) 0 var(--poster-space-above);
 }
 
 .figure {

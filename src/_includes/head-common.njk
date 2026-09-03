@@ -20,22 +20,31 @@
 <link rel="icon" type="image/svg+xml" href="{{ page.fileSlug | blobFavicon }}">
 {%- endif %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-{#- The phone's browser chrome, tinted to the post's own ground — the same
-    colour the body of the post is away from the disc, and the same value
-    --color-overscroll carries on <html> in base.njk. One number for the page,
-    the gutter above and below it, and the bar around them.
+{#- The phone's browser chrome, carrying the post's colour at the same 20%
+    mix --color-overscroll takes on <html> in base.njk. One value for the
+    gutter above and below the page and the bar around them.
 
-    It is the *ground* and not the foot colour (postColor) on purpose: the
-    chrome sits against the field, not against the disc. And it matters that
-    auto-scroll.js lands a reader with main's top edge on the top of the
-    viewport — on a phone the header is already scrolled off, so what the bar
-    actually abuts is the post's fill.
+    It is a diluted colour and not the foot (postColor) on purpose: this is a
+    large flat area abutting the page, not a mark identifying the post.
 
-    There was no theme-color between 2026-08-11 and 2026-08-30: the chrome was
-    deliberately left alone, and it is back because Ralph asked for it once the
-    post had a colour of its own to match. Weeknotes only, gated like
-    data-blob-hue — the listing pages and the 404 have no post colour to carry,
-    and a hue rolled at random is not a thing to paint a browser with.
+    **It is a tint now, not a match, and that is worth knowing before it is
+    changed.** There was no theme-color between 2026-08-11 and 2026-08-30; it
+    came back because Ralph asked for it once main flooded the post with the
+    blob's own colour and the bar had something to match. It was driven per
+    frame from random-gradients.js then, because a static hex cannot follow a
+    fill that ramps in over half a viewport and a hue that turns 40deg per
+    viewport scrolled. The fill came off on 2026-09-03 and the script's copy of
+    it went too: the body of a post away from the disc is the plain background
+    again, so there is no flat ground left for the bar to track — only a soft
+    radial that the tracking deliberately never modelled.
+
+    So this is now a static per-post tint sitting above a page that is not
+    quite that colour. Kept rather than removed, because Ralph asked for a
+    coloured chrome and the gutter carries the same value; the alternatives are
+    the bare background, or dropping the meta again as it was before
+    2026-08-30. Weeknotes only, gated like data-blob-hue — the listing pages
+    and the 404 have no post colour to carry, and a hue rolled at random is not
+    a thing to paint a browser with.
 
     iOS caches this aggressively, so a stale tint in an already-open tab is not
     evidence of a bug. #}

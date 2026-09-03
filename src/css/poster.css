@@ -82,8 +82,11 @@
      need it: the title's box, and both of the grid overlay's body edges. */
   --poster-wing: calc((var(--poster-sheet-w) - var(--poster-measure)) / 2);
 
-  --poster-leading: 0.9;
-  --poster-size-max: 16rem;
+  /* --poster-leading and --poster-size-max moved to :root in variables.css on
+     2026-09-04 — the masthead sets its display type on the same leading and
+     takes the same ceiling on a wide screen. Both still inherited here: the
+     leading is what the budget term and the baseline rounding below divide by,
+     and the ceiling is still the second of the title's three min() terms. */
 
   /* Narrow sheet by default — a phone gets the body measure and no wings, so
      it takes the tighter of the two fits: shorter lines, more of them, and a
@@ -132,13 +135,10 @@
      redesign it. */
   --poster-baseline: calc(var(--font-size-base) * var(--line-height-base) / 8);
 
-  /* The page's own line — 1.3rem x 1.5 = 31.2px, and eight baselines exactly.
-     Body copy sits on every one of these; the poster's rows and gutters are
-     whole numbers of them, which is what puts the row lines on the body's
-     rhythm rather than merely on the eighth-line grid underneath it. Being
-     multiples of the page line makes them multiples of the baseline for
-     free. */
-  --poster-page-line: calc(var(--font-size-base) * var(--line-height-base));
+  /* --poster-page-line and the three --poster-space-* gaps moved to :root in
+     variables.css on 2026-09-04, and are inherited here. They had to: main > hr
+     sets the gap above the title and sits outside .poster. See the block there
+     for what the line is and why the spacing is whole multiples of it. */
 
   /* Volksans' own vertical metrics, read straight out of the WOFF: hhea,
      OS/2 typo and OS/2 win all agree on 900 and -250 per 1000 em.
@@ -180,7 +180,23 @@
   /* The sheet's target height, and now the title's whole budget. Three
      quarters of the screen in portrait: the poster is the arrival view but does
      not have to be the whole of it, and the quarter left showing is white space
-     the composition sits above. It divided into four rows until 2026-08-30. */
+     the composition sits above. It divided into four rows until 2026-08-30.
+
+     **The whitespace above and around the title is deliberately not charged to
+     it, and that was tried the other way first.** Subtracting --poster-space-
+     above and --poster-space-title made the arithmetic honest and the result
+     unusable: measured across 56 posts, 24 titles collapsed to 0px at 320x568
+     — the standfirst's own reserve is 8 page lines of a 426px sheet there, so
+     the remainder went negative — and titles fell up to 60% at 1024x768 and
+     54% at 1440x900.
+
+     The reason it can be left uncharged is that the reserve is a worst case
+     applied to every post: it is what the longest description of 24 needs at
+     the narrowest measure, and almost every poster leaves most of it unused.
+     So the budget is a target rather than an accounting, and whether a poster
+     actually fits is a measurement, not a proof. It is one: 56 posts x 6
+     viewports, none past the fold, tallest 92%. Re-measure if the spacing, the
+     reserve or the body size moves. */
   --poster-sheet-h: 75svh;
 
   /* WHAT BOUNDS THE TITLE
@@ -199,7 +215,7 @@
      six. Remeasure if the descriptions or the body size change. */
   --poster-standfirst-reserve: calc(8 * var(--poster-page-line));
   --poster-title-budget: var(--poster-sheet-h);
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--poster-space-below);
 
   /* The crop. clip rather than hidden: hidden on one axis computes to auto on
      the other and would make this a scroll container, which would both show a
@@ -294,6 +310,8 @@
    date and the number. Only the 22 posts from 2026-01-10 on have one, and its
    absence is not a hole to patch — it is one of the two facts the arrangement
    is chosen from. */
+/* The reserve, and only the reserve — the gap between the two is not charged
+   here either, for the reason set out at --poster-sheet-h above. */
 .poster:has(.poster__standfirst) {
   --poster-title-budget: calc(var(--poster-sheet-h) - var(--poster-standfirst-reserve));
 }
@@ -311,12 +329,14 @@
   font-size: var(--font-size-large);
   line-height: 1.325;
   font-weight: 400;
-  /* One page line clear of the title. The row gutter did this until the rows
-     went — same length, since the gutter *was* one page line, and for the same
-     reason: line boxes are taller than ink, so at zero the title's descender
-     space and the standfirst's ascender space meet and the two read as one
-     block. The negative top is the baseline shift, unchanged. */
-  margin: calc(var(--poster-page-line) - var(--poster-shift)) 0 var(--poster-shift);
+  /* Two page lines clear of the title, raised from one on 2026-09-04. The row
+     gutter did this until the rows went, at one line, and one was the minimum
+     rather than a choice: line boxes are taller than ink, so at zero the
+     title's descender space and the standfirst's ascender space meet and the
+     two read as one block. Two is the gap opened deliberately, and it is still
+     the smallest of the three so the pair still reads as one composition. The
+     negative top is the baseline shift, unchanged. */
+  margin: calc(var(--poster-space-title) - var(--poster-shift)) 0 var(--poster-shift);
   text-wrap: pretty;
 }
 
@@ -406,6 +426,11 @@
        used to centre in a flexible field row here, which is what a wide short
        sheet wants — but centring lands a block at half a baseline, and with
        the title anchored to a row line instead the whole sheet is exact. */
+    /* --spacing-xl here is an allowance for what sits above the title, and it
+       stayed at 3.22rem when --poster-space-above went to 3 page lines on
+       2026-09-04. It is not the gap and is not meant to track it: charging the
+       full gap costs up to 60% of a title on a 1024x768 sheet, and the fold
+       invariant does not need it — see --poster-sheet-h above. */
     --poster-sheet-h: calc(62.5svh - var(--spacing-xl) - var(--hairline-width));
   }
 

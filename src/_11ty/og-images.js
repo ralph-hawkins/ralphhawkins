@@ -393,51 +393,33 @@ function fillSheet(text) {
 //
 //   1 − --glass-opacity  =  0.40 of the blob, and nothing else.
 //
-// Worked through, so the three-layer shape below is checkable rather than
-// asserted. main's fill is the foot at 40% over the background, laid at
-// --blob-fill-opacity over the page's already-tinted disc:
+// **What the card draws is the post panel, not the page**, because the card
+// draws the title and the title sits on the panel. So its strength is derived
+// from the page's rather than chosen, and since 2026-09-04 the derivation is
+// two terms: the page-wide sheet, and the post's own glass over the top of it.
 //
-//   panel = a·(0.6·bg + 0.4·foot) + (1−a)·(0.6·bg + 0.4·disc)
-//         = 0.6·bg + 0.4·( a·foot + (1−a)·disc )
+//   page-wide sheet  --glass-opacity   20%   body::after, over the whole page
+//   the post's glass --panel-opacity   30%   main's own tint, over that
 //
-// — the same 60% sheet, over the foot at alpha a, over the disc. Which is
-// exactly the three layers this card now draws, in that order.
+// Two tints in series leave (1 − 0.2)(1 − 0.3) = 56% of the disc, so the card
+// draws one flat 44% sheet and gets the same result in one layer.
 //
-// The card still does **not** take a hue rotation, and now neither does the
-// page: the fill is the post's own colour, the one postColor and the favicon
-// identify it by. That last deliberate near-miss between card and page is
-// closed rather than widened.
-const PAGE_GLASS_OPACITY = 0.6;
-// --blob-fill-opacity in src/css/variables.css. Keep the two in step: this is
-// how much of the disc the page's fill covers, and the card draws the same.
-const PAGE_FILL_OPACITY = 0.85;
-const GLASS_OPACITY = PAGE_GLASS_OPACITY;
+// Keep the two numbers in step with variables.css. They have been out of step
+// before and it is not a silent failure mode — this held 0.6 from 2026-08-30
+// to 2026-09-04, after --glass-opacity went 60% → 20% and this did not follow,
+// and the card was visibly paler than the page for it.
+//
+// The card does **not** take a hue rotation, and neither does the page: nothing
+// on the site turns the blob any more. It draws no fill either — main flooded
+// the post with the disc's own foot colour from 2026-08-30 to 2026-09-03 and
+// the card drew that fill to match; both went together.
+const PAGE_GLASS_OPACITY = 0.2;
+const PANEL_OPACITY = 0.3;
+const GLASS_OPACITY = 1 - (1 - PAGE_GLASS_OPACITY) * (1 - PANEL_OPACITY);
 
 // The blur is the page's, applied in render() rather than here: Satori has no
 // backdrop-filter, so the backdrop is rendered, blurred and composited under
 // the type in two passes.
-
-// The fill: the post's own foot colour, flat, at the strength main lays it.
-// It is what turned the panel from a disc on a neutral ground into a field of
-// the post's colour, and the disc still modulates through the 15% it leaves.
-//
-// Under the tint rather than over it, because that is where it sits on the
-// page — see the composite worked through above.
-function fillLayer(hue2) {
-  return {
-    type: "div",
-    props: {
-      style: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: WIDTH,
-        height: HEIGHT,
-        backgroundColor: blobColor(2, hue2, PAGE_FILL_OPACITY)
-      }
-    }
-  };
-}
 
 function glassTint() {
   return {
@@ -470,7 +452,7 @@ function backdrop({ hue1, hue2, disc: d }) {
         backgroundColor: "#EBEDF0",
         backgroundImage: blobBackground(hue1, hue2, d)
       },
-      children: [fillLayer(hue2), glassTint()]
+      children: [glassTint()]
     }
   };
 }
@@ -554,13 +536,18 @@ function foreground({ title }) {
 //
 // The ratio is a fourteenth of the widest lobe, and the card's discs are
 // seeded per slug rather than one fixed size, so it is applied to each card's
-// own disc — the same ratio --glass-blur uses on the page. A blur only means
-// anything relative to what it blurs: hard-coding a pixel count is exactly how
-// the page's own blur came to be six times too strong for the disc it was
-// softening. Both being the same ratio is also why the two blurs drop out of
-// the chroma match above rather than having to be modelled.
+// own disc — the same ratio --blob-blur and --glass-blur both use on the page.
+// A blur only means anything relative to what it blurs: hard-coding a pixel
+// count is exactly how the page's own blur came to be six times too strong for
+// the disc it was softening.
+//
+// The sqrt(2) is the page blurring the disc twice under the post: --blob-blur
+// on body::before, then --glass-blur on main's backdrop-filter, at the same
+// sigma. Gaussians compose in quadrature, so two equal blurs are one blur of
+// sqrt(2) times the sigma — and the card is a single pass, so it takes the
+// combined figure rather than applying the ratio twice.
 function blurSigma(d) {
-  return (DISC_HALF_W * d.r / 14) / 2;
+  return Math.SQRT2 * (DISC_HALF_W * d.r / 14) / 2;
 }
 
 function card(parts) {
@@ -699,33 +686,36 @@ function postColor(slug) {
   return "#" + [r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("");
 }
 
-// The post's ground: the colour the body of the post actually is, away from
-// the disc. Precomputed to hex because both the things that read it — the
-// inline --color-overscroll on <html> and <meta name="theme-color"> — sit
-// outside the stylesheet and cannot resolve a color-mix().
+// The post's colour, diluted for use as a large flat area: the iOS
+// rubber-band gutter (--color-overscroll, inlined on <html>) and the phone's
+// browser chrome (<meta name="theme-color">). Precomputed to hex because both
+// sit outside the stylesheet and cannot resolve a color-mix().
 //
-// **Derived from the fill, not picked.** main lays the foot at
-// 1 − --glass-opacity over the background, at --blob-fill-opacity:
+// **20%, and it is a tint rather than a match.** It was 20% until 2026-08-30,
+// chosen when the panel was neutral and the gutter was the only thing reading
+// it; then 0.85 × 0.40 = 0.34, derived from main's fill so the gutter was the
+// same colour as the page it abutted. The fill came off on 2026-09-03 and the
+// derivation went with it — the body of a post away from the disc is now the
+// plain background, so there is no ground to be derived from and 0.34 would
+// leave the gutter and the chrome bar noticeably louder than the page.
 //
-//   0.85 × 0.40 = 0.34 of the foot, and 0.66 of #EBEDF0
+// The post panel (2026-09-04) does not move this and cannot: away from the
+// disc the panel is a tint of the background laid over the background, which
+// is the background. A post's flat ground is --color-background whatever the
+// panel does.
 //
-// so this is the same expression the panel composites to away from the disc,
-// which is verified against the browser to 1 RGB level. On the disc's core it
-// reaches the full 0.40 — the header's own surface — but 0.34 is the field,
-// and the field is what a phone's chrome is sitting against.
+// 20% is the pre-fill value restored rather than a new one. Worth knowing
+// about it: it is poor at telling posts apart. Across the 53, consecutive
+// pairs sit a median ΔE 0.036 at 20% against 0.181 undiluted, and a third land
+// under the ~0.02 it takes to tell two flat areas apart at all — so use
+// postColor for anything meant to *identify* a post. This is a tint on a
+// gutter, which is a different job.
 //
-// It was a flat 20% until 2026-08-30, chosen when the panel was neutral and
-// the rubber-band area was the only thing reading it. Once main became a fill
-// of this same colour, 20% made the gutter visibly paler than the page it
-// abuts — half its strength — so it now follows the fill instead of being a
-// second number that has to be remembered.
-//
-// The 20% mix was also poor at telling posts apart: across the 53, consecutive
-// pairs sat a median ΔE 0.036 at 20% against 0.181 undiluted, and a third
-// landed under the ~0.02 it takes to tell two flat areas apart at all. 0.34
-// is not the undiluted foot either — use postColor for anything meant to
-// identify a post — but it is a good deal further from its neighbours.
-const GROUND_FOOT = PAGE_FILL_OPACITY * (1 - PAGE_GLASS_OPACITY);
+// Open question for Ralph, flagged rather than decided: the chrome bar now
+// carries a tint the strip of page beneath it does not have. The alternatives
+// are the bare background (no post colour in the chrome at all) or dropping
+// the meta again, as it was between 2026-08-11 and 2026-08-30.
+const GROUND_FOOT = 0.2;
 function overscrollColor(slug) {
   const hue = (hueFromSlug(slug) + HUE_OFFSET) % 360;
   const [r, g, b] = oklchToRgb(BLOB_L[2], blobChroma(2, hue), hue);

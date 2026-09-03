@@ -14,125 +14,16 @@
     return footerEl ? footerEl.offsetHeight : 0;
   }
 
-  // How far the disc reaches above and below its own centre, as multiples of
-  // --blob-radius. The wash sits 0.2 up with a 0.85 y-radius, so it tops out at
-  // 1.05; the base sits 0.08 down with a 1.0 y-radius, so it bottoms out at
-  // 1.08. Same two numbers as DISC_UP/DISC_DOWN in src/_11ty/og-images.js, and
-  // both are read off the gradient in src/css/variables.css. Keep all three in
-  // step if the recipe changes.
-  const DISC_UP = 1.05;
-  const DISC_DOWN = 1.08;
+  // The disc's own reach, the seam under the hero, --blob-fill-fade and the
+  // browser-chrome colour were all measured or solved here until 2026-09-03.
+  // Every one of them served the fill under the post — where the disc's foot
+  // and head crossed the rule, how far into main the ramp had got, and what
+  // colour that left at the top of the window — and they went with it when
+  // main stopped painting a surface of its own. <meta name="theme-color"> is
+  // now the static per-post value the build emits and nothing here touches it:
+  // with no fill there is no flat ground for it to track, only the page
+  // background and a soft radial that this deliberately never modelled.
 
-  // --blob-radius resolved to pixels. It is a clamp() in the stylesheet, and a
-  // custom property comes back from getPropertyValue as unresolved tokens — so
-  // it is measured rather than re-implemented here. Re-deriving the clamp in JS
-  // would be a second copy of a number that has to stay in step, which is the
-  // trap --content-width already documents in variables.css.
-  //
-  // Cached, and thrown away on resize because 32vmin moves with the viewport.
-  let radiusPx = null;
-  function blobRadius() {
-    if (radiusPx !== null) return radiusPx;
-    if (!document.body) return 0;
-    const probe = document.createElement('div');
-    probe.style.cssText = 'position:absolute;visibility:hidden;width:var(--blob-radius);height:0';
-    document.body.appendChild(probe);
-    radiusPx = parseFloat(getComputedStyle(probe).width) || 0;
-    probe.remove();
-    return radiusPx;
-  }
-
-  // The post's top edge in document coordinates — the horizontal rule under
-  // the hero. offsetTop rather than getBoundingClientRect, so this is one
-  // cached read rather than a layout measurement every frame: main's offset
-  // from the top of the document does not change with scroll.
-  let mainEl = null, mainTop = null, mainH = null;
-  function seamTop() {
-    if (mainTop !== null) return mainTop;
-    if (!mainEl) mainEl = document.querySelector('main');
-    if (!mainEl) return null;
-    mainTop = mainEl.offsetTop;
-    return mainTop;
-  }
-  function mainHeight() {
-    if (mainH !== null) return mainH;
-    if (!mainEl) mainEl = document.querySelector('main');
-    if (!mainEl) return null;
-    mainH = mainEl.offsetHeight;
-    return mainH;
-  }
-
-  // --blob-fill-fade resolved to pixels, measured rather than re-implemented
-  // for the same reason as --blob-radius: it is declared twice (vh then svh)
-  // and only the browser knows which one it took.
-  let fadePx = null;
-  function fillFade() {
-    if (fadePx !== null) return fadePx;
-    if (!document.body) return 0;
-    const probe = document.createElement('div');
-    probe.style.cssText = 'position:absolute;visibility:hidden;width:var(--blob-fill-fade);height:0';
-    document.body.appendChild(probe);
-    fadePx = parseFloat(getComputedStyle(probe).width) || 0;
-    probe.remove();
-    return fadePx;
-  }
-
-  // The three numbers the chrome colour needs from the stylesheet, read out of
-  // it rather than copied. All three are plain literals — a hex and two
-  // percentages — so getPropertyValue hands back something parseable, which is
-  // exactly what it does not do for --blob-radius or --blob-fill-fade further
-  // up: those hold a clamp() and a pair of viewport units, and come back as
-  // unresolved tokens. That is the difference between reading a custom property
-  // and measuring one.
-  //
-  // Cached: none of them moves at runtime.
-  let cssNums = null;
-  function css() {
-    if (cssNums) return cssNums;
-    const c = getComputedStyle(root);
-    const hex = (c.getPropertyValue('--color-background').trim() || '#EBEDF0').replace('#', '');
-    cssNums = {
-      bg: [0, 2, 4].map((i) => parseInt(hex.substr(i, 2), 16)),
-      // 100% − --glass-opacity: how much of the blob any surface lets through.
-      transmit: 1 - (parseFloat(c.getPropertyValue('--glass-opacity')) || 60) / 100,
-      fillOpacity: (parseFloat(c.getPropertyValue('--blob-fill-opacity')) || 85) / 100,
-    };
-    return cssNums;
-  }
-
-  // <meta name="theme-color">, so the phone's browser chrome matches the strip
-  // of page directly beneath it rather than carrying one fixed colour.
-  //
-  // A static value cannot do that on this page. The fill ramps in over half a
-  // viewport from the seam, so at the position auto-scroll.js lands a reader
-  // the bar sits against the palest part of it; and the hue turns 40deg for
-  // every viewport scrolled, so any one hex is only right at one scroll
-  // position. Measured before this was added: 37 to 62 RGB levels adrift.
-  //
-  // **It models the flat ground, not the disc.** The bar spans the full width
-  // and the disc is a soft radial that only sometimes reaches the top of the
-  // screen, so what is tracked is the fill — its ramp, its progress past the
-  // line, and the fade to the footer — over the page background. Where the
-  // disc does reach the top edge the bar reads a little paler than the strip
-  // under it. Modelling three radial lobes at a point to close that would be a
-  // second copy of --blob-gradient in JS, which is a worse trade.
-  //
-  // Written only when the hex actually changes: this runs every frame, and
-  // setting an attribute to the value it already has still invalidates it.
-  let themeMeta, lastTheme = null;
-  function setThemeColor(hue2, chroma2, fill) {
-    if (themeMeta === undefined) themeMeta = document.querySelector('meta[name="theme-color"]');
-    if (!themeMeta) return;
-    const { bg, transmit } = css();
-    const foot = oklchToRgb(BASE_L, chroma2, hue2);
-    const a = transmit * fill;
-    const hex = '#' + foot
-      .map((v, i) => Math.round(a * v + (1 - a) * bg[i]).toString(16).padStart(2, '0'))
-      .join('');
-    if (hex === lastTheme) return;
-    lastTheme = hex;
-    themeMeta.setAttribute('content', hex);
-  }
   // Posts carry a slug-seeded hue (data-blob-hue, set at build) so the page's
   // colours match the post's Open Graph card; elsewhere the roll is random.
   const seededHue = parseInt(root.dataset.blobHue, 10);
@@ -246,16 +137,6 @@
     return oklchToLinear(L, C, hue).every((c) => c >= 0 && c <= 1);
   }
 
-  // Same conversion carried through the sRGB transfer function to 0-255. Only
-  // the browser-chrome colour needs this: everything else on the page is
-  // written as oklch() and converted by the browser.
-  function oklchToRgb(L, C, hue) {
-    return oklchToLinear(L, C, hue).map((c) => {
-      const v = c <= 0.0031308 ? 12.92 * c : 1.055 * Math.pow(c, 1 / 2.4) - 0.055;
-      return Math.round(Math.min(1, Math.max(0, v)) * 255);
-    });
-  }
-
   // Cached per whole degree: the hue moves continuously as the page scrolls,
   // so this would otherwise run twice a frame, and a degree is far finer than
   // the eye reads here.
@@ -308,18 +189,17 @@
   // instant the footer appears and lands it on nothing at the end of the
   // document.
   //
-  // Linear-across-the-page was fine while main was a neutral tint over a disc:
-  // what faded was a shape behind the writing. Since 2026-08-30 main is a fill
-  // of the blob's own colour, so this is the colour of the whole page, and a
-  // long post read most of its second half on a page that had already given it
-  // up.
+  // Linear-across-the-page was what this did until 2026-08-30, when main became
+  // a fill of the blob's own colour: a long post then read most of its second
+  // half on a page that had already given its colour up. main is a neutral
+  // surface again since 2026-09-03, so what fades here is a shape behind the
+  // writing rather than the ground under it — but the hold stays. It was not
+  // reverted with the fill, because when the disc lets go is a decision about
+  // the disc; the fill only made it urgent.
   //
   // Min'd with the whole scroll so a document shorter than its own footer — the
   // 404, a short list — still starts at full strength and fades over what it
   // has, which is what the linear version did everywhere.
-  //
-  // A function rather than a local, because the browser chrome needs the same
-  // number: the bar has to go pale at the footer exactly as the page does.
   function footerFade(scrollY, vh) {
     const max = (document.documentElement.scrollHeight - vh) || 1;
     const runIn = Math.min(max, footerHeight() || max);
@@ -338,12 +218,8 @@
     // 4dp for the same reason --blob-scale takes it: 2dp is a 6% step here,
     // which bands the colour as the hue rotates. Without the script the
     // stylesheet's fallbacks hold and the disc looks as it did before.
-    // Bound rather than inlined into the setProperty calls: the browser-chrome
-    // colour needs the base lobe's chroma too, and solving it twice a frame is
-    // the thing chromaCache exists to avoid.
-    const chroma2 = maxChroma(BASE_L, hue2);
     root.style.setProperty('--blob-chroma-1', maxChroma(WASH_L, hue1).toFixed(4));
-    root.style.setProperty('--blob-chroma-2', chroma2.toFixed(4));
+    root.style.setProperty('--blob-chroma-2', maxChroma(BASE_L, hue2).toFixed(4));
 
     // Travel comes from the eased scroll, so the disc trails the page and
     // keeps going for a moment after it stops. Under reduced motion there is
@@ -368,46 +244,6 @@
     root.style.setProperty('--blob-x', `${(INITIAL_OFFSET_X + dir.x * dist + hoverX).toFixed(2)}px`);
     root.style.setProperty('--blob-y', `${(startY + dir.y * dist + hoverY).toFixed(2)}px`);
 
-    // How far the disc has passed below the line at the top of the post, 0 to
-    // 1. This is what turns it from a disc into the post's background: the
-    // fill's alpha is multiplied by it (--blob-fill in variables.css), so the
-    // ground fills in as the blob crosses the rule rather than simply being
-    // there.
-    //
-    // The travel is the disc's own height and nothing else: 0 when its foot
-    // first touches the line and 1 when its head has cleared it, which is
-    // exactly "as it moves down past the line". Being fixed to the viewport,
-    // the disc passes the line because the line rises, not because the disc
-    // falls — same crossing either way.
-    //
-    // Left alone until both the body and main exist. The property's CSS
-    // fallback is 1, so the first synchronous call and the no-JS case both get
-    // a fill that is simply present, which is what it was before this.
-    const seam = seamTop();
-    const radius = blobRadius();
-    if (seam !== null && radius > 0) {
-      const centre = vh / 2 + startY + dir.y * dist + hoverY;   // viewport coords
-      const past = centre - (seam - scrollY);
-      const progress = Math.max(0, Math.min(1, (past + DISC_DOWN * radius) / ((DISC_UP + DISC_DOWN) * radius)));
-      root.style.setProperty('--blob-fill-progress', progress.toFixed(3));
-
-      // And the browser chrome, matched to the strip of page directly under it
-      // — which means working out how much fill there is at viewport y = 0.
-      //
-      // Above the seam that is none: the top of the window is in the header,
-      // which carries no fill at all. Below it, the ramp is whichever of the
-      // two ends is nearer, so the bar goes pale again at the foot of the post
-      // exactly as the page does.
-      const fade = fillFade();
-      const height = mainHeight();
-      const into = scrollY - seam;
-      let ramp = 0;
-      if (into > 0 && fade > 0 && height) {
-        ramp = Math.max(0, Math.min(1, into / fade, (height - into) / fade));
-      }
-      setThemeColor(hue2, chroma2, ramp * progress * footerFade(scrollY, vh));
-    }
-
     // 4dp, where everything else here rounds to 2: this one is a multiplier,
     // not a length, and 2dp would quantise the disc's size into visible steps.
     const scale = reduceMotion ? 1 : 1 + Math.sin((time / SCALE_PERIOD) * Math.PI * 2 + SCALE_PHASE) * SCALE_AMPLITUDE;
@@ -426,22 +262,15 @@
   // into the offset at load, so a resize has to re-run it. The rAF loop below
   // would do that anyway; under reduced motion there is no loop, and scroll
   // alone would leave a resized window holding the old placement.
-  window.addEventListener('resize', () => {
-    // Both are viewport-dependent: --blob-radius is 32vmin between its stops,
-    // and main's offsetTop moves as the hero's svh height and the text reflow.
-    radiusPx = null;
-    mainTop = null;
-    mainH = null;
-    fadePx = null;
-    apply(0);
-  });
+  window.addEventListener('resize', () => apply(0));
 
   if (reduceMotion) {
     window.addEventListener('scroll', () => apply(0), { passive: true });
   } else {
     // Continuous loop drives the idle hover. Pause it while the tab is hidden
-    // so a backgrounded page stops recomputing the blob (and the backdrop
-    // blur layered over it) instead of burning CPU/battery.
+    // so a backgrounded page stops recomputing the blob (and the blur on it,
+    // and the post panel's backdrop-filter over both) instead of burning
+    // CPU/battery.
     let rafId = null;
     function loop(time) {
       ease(time);

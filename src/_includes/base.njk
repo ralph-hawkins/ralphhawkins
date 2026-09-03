@@ -5,8 +5,10 @@
    a post date. -#}
 <!DOCTYPE html>
 {#- --color-overscroll tints the iOS rubber-band area with the post's colour,
-   the same 20% mix the theme-color meta used to carry before the browser
-   chrome was left to itself. -#}
+   at the 20% mix overscrollColor makes — the same value the theme-color meta
+   carries, so the gutter and the bar around it are one colour. It followed
+   main's fill at 34% for four days; the fill went on 2026-09-03 and this went
+   back to 20%. See overscrollColor in src/_11ty/og-images.js. -#}
 <html lang="en"{% if tags and 'weeknotes' in tags %} data-blob-hue="{{ page.fileSlug | blobHue }}" style="--color-overscroll: {{ page.fileSlug | blobOverscroll }}"{% endif %}>
 <head>
     {% include "head-common.njk" %}
@@ -27,9 +29,20 @@
     <div class="container">
       {#- Masthead, not the document title — every page's h1 is its own
          subject (post title, list heading), since / redirects to the
-         latest post and there is no homepage document. -#}
-      <p class="hero-title">
-        Ralph Hawkins
+         latest post and there is no homepage document.
+
+         Set the way a post title is set, from 2026-09-04: the name goes
+         through the same solver, so it fills the body's measure and is one
+         shape at every width, scaled. The name and both fits come from
+         src/_data/masthead.js — never write the string here, or the type will
+         be sized for a name the page no longer prints.
+
+         Two fits, one media query, exactly as post-poster.njk does it. The
+         narrow one is the longest word, so the box is one word wide and the
+         name stacks; the wide one is the whole name on a line. typography.css
+         picks between them, and poster-grid.js computes where. -#}
+      <p class="hero-title" style="--hero-fit-one:{{ masthead.one.fitWide }};--hero-line-one:{{ masthead.one.lineWide }};--hero-fit-two:{{ masthead.two.fitWide }};--hero-line-two:{{ masthead.two.lineWide }}">
+        {{ masthead.name }}
       </p>
       <p>
         I’m a service designer who works in the public sector,

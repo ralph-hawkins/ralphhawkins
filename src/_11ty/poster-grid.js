@@ -1,4 +1,7 @@
-// The one breakpoint the post poster still needs, computed rather than chosen.
+// The two breakpoints computed rather than chosen: the poster's wing, and the
+// masthead's one-line/two-line switch. Both are the same measure arithmetic —
+// how wide is the body's text column at a given viewport — so they live
+// together and share the constants below.
 //
 // The poster's geometry needs no query at all: poster.css floors the space
 // outside the body column to a whole pair of modules with round(), so the
@@ -55,14 +58,61 @@ const wingPx = contentWidth + 2 * (moduleWidth + sheetMargin - containerPadding)
 // rem and only the viewport is not.
 const wingEm = wingPx / ROOT_PX;
 
+// THE MASTHEAD'S LINE SWITCH
+// ---------------------------------------------------------------------------
+// The hero title is fitted by the same solver as a post title (title-fit.js),
+// which fills the measure with the name. Two words give two candidates: one
+// line of "Ralph Hawkins", or "Ralph" over "Hawkins" — and the second sets 1.7x
+// larger, because the longest line is that much shorter.
+//
+// The solver on its own keeps the name on one line at every width, because
+// 6.375em is nearer its 5.5em narrow target than the break's 3.755em. That is
+// right for a sentence-length title and wrong for a two-word name: it puts the
+// masthead at 35.5px on a 320px phone, smaller than any post title on the same
+// screen. So narrow stacks the two words and wide sets them on one line.
+//
+// **Where they swap is not a choice, it falls out of the ceiling already
+// there.** typography.css caps the hero at --font-size-h1's 4.5rem, exactly as
+// poster.css caps a four-character title with --poster-size-max so it stays a
+// title rather than a mural. The two-line stack hits that ceiling almost at
+// once and sits on it; the one-line fit climbs to it as the column widens. At
+// the viewport where the one-line fit *reaches* 4.5rem, both branches are the
+// same size — so switching there is continuous, and switching anywhere else is
+// a visible jump.
+//
+//   fitOne x measure = HERO_CAP_REM  ->  measure = 458.9px  ->  vw = 559.5px
+//
+// The fit is read rather than written down, so the day the name or the face
+// changes this follows. It comes from src/_data/masthead.js, which is where the
+// name itself lives — the alternative was a second copy of the string here,
+// which is exactly the drift this file exists to avoid elsewhere.
+const masthead = require("../_data/masthead.js");
+
+// Mirrors the hero's font-size ceiling in typography.css.
+const HERO_CAP_REM = 4.5;
+
+const heroFitOne = masthead.one.fitWide;
+// The measure at which one fitted line reaches the ceiling.
+const heroMeasurePx = (HERO_CAP_REM * ROOT_PX) / heroFitOne;
+// Same bias as the wing, and for the same reason: the query is measured
+// against a viewport that includes the scrollbar and the column is not. Later
+// is the safe side here — it holds the two-line branch a little longer, and
+// that branch is already at the ceiling, so it cannot run away.
+const heroOneLinePx = heroMeasurePx + containerPadding * 2 + SCROLLBAR_ALLOWANCE_PX;
+const heroOneLineEm = heroOneLinePx / ROOT_PX;
+
 module.exports = {
   measure,
   moduleWidth,
   wingPx,
   wingEm,
+  heroFitOne,
+  heroOneLinePx,
+  heroOneLineEm,
   // What css-bundle.js substitutes. Two decimal places, the site's rounding
   // convention for computed CSS numbers.
   tokens: {
     "@@POSTER_WING_EM@@": wingEm.toFixed(2),
+    "@@HERO_ONE_LINE_EM@@": heroOneLineEm.toFixed(2),
   },
 };

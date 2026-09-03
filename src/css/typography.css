@@ -67,8 +67,15 @@ h2, h3 {
   hyphenate-limit-chars: 8;
 }
 
-h1,
-.hero-title {
+/* The h1 element rule. It was shared with .hero-title until 2026-09-04, when
+   the masthead went over to the poster's fitter and stopped having anything in
+   common with it — see .hero-title below.
+
+   What is left on it is /notes-list/'s "All week notes", which is a bare h1
+   with no class, and the declarations .poster__title overrides one by one. It
+   is deliberately unchanged: splitting the rule was so the masthead could move
+   without taking the list heading with it. */
+h1 {
   font-size: var(--font-size-h1);
   /* Tight display leading, but with clearance for a descender line above an
      ascender line — 0.8 relied on "Ralph / Hawkins" happening to miss. */
@@ -78,15 +85,111 @@ h1,
   font-weight: bold;
 }
 
+/* THE MASTHEAD
+   ------------------------------------------------------------------------
+   Set the way a post title is set, from 2026-09-04. Every property below is
+   .poster__title's, and for the same reason — the two are the site's only
+   display type and were set by unrelated rules until now: 700 against 600, no
+   tracking against -0.015em, 0.85 leading against 0.9, and a viewport clamp
+   against a size solved from the words themselves.
+
+   The size comes from src/_11ty/title-fit.js, the same solver, delivered as
+   --hero-fit-* on the element by base.njk. It is a *fraction of the measure*,
+   not a length, which is what makes the name one shape at every width rather
+   than a different composition at each.
+
+   cqw, not %: a percentage in font-size resolves against the parent's font
+   size, not against any width — the trap --content-width documents in
+   variables.css. The container query context is on header > .container in
+   layout.css, so 100cqw is the text measure exactly.
+
+   The box is set in em from the fitted line width, and **that is what breaks
+   the lines**. A box one word wide is the two-line stack; a box the whole name
+   wide is one line. Nothing forces a break; the browser does it because the box
+   says so, which is exactly how the poster sets its own line count.
+
+   The ceiling is --font-size-h1's, unchanged. It is what keeps a short name
+   from becoming a mural on a wide screen, the same job --poster-size-max does
+   for a four-character title — and it is what makes the switch below
+   continuous. */
+.hero-title {
+  /* Narrow by default, and the query below swaps in the one-line pair — the
+     same shape as poster.css's narrow-first fit.
+
+     **The ceiling is part of the branch, and that is the whole mechanism.**
+     Stacked, the name fills the measure at 1.7x the size one line would take,
+     so past a phone it runs away — 122px at 560px of viewport, 187px at 1440.
+     --font-size-h1's 4.5rem stops it, and stops it almost at once: the stack
+     is at the ceiling from 390px up. The one-line branch takes the poster's own
+     16rem guard instead, which it never reaches, so it is free to grow with the
+     column.
+
+     That is what makes the switch continuous rather than a jump. Below the
+     query the stack sits on 4.5rem; the query fires at exactly the width where
+     one line *reaches* 4.5rem. Cap both branches at 4.5rem — which this did for
+     one build — and the name is pinned at 72px on every screen from a phone to
+     a 1920, which is the fit doing nothing at all.
+
+     4.5rem flat, and deliberately not var(--font-size-h1). Two reasons, both
+     found by measuring. That token is a clamp whose *middle* term, 18vw, binds
+     on a phone — 57.6px at 320px, under the 60.2px the stack wants — so the
+     name stopped just short of filling its column, which is the one thing the
+     fit exists to do. And it is the h1 element rule's size: reading it here
+     would re-couple the masthead to /notes-list/'s heading, which is what
+     splitting that rule was for. HERO_CAP_REM in poster-grid.js mirrors this
+     number; the breakpoint is solved from it, so the two must agree. */
+  --hero-fit: var(--hero-fit-two);
+  --hero-line: var(--hero-line-two);
+  --hero-size-max: 4.5rem;
+
+  width: calc(var(--hero-line) * 1em);
+  font-size: min(calc(var(--hero-fit) * 100cqw), var(--hero-size-max));
+  line-height: var(--poster-leading);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+
+  /* All three are load-bearing, not tidying. body sets overflow-wrap: anywhere,
+     which would hard-cut "Hawkins" mid-character instead of letting the box do
+     the breaking; and `header p` sets text-wrap: balance, which is free to
+     re-break lines the fitter has already decided. */
+  hyphens: manual;
+  -webkit-hyphens: manual;
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: wrap;
+
+  /* Its spacing in the header, unchanged — the h1 rule above carried these and
+     the masthead keeps them. */
+  padding-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* One line above this width, two below it, and the number is computed in
+   poster-grid.js rather than chosen: it is the viewport at which a single
+   fitted line *reaches* the 4.5rem ceiling, which is where the capped two-line
+   stack already sits. Both branches are the same size there, so the switch is
+   continuous; anywhere else it is a visible jump, and the two fits differ by
+   1.7x. A media query cannot read a custom property, so css-bundle.js
+   substitutes it and throws if the token survives. */
+@media (min-width: @@HERO_ONE_LINE_EM@@em) {
+  .hero-title {
+    --hero-fit: var(--hero-fit-one);
+    --hero-line: var(--hero-line-one);
+    --hero-size-max: var(--poster-size-max);
+  }
+}
+
 h2 {
   font-size: var(--font-size-h2);
   line-height: 0.975;
   padding-top: var(--spacing-xl);
 }
 
-/* A post's own title is now set by the poster (.poster__title in poster.css),
-   which is where the reader lands. .page-title below is what 404.njk and the
-   notes list still use. */
+/* A post's own title is set by the poster (.poster__title in poster.css),
+   which is where the reader lands. **.page-title is 404.njk's, and only
+   404.njk's** — the note here used to say the notes list used it too, and that
+   has not been true for a while: notes-list.njk sets a bare <h1>, so it is
+   sized by the h1 element rule above. Edit the right one. */
 
 /* Post/page titles: h1 in the outline, h2 optics — the hero masthead stays
    the biggest thing on the page on purpose. */
