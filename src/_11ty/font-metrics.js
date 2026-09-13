@@ -166,9 +166,12 @@ function xAdvance(buf, offset, format) {
   return buf.readInt16BE(at);
 }
 
-function kernPairs(gpos) {
-  const subtables = [];
-  if (!gpos || gpos.length < 10) return subtables;
+// The pair-adjustment subtables of every 'kern' lookup, kept grouped by the
+// lookup they belong to — which is not bookkeeping: see kern() below for what
+// flattening them into one list did to the widths.
+function kernLookups(gpos) {
+  const lookups = [];
+  if (!gpos || gpos.length < 10) return lookups;
 
   const featureListOffset = gpos.readUInt16BE(6);
   const lookupListOffset = gpos.readUInt16BE(8);
@@ -190,6 +193,7 @@ function kernPairs(gpos) {
     const lookup = lookupListOffset + gpos.readUInt16BE(lookupListOffset + 2 + i * 2);
     const type = gpos.readUInt16BE(lookup);
     const subCount = gpos.readUInt16BE(lookup + 4);
+    const subtables = [];
     for (let j = 0; j < subCount; j++) {
       // The offsets sit at lookup + 6 but are measured from `lookup` itself.
       let at = lookup + gpos.readUInt16BE(lookup + 6 + j * 2);
@@ -201,8 +205,9 @@ function kernPairs(gpos) {
       }
       if (effective === 2) subtables.push(at);
     }
+    if (subtables.length > 0) lookups.push(subtables);
   }
-  return subtables;
+  return lookups;
 }
 
 // glyph id -> advance width, in font units. hmtx holds full metrics for the
@@ -248,45 +253,72 @@ function fontMetrics(path) {
   const boxes = glyphBoxes(tables.loca, tables.glyf, numGlyphs, tables.head.readInt16BE(50) === 1);
 
   const gpos = tables.GPOS;
-  const pairSubtables = gpos ? kernPairs(gpos) : [];
+  const pairLookups = gpos ? kernLookups(gpos) : [];
   const kernCache = new Map();
+
+  // One subtable's x-advance for the pair, or null when the subtable does not
+  // match it — two different answers. A format 2 subtable that covers the left
+  // glyph matches whatever class the right one falls in, even where the value
+  // is zero, and that ends the lookup; a format 1 subtable matches only a pair
+  // it lists. Both as HarfBuzz decides it.
+  function pairAdjustment(at, left, right) {
+    const format = gpos.readUInt16BE(at);
+    const covered = coverageIndex(gpos, at + gpos.readUInt16BE(at + 2), left);
+    if (covered < 0) return null;
+    const fmt1 = gpos.readUInt16BE(at + 4);
+    const fmt2 = gpos.readUInt16BE(at + 6);
+
+    if (format === 1) {
+      const set = at + gpos.readUInt16BE(at + 10 + covered * 2);
+      const count = gpos.readUInt16BE(set);
+      const stride = 2 + valueSize(fmt1) + valueSize(fmt2);
+      for (let i = 0; i < count; i++) {
+        const rec = set + 2 + i * stride;
+        if (gpos.readUInt16BE(rec) === right) return xAdvance(gpos, rec + 2, fmt1);
+      }
+      return null;
+    }
+    if (format === 2) {
+      const class1 = classOf(gpos, at + gpos.readUInt16BE(at + 8), left);
+      const class2 = classOf(gpos, at + gpos.readUInt16BE(at + 10), right);
+      const count1 = gpos.readUInt16BE(at + 12);
+      const count2 = gpos.readUInt16BE(at + 14);
+      if (class1 >= count1 || class2 >= count2) return null;
+      const stride = valueSize(fmt1) + valueSize(fmt2);
+      return xAdvance(gpos, at + 16 + (class1 * count2 + class2) * stride, fmt1);
+    }
+    return null;
+  }
 
   // The adjustment GPOS makes to the first glyph's advance, in font units.
   // Looked up on demand and memoised per pair: class-based kerning is a
   // class1Count x class2Count matrix, which is far cheaper to index into than
   // to expand into every pair it implies.
+  //
+  // Lookups add up; the subtables inside one do not. A shaper applies the
+  // first subtable in a lookup that matches the pair and skips the rest, which
+  // is how a font carries exceptions: specific glyph pairs in a format 1
+  // subtable, ahead of the class matrix in a format 2 one. This used to add
+  // every subtable up, which applied both — it kerned "ow" -30 units where
+  // Chrome kerns -10, and "We" -120 where Chrome kerns -50.
+  //
+  // At display size that is not rounding. It measured "the way down" 0.02em
+  // narrower than Chrome draws it, and the poster sets a title's box exactly as
+  // wide as its widest line — so "down" dropped onto a third line the fitter
+  // never planned, and "Prevention all the way down" set as three ragged lines
+  // instead of two even ones.
   function kern(left, right) {
     const key = (left << 16) | right;
     const hit = kernCache.get(key);
     if (hit !== undefined) return hit;
 
     let delta = 0;
-    for (const at of pairSubtables) {
-      const format = gpos.readUInt16BE(at);
-      const covered = coverageIndex(gpos, at + gpos.readUInt16BE(at + 2), left);
-      if (covered < 0) continue;
-      const fmt1 = gpos.readUInt16BE(at + 4);
-      const fmt2 = gpos.readUInt16BE(at + 6);
-
-      if (format === 1) {
-        const set = at + gpos.readUInt16BE(at + 10 + covered * 2);
-        const count = gpos.readUInt16BE(set);
-        const stride = 2 + valueSize(fmt1) + valueSize(fmt2);
-        for (let i = 0; i < count; i++) {
-          const rec = set + 2 + i * stride;
-          if (gpos.readUInt16BE(rec) !== right) continue;
-          delta += xAdvance(gpos, rec + 2, fmt1);
-          break;
-        }
-      } else if (format === 2) {
-        const class1 = classOf(gpos, at + gpos.readUInt16BE(at + 8), left);
-        const class2 = classOf(gpos, at + gpos.readUInt16BE(at + 10), right);
-        const count1 = gpos.readUInt16BE(at + 12);
-        const count2 = gpos.readUInt16BE(at + 14);
-        if (class1 >= count1 || class2 >= count2) continue;
-        const stride = valueSize(fmt1) + valueSize(fmt2);
-        const rec = at + 16 + (class1 * count2 + class2) * stride;
-        delta += xAdvance(gpos, rec, fmt1);
+    for (const subtables of pairLookups) {
+      for (const at of subtables) {
+        const adjustment = pairAdjustment(at, left, right);
+        if (adjustment === null) continue;
+        delta += adjustment;
+        break;
       }
     }
 

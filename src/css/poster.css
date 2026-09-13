@@ -245,9 +245,9 @@
    Breaking is at spaces only. hyphens stays manual, and overflow-wrap and
    word-break are reset because body sets overflow-wrap: anywhere, which would
    hard-cut a long word mid-character instead of letting it run off the edge
-   and crop. The fitter models the same greedy break off the same widths —
-   advances and GPOS kerning both — so what it measured is what the browser
-   draws, to about a fiftieth of a pixel over a 368px string. */
+   and crop. The fitter models a greedy break off the same widths — advances
+   and GPOS kerning both — to decide how many lines the title takes and how
+   wide its box is; which words land on which line is text-wrap's, below. */
 .poster__title {
   --poster-title-w: calc(var(--poster-measure) + var(--poster-wing));
 
@@ -294,6 +294,17 @@
   -webkit-hyphens: manual;
   overflow-wrap: normal;
   word-break: normal;
+
+  /* Balanced, so the words are shared across the lines instead of piled into
+     the first ones. The box is exactly as wide as the title's widest line, and
+     a greedy fill of a box that tight leaves the remainder for the end — "Work
+     in the / open, it / makes / things better" at 390px, which balance sets as
+     "Work in / the open, / it makes / things better".
+
+     Safe here because balance keeps the line count, and the count is all the
+     fitter hands the stylesheet: the size and the height budget above are
+     solved from it, so neither moves. */
+  text-wrap: balance;
 
   /* h1's element rule carries the hero's padding and margins. The margin now
      carries nothing but the baseline shift — negative on top, the same amount
