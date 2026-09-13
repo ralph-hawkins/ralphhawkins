@@ -11,6 +11,6 @@ Frankie wrote about the [work MMH are doing to make concrete fixes](https://fran
 
 It’s a small change, but it’s a fix outside any one team’s scope. A label that belongs to nobody falls through the gaps. That’s what MMH can pick up. The change is a precursor to more fundamental work on how results build out to become connected journeys.
 
-Mike wrote about the [far‑reaching work we’ve been doing](https://mikegallagher.org/posts/persistence-of-vision/). Coordination doesn’t just happen – someone has to decide what matters most and live with having chosen. That’s a better way of thinking about myself than as a repository. My role is choosing what’s worth carrying between the layers.
+Mike wrote about the [far‑reaching work we’ve been doing](https://mikegallagher.org/posts/persistence-of-vision/). Coordination doesn’t just happen – someone has to decide what matters most and live with having chosen. That’s a better way of thinking about myself than as a repository. I can help by choosing what’s worth carrying between the layers.
 
 Part of transforming prevention has to be giving local health more control of what the user sees, from the start of the experience. National reach, with local knowledge of who to speak to and how, connecting people to prevention services that exist near them. This is the conclusion we reach in the vision work – we can’t do this from the centre, and shouldn’t try to.
