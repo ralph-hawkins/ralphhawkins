@@ -3,7 +3,8 @@ title: Spokesperson
 description: Looking sideways has to be worth the cost.
 date: 2026-09-26
 ---
-There’s something about making trade‑offs visible that scratches a particular itch in my brain. In public sector design there is rarely an uncompromised solution. We have to choose what we prioritise and what or who we optimise for.
+
+In public sector design there is rarely an uncompromised solution. We have to choose what we prioritise and what or who we optimise for.
 
 The NHS App is a hub with an ever‑increasing number of spokes. For it to offer simple, clear journeys through a network of services, we all have to keep choosing between what an individual service needs and what the network needs.
 
