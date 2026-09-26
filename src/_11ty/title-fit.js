@@ -263,7 +263,16 @@ function solve(title, targetEm) {
     // A crop only ever helps when the longest word is what is holding the line
     // wider than we want it — and only if it closes enough of the gap to the
     // target to be worth mangling a word for.
-    if (raw > targetEm && longest.width >= raw - 1e-9) {
+    //
+    // Never on a one-word title. The floor below is the next longest word,
+    // because a crop only reads as deliberate while some other word survives
+    // whole — "Ill communication" keeps "Ill", so the eye sees a composition
+    // rather than a mistake. A single word has no second word to act as that
+    // floor, and cropping it leaves nothing intact: "Spokesperson" set as
+    // "Spokesperso" on a phone, which reads as a misspelling. It was the only
+    // one-word title of the 58 that cropped. The cost of the guard is 8.9% of
+    // type size on the narrow branch, and the word is whole.
+    if (words.length > 1 && raw > targetEm && longest.width >= raw - 1e-9) {
       const desired = Math.max(targetEm, second);
       const snapped = snapCrop(desired, longest, glyphEm);
       if (snapped !== null && snapped >= second) {
