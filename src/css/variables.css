@@ -231,11 +231,19 @@
      23.7px at 1440x900, 28.4px at 1920x1080. The 37.8px the 460px cap allows
      needs 1438px of the *smaller* dimension, so almost nothing reaches it.
 
-     Kept as its own property rather than written as var(--blob-blur), even
-     though the two expressions are identical today: they are two different
-     jobs and either can be tuned without the other. Halving the divisor here
-     is the dial if the blur should be the thing the reader notices. */
-  --glass-blur: calc(var(--blob-radius) * 1.15 / 14);
+     Kept as its own property rather than written as var(--blob-blur): they are
+     two different jobs and either can be tuned without the other. That is what
+     happened on 2026-09-26 — the divisor here halved to a seventh, which the
+     comment above already named as the dial for making the blur the thing the
+     reader notices, and --blob-blur stayed at a fourteenth. So the disc is
+     softly blurred everywhere and softened again, twice as much, under the
+     post. Measured off the built page: 25.6px at the phone floor, 47.3px at
+     1440x900, 56.8px at 1920x1080.
+
+     The two are no longer equal, and og-images.js has to know: it composes
+     both in quadrature to match the page with the card's single blur. Change
+     this divisor and change blurSigma() with it. */
+  --glass-blur: calc(var(--blob-radius) * 1.15 / 7);
 
   /* The tint alone, named rather than spelt out at the one place it is used
      (body::after): it was laid a second time inside the supergraphic's glyphs

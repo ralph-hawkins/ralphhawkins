@@ -3,17 +3,6 @@
 (function () {
   const root = document.documentElement;
 
-  // Looked up lazily rather than at parse time: this script is loaded
-  // synchronously in the head (head-common.njk), so document.querySelector
-  // returns null when it runs. The first apply(0) therefore falls back to the
-  // whole scroll — which at scrollY 0 gives 1 either way — and every call
-  // after the body exists has the real number.
-  let footerEl = null;
-  function footerHeight() {
-    if (!footerEl) footerEl = document.querySelector('footer');
-    return footerEl ? footerEl.offsetHeight : 0;
-  }
-
   // The disc's own reach, the seam under the hero, --blob-fill-fade and the
   // browser-chrome colour were all measured or solved here until 2026-09-03.
   // Every one of them served the fill under the post — where the disc's foot
@@ -178,32 +167,36 @@
     easedScroll = target + (easedScroll - target) * Math.exp(-dt / SCROLL_EASE_TAU);
   }
 
-  // The disc holds at strength through the post and goes out over the footer,
-  // rather than easing away linearly across the whole document.
+  // The disc fades across the whole document, and it goes quickest at the top.
   //
-  // The run-in is the footer's own height, and that is not a number picked for
-  // it — it falls out of the arithmetic already here. max - scrollY is the
-  // scroll left to do, and max is footerTop + footerHeight - vh, so the two are
-  // equal at exactly the moment the footer's top edge reaches the bottom of the
-  // window. Dividing by the footer's height therefore starts the fade the
-  // instant the footer appears and lands it on nothing at the end of the
-  // document.
+  // What is raised to the power is the strength *remaining*, not the distance
+  // travelled, which is what puts the speed at the start rather than the end:
+  // the slope is -FADE_EXPONENT at the first pixel of scroll and 0 at the last,
+  // so the disc drops away as the reader leaves the poster and then lands on
+  // nothing gently instead of arriving at zero still moving. An exponent of 1
+  // is the plain linear ramp, and every value above it bends the same curve
+  // further — 2 puts the disc at a quarter strength by the half-way line where
+  // linear would leave it at a half.
   //
-  // Linear-across-the-page was what this did until 2026-08-30, when main became
-  // a fill of the blob's own colour: a long post then read most of its second
-  // half on a page that had already given its colour up. main is a neutral
+  // It held at full strength until the footer appeared, from 2026-08-30 to
+  // 2026-09-26. That hold was built for the four days main was flooded with the
+  // disc's own colour, when fading early meant a long post read its second half
+  // on a page that had already given its colour up. main has been a neutral
   // surface again since 2026-09-03, so what fades here is a shape behind the
-  // writing rather than the ground under it — but the hold stays. It was not
-  // reverted with the fill, because when the disc lets go is a decision about
-  // the disc; the fill only made it urgent.
+  // writing rather than the ground under it — and measured on the built site
+  // the hold covered the first 76% of a median post's scroll and 80% of a long
+  // one's, so the disc barely moved while the post was being read.
   //
-  // Min'd with the whole scroll so a document shorter than its own footer — the
-  // 404, a short list — still starts at full strength and fades over what it
-  // has, which is what the linear version did everywhere.
-  function footerFade(scrollY, vh) {
+  // That hold needed no constant: max is footerTop + footerHeight - vh, so
+  // max - scrollY equalled the footer's own height at exactly the moment its
+  // top edge reached the bottom of the window. Neat, and nothing here needs the
+  // footer any more — footerHeight() went with it.
+  const FADE_EXPONENT = 2;
+
+  function scrollFade(scrollY, vh) {
     const max = (document.documentElement.scrollHeight - vh) || 1;
-    const runIn = Math.min(max, footerHeight() || max);
-    return Math.max(0, Math.min(1, (max - scrollY) / runIn));
+    const remaining = Math.max(0, Math.min(1, (max - scrollY) / max));
+    return Math.pow(remaining, FADE_EXPONENT);
   }
 
   function apply(time) {
@@ -249,7 +242,7 @@
     const scale = reduceMotion ? 1 : 1 + Math.sin((time / SCALE_PERIOD) * Math.PI * 2 + SCALE_PHASE) * SCALE_AMPLITUDE;
     root.style.setProperty('--blob-scale', scale.toFixed(4));
 
-    root.style.setProperty('--blob-opacity', footerFade(scrollY, vh).toFixed(2));
+    root.style.setProperty('--blob-opacity', scrollFade(scrollY, vh).toFixed(2));
   }
 
   // Set the custom properties synchronously so the very first paint has the

@@ -547,7 +547,17 @@ function foreground({ title }) {
 // sqrt(2) times the sigma — and the card is a single pass, so it takes the
 // combined figure rather than applying the ratio twice.
 function blurSigma(d) {
-  return Math.SQRT2 * (DISC_HALF_W * d.r / 14) / 2;
+  // The page blurs the disc twice — --blob-blur on body::before, then
+  // --glass-blur on main's backdrop-filter — and Gaussians compose in
+  // quadrature, so one blur of sqrt(a^2 + b^2) is what the card needs to
+  // match. It was Math.SQRT2 times one of them while the two were equal
+  // fractions of the lobe; --glass-blur went to a seventh on 2026-09-26 and
+  // the constant stopped being right. Spelt out as the two terms now, so the
+  // next change to either divisor is one line here rather than an arithmetic
+  // puzzle. CSS blur(N) is a Gaussian of standard deviation N/2, which is the
+  // number sharp.blur() wants.
+  const lobe = DISC_HALF_W * d.r;
+  return Math.hypot(lobe / 14, lobe / 7) / 2;
 }
 
 function card(parts) {
