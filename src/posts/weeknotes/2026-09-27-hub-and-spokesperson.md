@@ -18,11 +18,9 @@ I love the architect Eliel Saarinen’s idea of considering a thing in its next
 
 Wanting a hub isn’t a failure of imagination. It’s a way of keeping control, putting a gap between everyone else’s noise and your understanding of your users. In an organisation as unpredictable and hard to deliver in as ours, asking people to give up control and spend energy looking sideways is a big ask. For most teams, looking at how the whole works isn’t the priority, and it’s hard to do on top of delivering.
 
-If the app’s structure makes connecting too expensive, most of that cost should sit with the people who own the shared space, and not be passed down to teams.
+Treating a service as a spoke rather than as part of a network isn’t sustainable. Every isolated spoke makes the app harder to use and reinforces Conway’s law. Users shouldn’t need to understand our org chart to look after their health. In practice this means teams accepting shared responsibility for making the app work like an app. It looks like breaking their thing up or working in communities around parts of the app. The teams that own the shared space need to create the conditions for this.
 
-At the same time, treating a service as a spoke rather than as part of a network isn’t sustainable. Every isolated spoke makes the app harder to use and reinforces Conway’s law. People shouldn’t need to understand our org chart to look after their health. This means teams accepting a shared role in making the app work like an app, and in how services fit together.
-
-I think there are some things we can do to make it easier that don’t involve performative coordination rituals. We need clarity on what we’re aiming at and shared evidence about what does and doesn’t work.
+I think there are some things we can do to create these conditions that don’t involve performative coordination rituals. We need clarity on what we’re aiming at and shared evidence about what does and doesn’t work.
 
 [Frankie](https://www.frankieroberto.com/) has been exploring how we can design from a perspective of coherence across journeys, offering a direction that isn’t tied to how a team fits in the organisation. Our team has the structural benefit of not being on the hook for a single outcome so we can design with broader needs in mind.
 
