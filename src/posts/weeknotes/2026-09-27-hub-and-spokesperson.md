@@ -1,7 +1,7 @@
 ---
-title: Spokesperson
+title: Hub and spokesperson
 description: Looking sideways has to be worth the cost.
-date: 2026-09-26
+date: 2026-09-27
 ---
 
 In public sector design there is rarely an uncompromised solution. We have to choose what we prioritise and what or who we optimise for.
