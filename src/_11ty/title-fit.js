@@ -81,6 +81,35 @@ const CROP_WORTH_TAKING = 0.15;
 // However bold the crop, this many characters of the word survive whole.
 const CROP_MIN_REMAINING = 3;
 
+// THE CROP IS OFF — 2026-09-27
+//
+// Everything above still works and is left in place, because the reasoning in
+// it is worth keeping and this is one line to flip back. What turned it off is
+// that it fired twice in two days and read as a typo both times: "Spokesperson"
+// set as "Spokesperso", then "Hub and spokesperson" as "Hub and / spokesperso".
+//
+// The argument for the guard that came first — only crop a title of more than
+// one word, so something on the line survives whole — does not hold, and that
+// is the finding. **The cropped word is always alone on its line**, always:
+// the crop sets the line to that word's own cropped width, so nothing else can
+// fit beside it. "Ill communication" sets as "Ill / communicatio", with the
+// whole word on the line above rather than next to it. There is no arrangement
+// of this mechanism in which a cropped word has company, so the condition that
+// was supposed to make a crop read as deliberate can never be met.
+//
+// It only ever bound on a phone — cropWide was 0 for every title on the site.
+// Measured across all 58 titles, turning it off changes exactly two, neither
+// of them a line count and neither of them at any width above the phone
+// breakpoint:
+//
+//   "Ill communication"     phone type -16.1%, and it stops saying
+//                           "communicatio"
+//   "Hub and spokesperson"  phone type  -9.1%
+//
+// The masthead is unaffected, so the computed 36.47em breakpoint does not
+// move, and the OG card never used this solver.
+const ALLOW_CROP = false;
+
 // The line length each sheet aims for, in em. Smaller means bigger type and
 // more lines. The wide target is what a 5-module sheet gets; the narrow one is
 // what the body measure alone gets, and it is tighter so a phone's poster
@@ -264,15 +293,9 @@ function solve(title, targetEm) {
     // wider than we want it — and only if it closes enough of the gap to the
     // target to be worth mangling a word for.
     //
-    // Never on a one-word title. The floor below is the next longest word,
-    // because a crop only reads as deliberate while some other word survives
-    // whole — "Ill communication" keeps "Ill", so the eye sees a composition
-    // rather than a mistake. A single word has no second word to act as that
-    // floor, and cropping it leaves nothing intact: "Spokesperson" set as
-    // "Spokesperso" on a phone, which reads as a misspelling. It was the only
-    // one-word title of the 58 that cropped. The cost of the guard is 8.9% of
-    // type size on the narrow branch, and the word is whole.
-    if (words.length > 1 && raw > targetEm && longest.width >= raw - 1e-9) {
+    // ALLOW_CROP is false, so this branch never runs and every title sets its
+    // longest word whole. See the constant for why, and flip it there.
+    if (ALLOW_CROP && raw > targetEm && longest.width >= raw - 1e-9) {
       const desired = Math.max(targetEm, second);
       const snapped = snapCrop(desired, longest, glyphEm);
       if (snapped !== null && snapped >= second) {
