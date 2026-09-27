@@ -20,7 +20,7 @@ Wanting a hub isn’t a failure of imagination. It’s a way of keeping control,
 
 If the app’s structure makes connecting too expensive, most of that cost should sit with the people who own the shared space, and not be passed down to teams.
 
-At the same time, treating a service as a spoke rather than as part of a network isn’t sustainable. Every isolated spoke makes the app harder to use and reinforces Conway’s law. People shouldn’t need to understand our org chart to look after their health. Teams need to accept some compromise to make the app work like an app, and share control of how services fit together.
+At the same time, treating a service as a spoke rather than as part of a network isn’t sustainable. Every isolated spoke makes the app harder to use and reinforces Conway’s law. People shouldn’t need to understand our org chart to look after their health. This means teams accepting a shared role in making the app work like an app, and in how services fit together.
 
 I think there are some things we can do to make it easier that don’t involve performative coordination rituals. We need clarity on what we’re aiming at and shared evidence about what does and doesn’t work.
 
