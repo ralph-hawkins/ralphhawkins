@@ -28,4 +28,4 @@ I wonder if we could ask teams to regression test the most important journeys in
 
 ---
 
-[Mike wrote a similar post this week](https://mikegallagher.org/posts/mistakes-were-made/)
+[Mike wrote a post about similar stuff this week](https://mikegallagher.org/posts/mistakes-were-made/) – it’s good
