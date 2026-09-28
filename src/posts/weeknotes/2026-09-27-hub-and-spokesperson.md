@@ -22,6 +22,10 @@ Treating a service as a spoke rather than as part of a network isn’t sustainab
 
 I think there are some things we can do to create these conditions that don’t involve performative coordination rituals. We need clarity on what we’re aiming at and shared evidence about what does and doesn’t work.
 
-[Frankie](https://www.frankieroberto.com/) has been exploring how we can design from a perspective of coherence across journeys, offering a direction that isn’t tied to how a team fits in the organisation. Our team has the structural benefit of not being on the hook for a single outcome so we can design with broader needs in mind.
+[Frankie](https://www.frankieroberto.com/) has been exploring [how we can design from a perspective of coherence across journeys](https://frankieroberto.github.io/nhsnotes/posts/week-111-mind-the-gap/), offering a direction that isn’t tied to how a team fits in the organisation. Our team has the structural benefit of not being on the hook for a single outcome so we can design with broader needs in mind.
 
 I wonder if we could ask teams to regression test the most important journeys in the app when they propose a change. Take journeys that already work, like ordering a prescription or reading a message. Test them before your change and after. You could make your service a huge success by making the link to it red and flashing, and meet all your own measures while making everything else harder. Testing the wider journeys makes that trade‑off visible. Some compromise might be fine, but it should be a choice, not an accident.
+
+---
+
+[Mike wrote a similar post this week](https://mikegallagher.org/posts/mistakes-were-made/)
