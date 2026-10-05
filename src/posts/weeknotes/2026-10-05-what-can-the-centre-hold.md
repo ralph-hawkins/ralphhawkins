@@ -1,6 +1,6 @@
 ---
 title: What can the centre hold?
-description: Building less and connecting more to go further faster.
+description: Building less and connecting more.
 date: 2026-10-05
 ---
 
