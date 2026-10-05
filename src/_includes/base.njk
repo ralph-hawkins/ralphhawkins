@@ -44,17 +44,23 @@
       <p class="hero-title" style="--hero-fit-one:{{ masthead.one.fitWide }};--hero-line-one:{{ masthead.one.lineWide }};--hero-fit-two:{{ masthead.two.fitWide }};--hero-line-two:{{ masthead.two.lineWide }}">
         {{ masthead.name }}
       </p>
-      <p>
-        I’m a service designer who works in the public sector,
-        currently with NHS England helping people stay healthy.
-      </p>
-      {% if page.url.startsWith('/graphic-design/') %}
-      <p>I also studied graphic design.</p>
-      {% else %}
-      <p>
-        These are my week notes.
-      </p>
-      {% endif %}
+      {#- The two intro lines are wrapped because the header is a grid of three
+         equal thirds of the screen (layout.css) and they share the last one.
+         Two separate paragraphs would be two grid items, so they would land on
+         two different rows. -#}
+      <div class="hero-intro">
+        <p>
+          I’m a service designer who works in the public sector,
+          currently with NHS England helping people stay healthy.
+        </p>
+        {% if page.url.startsWith('/graphic-design/') %}
+        <p>I also studied graphic design.</p>
+        {% else %}
+        <p>
+          These are my week notes.
+        </p>
+        {% endif %}
+      </div>
     </div>
   </header>
   {%- endif %}

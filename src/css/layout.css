@@ -23,26 +23,22 @@
    title now, rather than a paragraph under it. .post-header went with it. */
 
 header {
-  /* Five eighths of the viewport — 50% taken up by a quarter. svh (with a vh
-     fallback) so the hero doesn't grow or shrink as the mobile URL bar shows
-     and hides.
+  /* The header has no height of its own any more. It is three equal thirds of
+     the screen — the name starts a third down, the intro two thirds down, and
+     the post's top edge lands on the last line at 90% — and its height is
+     whatever those three rows add up to. See header > .container below, which
+     is where the rows are declared; the grid has to be on the container
+     because that is the element the masthead's paragraphs are children of.
 
-     Set as a height rather than a max-height, which on its own would never
-     apply: the hero's content is only 311px, so a cap leaves the header
-     content-sized on every desktop and the declaration does nothing. Pinning
-     it is what makes the number mean something — and since the content is
-     always shorter, this is the floor in practice.
+     It replaced height: 62.5svh with display: flex and align-items: center,
+     which centred the whole block in five eighths of the screen. The landmarks
+     then sat wherever the content's own height put them — the name's top ran
+     from 0% to 13.9% across the viewports measured, which is the thing this
+     change is for.
 
-     The min-content floor underneath keeps that from becoming a clip:
-     min-height beats height, so the hero grows rather than spilling its own
-     text below itself. It now only bites on the smallest phones — at 320×568
-     the content runs to 475px against a 355px five-eighths, while 390×844
-     clears it at 527px. */
-  height: 62.5vh;
-  height: 62.5svh;
-  min-height: min-content;
-  display: flex;
-  align-items: center;
+     62.5svh also appears in poster.css for the poster's landscape sheet. That
+     is an unrelated number that happens to share the value; it was not changed
+     with this and should not be "tidied" to match. */
   position: relative;
   z-index: 0;
 }
@@ -58,6 +54,54 @@ header {
    but the three paragraphs in the masthead. */
 header > .container {
   container-type: inline-size;
+
+  /* Three rows, each a third of the screen. The first is empty: it is the
+     space above the name, and saying so as a row keeps all three thirds in one
+     declaration rather than hiding one of them in a padding.
+
+     svh with a vh fallback, as the old height was, so the rhythm doesn't shift
+     as a mobile URL bar shows and hides.
+
+     Rows 2 and 3 are minmax(..., auto): at least a third of the screen, but
+     taller if their own content needs it. That is what keeps a small phone
+     safe — at 320×568 the intro alone is taller than a third, so row 3 grows
+     and pushes the post's top edge below the fold instead of letting the two
+     overlap. Row 1 is fixed because nothing is in it to grow. */
+  display: grid;
+  grid-template-rows: 30vh minmax(30vh, auto) minmax(30vh, auto);
+  grid-template-rows: 30svh minmax(30svh, auto) minmax(30svh, auto);
+
+  /* start, not the default stretch, so each block is its own height and its
+     top edge is the row line. Stretch would make the boxes a third of the
+     screen tall each, which measures the same here but says something untrue
+     about what the elements are. */
+  align-items: start;
+}
+
+/* Placed explicitly rather than left to flow, because the first row is empty
+   and auto-placement would fill it with the name. */
+header .hero-title {
+  grid-row: 2;
+
+  /* The rows carry the spacing now, so the name's own padding and margin come
+     off. The padding-top was --spacing-xl, 3.22rem, and it would have put the
+     name 51.5px below the line it is supposed to start on — 5.7% of a 900px
+     window, which is most of the move this change exists to make. The
+     margin-bottom would have grown row 2 past a third on a small phone for
+     space nothing sits in. */
+  padding-top: 0;
+  margin-bottom: 0;
+}
+
+header .hero-intro {
+  grid-row: 3;
+}
+
+/* The last line in the intro keeps its margin against the foot of the header,
+   but it is the last thing in the grid, so nothing is below it to space from
+   and it only makes row 3 taller than it needs to be on a small phone. */
+header .hero-intro > p:last-child {
+  margin-bottom: 0;
 }
 
 main {
