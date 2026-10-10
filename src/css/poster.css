@@ -327,6 +327,43 @@
   --poster-title-budget: calc(var(--poster-sheet-h) - var(--poster-standfirst-reserve));
 }
 
+/* THE RESERVE IS A PHONE MEASUREMENT, AND ONLY A PHONE ONE — 2026-10-09
+   Eight page lines is what the longest description needs at 320px, where the
+   measure is narrowest. It was applied at every width, and from 768px up it
+   is simply wrong: the measure is three times wider there and no standfirst
+   on the site sets more than two lines. Measured across all 60 posts, the
+   tallest is 86px — 2.5 page lines — and it is flat at 768, 1024, 1440 and
+   1920 (21 posts at one line, 7 at two, the same seven each time). So every
+   poster was handing back 189px it had no use for, and any title needing
+   several lines was divided into what was left.
+
+   Three, by the same rule that made the 8: the measured worst case rounded up
+   to a whole page line. The headroom is half a line, as it is at 320.
+
+   48em is where the data turns, not a borrowed number. The wing's 76.67em was
+   the obvious candidate and is too late — it would miss the nine squeezed
+   posts at 1024 and the one at 768.
+
+   What it costs, measured on a trial build of all 60 posts at six viewports:
+   nothing. No poster past the fold (tallest 91.7% at 1024, was 69.3%), no
+   title smaller anywhere, nothing changed at 320 or 390, no horizontal
+   overflow, no console errors, and the baseline grid unmoved — worst 0.4725px
+   on .poster__title for `maya` at 768, which is identical in the build
+   without this rule and so is not ours.
+
+   What it gains: 8 posters at 1024, 6 at 1440, 2 at 1920, 1 at 768. The
+   longest titles gain most, because they were the ones being divided — this
+   week's 55-character title goes 47.55px to 85.68px at 1440, +80%.
+
+   Re-measure if the descriptions get longer or the body size moves: a
+   three-line standfirst on a wide sheet would need 129px against the 103px
+   reserved here. */
+@media (min-width: 48em) {
+  .poster {
+    --poster-standfirst-reserve: calc(3 * var(--poster-page-line));
+  }
+}
+
 .poster__standfirst {
   /* The whole measure on a portrait sheet, two thirds of it on a landscape
      one. Two modules of a 231px phone sheet is 154px, which wrapped a

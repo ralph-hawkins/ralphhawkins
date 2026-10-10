@@ -112,6 +112,40 @@ h1 {
    from becoming a mural on a wide screen, the same job --poster-size-max does
    for a four-character title — and it is what makes the switch below
    continuous. */
+/* The branch — which fit, which ceiling, how many lines — is declared on the
+   container rather than on the name, and so are the fits that base.njk
+   delivers. The reason is the gap below the intro: layout.css derives it from
+   how tall the name is, and the intro is the name's *sibling*, so it cannot
+   read a custom property off it. Declared on the parent, both children
+   inherit.
+
+   --hero-size is then the one place the name's size is worked out, and the
+   intro's gap multiplies it rather than restating it — so there is no second
+   copy of this expression to drift out of step. That matters here more than
+   most places: the ceiling is per branch and the whole continuity of the
+   switch depends on it (see below).
+
+   Its 100cqw is safe to declare here and resolve in both children. A custom
+   property is substituted as tokens and its units resolve at the element that
+   *uses* it, and both children have this element as their query container, so
+   both get the measure. What it must not do is use it on *this* element — a
+   container cannot query itself, and cqw here would silently resolve against
+   the viewport instead. That is the trap --content-width documents in
+   variables.css, and it is why the gap goes on .hero-intro rather than on this
+   container's own padding. */
+header > .container {
+  --hero-fit: var(--hero-fit-two);
+  --hero-line: var(--hero-line-two);
+  --hero-size-max: 4.5rem;
+  /* Two lines on the narrow branch, one on the wide one. Not a second opinion
+     about where the name breaks — the box below is what breaks it, and this is
+     the same count that box produces. It is here because layout.css needs the
+     name's height, which is this many lines of --hero-size at
+     --poster-leading. Verified against the rendered boxes at six viewports. */
+  --hero-lines: 2;
+  --hero-size: min(calc(var(--hero-fit) * 100cqw), var(--hero-size-max));
+}
+
 .hero-title {
   /* Narrow by default, and the query below swaps in the one-line pair — the
      same shape as poster.css's narrow-first fit.
@@ -138,12 +172,8 @@ h1 {
      would re-couple the masthead to /notes-list/'s heading, which is what
      splitting that rule was for. HERO_CAP_REM in poster-grid.js mirrors this
      number; the breakpoint is solved from it, so the two must agree. */
-  --hero-fit: var(--hero-fit-two);
-  --hero-line: var(--hero-line-two);
-  --hero-size-max: 4.5rem;
-
   width: calc(var(--hero-line) * 1em);
-  font-size: min(calc(var(--hero-fit) * 100cqw), var(--hero-size-max));
+  font-size: var(--hero-size);
   line-height: var(--poster-leading);
   font-weight: 600;
   letter-spacing: -0.015em;
@@ -172,10 +202,11 @@ h1 {
    1.7x. A media query cannot read a custom property, so css-bundle.js
    substitutes it and throws if the token survives. */
 @media (min-width: @@HERO_ONE_LINE_EM@@em) {
-  .hero-title {
+  header > .container {
     --hero-fit: var(--hero-fit-one);
     --hero-line: var(--hero-line-one);
     --hero-size-max: var(--poster-size-max);
+    --hero-lines: 1;
   }
 }
 

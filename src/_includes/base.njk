@@ -26,7 +26,11 @@
   <a class="skip-link" href="#main">Skip to main content</a>
   {%- if hero !== false %}
   <header>
-    <div class="container">
+    {#- The fits sit on the container rather than on the name itself, so both
+       children inherit them: typography.css works the name's size out here
+       once, and layout.css derives the gap below the intro from it. On the
+       name alone, the intro — a sibling — could not read it. -#}
+    <div class="container" style="--hero-fit-one:{{ masthead.one.fitWide }};--hero-line-one:{{ masthead.one.lineWide }};--hero-fit-two:{{ masthead.two.fitWide }};--hero-line-two:{{ masthead.two.lineWide }}">
       {#- Masthead, not the document title — every page's h1 is its own
          subject (post title, list heading), since / redirects to the
          latest post and there is no homepage document.
@@ -41,7 +45,7 @@
          narrow one is the longest word, so the box is one word wide and the
          name stacks; the wide one is the whole name on a line. typography.css
          picks between them, and poster-grid.js computes where. -#}
-      <p class="hero-title" style="--hero-fit-one:{{ masthead.one.fitWide }};--hero-line-one:{{ masthead.one.lineWide }};--hero-fit-two:{{ masthead.two.fitWide }};--hero-line-two:{{ masthead.two.lineWide }}">
+      <p class="hero-title">
         {{ masthead.name }}
       </p>
       {#- The two intro lines are wrapped because the header is a grid of three

@@ -71,6 +71,20 @@ header > .container {
   grid-template-rows: 30vh minmax(30vh, auto) minmax(30vh, auto);
   grid-template-rows: 30svh minmax(30svh, auto) minmax(30svh, auto);
 
+  /* The same third, named, because header .hero-intro below derives the gap
+     under the intro from it and CSS cannot ask a grid how tall a row came out.
+     It has to repeat the number rather than read it, so **if the thirds above
+     change, change this with them.**
+
+     Deliberately not substituted into grid-template-rows to remove the
+     repetition. The two declarations above are a fallback pair for a browser
+     with no svh, and a var() cannot take part in one: a custom property holds
+     any tokens at all, so --hero-row-h: 30svh is *valid* even where svh is
+     not, and the substitution would then make grid-template-rows invalid at
+     computed-value time — which throws the cascade away and lands on the
+     initial value rather than falling back to the 30vh line above it. */
+  --hero-row-h: 30svh;
+
   /* start, not the default stretch, so each block is its own height and its
      top edge is the row line. Stretch would make the boxes a third of the
      screen tall each, which measures the same here but says something untrue
@@ -95,6 +109,39 @@ header .hero-title {
 
 header .hero-intro {
   grid-row: 3;
+
+  /* A floor on the gap between the last line of the intro and the rule at the
+     top of the post: half the gap between the name and the intro, always.
+
+     Why it was needed. Rows 2 and 3 are minmax(third, auto) with their content
+     at the top, so the space under the intro is whatever is left of the third
+     once the intro has taken its share — and on a phone there is nothing left.
+     Measured before this rule, intro's last line to the rule: 0.0px at 320x568
+     and at 375x667, 31.6px at 402x792 and 47.2px at 390x844, against the 31.0,
+     35.3, 54.0 and 61.8px that half the gap above it comes to. So the writing
+     ran into the rule at every phone size, while every desktop size had 93px
+     to 187px — 0.71 to 0.83 of the gap above — and needed nothing.
+
+     Why padding, and not a fourth row or a margin. This should only bite where
+     the third has run out. Padding sits inside the intro's own box, which is
+     what row 3 grows to fit, so the row swallows it wherever a third is
+     already taller than the intro and grows by exactly this much where it is
+     not. A row or a margin would add the space unconditionally and push the
+     post further down the screen on desktop, where the gap is generous
+     already.
+
+     The gap above the intro is the third less the name's own height, and the
+     name is --hero-lines lines of --hero-size at --poster-leading — so half of
+     it is the expression below. --hero-size is the value the name is actually
+     set at (typography.css declares it on the container for this), not a
+     second copy of the sum, so the two cannot drift apart.
+
+     max(0px, ...) because a short landscape phone can make a third shorter
+     than the name itself, which would otherwise ask for negative padding. */
+  padding-bottom: max(0px, calc(
+    0.5 * (var(--hero-row-h)
+           - var(--hero-lines) * var(--hero-size) * var(--poster-leading))
+  ));
 }
 
 /* The last line in the intro keeps its margin against the foot of the header,
