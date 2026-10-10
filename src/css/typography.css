@@ -112,37 +112,27 @@ h1 {
    from becoming a mural on a wide screen, the same job --poster-size-max does
    for a four-character title — and it is what makes the switch below
    continuous. */
-/* The branch — which fit, which ceiling, how many lines — is declared on the
-   container rather than on the name, and so are the fits that base.njk
-   delivers. The reason is the gap below the intro: layout.css derives it from
-   how tall the name is, and the intro is the name's *sibling*, so it cannot
-   read a custom property off it. Declared on the parent, both children
-   inherit.
+/* The branch — which fit and which ceiling — is declared on the container
+   rather than on the name, and so are the fits that base.njk delivers.
 
-   --hero-size is then the one place the name's size is worked out, and the
-   intro's gap multiplies it rather than restating it — so there is no second
-   copy of this expression to drift out of step. That matters here more than
-   most places: the ceiling is per branch and the whole continuity of the
-   switch depends on it (see below).
+   It moved here so the intro could read the name's height, for a gap derived
+   from it; that gap is a flat two page lines now and nothing but .hero-title
+   reads these. The reason to leave them here is weaker but real: --hero-size
+   is the one place the name's size is worked out, and the container is where
+   the rest of the masthead's layout is decided. Moving them back onto the name
+   would be churn, and the type is verified identical either way.
 
-   Its 100cqw is safe to declare here and resolve in both children. A custom
-   property is substituted as tokens and its units resolve at the element that
-   *uses* it, and both children have this element as their query container, so
-   both get the measure. What it must not do is use it on *this* element — a
-   container cannot query itself, and cqw here would silently resolve against
-   the viewport instead. That is the trap --content-width documents in
-   variables.css, and it is why the gap goes on .hero-intro rather than on this
-   container's own padding. */
+   Its 100cqw is safe to declare here and resolve in a child. A custom property
+   is substituted as tokens and its units resolve at the element that *uses*
+   it, and .hero-title has this element as its query container, so it gets the
+   measure. What it must not do is use it on *this* element — a container
+   cannot query itself, and cqw here would silently resolve against the
+   viewport instead. That is the trap --content-width documents in
+   variables.css. */
 header > .container {
   --hero-fit: var(--hero-fit-two);
   --hero-line: var(--hero-line-two);
   --hero-size-max: 4.5rem;
-  /* Two lines on the narrow branch, one on the wide one. Not a second opinion
-     about where the name breaks — the box below is what breaks it, and this is
-     the same count that box produces. It is here because layout.css needs the
-     name's height, which is this many lines of --hero-size at
-     --poster-leading. Verified against the rendered boxes at six viewports. */
-  --hero-lines: 2;
   --hero-size: min(calc(var(--hero-fit) * 100cqw), var(--hero-size-max));
 }
 
@@ -206,7 +196,6 @@ header > .container {
     --hero-fit: var(--hero-fit-one);
     --hero-line: var(--hero-line-one);
     --hero-size-max: var(--poster-size-max);
-    --hero-lines: 1;
   }
 }
 
