@@ -206,14 +206,31 @@
      budget is the sheet's own height instead — one number rather than four
      rows and a span, and the same svh target the rows were divided out of.
 
-     A standfirst takes its share off the top. Eight page lines, and that is
-     measured rather than picked: across the 24 posts that have one, at 320px
-     where the measure is narrowest and they run longest, the worst sets six
-     lines — 257px, or 7.49 page lines. Eight is that rounded up to a whole
-     line of the page's own rhythm. The distribution behind it is smooth, not
-     an outlier: 6 posts at two lines, 7 at three, 7 at four, 2 at five, 2 at
-     six. Remeasure if the descriptions or the body size change. */
-  --poster-standfirst-reserve: calc(8 * var(--poster-page-line));
+     A standfirst used to take its share off the top here — eight page lines,
+     measured rather than picked: of the 24 posts with one, at 320px where the
+     measure is narrowest and they run longest, the worst set six lines, 257px
+     or 7.49 page lines, and eight was that rounded up to a whole line of the
+     page's rhythm.
+
+     It is nothing on a phone since 2026-10-10, because that reserve was
+     costing titles size without buying anything. Measured across all 60
+     posters at 320: the per-title fit decides the size on 57 of them and the
+     budget binds on only 3. So a worst case was being applied to every post
+     in order to constrain three — and on one of the three it had pushed the
+     title below its own standfirst, 28.89px against 31.52px, which is the one
+     place on the site that invariant has ever failed.
+
+     At nothing, those three grow by 8%, 17% and 32%, and nothing else moves:
+     no title anywhere is smaller, 390 and 402 are untouched to the pixel, and
+     no poster passes the fold — the tallest goes from 87.9% to 90.1% of a
+     screen. The wide branch further down keeps a reserve of its own, which
+     does still bind there.
+
+     What it gives up, knowingly and at Ralph's asking: the budget no longer
+     guards a phone against a long title and a long description together. The
+     term itself is still here and the fit and --poster-size-max still cap the
+     type, so a title of enough lines would bring it back into play. */
+  --poster-standfirst-reserve: 0px;
   --poster-title-budget: var(--poster-sheet-h);
   margin-bottom: var(--poster-space-below);
 
