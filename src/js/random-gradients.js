@@ -69,9 +69,37 @@
   const SCALE_PERIOD = 13000;
   const SCALE_PHASE = Math.random() * Math.PI * 2;
 
+  // A viewport height a mobile browser's own chrome cannot move.
+  //
+  // window.innerHeight *grows* when an iOS URL bar retracts — 82px on an
+  // iPhone 17 Pro — and apply() runs every frame, so reading it there moved
+  // the disc when the browser moved rather than when the page did. Measured
+  // with the scroll held still and only the height changed: --blob-y stepped
+  // 8.20px in one frame on half of loads (START_FLOOR is what binds) and the
+  // hue stepped 1.89deg on all of them. 100svh is the height with the toolbar
+  // *showing*, which by definition doesn't change when it hides — the same
+  // unit layout.css sizes the header's rows in, and for the same reason.
+  //
+  // Measured off a probe because svh is a unit, not a custom property: there
+  // is nothing for getComputedStyle to return.
+  function measureViewportHeight() {
+    const probe = document.createElement('div');
+    // Fixed and zero-width, so it cannot affect layout or scroll height for
+    // the frame it exists in.
+    probe.style.cssText = 'position:fixed;top:0;left:0;width:0;height:100svh;'
+      + 'visibility:hidden;pointer-events:none';
+    document.documentElement.appendChild(probe);
+    const measured = probe.getBoundingClientRect().height;
+    probe.remove();
+    // No svh support: fall back to what this read before.
+    return measured || window.innerHeight || 1;
+  }
+
+  let viewportH = measureViewportHeight();
+
   const INITIAL_OFFSET_X = (Math.random() - 0.5) * 0.5 * window.innerWidth;
   const yDir = Math.random() < 0.5 ? -1 : 1;
-  const yMag = (0.15 + Math.random() * 0.1) * window.innerHeight;
+  const yMag = (0.15 + Math.random() * 0.1) * viewportH;
   const INITIAL_OFFSET_Y = yDir * yMag;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -201,7 +229,10 @@
 
   function apply(time) {
     const scrollY = window.scrollY;
-    const vh = window.innerHeight || 1;
+    // Stable, not window.innerHeight: the hue offset and the start floor are
+    // both fractions of the viewport and neither should move when a toolbar
+    // hides. See measureViewportHeight().
+    const vh = viewportH;
     const offset = (scrollY / vh) * HUE_SHIFT_PER_VIEWPORT;
     const hue1 = ((baseHue1 + offset) % 360 + 360) % 360;
     const hue2 = ((baseHue2 + offset) % 360 + 360) % 360;
@@ -242,7 +273,11 @@
     const scale = reduceMotion ? 1 : 1 + Math.sin((time / SCALE_PERIOD) * Math.PI * 2 + SCALE_PHASE) * SCALE_AMPLITUDE;
     root.style.setProperty('--blob-scale', scale.toFixed(4));
 
-    root.style.setProperty('--blob-opacity', scrollFade(scrollY, vh).toFixed(2));
+    // The fade keeps innerHeight on purpose: its denominator is the scroll
+    // left to do, which really does shrink as a toolbar retracts, and "0.00 at
+    // the end" is only exact against the real range. Measured, it never
+    // stepped anyway — a ratio barely moves when both terms grow.
+    root.style.setProperty('--blob-opacity', scrollFade(scrollY, window.innerHeight || 1).toFixed(2));
   }
 
   // Set the custom properties synchronously so the very first paint has the
@@ -251,11 +286,16 @@
   // flashed yellow-green for a frame when navigating between posts.
   apply(0);
 
-  // START_FLOOR is applied against the live viewport height rather than folded
-  // into the offset at load, so a resize has to re-run it. The rAF loop below
-  // would do that anyway; under reduced motion there is no loop, and scroll
-  // alone would leave a resized window holding the old placement.
-  window.addEventListener('resize', () => apply(0));
+  // START_FLOOR is applied against the viewport height rather than folded into
+  // the offset at load, so a resize has to re-measure and re-run it. The rAF
+  // loop below would re-run it anyway; under reduced motion there is no loop,
+  // and scroll alone would leave a resized window holding the old placement.
+  // A retracting toolbar fires resize too, and that costs one probe and moves
+  // nothing, svh being the same height afterwards. A rotation should move it.
+  window.addEventListener('resize', () => {
+    viewportH = measureViewportHeight();
+    apply(0);
+  });
 
   if (reduceMotion) {
     window.addEventListener('scroll', () => apply(0), { passive: true });
