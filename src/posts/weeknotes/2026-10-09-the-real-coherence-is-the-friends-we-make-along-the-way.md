@@ -1,7 +1,7 @@
 ---
 title: The real coherence is the friends we make along the way
 description: People shouldn’t have to bridge the gaps themselves.
-date: 2026-10-09
+date: 2026-10-10
 ---
 
 I wrote last week about designing for coherence. There are probably flavours of this. One flavour is how the interface feels. An app that connects people to lots of organisations still needs to look, work, and read like one thing.
