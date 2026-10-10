@@ -1,14 +1,13 @@
 /* Cross-document view transition. The page chrome (header, main, footer) is
    pulled into its own snapshot groups and swaps instantly — cross-fading two
-   scrolled documents ghosts their text through each other. What's left in the
+   scrolled documents ghosts their text through each other. What is left in the
    root snapshot is the gradient blob and the tint over it, so navigating reads
    as the colours gliding from one post's seed to the next under a stable page.
 
-   main carries a tint of its own again since 2026-09-04, and a background is
-   part of its element's own snapshot — so the panel cuts from one post to the
-   next while the root cross-fades under it. It is a neutral tint over a disc
-   whose hue is what changes, so the step should be small; the 77-level figure
-   below was the post-coloured fill, which is a different thing.
+   main has a background of its own, which is part of its element's snapshot,
+   so the panel cuts while the root cross-fades under it. It is a neutral tint
+   over a disc whose hue is what changes, so the step is small.
+
    Progressive enhancement — unsupported browsers just navigate. */
 @view-transition {
   navigation: auto;
@@ -35,24 +34,15 @@ footer {
   animation: none;
 }
 
-/* main's panel cuts from one post to the next rather than fading, and that is
-   the better of the two after measuring both.
-
-   For four days main carried the post's own colour as a fill, and that cut
-   measured 77 RGB levels in one frame on the largest flat area on the page.
-   The fill went on 2026-09-03 and the glass replaced it on 2026-09-04: what
-   cuts now is a neutral tint over a disc, so the step is whatever the hue
-   change is worth rather than a change of ground.
-
-   Fading the incoming panel instead is worse, not better. The *old* snapshot
-   has to be display: none or the text double-exposes (see below), so a fade
-   leaves nothing painting the panel while it runs — measured, the sampled
-   pixel goes straight to 235,237,240, the bare page background, and stays
-   there for the duration. A cut reads as a cut; half a second of unpainted
-   background reads as a fault. */
-
 /* The old chrome must vanish, not fade — main's glass is translucent, so a
-   lingering old snapshot would double-expose the text through it. */
+   lingering old snapshot would double-expose the text through it.
+
+   Which forces the panel to cut rather than fade, and that is the better of
+   the two anyway. Fading the incoming panel needs the old snapshot hidden, by
+   the line above, so nothing paints the panel while the fade runs: measured,
+   the sampled pixel drops to the bare page background and stays there for the
+   duration. A cut reads as a cut; half a second of unpainted background reads
+   as a fault. */
 ::view-transition-old(hero),
 ::view-transition-old(content),
 ::view-transition-old(site-footer) {
@@ -129,10 +119,6 @@ body::before {
    starts. The header being unfiltered is what makes that boundary mean
    something; filter the page and there is nothing left for the panel to be
    distinct from.
-   Keeping the page-wide surface unfiltered is also what made the
-   supergraphic's painted glyphs match the header exactly, up to 2026-08-12 —
-   a painted gradient cannot reproduce a blurred one, and against a filtered
-   surface the fill ran up to 27 RGB levels adrift.
 
    Fixed, because the blob beneath it is fixed: the pair stay registered as
    the page scrolls and the content slides over both. Same z-index as the

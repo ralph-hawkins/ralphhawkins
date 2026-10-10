@@ -14,91 +14,69 @@
    over the top of that sheet — see the panel below — and that is the only
    surface any of the three has of its own. */
 
+/* Keep the class name. excerpt.js matches the literal string
+   `<div class="post-content">` to find where the writing starts, so renaming
+   this silently degrades every generated meta description. */
 .post-content {
   padding-bottom: var(--spacing-xl);
 }
 
-/* The post's standfirst moved into the poster on 2026-08-16 and is set by
-   .poster__standfirst in poster.css — it is part of the composition with the
-   title now, rather than a paragraph under it. .post-header went with it. */
-
 header {
-  /* The header has no height of its own any more. It is three equal thirds of
-     the screen — the name starts a third down, the intro two thirds down, and
-     the post's top edge lands on the last line at 90% — and its height is
-     whatever those three rows add up to. See header > .container below, which
-     is where the rows are declared; the grid has to be on the container
-     because that is the element the masthead's paragraphs are children of.
+  /* The height is on the container below, not here, because that is the
+     element the masthead's paragraphs are children of and the grid has to be
+     on their parent.
 
-     It replaced height: 62.5svh with display: flex and align-items: center,
-     which centred the whole block in five eighths of the screen. The landmarks
-     then sat wherever the content's own height put them — the name's top ran
-     from 0% to 13.9% across the viewports measured, which is the thing this
-     change is for.
-
-     62.5svh also appears in poster.css for the poster's landscape sheet. That
-     is an unrelated number that happens to share the value; it was not changed
-     with this and should not be "tidied" to match. */
+     poster.css uses 62.5svh for the poster's landscape sheet. That is an
+     unrelated number that happens to resemble the ones here; do not "tidy"
+     the two to match. */
   position: relative;
   z-index: 0;
 }
 
-/* The masthead's type is a fraction of the measure, resolved in cqw — see
-   .hero-title in typography.css for why it cannot be a percentage. This is the
-   query container that makes 100cqw mean the text column: .container carries
-   the horizontal padding, and an inline-size container's query units resolve
-   against its content box, so the two are the same length by construction.
+/* The query container that makes 100cqw mean the text column: .container
+   carries the horizontal padding, and an inline-size container's query units
+   resolve against its content box, so the two are the same length by
+   construction. .hero-title in typography.css sets the name's size from it.
 
-   Scoped to the header's container rather than put on .container generally, so
-   the containment it implies — layout, style and inline-size — reaches nothing
-   but the three paragraphs in the masthead. */
+   Scoped to the header's container rather than put on .container generally,
+   so the containment it implies reaches nothing but the masthead. It must
+   stay inline-size: container-type: size would add block-size containment,
+   and the rows below would then size as if the rows were empty. */
 header > .container {
   container-type: inline-size;
 
-  /* The header fills nine tenths of the screen, in three equal rows. The first
-     is empty: it is the space above the name, and saying so as a row keeps all
-     three thirds in one declaration rather than hiding one of them in a
-     padding.
+  /* Nine tenths of the screen, in three equal rows. The first is empty — it is
+     the space above the name — and saying so as a row keeps all three thirds
+     in one declaration rather than hiding one of them in a padding.
 
-     svh, so the rhythm doesn't shift as a mobile URL bar shows and hides. The
-     vh fallback is on min-height now rather than on the rows, which is the
-     easier place for it — both are plain lengths, so a browser with no svh
-     simply keeps the first declaration.
+     svh so the rhythm doesn't shift as a mobile URL bar shows and hides, with
+     a vh fallback. **Neither value can become a var().** A custom property
+     holds any tokens at all, so it parses and fails later at computed-value
+     time, which throws the cascade away and lands on the initial value rather
+     than on the declaration above it.
 
-     **The rows were 30svh minmax(30svh, auto) minmax(30svh, auto) until
-     2026-10-10, and the two minmaxes are what made the header overflow.** A
-     row that grows when its content does means the header gets taller rather
-     than the content moving up, and nothing above it gave way to compensate:
-     measured, the header came to 120% of the screen at 320×568, 101% at
-     375×667, and 97% at 402×792, where it left the rule at the top of the post
-     23px off the bottom edge. At 320 the rule was below the fold entirely.
+     1fr is minmax(auto, 1fr), and the automatic minimum is the whole
+     mechanism: a flexible track cannot shrink below its own content. Where
+     the content fits, three rows are a third each. Where it does not, the
+     oversized row takes its content and the rest is split between the other
+     two, each still floored at its own content — so the empty first row gives
+     way and the composition shifts up rather than the header growing. The
+     same automatic minimum is what pushed the poster's wings out when they
+     were 1fr; see --poster-wing in poster.css.
 
-     1fr instead, which is minmax(auto, 1fr) — a flexible track has an
-     automatic minimum, so it cannot shrink below its own content. That one
-     property does the whole job. Where the content fits, three 1fr rows are
-     exactly a third each, which is what desktop already had. Where it does
-     not, the oversized row takes its content height and the rest is split
-     between the other two, each still floored at its own content — so the
-     empty first row is what gives way, and everything shifts up. The same
-     automatic minimum is what pushed the poster's wings out when they were
-     1fr; see --poster-wing in poster.css.
+     **height, not min-height.** An fr can only divide a height it knows.
+     Under min-height the block size is indefinite for track sizing, and the
+     rule there is that every flexible track takes the largest base size of
+     any of them — so all three rows become as tall as the intro. Measured, it
+     made the header 181% of the screen at 320x568 and 104% at 402x792, while
+     reading as correct at every desktop size, which is what makes it easy to
+     ship. It was shipped here, once.
 
-     **height, not min-height, and that distinction is the whole thing.** fr
-     only divides a height it knows. Under min-height the height is indefinite
-     as far as track sizing is concerned, and the rule for an indefinite
-     container is that every flexible track takes the largest base size of any
-     of them — so all three rows became as tall as the intro and the header
-     grew to 927px, against the 760px nine tenths allows. It shipped that way
-     for one build here. A definite height is what makes the three rows a
-     third each and lets the empty one give way.
-
-     min-height: min-content puts the safety back. The used height is the
-     larger of nine tenths and what the content needs, so when the minimums
-     alone exceed nine tenths the header grows rather than overlapping the
-     post. That is the intended failure and 320×568 takes it: two 69px gaps
-     plus the name and the intro come to 555px against the 511px nine tenths
-     allows, so it settles at 98% with the name hard against the top.
-     Knowingly — the rule is at least on screen there now. */
+     min-height: min-content is the net, for the sizes where the name, the
+     intro, and the two gaps cannot fit in nine tenths at all. It costs
+     nothing where there is room, and without it the intro's last line goes 20
+     to 48px past the rule at 320x480 and 568x320 — and main paints over the
+     header, so that is hidden under the post rather than merely tight. */
   display: grid;
   height: 90vh;
   height: 90svh;
@@ -106,9 +84,8 @@ header > .container {
   grid-template-rows: repeat(3, 1fr);
 
   /* start, not the default stretch, so each block is its own height and its
-     top edge is the row line. Stretch would make the boxes a third of the
-     screen tall each, which measures the same here but says something untrue
-     about what the elements are. */
+     top edge is the row line. align-content stays unset: three 1fr rows
+     consume the height exactly, so there is never free space to distribute. */
   align-items: start;
 }
 
@@ -117,17 +94,14 @@ header > .container {
 header .hero-title {
   grid-row: 2;
 
-  /* The padding-top goes because the rows carry the spacing above the name.
-     It was --spacing-xl, 3.22rem, and it would have put the name 51.5px below
-     the line it is supposed to start on — 5.7% of a 900px window, which is
-     most of the move that change existed to make.
+  /* No padding-top: the rows carry the space above the name, and --spacing-xl
+     here would push it 51.5px below the line it is meant to start on.
 
-     The margin-bottom is a floor on the gap to the intro, and it is back from
-     zero as of 2026-10-10. With rows that compress, row 2 can shrink to the
-     name and nothing more, which would leave the intro's first line sitting on
-     the name's descenders. Two page lines, the same as the gap under the
-     intro, so the pair reads as one block. Where there is room the row gives
-     more and this never binds. */
+     The margin is a floor on the gap to the intro, and it is needed because
+     the rows compress: at 320x568 row 2 shrinks to the name and nothing more,
+     and without this the intro's first line sat on the name's descenders.
+     Measured there, a gap of 0.0px. Where there is room the row gives more
+     and it never binds. */
   padding-top: 0;
   margin-bottom: calc(2 * var(--poster-page-line));
 }
@@ -135,88 +109,57 @@ header .hero-title {
 header .hero-intro {
   grid-row: 3;
 
-  /* A floor on the gap between the last line of the intro and the rule at the
-     top of the post. Without it the writing runs into the rule: measured
-     before any floor existed, that gap was 0.0px at 320×568 and at 375×667,
-     and 31.6px at 402×792.
+  /* A floor on the gap between the intro's last line and the rule at the top
+     of the post. Without it the writing runs into the rule: measured, 0.0px
+     at 320x568 and 375x667, and 31.6px at 402x792.
 
-     Two page lines, flat. It was half the gap above the intro for a few hours
-     on 2026-10-10, derived from --hero-row-h and the name's own height, and
-     that stopped meaning anything the moment the rows began to compress: a
-     third is no longer the gap above the intro once row 2 has shrunk to the
-     name. Ralph picked two lines over one and one and a half, having been
-     shown what each costs at 320 — this is the one size that does not fit in
-     nine tenths there, and 320 settles at 98% because of it.
+     Two page lines, Ralph's choice over one and one and a half, taken against
+     what each costs at 320x568 — two is the size that will not fit inside
+     nine tenths there, which is why that one viewport settles at 98%.
 
      Padding rather than a margin or a fourth row, so it sits inside the box
-     row 3 grows to fit. The row swallows it wherever a third is already taller
-     than the intro — desktop keeps its natural 133px gap and does not move —
-     and grows by exactly this much where it is not. */
+     row 3 grows to fit. The row swallows it wherever a third is already
+     taller than the intro — desktop keeps its natural 133px gap and does not
+     move — and grows by exactly this much where it is not. */
   padding-bottom: calc(2 * var(--poster-page-line));
 }
 
-/* The last line in the intro keeps its margin against the foot of the header,
-   but it is the last thing in the grid, so nothing is below it to space from
-   and it only makes row 3 taller than it needs to be on a small phone. */
+/* The intro's last paragraph has nothing below it inside the grid, so its own
+   margin would only make row 3 taller. The padding above is the gap. */
 header .hero-intro > p:last-child {
   margin-bottom: 0;
 }
 
 main {
-  /* The post's own panel, and the only filtered surface on the page: the body
-     of the post is frosted, the header is not. That is the whole separation —
-     the header is plain tint over the blob, and the post is the same thing
-     blurred and tinted again, which reads as a distinct sheet laid over it.
+  /* The post's panel: a tint and a blur over the same disc the header shows
+     unfiltered. That difference is the whole separation between the two
+     halves of the page, and the hard step at main's top edge is the point of
+     it rather than a flaw — a backdrop-filter is uniform over its element and
+     cannot be ramped in. main > hr draws the line it happens on.
 
-     **The step at main's top edge is the point, and this is the fourth time
-     that has changed.** A backdrop-filter is uniform over its element, so it
-     cannot be ramped in; it starts, at full strength, exactly at this edge.
-     Every previous version of this panel treated that as the problem to be
-     solved — the 2026-08-30 paint existed because a filter could not be made
-     continuous with the header, and the note that stood here yesterday argued
-     the filter must never come back for that reason. It has come back because
-     Ralph wants the two surfaces to differ, so the one thing a filter cannot
-     help doing is now the thing it is here to do. main > hr draws the line it
-     happens on; see below.
-
-     Which of the two does the obscuring is worth knowing before either is
-     touched: --panel-opacity, not the blur. The blur at this ratio measured
-     83% of the blob's colour still getting through, the same as no blur at
-     all, and blur alone barely separates two surfaces wherever the blob is
-     locally flat — which is most of the page. See THE POST'S GLASS in
+     --panel-opacity is what obscures, not the blur: at this ratio 83% of the
+     blob's colour still gets through, the same as no blur at all, and blur
+     alone barely separates two surfaces wherever the blob is locally flat,
+     which is most of the page. The disc is already blurred by --blob-blur, so
+     the post sees two passes and the header one. See THE POST'S GLASS in
      variables.css.
 
-     The blob is blurred twice under the post and once behind the header:
-     body::before carries --blob-blur everywhere, and this adds --glass-blur
-     on top of it. Same sigma, so the post sees sqrt(2) of it.
+     Deliberately no saturate, no hue-rotate, and no fill of the post's own
+     colour. Each was here once and each is recorded in variables.css.
 
-     Three things this panel deliberately does not do, all of which a previous
-     one did. It does not saturate (--glass-saturate, 1.3, put chroma back
-     after the blur; this tint is light enough not to need rescuing). It does
-     not turn the hue 180deg (--glass-hue-rotate; that belonged to a design
-     where the panel was the disc's complement, and the site has settled on the
-     post's own colour). And it does not paint the post's colour as a ground —
-     the fill of 2026-08-30, which took the panel over completely.
-
-     Worth recording, because it is the kind of thing that bites later:
-     a non-none backdrop-filter makes main a containing block for
+     The trap: a non-none backdrop-filter makes main a containing block for
      fixed-position descendants as well as absolute ones (Filter Effects 2).
-     Nothing in main is fixed or sticky today — body::before and body::after
-     are the only fixed boxes on the site and both sit outside it, and
-     post-nav-arrow.js positions with margins — but anything fixed put in here
+     Nothing in main is fixed or sticky today, but anything fixed put here
      resolves against the post rather than against the viewport.
 
-     It carried overflow-x: clip until 2026-08-12, to take the supergraphic's
-     overhang. Nothing in main reaches the viewport edge without it — no post
+     No overflow-x: clip. Nothing in main reaches the viewport edge — no post
      has a table or a code block, images are capped at 100%, and the arrows
      and footnote numbers that hang into the column's padding sit a whole rem
-     clear — so the clip went with the graphic rather than staying on as a
-     silent crop of anything that overflows in future. */
+     clear — and a clip would silently crop whatever overflows next. */
   background: color-mix(in srgb, var(--color-background) var(--panel-opacity), transparent);
   backdrop-filter: blur(var(--glass-blur));
-  /* Not decoration: every version of this rule in the repo's history carried
-     the prefix alongside the standard property, from May 2026 until the whole
-     thing came off on 2026-08-30. */
+  /* Not decoration. Every version of this rule in the repo's history has
+     carried the prefix alongside the standard property. */
   -webkit-backdrop-filter: blur(var(--glass-blur));
   min-height: 100vh;
   position: relative;
@@ -228,25 +171,19 @@ main {
 }
 
 /* The rule between the hero and the post title (base.njk). It is main's only
-   unwrapped child, so it spans the viewport without any 100vw arithmetic —
-   which would have added the scrollbar's width and, since main no longer
-   clips, shown as a horizontal scrollbar.
+   unwrapped child, so it spans the viewport with no 100vw arithmetic — which
+   would have added the scrollbar's width and, since main no longer clips,
+   shown as a horizontal scrollbar.
 
-   It sits on the panel's top edge — the line where the tint and the
-   backdrop-filter begin — so the rule draws that boundary rather than floating
-   below it. That is not a near-enough alignment: the negative top margin
-   cancels main's own top padding exactly, since a parent's padding stops the
-   two margins collapsing, which puts the hr on main's border edge, which is
-   precisely where the backdrop-filter region starts. The step and the line are
-   the same line. The matching positive bottom margin hands the padding back to
-   the container underneath, so the title stays where it was.
+   The negative top margin is exact, not near enough: it cancels main's own
+   top padding, which a parent's padding stops collapsing, and that puts the
+   hr on main's border edge — precisely where the backdrop-filter region
+   begins. The step and the line are the same line.
 
-   The two are no longer the same length. The negative top still cancels main's
-   own padding exactly — it has to, or the rule leaves the panel's edge — but
-   the bottom margin is --poster-space-above since 2026-09-04, which is the gap
-   between the top of the post and its title and is set with the poster's other
-   two in variables.css. It was --spacing-xl, which is 1.5 page lines; it is 3
-   now. */
+   The two halves deliberately differ. The top has to cancel main's padding or
+   the rule leaves the panel's edge; the bottom is --poster-space-above, the
+   gap between the top of the post and its title, set with the poster's other
+   two in variables.css. */
 main > hr {
   margin: calc(-1 * var(--spacing-xl)) 0 var(--poster-space-above);
 }

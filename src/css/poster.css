@@ -9,16 +9,8 @@
    ------------------------------------------------------------------------
    One module is a third of the body's text measure, and the sheet is the body
    measure — the same width as the writing underneath it, at every viewport.
-
-   It used to be the measure plus whole modules either side, floored to a pair
-   so the sheet came out 3, 5, 7 or 9 modules wide: 3 columns to 1091px, 5 to
-   1515px, 7 to 1939px, 9 above. That went on 2026-08-30 along with the two
-   facts the wings were carrying. With no wings the two 1fr tracks resolve to
-   zero, so sheet-start *is* body-start and the composition is the body's own
-   three columns — which is what the sheet was derived from in the first place.
-
-   The module survives the wings: the overlay still draws it, and the title's
-   box is still measured in it.
+   The module is still what the overlay draws and what the title's box is
+   measured in.
 
    cqw, not 100% and not 100vw.
 
@@ -177,59 +169,44 @@
   --poster-shift: 0px;
 
 
-  /* The sheet's target height, and now the title's whole budget. Three
-     quarters of the screen in portrait: the poster is the arrival view but does
-     not have to be the whole of it, and the quarter left showing is white space
-     the composition sits above. It divided into four rows until 2026-08-30.
+  /* The sheet's target height, and the title's whole budget. Three quarters
+     of the screen in portrait: the poster is the arrival view but does not
+     have to be the whole of it, and the quarter left showing is white space
+     the composition sits above.
 
-     **The whitespace above and around the title is deliberately not charged to
-     it, and that was tried the other way first.** Subtracting --poster-space-
-     above and --poster-space-title made the arithmetic honest and the result
-     unusable: measured across 56 posts, 24 titles collapsed to 0px at 320x568
-     — the standfirst's own reserve is 8 page lines of a 426px sheet there, so
-     the remainder went negative — and titles fell up to 60% at 1024x768 and
-     54% at 1440x900.
+     **The whitespace around the title is deliberately not charged against it,
+     and that was tried the other way first.** Subtracting --poster-space-above
+     and --poster-space-title is the honest arithmetic and the result is
+     unusable: measured, 24 titles collapsed to 0px at 320x568, where the
+     remainder went negative, and titles fell up to 60% at 1024x768.
 
-     The reason it can be left uncharged is that the reserve is a worst case
-     applied to every post: it is what the longest description of 24 needs at
-     the narrowest measure, and almost every poster leaves most of it unused.
      So the budget is a target rather than an accounting, and whether a poster
-     actually fits is a measurement, not a proof. It is one: 56 posts x 6
-     viewports, none past the fold, tallest 92%. Re-measure if the spacing, the
-     reserve or the body size moves. */
+     actually fits is a measurement rather than a proof. It is one: every post
+     at six viewports, none past the fold, tallest 92%. **Re-measure there if
+     the spacing, the reserve or the body size moves.** */
   --poster-sheet-h: 75svh;
 
   /* WHAT BOUNDS THE TITLE
-     The sheet was four equal rows and the title took the two or three of them
-     nothing else occupied, which is what stopped it growing past the fold. The
-     rows went on 2026-08-30 with the two facts they were carrying, so the
-     budget is the sheet's own height instead — one number rather than four
-     rows and a span, and the same svh target the rows were divided out of.
+     The sheet's own height is the budget, and on a phone a standfirst takes
+     nothing off it.
 
-     A standfirst used to take its share off the top here — eight page lines,
-     measured rather than picked: of the 24 posts with one, at 320px where the
-     measure is narrowest and they run longest, the worst set six lines, 257px
-     or 7.49 page lines, and eight was that rounded up to a whole line of the
-     page's rhythm.
+     It took eight page lines until 2026-10-10 — the longest of 24
+     descriptions at 320px, rounded up — and that was a worst case applied to
+     every post in order to constrain three. Measured at 320, the per-title
+     fit decides the size on 57 of 60 posters and the budget binds on the rest,
+     and on one of those three it had pushed the title below its own
+     standfirst, 28.89px against 31.52px. The only time that invariant has
+     failed.
 
-     It is nothing on a phone since 2026-10-10, because that reserve was
-     costing titles size without buying anything. Measured across all 60
-     posters at 320: the per-title fit decides the size on 57 of them and the
-     budget binds on only 3. So a worst case was being applied to every post
-     in order to constrain three — and on one of the three it had pushed the
-     title below its own standfirst, 28.89px against 31.52px, which is the one
-     place on the site that invariant has ever failed.
+     At nothing, those three grow 8%, 17% and 32%, no title anywhere is
+     smaller, 390 and above are untouched to the pixel, and no poster passes
+     the fold. The wide branch further down keeps a reserve, which does bind
+     there.
 
-     At nothing, those three grow by 8%, 17% and 32%, and nothing else moves:
-     no title anywhere is smaller, 390 and 402 are untouched to the pixel, and
-     no poster passes the fold — the tallest goes from 87.9% to 90.1% of a
-     screen. The wide branch further down keeps a reserve of its own, which
-     does still bind there.
-
-     What it gives up, knowingly and at Ralph's asking: the budget no longer
-     guards a phone against a long title and a long description together. The
-     term itself is still here and the fit and --poster-size-max still cap the
-     type, so a title of enough lines would bring it back into play. */
+     What it gives up, at Ralph's asking: on a phone the budget no longer
+     guards against a long title and a long description together. The term is
+     still here and the fit and --poster-size-max still cap the type, so a
+     title of enough lines brings it back into play. */
   --poster-standfirst-reserve: 0px;
   --poster-title-budget: var(--poster-sheet-h);
   margin-bottom: var(--poster-space-below);
@@ -242,15 +219,14 @@
 }
 
 
-/* Layering was here on 2026-08-16 and lasted a day. Every item carried a
-   z-index and an opaque mask, so a layer knocked out the one beneath it. It is
-   gone, and so is the opaque panel it needed — main is glass again. Nothing on
-   the sheet overlaps now — there are only two things on it, in normal flow, so
-   nothing can.
+/* Nothing on the sheet overlaps: there are two things on it, in normal flow,
+   so nothing can.
 
-   One thing it left behind, and it stays: the wing tracks are minmax(0, 1fr)
-   rather than 1fr. Layering exposed that rather than causing it — any item
-   wider than a wing inflates a plain 1fr track. See the columns above. */
+   The wing tracks are minmax(0, 1fr) rather than 1fr, and that matters — a
+   flexible track has an automatic minimum, so any item wider than its wing
+   inflates a plain 1fr and silently breaks the column derivation. See the
+   columns above, and the header's rows in layout.css, which rely on the same
+   behaviour deliberately. */
 
 /* THE TITLE
    ------------------------------------------------------------------------
@@ -344,37 +320,21 @@
   --poster-title-budget: calc(var(--poster-sheet-h) - var(--poster-standfirst-reserve));
 }
 
-/* THE RESERVE IS A PHONE MEASUREMENT, AND ONLY A PHONE ONE — 2026-10-09
-   Eight page lines is what the longest description needs at 320px, where the
-   measure is narrowest. It was applied at every width, and from 768px up it
-   is simply wrong: the measure is three times wider there and no standfirst
-   on the site sets more than two lines. Measured across all 60 posts, the
-   tallest is 86px — 2.5 page lines — and it is flat at 768, 1024, 1440 and
-   1920 (21 posts at one line, 7 at two, the same seven each time). So every
-   poster was handing back 189px it had no use for, and any title needing
-   several lines was divided into what was left.
+/* THE WIDE SHEET'S RESERVE
+   From 768px up the measure is three times a phone's and no standfirst on the
+   site sets more than two lines: measured across all 60 posts, the tallest is
+   86px, flat at 768, 1024, 1440 and 1920. Three page lines is that worst case
+   rounded up, with half a line of headroom.
 
-   Three, by the same rule that made the 8: the measured worst case rounded up
-   to a whole page line. The headroom is half a line, as it is at 320.
+   **48em is where the data turns, not a borrowed number.** The wing's 76.67em
+   is the obvious candidate and is too late — it would miss the nine squeezed
+   posters at 1024 and the one at 768.
 
-   48em is where the data turns, not a borrowed number. The wing's 76.67em was
-   the obvious candidate and is too late — it would miss the nine squeezed
-   posts at 1024 and the one at 768.
+   It gains 8 posters at 1024, 6 at 1440, 2 at 1920, and 1 at 768, the longest
+   titles most, because those were the ones being divided into what was left.
 
-   What it costs, measured on a trial build of all 60 posts at six viewports:
-   nothing. No poster past the fold (tallest 91.7% at 1024, was 69.3%), no
-   title smaller anywhere, nothing changed at 320 or 390, no horizontal
-   overflow, no console errors, and the baseline grid unmoved — worst 0.4725px
-   on .poster__title for `maya` at 768, which is identical in the build
-   without this rule and so is not ours.
-
-   What it gains: 8 posters at 1024, 6 at 1440, 2 at 1920, 1 at 768. The
-   longest titles gain most, because they were the ones being divided — this
-   week's 55-character title goes 47.55px to 85.68px at 1440, +80%.
-
-   Re-measure if the descriptions get longer or the body size moves: a
-   three-line standfirst on a wide sheet would need 129px against the 103px
-   reserved here. */
+   **Re-measure if the descriptions get longer or the body size moves**: a
+   three-line standfirst on a wide sheet needs 129px against the 103px here. */
 @media (min-width: 48em) {
   .poster {
     --poster-standfirst-reserve: calc(3 * var(--poster-page-line));
@@ -394,13 +354,12 @@
   font-size: var(--font-size-large);
   line-height: 1.325;
   font-weight: 400;
-  /* Two page lines clear of the title, raised from one on 2026-09-04. The row
-     gutter did this until the rows went, at one line, and one was the minimum
-     rather than a choice: line boxes are taller than ink, so at zero the
-     title's descender space and the standfirst's ascender space meet and the
-     two read as one block. Two is the gap opened deliberately, and it is still
-     the smallest of the three so the pair still reads as one composition. The
-     negative top is the baseline shift, unchanged. */
+  /* Two page lines clear of the title. One is the floor rather than a choice
+     — line boxes are taller than ink, so at zero the title's descender space
+     and the standfirst's ascender space meet and the two read as one block —
+     and two is the gap opened deliberately. It is still the smallest of the
+     poster's three gaps, so the pair reads as one composition. The negative
+     top is the baseline shift. */
   margin: calc(var(--poster-space-title) - var(--poster-shift)) 0 var(--poster-shift);
   text-wrap: pretty;
 }
@@ -462,12 +421,10 @@
 
 /* THE LAYOUTS
    ------------------------------------------------------------------------
-   There is nothing to place. The twelve layouts across six families went on
-   2026-08-31 with the grid they placed into: with the two facts gone and the
-   sheet reduced to the body's own column, what is left is a title and, where a
-   post has one, a standfirst — both flush left on the measure, in normal flow.
-   src/_11ty/poster-layouts.js went with them; see CLAUDE.md for what the table
-   knew, which is worth keeping even though it no longer applies. */
+   There is nothing to place: a title and, where a post has one, a standfirst,
+   both flush left on the measure and in normal flow. Twelve arrangements
+   across six families used to be chosen here; CLAUDE.md records what that
+   table knew. */
 
 /* WIDE SHEETS
    ------------------------------------------------------------------------

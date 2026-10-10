@@ -3,27 +3,13 @@
   --color-text: #0b0c0c;
   --color-link: #0b0c0c;
   --color-link-hover: #003078;
-  /* #505a5f (GOV.UK's secondary text colour) until 2026-08-30, when the fill
-     went in and the sweep caught something that was already wrong.
-
-     Measured over all 360 hues at the disc's foot (L 0.74, the gamut search
-     random-gradients.js uses), #505a5f sits at 4.18:1 on the header's own
-     surface at hue 328 — *below the 4.5:1 AA floor*, and shipping. It went
-     unnoticed because there is no link in the masthead, so no one ever saw the
-     pair. The fill puts the whole post body on that same surface, where there
-     are many links, so it turns a hidden failure into a visible one.
-
-     This is the same colour scaled 0.83 on every channel — same hue, darker.
-     It measures 5.28:1 under the full fill, which is parity with the panel it
-     replaces (5.30:1), and 7.62:1 on the bare background against 6.03:1
-     before. Weakening the fill instead was the alternative and it is worse:
-     holding #505a5f at AA caps the fill at 31%, which is barely a fill. */
-  /* Moved a second time on 2026-08-30, when --glass-opacity went 60% → 20% and
-     four fifths of the disc started reaching the eye instead of two fifths.
-     Swept over all 360 hues at the disc's foot: #424b4f measures 4.20:1 on the
-     post's ground at hue 328, below the 4.5 AA floor. This is the original
-     #505a5f scaled 0.70 — same hue, darker again — and measures 5.04:1 there.
-     Body text is not the constraint at either strength: 9.22:1 worst case. */
+  /* GOV.UK's secondary text colour, #505a5f, scaled 0.70 on every channel:
+     same hue, darker. **It is dark for a measured reason — do not lighten it
+     back towards the GOV.UK value.** Swept over all 360 hues at the disc's
+     foot (L 0.74, the gamut search random-gradients.js uses), #505a5f sits at
+     4.18:1 on the header's own surface at hue 328, below the 4.5:1 AA floor
+     and once shipping. This measures 5.04:1 there. The visited link is the
+     binding case on the whole site; body text is nowhere near it at 9.22:1. */
   --color-link-visited: #383f43;
   --color-focus: #ffdd00;
   --color-background: #EBEDF0;
@@ -59,11 +45,9 @@
      (--spacing-l stands for one line and is 0.08px off it) and stops at 1.5
      lines. The poster wants exact multiples and more than the scale carries.
 
-     The three were 1.5 / 1 / 1.5 lines until 2026-09-04 and are 3 / 2 / 3
-     now — the same composition, opened up, at Ralph's asking. The proportions
-     are deliberate: the two outer gaps frame the poster and match each other,
-     and the inner one is smaller so the title and its standfirst still read
-     as one block rather than two.
+     The proportions are deliberate: the two outer gaps frame the poster and
+     match each other, and the inner one is smaller so the title and its
+     standfirst still read as one block rather than two.
 
      None of the three is charged to the title's size budget, which was tried
      and is wrong: it collapsed 24 titles to 0px at 320x568 and cost up to 60%
@@ -72,12 +56,10 @@
      on screen. Re-measure there if these numbers move. */
   --poster-page-line: calc(var(--font-size-base) * var(--line-height-base));
 
-  /* The leading display type is set on, and the ceiling it stops at, wherever
-     it is set: the post title and the masthead both. Declared on .poster until
-     2026-09-04 and moved here when the hero started sharing them — the names
-     keep the --poster- prefix because the poster is where they were measured,
-     and because the baseline rounding in poster.css still divides by the
-     leading.
+  /* The leading display type is set on, and the ceiling it stops at: the post
+     title and the masthead both. They keep the --poster- prefix because the
+     poster is where they were measured, and because the baseline rounding in
+     poster.css still divides by the leading.
 
      The ceiling is what keeps a short string from becoming a mural: the fit
      fills the measure, so four characters across a 700px column would set at
@@ -94,29 +76,22 @@
   --font-size-base: 1.43rem;
   --line-height-base: 1.5;
 
-  /* Type scale — one ladder, fluid between a 390px floor and a 1024px ceiling.
-     The body grew 10% on 2026-08-30 (1.3 → 1.43rem) and **the ladder was
-     compressed rather than scaled with it**, because the top of it could not
-     move: the ratio is now ×1.3765, not ×1.42.
+  /* Type scale — one ladder, fluid between a 390px floor and a 1024px
+     ceiling, at a ratio of ×1.3765. The rungs are 1.04 / 1.43 / 1.97 / 2.71 /
+     3.73rem.
 
-     Two things pinned the top. The h1 is capped so "Hawkins" clears the side
-     padding on the narrowest phones, and the h2's ceiling sits under it — so
-     with the body 10% larger the ladder has to reach the same 3.73rem from
-     further up, and 3.73/1.43 over three steps is 1.3765. The rungs are
-     1.04 / 1.43 / 1.97 / 2.71 / 3.73.
+     **If the body size moves, compress the ladder rather than scaling it, and
+     leave the floors alone.** Both halves of that are measured. The top
+     cannot move — the h1 is capped so "Hawkins" clears the side padding on
+     the narrowest phones and h2's ceiling sits under it — so the ladder has
+     to reach the same 3.73rem from wherever the body starts. And the column
+     *narrows* as the body grows, because the container's inset is 1.5em of
+     body text, so a phone has less room for headings, not more: scaling the
+     floors put an 8-character word past the column.
 
-     **The floors did not move at all**, and that is the other half of the
-     compression. Below 390px the column gets *narrower* as the body grows,
-     because the container's inset is 1.5em of body text — measured, 232px at
-     320px before and 226px after — so a phone has less room for headings, not
-     more. Scaling the floors put an 8-character word past the column; holding
-     them keeps every heading exactly where it was on a phone and lets the
-     ceilings do the growing.
-
-     The h1 is the one size that comes *down*: 3.6→3.5rem and 18.5→18vw, for
-     that same 6px of lost column. Its 4.5rem cap is unchanged, so nothing
-     above 428px moves. Verified across all 56 posts at 320px.
-     See "Heading hyphenation" in CLAUDE.md — the limit moved with this. */
+     Three things mirror the body size and have to move with it — see "The
+     type scale" in CLAUDE.md, and the hyphenation limit in typography.css,
+     which is a measurement of the same column. */
   /* One step down and one step up the ladder from the body size (1.43 ÷ 1.3765
      and 1.43 × 1.3765), fixed like the body size — only the headings are
      fluid. */
@@ -127,38 +102,20 @@
   --font-size-h3: clamp(2.22rem, 1.92rem + 1.24vw, 2.71rem);
   --font-size-h4: clamp(1.56rem, 1.31rem + 1.03vw, 1.97rem);
 
-  /* How much of the page background the surface lays over the blob — so
-     100% − this is how much of the blob's colour actually reaches the eye.
-     It was 60% until 2026-08-30 and is 20% now, so four fifths of the disc
-     reaches the eye where two fifths used to. The contrast figures quoted
-     further down were taken at 60% and are now the wrong way round: see the
-     link colour above, which had to move a second time to keep AA at this
-     strength.
+  /* How much page background the surface lays over the blob, so 100% − this
+     is how much of the disc's colour reaches the eye. This is the page-wide
+     sheet and nothing else — --glass-tint on body::after, which the header,
+     the post and the footer all lie under.
 
-     This is the page-wide sheet and nothing else — --glass-tint on
-     body::after, which the header, the post and the footer all lie under. It
-     briefly set two things: from 2026-08-30 to 2026-09-03 the fill under the
-     post was 100% − this, so that the panel and the header agreed exactly
-     where the disc was solid.
+     **There are two surfaces and the point is that they are unequal.** The
+     post lays --panel-opacity over the top of this one, so the blob reads at
+     80% of itself behind the header and 56% under the writing. Do not "fix"
+     the step at the rule; see the panel in layout.css.
 
-     **There are two surfaces again as of 2026-09-04, and the point is that
-     they are unequal.** The post lays --panel-opacity over the top of this
-     one, so the blob reads at 80% of itself behind the header and 56% under
-     the writing. Every previous version of this pair existed to make the two
-     agree at main's top edge; this one exists to make them differ there. Do
-     not "fix" the step at the rule — see the panel in layout.css.
-
-     The saturate and the 180deg turn the panel used to carry came off on
-     2026-08-30 and have not come back. Their measurements are kept in
-     CLAUDE.md rather than here: 180deg holding 0.0330 chroma of 0.0364 where
-     90deg held 0.0236. They were expensive to establish and why they no
-     longer apply is itself worth knowing.
-     One of the two levers on how intense the blob looks; the other is the
-     chroma the gradient is drawn at, which used to be pinned to what the
-     tightest hue on the wheel allows and is now solved per hue (see
-     --blob-gradient). At 60% the surface carries 1.8× the chroma it did at
-     75%, and stays light enough (oklab L 0.86) to keep near-black text at
-     ~13:1 — 11.5:1 at the worst hue now the disc beneath it is stronger. */
+     One of the two levers on how intense the blob looks. The other is the
+     chroma the gradient is drawn at, now solved per hue — see
+     --blob-gradient. At this strength the worst hue keeps near-black text at
+     11.5:1. */
   --glass-opacity: 20%;
 
   /* The disc's own blur. A fourteenth of its widest lobe — the site's own
@@ -168,18 +125,14 @@
      which they had not been since the panel stopped filtering.
 
      On the disc, so it reaches everywhere the disc goes — the header
-     included. It was put here on 2026-08-30 because a filter is uniform over
-     its element, so a backdrop-filter on main is a hard step at main's top
-     edge, and at the time the two sides of that edge were meant to agree.
-     They are not meant to agree any more (2026-09-04), and main filters again
-     — but this stays where it is, because the header wants a soft disc too
-     and only a filter on the disc itself can give it one.
+     included, which a backdrop-filter on main cannot. That is why it stays
+     here even though main filters as well.
 
-     The consequence is that under the post the disc is blurred twice, at the
-     same sigma. Gaussians compose in quadrature, so the post sees an
-     effective sqrt(2) = 1.41x of this — softer at the disc's edge than the
-     header, not a different order of thing. og-images.js carries that same
-     sqrt(2) so the card matches the post.
+     The consequence is that under the post the disc is blurred twice: this,
+     and then --glass-blur below. They are **not** the same fraction — this is
+     a fourteenth and the panel is a seventh — so the post is softened
+     markedly more than the header. Gaussians compose in quadrature, and
+     blurSigma() in og-images.js composes both to match the card to the page.
 
      A blur only means anything relative to what it is blurring: this is
      measured against --blob-radius rather than the viewport, which is why it
@@ -191,11 +144,6 @@
      Two numbers, both on main (layout.css), and between them the whole
      separation between the header and the post: the body of the post is
      frosted and tinted, the header is neither.
-
-     Reinstated 2026-09-04, having last existed on 2026-08-30. This is the
-     lightest of the three panels the site has had — the 65% tint over blur,
-     saturate and a 180deg turn that came off then, then the flood of the
-     post's own colour that replaced it, and now one tint and one blur.
 
      --panel-opacity is what actually does the obscuring, and the blur does
      far less than its name suggests. Two measurements from the old panel say
@@ -213,50 +161,37 @@
 
      30% is Ralph's, off a sweep of all 360 hues against the 20% page sheet.
      The disc reads at 56% under the post against 80% behind the header, and
-     the worst-case body text goes 8.43:1 to 10.11:1 with it. It also lifts
-     the worst-case visited link off 4.61:1 — a hair over AA, and where every
-     link in a post sat between 2026-09-03 and 2026-09-04 — to 5.53:1, which
-     is a reason not to take this much below 20%. */
+     worst-case body text goes 8.43:1 to 10.11:1 with it. It also lifts the
+     worst-case visited link from 4.61:1 — a hair over AA — to 5.53:1, which
+     is the reason not to take this below 20%. */
   --panel-opacity: 30%;
 
-  /* The panel's blur, on the same terms as --blob-blur above and deliberately
-     the same fraction: a fourteenth of the disc's widest lobe. It was a flat
-     150px once, set when the blob's widest lobe was 2100px across, and when
-     the blob shrank to a disc the same 150px erased it — measured, only 61%
-     of the blob's colour reached the eye through the panel against 83% with
-     no blur at all, and the boundary showed as a hard step where the colour
-     stopped. A fourteenth is that same 150/2100 ratio restated, so it follows
-     the disc on its own if the disc is ever resized again. Measured off the
-     built page: 12.8px at the phone floor (which binds below 488px of vmin),
-     23.7px at 1440x900, 28.4px at 1920x1080. The 37.8px the 460px cap allows
-     needs 1438px of the *smaller* dimension, so almost nothing reaches it.
+  /* The panel's blur, on the same terms as --blob-blur above: a fraction of
+     the disc's widest lobe, so it follows the disc if the disc is ever
+     resized. A flat px value does not — it was 150px once, set against a
+     2100px lobe, and when the blob shrank to a disc the same 150px erased it.
 
-     Kept as its own property rather than written as var(--blob-blur): they are
-     two different jobs and either can be tuned without the other. That is what
-     happened on 2026-09-26 — the divisor here halved to a seventh, which the
-     comment above already named as the dial for making the blur the thing the
-     reader notices, and --blob-blur stayed at a fourteenth. So the disc is
-     softly blurred everywhere and softened again, twice as much, under the
-     post. Measured off the built page: 25.6px at the phone floor, 47.3px at
-     1440x900, 56.8px at 1920x1080.
+     **A seventh here against --blob-blur's fourteenth**, so the post is
+     softened twice as hard as the header. The divisor is the dial: 14 makes
+     the blur barely noticeable, 7 makes it the thing you see. Measured off
+     the built page: 25.6px at the phone floor, 47.3px at 1440x900, 56.8px at
+     1920x1080, the disc's own being half of each.
 
-     The two are no longer equal, and og-images.js has to know: it composes
-     both in quadrature to match the page with the card's single blur. Change
-     this divisor and change blurSigma() with it. */
+     Kept as its own property rather than written as var(--blob-blur): two
+     different jobs, either tunable without the other. **Change this divisor
+     and change blurSigma() in og-images.js with it** — the card composes both
+     blurs in quadrature to match the page with its single one. */
   --glass-blur: calc(var(--blob-radius) * 1.15 / 7);
 
   /* The tint alone, named rather than spelt out at the one place it is used
-     (body::after): it was laid a second time inside the supergraphic's glyphs
-     until 2026-08-12, and the name is what kept the two copies in step. */
+     (body::after), so a second painter has somewhere to read it from. */
   --glass-tint: color-mix(in srgb, var(--color-background) var(--glass-opacity), transparent);
 
   /* The gradient blob, as one value rather than inline on body::before, which
-     is now the only thing that paints it — the post supergraphic re-painted
-     it inside its glyphs until 2026-08-12. Kept named anyway: the Open Graph
-     card carries its own copy of this recipe in JS, and a named value is
-     where a second painter belongs if there is ever one again. The --blob-*
-     inputs are set on :root every frame by random-gradients.js and resolve
-     where the value is *used*. */
+     is the only thing that paints it. Named because the Open Graph card
+     carries its own copy of this recipe in JS, so this is where a second
+     painter belongs. The --blob-* inputs are set on :root every frame by
+     random-gradients.js and resolve where the value is *used*. */
   /* Set in oklch, not hsl, because the hue rotates as the page scrolls
      (HUE_SHIFT_PER_VIEWPORT in random-gradients.js) and hsl rotates unevenly:
      at a fixed 90% saturation and 72% lightness the perceived lightness swings
