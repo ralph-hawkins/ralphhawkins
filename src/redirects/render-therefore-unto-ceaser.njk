@@ -1,0 +1,40 @@
+---
+# This week note was published at .../2026-08-29-render-therefore-unto-ceaser/
+# before the spelling of "Caesar" was fixed. This page keeps the old address
+# working for anyone who bookmarked or linked it.
+#
+# GitHub Pages serves static files out of the folder the deploy workflow
+# uploads and cannot issue a real 301 redirect: there is no .htaccess, no
+# _redirects file, and jekyll-redirect-from is no help because Jekyll never
+# runs here. So the old address answers 200 with this page, and the page sends
+# the reader on. The canonical link is what tells a search engine the two
+# addresses are one page, so links and search ranking follow the post.
+permalink: /posts/weeknotes/2026-08-29-render-therefore-unto-ceaser/index.html
+# Not a page of the site in its own right: keep it out of the feed, the
+# sitemap, the notes list and the prev/next links.
+eleventyExcludeFromCollections: true
+movedTo: /posts/weeknotes/2026-08-29-render-therefore-unto-caesar/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Render therefore unto Caesar – Ralph Hawkins</title>
+  {#- The canonical link does the work for search engines. The two below do it
+     for readers: replace() rather than assign() so Back does not bounce them
+     forward into the redirect again — the same reasoning as src/index.njk —
+     and the noscript refresh covers anything not running JavaScript. A zero
+     delay is what makes the refresh a redirect rather than a timed one, which
+     is the accessible way to write it. -#}
+  <link rel="canonical" href="{{ site.url }}{{ movedTo }}">
+  <script>
+    window.location.replace("{{ movedTo }}");
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url={{ movedTo }}"></noscript>
+</head>
+<body>
+  <p>This week note has moved to
+    <a href="{{ movedTo }}">Render therefore unto Caesar</a>.</p>
+</body>
+</html>
