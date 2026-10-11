@@ -8,7 +8,7 @@ This week I spent two days at the Products and Platforms planning event. The fif
 
 For services that help users form habits or manage conditions, governance that doesn’t support us to test and learn is a blocker. The normal moderated research sessions we can do in the alpha phase aren’t sufficient. In an interview a participant might tell you they’d quit smoking or start exercising, but would they? What would their actual experience be like?
 
-We need a way to test the purpose of the service, to see if we can impact behaviour over time. But putting something unmoderated out into the world without following the rigorous standards designed for scaled services has proved so hard that teams have given‑up trying to do the necessary testing in alpha and had to move to private beta to get anything done. Quick, small‑scale pilots are extremely difficult.
+We need a way to test the purpose of the service, to see if we can impact behaviour over time. But putting something unmoderated out into the world without following the rigorous standards designed for scaled services has proved so hard that teams have given up trying to do the necessary testing in alpha and had to move to private beta to get anything done. Quick, small‑scale pilots are extremely difficult.
 
 ‘Pilot’ has become a banned word.
 

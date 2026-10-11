@@ -6,7 +6,7 @@ description: Does a view of vaccines and screening make sense for users?
 
 This week I ‘finished’ prototyping our first ‘idea’. It’s been a useful exercise – thinking through making, surfacing questions.
 
-In the first few weeks of the year we spoke to teams across Digital Prevention Services, looking for places we could add value as a team that looks across prevention services. We came up with a list of ideas, shortlisted them and presented back to our team. We ended‑up bringing several ideas together. Which means we have something that is a vision, but is a long way from being achievable.
+In the first few weeks of the year we spoke to teams across Digital Prevention Services, looking for places we could add value as a team that looks across prevention services. We came up with a list of ideas, shortlisted them and presented back to our team. We ended up bringing several ideas together. Which means we have something that is a vision, but is a long way from being achievable.
 
 The prototype shows users which health screenings and vaccinations they’re eligible for, lets them book appointments, record vaccines they’ve had elsewhere, and opt out of things. It also supports proxy management – for example, parents can view and manage their children’s vaccinations. This is a lot of things. Way beyond what we can do now. That wasn’t what I wanted to make first. Last year I created a prototype of a vision and I knew it wasn’t realistic. I’d like to focus more on iteration instead of visions, we need to split out what we can start with.
 
