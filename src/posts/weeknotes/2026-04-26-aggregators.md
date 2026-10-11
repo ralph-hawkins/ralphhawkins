@@ -1,10 +1,10 @@
 ---
 title: Aggregators
 date: 2026-04-26
-description: Half‐way through a discovery into improving results in the NHS app.
+description: Half‐way through a discovery into improving results in the NHS App.
 ---
 
-We’re half‑way through a discovery into how Digital Prevention Services teams present results to NHS app users.
+We’re half‑way through a discovery into how Digital Prevention Services teams present results to NHS App users.
 
 At the highest level we’re using the discovery to answer 3 questions.
 
@@ -22,7 +22,7 @@ For us, these things make something a result or finding:
 - the output of a measurement, test, check, or screen the NHS did
 - there is an action or a reassurance (for example, you need to do this, don’t need to do anything, or we’ll contact you again in 5 years)
 
-Screening teams often prefer ’findings’ because screening identifies risk or indications rather than diagnoses. The NHS app uses ‘results’ because that’s the word users are familiar with. We’re using both for now.
+Screening teams often prefer ’findings’ because screening identifies risk or indications rather than diagnoses. The NHS App uses ‘results’ because that’s the word users are familiar with. We’re using both for now.
 
 Currently, there are 3 ways a user could see results in the app:
 

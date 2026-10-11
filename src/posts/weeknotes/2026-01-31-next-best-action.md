@@ -1,16 +1,16 @@
 ---
 title: Next best action
 date: 2026-01-31
-description: Where does Manage my Health start?
+description: Where does Managing my health start?
 ---
 
 {% from "image.njk" import image %}
 
 {{ image("/images/weeknotes/2026-01-31-next-best-action/for-us-by-us.jpg", "Laptop sticker with the words ‘For us by us’") }}
 
-The first priority for Manage my Health is to find something we can ship relatively quickly – test our approach, learn by doing, add value. We’re looking for something a cross‑cutting team can do, ideally connecting between services.
+The first priority for Managing my health is to find something we can ship relatively quickly – test our approach, learn by doing, add value. We’re looking for something a cross‑cutting team can do, ideally connecting between services.
 
-We spoke to product leads across Digital Prevention Services this week about their work and working with the NHS app.
+We spoke to product leads across Digital Prevention Services this week about their work and working with the NHS App.
 
 The app sits at the apex of all the things that are difficult about working on digital services in the NHS. It’s on top of a patchwork of technology, data, organisations. Finding eligible people is messy. Creating joined‑up experiences is difficult because the basic building blocks you’d expect to exist – like standardised ways of classifying appointments – don’t. The plumbing is fucked.
 

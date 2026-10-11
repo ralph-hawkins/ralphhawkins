@@ -3,7 +3,7 @@ title: Prevention all the way down
 description: Moving context between layers.
 date: 2026-09-13
 ---
-Service design is usually left‑to‑right. Service maps are almost always drawn this way. But there’s top‑to‑bottom too, from far‑reaching and vague to incremental and detailed. This week I worked at the detailed end – how the Managing My Health (MMH) team might change a label in the app, from ‘Hum papill vir DNA dtctn assay’ to something like ‘HPV test’. And at the vague end – what the NHS would look like if the technology were designed around users and staff. And some stuff in the middle. Helping shape what a coherent prevention experience needs in the NHS App, and finding a way to bring local health into what we offer nationally.
+Service design is usually left‑to‑right. Service maps are almost always drawn this way. But there’s top‑to‑bottom too, from far‑reaching and vague to incremental and detailed. This week I worked at the detailed end – how the Managing my health (MMH) team might change a label in the app, from ‘Hum papill vir DNA dtctn assay’ to something like ‘HPV test’. And at the vague end – what the NHS would look like if the technology were designed around users and staff. And some stuff in the middle. Helping shape what a coherent prevention experience needs in the NHS App, and finding a way to bring local health into what we offer nationally.
 
 Holding a thread between these bits feels less like design and more like being a repository. Moving context between layers.
 

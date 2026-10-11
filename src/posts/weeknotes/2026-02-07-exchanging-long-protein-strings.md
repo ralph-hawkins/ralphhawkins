@@ -4,7 +4,7 @@ date: 2026-02-07
 description: Does cross‐cutting mean distracting people?
 ---
 
-We decided on the first experiment for Managing my Health and started prototyping. We’re exploring whether joining up existing work that’s previously been separate will make sense for users. There’s potential to use it as a jumping off point for a few other things we’ve been thinking about. I don’t want to say more before we talk to the teams involved.
+We decided on the first experiment for Managing my health and started prototyping. We’re exploring whether joining up existing work that’s previously been separate will make sense for users. There’s potential to use it as a jumping off point for a few other things we’ve been thinking about. I don’t want to say more before we talk to the teams involved.
 
 Building the prototype showed how complex eligibility modelling across services will be. It’s nice to be doing tangible work, but if I’m honest, I didn’t want to start designing before speaking to the related teams. But we’re under pressure to show what we’re doing and sell the vision.
 
