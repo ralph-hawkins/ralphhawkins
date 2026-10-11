@@ -1,5 +1,5 @@
 {# Shared <head> contents for all layouts. #}
-{%- set metaDescription = description if description else "Ralph Hawkins is a service designer working in the public sector with NHS England, helping people stay healthy." -%}
+{%- set metaDescription = description if description else "Ralph Hawkins is a service designer working in the public sector with NHS England, helping people avoid illness or catch it early." -%}
 {%- if not description and content -%}{%- set metaDescription = content | excerpt -%}{%- endif -%}
 {%- set pageTitle = title if title else "Ralph Hawkins" -%}
 {%- set ogType = "article" if (tags and 'weeknotes' in tags) else "website" -%}
